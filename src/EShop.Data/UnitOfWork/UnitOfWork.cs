@@ -37,7 +37,15 @@ namespace EShop.Data.UnitOfWork
 
         public async Task<int> Commit(CancellationToken cancellationToken = default)
         {
-            return await _context.SaveChangesAsync(cancellationToken);
+            try
+            {
+                return await _context.SaveChangesAsync(cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+                throw;
+            }
         }
 
         public void Dispose()

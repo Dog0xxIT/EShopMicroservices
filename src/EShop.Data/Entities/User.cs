@@ -39,5 +39,9 @@ namespace EShop.Data.Entities
             Country = country ?? throw new ArgumentNullException(nameof(country));
             ZipCode = zipCode ?? throw new ArgumentNullException(nameof(zipCode));
         }
+
+        public User()
+        {
+        }
     }
 }

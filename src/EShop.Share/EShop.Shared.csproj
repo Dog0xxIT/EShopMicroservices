@@ -7,16 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Constants\" />
     <Folder Include="Validatetions\" />
     <Folder Include="RequestModels\Basket\" />
-    <Folder Include="RequestModels\Identity\" />
-    <Folder Include="RequestModels\Catalog\" />
     <Folder Include="RequestModels\Ordering\" />
     <Folder Include="ResponseModels\Basket\" />
-    <Folder Include="ResponseModels\Catalog\" />
     <Folder Include="ResponseModels\Identity\" />
     <Folder Include="ResponseModels\Ordering\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
 
 </Project>

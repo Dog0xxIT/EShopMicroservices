@@ -24,7 +24,7 @@ namespace EShop.Data.Repositories.Implements
 
         public virtual async Task<IEnumerable<TEntity>> Get(
             Expression<Func<TEntity, bool>>? filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>?>? orderBy = null,
             IEnumerable<string>? includeProperties = null)
         {
             IQueryable<TEntity> query = _dbSet.AsNoTracking();
@@ -42,7 +42,11 @@ namespace EShop.Data.Repositories.Implements
                 }
             }
 
-            return orderBy != null ? await orderBy(query).ToListAsync() : await query.ToListAsync();
+            if (orderBy != null)
+            {
+                return await orderBy(query).ToListAsync();
+            }
+            return await query.ToListAsync();
         }
 
         public virtual async Task<TEntity?> GetById(object id)
