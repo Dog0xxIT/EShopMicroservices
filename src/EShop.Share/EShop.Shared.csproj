@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Constants\" />
+    <Folder Include="Validatetions\" />
+    <Folder Include="RequestModels\Basket\" />
+    <Folder Include="RequestModels\Identity\" />
+    <Folder Include="RequestModels\Catalog\" />
+    <Folder Include="RequestModels\Ordering\" />
+    <Folder Include="ResponseModels\Basket\" />
+    <Folder Include="ResponseModels\Catalog\" />
+    <Folder Include="ResponseModels\Identity\" />
+    <Folder Include="ResponseModels\Ordering\" />
+  </ItemGroup>
+
+</Project>
