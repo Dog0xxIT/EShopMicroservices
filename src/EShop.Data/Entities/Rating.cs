@@ -17,7 +17,7 @@ namespace EShop.Data.Entities
 
         public Product Product { get; set; }
 
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         [Range(1, 5)]
         public int StarPoint { get; set; }

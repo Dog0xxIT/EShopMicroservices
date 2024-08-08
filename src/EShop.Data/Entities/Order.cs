@@ -10,17 +10,17 @@ namespace EShop.Data.Entities
 {
     public class Order : Entity
     {
-        public string Street { get; set; }
+        public string? Street { get; set; }
 
-        public string City { get; set; }
+        public string? City { get; set; }
 
-        public string State { get; set; }
+        public string? State { get; set; }
 
-        public string Country { get; set; }
+        public string? Country { get; set; }
 
-        public string ZipCode { get; set; }
+        public string? ZipCode { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public OrderStatus OrderStatus { get; set; }
 
@@ -28,9 +28,9 @@ namespace EShop.Data.Entities
 
         public User Buyer { get; set; }
 
-        public int PaymentId { get; set; }
+        public int? PaymentId { get; set; }
 
-        public Payment Payment { get;  set;}
+        public Payment? Payment { get; set; }
 
         public IReadOnlyCollection<OrderItem> OrderItems { get; }
 
@@ -46,6 +46,13 @@ namespace EShop.Data.Entities
             OrderStatus = orderStatus;
             BuyerId = buyerId;
             PaymentId = paymentId;
+        }
+
+        // Create Draft
+        public Order(int buyerId)
+        {
+            BuyerId = buyerId;
+            OrderStatus = OrderStatus.Draft;
         }
     }
 }

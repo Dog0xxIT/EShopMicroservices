@@ -11,11 +11,5 @@ namespace EShop.Data.Entities
         public string Name { get; set; }
 
         public string Code {get; set; }
-
-        public Brand(string name, string code)
-        {
-            Name = name ?? throw new ArgumentNullException(nameof(name));
-            Code = code ?? throw new ArgumentNullException(nameof(code));
-        }
     }
 }

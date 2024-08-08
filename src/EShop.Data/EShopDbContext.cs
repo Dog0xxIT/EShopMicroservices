@@ -1,4 +1,6 @@
-﻿using EShop.Data.Entities;
+﻿using EShop.Data.Constants;
+using EShop.Data.Entities;
+using EShop.Data.SeedData;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +38,7 @@ namespace EShop.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.SeedData();
+            modelBuilder.SeedData();
         }
     }
 }

@@ -8,33 +8,28 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using EShop.Api.Services.EmailSenderService;
-using EShop.Shared.Constants;
+using EShop.Data.Constants;
 using EShop.Shared.RequestModels.Identity;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace EShop.Api.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class IdentityController : ControllerBase
+    public class IdentityController(
+        UserManager<User> userManager,
+        ILogger<IdentityController> logger,
+        SignInManager<User> signInManager,
+        JwtConfig jwtConfig,
+        IEmailSender emailSender)
+        : ControllerBase
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly ILogger<IdentityController> _logger;
-        private readonly JwtConfig _jwtConfig;
-        private readonly IEmailSender _emailSender;
-
-        public IdentityController(
-            UserManager<User> userManager,
-            ILogger<IdentityController> logger,
-            SignInManager<User> signInManager,
-            JwtConfig jwtConfig, IEmailSender emailSender)
-        {
-            _userManager = userManager;
-            _logger = logger;
-            _signInManager = signInManager;
-            _jwtConfig = jwtConfig;
-            _emailSender = emailSender;
-        }
+        private readonly UserManager<User> _userManager = userManager;
+        private readonly SignInManager<User> _signInManager = signInManager;
+        private readonly ILogger<IdentityController> _logger = logger;
+        private readonly JwtConfig _jwtConfig = jwtConfig;
+        private readonly IEmailSender _emailSender = emailSender;
 
         #region Get method
 
@@ -42,15 +37,17 @@ namespace EShop.Api.Controllers
         public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailRequest req)
         {
             var userEntity = await _userManager.FindByEmailAsync(req.Email);
-            if (userEntity == null)
+            if (userEntity is null)
             {
-                return BadRequest("Not found user");
+                return NotFound("Not found user");
             }
 
             var identityResult = await _userManager.ConfirmEmailAsync(userEntity, req.Code);
+
             if (identityResult.Errors.Any())
             {
-                return Problem(identityResult.Errors.First().Description);
+                var errors = string.Join(' ', identityResult.Errors.Select(e => e.Description));
+                return Problem(errors);
             }
             return Ok();
         }
@@ -74,16 +71,19 @@ namespace EShop.Api.Controllers
                 UserName = req.Email,
                 Email = req.Email,
             };
+
             var identityResult = await _userManager.CreateAsync(userEntity, req.Password);
             if (identityResult.Errors.Any())
             {
-                return ValidationProblem(identityResult.Errors.First().Description);
+                var errors = string.Join(' ', identityResult.Errors.Select(e => e.Description));
+                return Problem(errors);
             }
 
             identityResult = await _userManager.AddToRoleAsync(userEntity, RolesConstant.Customer);
             if (identityResult.Errors.Any())
             {
-                return ValidationProblem(identityResult.Errors.First().Description);
+                var errors = string.Join(' ', identityResult.Errors.Select(e => e.Description));
+                return Problem(errors);
             }
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(userEntity);
@@ -102,13 +102,8 @@ namespace EShop.Api.Controllers
 
             if (!signInResult.Succeeded)
             {
-                var responseProblem = new
-                {
-                    IsLockedOut = signInResult.IsLockedOut,
-                    IsNotAllowed = signInResult.IsNotAllowed,
-                    RequiresTwoFactor = signInResult.RequiresTwoFactor,
-                };
-                return Problem(responseProblem.ToString());
+                var errorsJson = JsonConvert.SerializeObject(signInResult);
+                return Problem(errorsJson);
             }
 
             var user = await _userManager.FindByEmailAsync(req.Email);

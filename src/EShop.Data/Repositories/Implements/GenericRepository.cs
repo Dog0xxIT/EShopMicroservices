@@ -24,7 +24,7 @@ namespace EShop.Data.Repositories.Implements
 
         public virtual async Task<IEnumerable<TEntity>> Get(
             Expression<Func<TEntity, bool>>? filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>?>? orderBy = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             IEnumerable<string>? includeProperties = null)
         {
             IQueryable<TEntity> query = _dbSet.AsNoTracking();

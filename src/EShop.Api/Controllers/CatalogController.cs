@@ -6,6 +6,8 @@ using System.ComponentModel.DataAnnotations;
 using EShop.Shared.RequestModels.Catalog;
 using EShop.Shared.ResponseModels.Catalog;
 using System.Linq;
+using EShop.Shared.RequestModels;
+using EShop.Shared.ResponseModels;
 
 namespace EShop.Api.Controllers
 {
@@ -29,11 +31,10 @@ namespace EShop.Api.Controllers
         public async Task<IActionResult> GetAllProducts([FromQuery] PaginationRequest paginationReq)
         {
             var products = await _unitOfWork.ProductRepository
-                .Get(orderBy: queryable => queryable
-                    .Order()
+                .Get(orderBy: queryable => (IOrderedQueryable<Product>)queryable
+                    .OrderBy(p => p.Id)
                     .Skip(paginationReq.PageIndex)
-                    .Take(paginationReq.PageSize) as IOrderedQueryable<Product>);
-
+                    .Take(paginationReq.PageSize));
 
             var response = new PaginationResponse
             {
@@ -48,81 +49,76 @@ namespace EShop.Api.Controllers
         [HttpGet("{brandId}")]
         public async Task<IActionResult> GetProductsByBrandId([FromRoute] int brandId, [FromQuery] PaginationRequest paginationReq)
         {
-            //var products = await _unitOfWork.ProductRepository.GetProductByBrandId(brandId, paginationReq.PageSize, paginationReq.PageIndex);
-            //var response = new PaginationResponse
-            //{
-            //    PageIndex = paginationReq.PageIndex,
-            //    PageSize = paginationReq.PageSize,
-            //    Count = products?.Count() ?? 0,
-            //    Data = products ?? new()
-            //};
-            //return Ok(response);
-            return Ok();
+            var products = await _unitOfWork.ProductRepository
+                .Get(filter: p => p.BrandId == brandId);
+
+            var response = new PaginationResponse
+            {
+                PageIndex = paginationReq.PageIndex,
+                PageSize = paginationReq.PageSize,
+                Count = products.Count(),
+                Data = products
+            };
+            return Ok(response);
         }
 
-        [HttpGet("{typeId}")]
-        public async Task<IActionResult> GetProductsByTypeId([FromRoute] int typeId, [FromQuery] PaginationRequest paginationReq)
+        [HttpGet("{categoryId}")]
+        public async Task<IActionResult> GetProductsByCategoryId([FromRoute] int categoryId, [FromQuery] PaginationRequest paginationReq)
         {
-            //var products = await _unitOfWork.ProductRepository.GetProductByTypeId(typeId, paginationReq.PageSize, paginationReq.PageIndex);
-            //var response = new PaginationRes
-            //{
-            //    PageIndex = paginationReq.PageIndex,
-            //    PageSize = paginationReq.PageSize,
-            //    Count = products?.Count() ?? 0,
-            //    Data = products ?? new()
-            //};
-            //return Ok(response);
-            return Ok();
+            var products = await _unitOfWork.ProductRepository
+                .Get(filter: p => p.CategoryId == categoryId);
+
+            var response = new PaginationResponse
+            {
+                PageIndex = paginationReq.PageIndex,
+                PageSize = paginationReq.PageSize,
+                Count = products.Count(),
+                Data = products
+            };
+            return Ok(response);
         }
 
-        [HttpGet("type/{typeId}/brand/{brandId}")]
-        public async Task<IActionResult> GetProductsByBrandAndTypeId([FromRoute] int typeId, [FromRoute] int brandId, [FromQuery] PaginationRequest paginationReq)
+        [HttpGet("category/{categoryId}/brand/{brandId}")]
+        public async Task<IActionResult> GetProductsByBrandAndCategoryId(
+            [FromRoute] int categoryId,
+            [FromRoute] int brandId,
+            [FromQuery] PaginationRequest paginationReq)
         {
-            //var products = await _unitOfWork.ProductRepository.GetProductByBrandAndTypeId(brandId, typeId, paginationReq.PageSize, paginationReq.PageIndex);
-            //var response = new PaginationRes
-            //{
-            //    PageIndex = paginationReq.PageIndex,
-            //    PageSize = paginationReq.PageSize,
-            //    Count = products?.Count() ?? 0,
-            //    Data = products ?? new()
-            //};
-            //return Ok(response);
-            return Ok();
+            var products = await _unitOfWork.ProductRepository
+                .Get(filter: p => p.CategoryId == categoryId && p.BrandId == brandId);
+
+            var response = new PaginationResponse
+            {
+                PageIndex = paginationReq.PageIndex,
+                PageSize = paginationReq.PageSize,
+                Count = products.Count(),
+                Data = products
+            };
+            return Ok(response);
         }
 
         [HttpGet("{productId}")]
         public async Task<IActionResult> GetProductById([FromRoute] int productId)
         {
-            //var referenceNavigation = new List<string>
-            //{
-            //    nameof(Product.CatalogBrand),
-            //    nameof(Product.CatalogType)
-            //};
-            //var product = await _unitOfWork.ProductRepository.GetById(
-            //    id: productId,
-            //    referenceNavigations: referenceNavigation
-            // );
-            //return product is null ? NotFound() : Ok(product);
-            return Ok();
+            var product = await _unitOfWork.ProductRepository
+                .Get
+                (
+                    filter: p => p.Id == productId,
+                    includeProperties: new List<string> { nameof(Product.Brand), nameof(Product.Category) }
+                );
+
+            return Ok(product);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllBrands([FromQuery] PaginationRequest paginationReq)
         {
-            //var brands = await _unitOfWork.CatalogBrandRepository.GetAll(paginationReq.PageSize, paginationReq.PageIndex);
-            //var response = new PaginationRes
-            //{
-            //    PageIndex = paginationReq.PageIndex,
-            //    PageSize = paginationReq.PageSize,
-            //    Count = brands?.Count() ?? 0,
-            //    Data = brands ?? new()
-            //};
-            //return Ok(response);
-            return Ok();
+            var brands = await _unitOfWork.BrandRepository.Get();
+            return Ok(brands);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllTypes()
+        public async Task<IActionResult> GetAllCategories()
         {
             var categories = await _unitOfWork.CategoryRepository.Get();
             return Ok(categories);
@@ -131,11 +127,11 @@ namespace EShop.Api.Controllers
         [HttpGet("{productId}")]
         public async Task<IActionResult> GetAllImagesOfProduct([FromRoute] int productId)
         {
-            //var isExists = await _unitOfWork.ProductRepository.IsExists(productId);
-            //if (!isExists)
-            //{
-            //    return NotFound();
-            //}
+            var product = await _unitOfWork.ProductRepository.GetById(productId);
+            if (product is null)
+            {
+                return NotFound();
+            }
 
             try
             {
@@ -162,11 +158,11 @@ namespace EShop.Api.Controllers
         public async Task<IActionResult> UploadProductImage(UploadProductImageRequest req)
         {
 
-            //var isExists = await _unitOfWork.ProductRepository.IsExists(req.ProductId);
-            //if (!isExists)
-            //{
-            //    return NotFound();
-            //}
+            var product = await _unitOfWork.ProductRepository.GetById(req.ProductId);
+            if (product is null)
+            {
+                return NotFound();
+            }
 
             try
             {
@@ -182,18 +178,34 @@ namespace EShop.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductRequest req)
         {
-            //var product = new Product
-            //{
-            //    Name = req.Name,
-            //    Price = req.Price,
-            //    StockQuantity = req.StockQuantity,
-            //    Description = req.Description,
-            //    CatalogBrandId = req.CatalogBrandId,
-            //    CatalogTypeId = req.CatalogTypeId,
-            //};
+            var category = await _unitOfWork.CategoryRepository.GetById(req.CategoryId);
+            if (category is null)
+            {
+                return BadRequest("Not found category");
+            }
+
+            var brand = await _unitOfWork.BrandRepository.GetById(req.BrandId);
+            if (brand is null)
+            {
+                return BadRequest("Not found brand");
+            }
+
+            var product = new Product
+            {
+                Name = req.Name,
+                Price = req.Price,
+                CategoryId = req.CategoryId,
+                BrandId = req.BrandId,
+                AvailableStock = req.AvailableStock,
+                RestockThreshold = req.RestockThreshold,
+                MaxStockThreshold = req.MaxStockThreshold,
+                Description = req.Description,
+            };
+            product.SetTimeCreated();
+
             try
             {
-                //await _unitOfWork.ProductRepository.Create(product);
+                await _unitOfWork.ProductRepository.Create(product);
                 var result = await _unitOfWork.Commit();
                 return Ok(result);
             }
@@ -206,8 +218,20 @@ namespace EShop.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBrand(CreateBrandRequest req)
         {
-            var brand = new Brand(req.Name, "");
-            
+            var duplicateBrandsCode = await _unitOfWork.BrandRepository
+                .Get(filter: p => p.Code == req.Code);
+
+            if (duplicateBrandsCode.Any())
+            {
+                return ValidationProblem(detail: "Brand Code is unique");
+            }
+
+            var brand = new Brand
+            {
+                Name = req.Name,
+                Code = req.Code
+            };
+
             try
             {
                 await _unitOfWork.BrandRepository.Create(brand);
@@ -234,12 +258,27 @@ namespace EShop.Api.Controllers
                 return NotFound();
             }
 
+            var category = await _unitOfWork.CategoryRepository.GetById(req.CategoryId);
+            if (category is null)
+            {
+                return BadRequest("Not found category");
+            }
+
+            var brand = await _unitOfWork.BrandRepository.GetById(req.BrandId);
+            if (brand is null)
+            {
+                return BadRequest("Not found brand");
+            }
+
             product.Name = req.Name;
             product.Price = req.Price;
-            //product.StockQuantity = req.StockQuantity;
-            //product.Description = req.Description;
-            //product.CatalogBrandId = req.CatalogBrandId;
-            //product.CatalogTypeId = req.CatalogTypeId;
+            product.CategoryId = req.CategoryId;
+            product.BrandId = req.BrandId;
+            product.AvailableStock = req.AvailableStock;
+            product.RestockThreshold = req.RestockThreshold;
+            product.MaxStockThreshold = req.MaxStockThreshold;
+            product.Description = req.Description;
+            product.SetTimeLastModified();
 
             try
             {
@@ -263,7 +302,16 @@ namespace EShop.Api.Controllers
                 return NotFound();
             }
 
+            var duplicateBrandsCode = await _unitOfWork.BrandRepository
+                .Get(filter: p => p.Code == req.Code);
+
+            if (duplicateBrandsCode.Any())
+            {
+                return ValidationProblem(detail: "Brand Code is unique");
+            }
+
             brand.Name = req.Name;
+            brand.Code = req.Code;
 
             try
             {

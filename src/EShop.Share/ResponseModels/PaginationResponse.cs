@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EShop.Shared.ResponseModels.Catalog
+namespace EShop.Shared.ResponseModels
 {
     public sealed class PaginationResponse
     {

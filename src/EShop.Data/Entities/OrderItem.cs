@@ -10,7 +10,7 @@ namespace EShop.Data.Entities
     {
         public string ProductName { get; set; }
 
-        public string PictureUrl { get; set; }
+        public string? PictureUrl { get; set; }
 
         public double UnitPrice { get; set; }
 

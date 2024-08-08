@@ -16,14 +16,19 @@ namespace EShop.Data.Entities
 
         public bool IsDeleted { get; set; }
 
-        public void SetCreated()
+        public void SetTimeCreated()
         {
             Created = DateTime.UtcNow.Subtract(DateTime.UnixEpoch).TotalSeconds;
         }
 
-        public void SetLastModified()
+        public void SetTimeLastModified()
         {
             LastModified = DateTime.UtcNow.Subtract(DateTime.UnixEpoch).TotalSeconds;
+        }
+
+        public Entity()
+        {
+            SetTimeCreated();
         }
     }
 }

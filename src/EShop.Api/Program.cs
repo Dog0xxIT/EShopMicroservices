@@ -30,7 +30,7 @@ builder.Services.AddSingleton<ICloudinaryService, CloudinaryService>();
 // Add services to the container.
 builder.Services.
     AddDbContext<EShopDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionString), contextLifetime:ServiceLifetime.Singleton);
 
 
 builder.Services

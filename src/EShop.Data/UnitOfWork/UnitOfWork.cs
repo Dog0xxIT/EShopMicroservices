@@ -47,10 +47,5 @@ namespace EShop.Data.UnitOfWork
                 throw;
             }
         }
-
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
     }
 }

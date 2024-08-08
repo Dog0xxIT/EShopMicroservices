@@ -13,11 +13,11 @@ namespace EShop.Data.Entities
     {
         public string Name { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public double Price { get; set; }
 
-        public string PictureFileName { get; set; }
+        public string? PictureFileName { get; set; }
 
         public int CategoryId { get; set; }
 
@@ -35,19 +35,5 @@ namespace EShop.Data.Entities
 
         //[JsonIgnore]
         //public Vector Embedding { get; set; }
-
-        public Product(string name, string description, double price, string pictureFileName, int categoryId,
-            int brandId, int availableStock, int restockThreshold, int maxStockThreshold)
-        {
-            Name = name ?? throw new ArgumentNullException(nameof(name));
-            Description = description ?? throw new ArgumentNullException(nameof(description));
-            Price = price;
-            PictureFileName = pictureFileName ?? throw new ArgumentNullException(nameof(pictureFileName));
-            CategoryId = categoryId;
-            BrandId = brandId;
-            AvailableStock = availableStock;
-            RestockThreshold = restockThreshold;
-            MaxStockThreshold = maxStockThreshold;
-        }
     }
 }

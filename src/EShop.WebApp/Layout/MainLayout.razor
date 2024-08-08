@@ -1,16 +1,62 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+
+<FluentLayout>
+    <FluentHeader Height="60">
+
+        EShop
+        <FluentSpacer />
+
+        <FluentSearch @bind-Value=value AutoComplete="off" Size="100" />
+
+        <FluentSpacer />
+
+        <FluentPersona Name="Bill Gates"
+                       Status="PresenceStatus.Available"
+                       StatusSize="PresenceBadgeSize.Small"
+                       StatusTitle="He is available"
+                       ImageSize="50px">
+        </FluentPersona>
+    </FluentHeader>
+
+    <FluentStack Orientation="Orientation.Horizontal" Width="95%"
+                 HorizontalAlignment="HorizontalAlignment.Start">
+        <div>
+            <FluentNavMenu @bind-Expanded="@Expanded" Width="250" Collapsible="true" CollapsedChildNavigation="@EnableCollapsedChildNavigation" Title="Collapsible demo">
+
+                <FluentNavLink Icon="@(new Icons.Regular.Size24.Home())" Tooltip="Item 1 tooltip">Home</FluentNavLink>
+
+                <FluentNavLink Icon="@(new Icons.Regular.Size24.Cloud())" Tooltip="Item 2 tooltip">Product</FluentNavLink>
+
+                <FluentNavGroup Title="Category" Tooltip="Item 3 tooltip" Icon="@(new Icons.Regular.Size24.EarthLeaf())">
+                    <FluentNavLink Icon="@(new Icons.Regular.Size24.LeafOne())" Tooltip="Item 3.1 tooltip">All</FluentNavLink>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size24.LeafTwo())" Tooltip="Item 3.2 tooltip">Bag</FluentNavLink>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size24.LeafTwo())" Tooltip="Item 3.2 tooltip">Computer</FluentNavLink>
+                </FluentNavGroup>
+
+                <FluentNavGroup Title="Brand" Tooltip="Item 3 tooltip" Icon="@(new Icons.Regular.Size24.EarthLeaf())">
+                    <FluentNavLink Icon="@(new Icons.Regular.Size24.LeafOne())" Tooltip="Item 3.1 tooltip">All</FluentNavLink>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size24.LeafTwo())" Tooltip="Item 3.2 tooltip">Xe</FluentNavLink>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size24.LeafTwo())" Tooltip="Item 3.2 tooltip">AirStrider</FluentNavLink>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size24.LeafTwo())" Tooltip="Item 3.2 tooltip">B&R</FluentNavLink>
+                </FluentNavGroup>
+
+
+                <FluentNavGroup Title="Account" Tooltip="Item 3 tooltip" Icon="@(new Icons.Regular.Size24.EarthLeaf())">
+                    <FluentNavLink Icon="@(new Icons.Regular.Size24.LeafOne())" Tooltip="Item 3.1 tooltip">Register</FluentNavLink>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size24.LeafTwo())" Tooltip="Item 3.2 tooltip">Sign In</FluentNavLink>
+                </FluentNavGroup>
+            </FluentNavMenu>
         </div>
 
-        <article class="content px-4">
+        <div class="ms-4">
             @Body
-        </article>
-    </main>
-</div>
+        </div>
+    </FluentStack>
+</FluentLayout>
+
+@code {
+    private bool Expanded = true;
+    private bool EnableCollapsedChildNavigation = true;
+    private string? value;
+}

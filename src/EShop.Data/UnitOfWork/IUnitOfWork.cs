@@ -7,7 +7,7 @@ using EShop.Data.Repositories.Interfaces;
 
 namespace EShop.Data.UnitOfWork
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         public IBasketItemRepository BasketItemRepository { get; }
         public IBrandRepository BrandRepository { get; }

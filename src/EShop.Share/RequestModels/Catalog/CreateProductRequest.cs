@@ -13,18 +13,24 @@ namespace EShop.Shared.RequestModels.Catalog
         public string Name { get; set; }
 
         [Required]
-        public string Description { get; set; }
-
-        [Required]
+        [Range(0.001, double.MaxValue)]
         public double Price { get; set; }
 
         [Required]
-        public int StockQuantity { get; set; }
+        public int CategoryId { get; set; }
 
         [Required]
-        public int CatalogTypeId { get; set; }
+        public int BrandId { get; set; }
 
         [Required]
-        public int CatalogBrandId { get; set; }
+        public int AvailableStock { get; set; }
+
+        [Required]
+        public int RestockThreshold { get; set; }
+
+        [Required]
+        public int MaxStockThreshold { get; set; }
+
+        public string Description { get; set; }
     }
 }
