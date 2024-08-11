@@ -36,7 +36,7 @@ namespace EShop.Api.Controllers
                         .Take(paginationReq.PageSize)
                 );
 
-            var response = new PaginationResponse
+            var response = new PaginationResponse<BasketItem>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,

@@ -1,0 +1,127 @@
+﻿using EShop.Data.Entities;
+using EShop.Shared.RequestModels.Catalog;
+using EShop.Shared.ResponseModels;
+using EShop.Shared.ResponseModels.Catalog;
+using EShop.WebApp.Core;
+using EShop.WebApp.Core.CoreHttpClient;
+
+namespace EShop.WebApp.Services.CatalogService
+{
+    public class CatalogService : ICatalogService
+    {
+        private readonly ICoreHttpClient _coreHttpClient;
+
+        public CatalogService(ICoreHttpClient coreHttpClient)
+        {
+            _coreHttpClient = coreHttpClient;
+        }
+
+        public async Task<PaginationResponse<GetListProductResponse>> GetAllProducts()
+        {
+            return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
+                  clientName: UrlsConfig.ClientName,
+                  uri: UrlsConfig.Catalog.GetAllProducts);
+        }
+
+        public async Task<PaginationResponse<GetListProductResponse>> GetProductsByBrandId(int brandId)
+        {
+            return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.GetProductsByBrandId,
+                queryObj: new { brandId });
+        }
+
+        public async Task<PaginationResponse<GetListProductResponse>> GetProductsByCategoryId(int categoryId)
+        {
+            return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.GetProductsByCategoryId,
+                queryObj: new { categoryId });
+        }
+
+        public async Task<PaginationResponse<GetListProductResponse>> GetProductsByBrandAndCategoryId(int brandId, int categoryId)
+        {
+            return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.GetProductsByBrandAndCategoryId,
+                queryObj: new { brandId, categoryId });
+        }
+
+
+        public async Task<Product> GetProductById(int productId)
+        {
+            return await _coreHttpClient.GetAsync<Product>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.GetProductById,
+                queryObj: new { productId });
+        }
+
+
+        public async Task<IEnumerable<Brand>> GetAllBrands()
+        {
+            return await _coreHttpClient.GetAsync<IEnumerable<Brand>>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.GetAllBrands);
+        }
+
+        public async Task<IEnumerable<Category>> GetAllCategories()
+        {
+            return await _coreHttpClient.GetAsync<IEnumerable<Category>>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.GetAllCategories);
+        }
+
+        public async Task<PaginationResponse<GetListProductResponse>> GetAllImagesOfProduct(int productId)
+        {
+            return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.GetAllImagesOfProduct);
+        }
+
+        public async Task<PaginationResponse<GetListProductResponse>> SearchWithSemanticRelevance(string text)
+        {
+            return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.SearchWithSemanticRelevance,
+                queryObj: text);
+        }
+
+
+        public async Task<int> UploadProductImage(UploadProductImageRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<int> CreateProduct(CreateProductRequest request)
+        {
+            return await _coreHttpClient.PostAsync<int>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.CreateProduct,
+                reqObj: request);
+        }
+
+        public async Task<int> CreateBrand(CreateBrandRequest request)
+        {
+            return await _coreHttpClient.PostAsync<int>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.CreateBrand,
+                reqObj: request);
+        }
+
+        public async Task<int> UpdateProduct(UpdateProductRequest request)
+        {
+            return await _coreHttpClient.PostAsync<int>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.UpdateProduct,
+                reqObj: request);
+        }
+
+        public async Task<int> UpdateBrand(UpdateBrandRequest request)
+        {
+            return await _coreHttpClient.PutAsync<int>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Catalog.UpdateBrand,
+                reqObj: request);
+        }
+    }
+}

@@ -30,7 +30,7 @@ builder.Services.AddSingleton<ICloudinaryService, CloudinaryService>();
 // Add services to the container.
 builder.Services.
     AddDbContext<EShopDbContext>(options =>
-    options.UseSqlServer(connectionString), contextLifetime:ServiceLifetime.Singleton);
+    options.UseSqlServer(connectionString), contextLifetime: ServiceLifetime.Singleton);
 
 
 builder.Services
@@ -74,6 +74,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

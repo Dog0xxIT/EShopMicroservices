@@ -36,7 +36,7 @@ namespace EShop.Api.Controllers
                     .Skip(paginationReq.PageIndex)
                     .Take(paginationReq.PageSize));
 
-            var response = new PaginationResponse
+            var response = new PaginationResponse<Product>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,
@@ -52,7 +52,7 @@ namespace EShop.Api.Controllers
             var products = await _unitOfWork.ProductRepository
                 .Get(filter: p => p.BrandId == brandId);
 
-            var response = new PaginationResponse
+            var response = new PaginationResponse<Product>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,
@@ -68,7 +68,7 @@ namespace EShop.Api.Controllers
             var products = await _unitOfWork.ProductRepository
                 .Get(filter: p => p.CategoryId == categoryId);
 
-            var response = new PaginationResponse
+            var response = new PaginationResponse<Product>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,
@@ -87,7 +87,7 @@ namespace EShop.Api.Controllers
             var products = await _unitOfWork.ProductRepository
                 .Get(filter: p => p.CategoryId == categoryId && p.BrandId == brandId);
 
-            var response = new PaginationResponse
+            var response = new PaginationResponse<Product>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,
