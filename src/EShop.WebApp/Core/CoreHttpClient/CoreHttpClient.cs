@@ -2,6 +2,7 @@
 using System.Net.Http.Json;
 using System.Text;
 using System.Web;
+using EShop.Shared.ResponseModels;
 using Newtonsoft.Json;
 
 namespace EShop.WebApp.Core.CoreHttpClient;
@@ -17,7 +18,7 @@ public class CoreHttpClient : ICoreHttpClient
         _logger = logger;
     }
 
-    public async Task<T> GetAsync<T>(string clientName, string uri, object? queryObj = null) where T : class
+    public async Task<ResultObject<T>> GetAsync<T>(string clientName, string uri, object? queryObj = null) where T : class
     {
         if (queryObj != null)
         {
@@ -40,12 +41,22 @@ public class CoreHttpClient : ICoreHttpClient
             {
                 var resultData = await client.Content.ReadFromJsonAsync<T>();
                 _logger.LogInformation($"StatusCode: {client.StatusCode}");
-                return resultData!;
+                return new ResultObject<T>
+                {
+                    ResultCode = ResultCode.Success,
+                    Messages = "Success",
+                    Data = resultData!,
+                };
             }
             else
             {
-                var resultData = await client.Content.ReadAsStringAsync();
+                var resultData = await client.Content.ReadFromJsonAsync<ProblemDetailsResponse>();
                 _logger.LogWarning($"StatusCode: {client.StatusCode}");
+                return new ResultObject<T>
+                {
+                    ResultCode = ResultCode.Failed,
+                    Messages = resultData!.Detail,
+                };
             }
         }
         catch (Exception ex)
@@ -56,7 +67,7 @@ public class CoreHttpClient : ICoreHttpClient
         return default!;
     }
 
-    public async Task<T> PostAsync<T>(string clientName, string uri, object reqObj)
+    public async Task<ResultObject<T>> PostAsync<T>(string clientName, string uri, object reqObj)
     {
         var json = JsonConvert.SerializeObject(reqObj);
         var stringContent = new StringContent(json, Encoding.UTF8, mediaType: "application/json");
@@ -71,12 +82,22 @@ public class CoreHttpClient : ICoreHttpClient
             {
                 var resultData = await client.Content.ReadFromJsonAsync<T>();
                 _logger.LogInformation($"Status Code: {client.StatusCode}");
-                return resultData!;
+                return new ResultObject<T>
+                {
+                    ResultCode = ResultCode.Success,
+                    Messages = "Success",
+                    Data = resultData!,
+                };
             }
             else
             {
-                var resultData = await client.Content.ReadAsStringAsync();
+                var resultData = await client.Content.ReadFromJsonAsync<ProblemDetailsResponse>();
                 _logger.LogWarning($"Status Code: {client.StatusCode}");
+                return new ResultObject<T>
+                {
+                    ResultCode = ResultCode.Failed,
+                    Messages = resultData!.Detail,
+                };
             }
         }
         catch (Exception ex)
@@ -87,7 +108,7 @@ public class CoreHttpClient : ICoreHttpClient
         return default!;
     }
 
-    public async Task<T> PutAsync<T>(string clientName, string uri, object reqObj)
+    public async Task<ResultObject<T>> PutAsync<T>(string clientName, string uri, object reqObj)
     {
         var json = JsonConvert.SerializeObject(reqObj);
         var stringContent = new StringContent(json, Encoding.UTF8, mediaType: "application/json");
@@ -102,12 +123,22 @@ public class CoreHttpClient : ICoreHttpClient
             {
                 var resultData = await client.Content.ReadFromJsonAsync<T>();
                 _logger.LogInformation($"Status Code: {client.StatusCode}");
-                return resultData!;
+                return new ResultObject<T>
+                {
+                    ResultCode = ResultCode.Success,
+                    Messages = "Success",
+                    Data = resultData!,
+                };
             }
             else
             {
-                var resultData = await client.Content.ReadAsStringAsync();
+                var resultData = await client.Content.ReadFromJsonAsync<ProblemDetailsResponse>();
                 _logger.LogWarning($"Status Code: {client.StatusCode}");
+                return new ResultObject<T>
+                {
+                    ResultCode = ResultCode.Failed,
+                    Messages = resultData!.Detail,
+                };
             }
         }
         catch (Exception ex)
@@ -118,7 +149,7 @@ public class CoreHttpClient : ICoreHttpClient
         return default!;
     }
 
-    public async Task<T> PatchAsync<T>(string clientName, string uri, object reqObj)
+    public async Task<ResultObject<T>> PatchAsync<T>(string clientName, string uri, object reqObj)
     {
         var json = JsonConvert.SerializeObject(reqObj);
         var stringContent = new StringContent(json, Encoding.UTF8, mediaType: "application/json");
@@ -133,12 +164,22 @@ public class CoreHttpClient : ICoreHttpClient
             {
                 var resultData = await client.Content.ReadFromJsonAsync<T>();
                 _logger.LogInformation($"Status Code: {client.StatusCode}");
-                return resultData!;
+                return new ResultObject<T>
+                {
+                    ResultCode = ResultCode.Success,
+                    Messages = "Success",
+                    Data = resultData!,
+                };
             }
             else
             {
-                var resultData = await client.Content.ReadAsStringAsync();
+                var resultData = await client.Content.ReadFromJsonAsync<ProblemDetailsResponse>();
                 _logger.LogWarning($"Status Code: {client.StatusCode}");
+                return new ResultObject<T>
+                {
+                    ResultCode = ResultCode.Failed,
+                    Messages = resultData!.Detail,
+                };
             }
         }
         catch (Exception ex)
@@ -149,7 +190,7 @@ public class CoreHttpClient : ICoreHttpClient
         return default!;
     }
 
-    public async Task<T> DeleteAsync<T>(string clientName, string uri)
+    public async Task<ResultObject<T>> DeleteAsync<T>(string clientName, string uri)
     {
         var httpClient = _clientFactory.CreateClient(clientName);
 
@@ -161,12 +202,22 @@ public class CoreHttpClient : ICoreHttpClient
             {
                 var resultData = await client.Content.ReadFromJsonAsync<T>();
                 _logger.LogInformation($"Status Code: {client.StatusCode}");
-                return resultData!;
+                return new ResultObject<T>
+                {
+                    ResultCode = ResultCode.Success,
+                    Messages = "Success",
+                    Data = resultData!,
+                };
             }
             else
             {
-                var resultData = await client.Content.ReadAsStringAsync();
+                var resultData = await client.Content.ReadFromJsonAsync<ProblemDetailsResponse>();
                 _logger.LogWarning($"Status Code: {client.StatusCode}");
+                return new ResultObject<T>
+                {
+                    ResultCode = ResultCode.Failed,
+                    Messages = resultData!.Detail,
+                };
             }
         }
         catch (Exception ex)

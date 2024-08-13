@@ -13,7 +13,7 @@ namespace EShop.WebApp.Services.IdentityService
             _coreHttpClient = coreHttpClient;
         }
 
-        public async Task<int> ConfirmEmail(ConfirmEmailRequest request)
+        public async Task<ResultObject<int>> ConfirmEmail(ConfirmEmailRequest request)
         {
             return await _coreHttpClient.PostAsync<int>(
                 clientName: UrlsConfig.ClientName,
@@ -21,7 +21,7 @@ namespace EShop.WebApp.Services.IdentityService
                 reqObj: request);
         }
 
-        public async Task<int> ManageInfo(ManageInfoRequest request)
+        public async Task<ResultObject<int>> ManageInfo(ManageInfoRequest request)
         {
             return await _coreHttpClient.PostAsync<int>(
                 clientName: UrlsConfig.ClientName,
@@ -29,7 +29,7 @@ namespace EShop.WebApp.Services.IdentityService
                 reqObj: request);
         }
 
-        public async Task<int> Register(RegisterRequest request)
+        public async Task<ResultObject<int>> Register(RegisterRequest request)
         {
             return await _coreHttpClient.PostAsync<int>(
                 clientName: UrlsConfig.ClientName,
@@ -37,7 +37,7 @@ namespace EShop.WebApp.Services.IdentityService
                 reqObj: request);
         }
 
-        public async Task<string> SignIn(SignInRequest request)
+        public async Task<ResultObject<string>> SignIn(SignInRequest request)
         {
             return await _coreHttpClient.PostAsync<string>(
                 clientName: UrlsConfig.ClientName,
@@ -45,7 +45,7 @@ namespace EShop.WebApp.Services.IdentityService
                 reqObj: request);
         }
 
-        public async Task<string> RefreshToken(RefreshTokenRequest request)
+        public async Task<ResultObject<string>> RefreshToken(RefreshTokenRequest request)
         {
             return await _coreHttpClient.PostAsync<string>(
                 clientName: UrlsConfig.ClientName,
@@ -53,7 +53,7 @@ namespace EShop.WebApp.Services.IdentityService
                 reqObj: request);
         }
 
-        public async Task<int> ResendConfirmEmail(ResendConfirmEmailRequest request)
+        public async Task<ResultObject<int>> ResendConfirmEmail(ResendConfirmEmailRequest request)
         {
             return await _coreHttpClient.PostAsync<int>(
                 clientName: UrlsConfig.ClientName,
@@ -61,7 +61,7 @@ namespace EShop.WebApp.Services.IdentityService
                 reqObj: request);
         }
 
-        public async Task<int> ForgotPassword(ForgotPasswordRequest request)
+        public async Task<ResultObject<int>> ForgotPassword(ForgotPasswordRequest request)
         {
             return await _coreHttpClient.PostAsync<int>(
                 clientName: UrlsConfig.ClientName,
@@ -69,7 +69,7 @@ namespace EShop.WebApp.Services.IdentityService
                 reqObj: request);
         }
 
-        public async Task<int> ResetPassword(ResetPasswordRequest request)
+        public async Task<ResultObject<int>> ResetPassword(ResetPasswordRequest request)
         {
             return await _coreHttpClient.PostAsync<int>(
                 clientName: UrlsConfig.ClientName,
@@ -77,7 +77,7 @@ namespace EShop.WebApp.Services.IdentityService
                 reqObj: request);
         }
 
-        public async Task<int> Manage2Fa(Manage2FaRequest request)
+        public async Task<ResultObject<int>> Manage2Fa(Manage2FaRequest request)
         {
             return await _coreHttpClient.PostAsync<int>(
                 clientName: UrlsConfig.ClientName,

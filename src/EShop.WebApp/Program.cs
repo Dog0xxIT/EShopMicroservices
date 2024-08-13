@@ -4,6 +4,7 @@ using EShop.WebApp.Core.CoreHttpClient;
 using EShop.WebApp.Services.AuthenticationService;
 using EShop.WebApp.Services.CatalogService;
 using EShop.WebApp.Services.IdentityService;
+using EShop.WebApp.States;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -23,6 +24,6 @@ builder.Services.AddHttpClient(UrlsConfig.ClientName, httpClient =>
 builder.Services.AddScoped<ICoreHttpClient, CoreHttpClient>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
 builder.Services.AddScoped<ICatalogService, CatalogService>();
-
+builder.Services.AddSingleton<AlertState>();
 
 await builder.Build().RunAsync();

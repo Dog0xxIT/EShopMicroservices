@@ -1,33 +1,44 @@
-﻿namespace EShop.WebApp.States;
+﻿using EShop.WebApp.Models.Common;
+
+namespace EShop.WebApp.States;
+
+using System.Timers;
 
 public class AlertState
 {
-    public List<Alert> Alerts { get; private set; }
+    public Queue<AlertItem> QueueAlerts { get; private set; }
 
     public event Action AlertChanged;
 
-
-    public void AddMessage(Alert alert)
+    public AlertState()
     {
-        Alerts.Add(alert);
-        AlertChanged.Invoke();
+        QueueAlerts = new();
     }
 
-    public class Alert
+    public void AddMessage(AlertItem alert)
     {
-        public string Message { get; set; }
-        public AlertType Type { get; set; }
-    }
+        QueueAlerts.Enqueue(alert);
+        AlertChanged?.Invoke();
 
-    public enum AlertType
-    {
-        Primary,
-        Secondary,
-        Success,
-        Info,
-        Danger,
-        Warning,
-        Dark,
-        Light
+        var timer = new Timer
+        {
+            Interval = 5000,
+            AutoReset = true,
+            Enabled = true,
+        };
+
+        timer.Elapsed += (sender, args) =>
+        {
+            if (QueueAlerts.Any())
+            {
+                QueueAlerts.Dequeue();
+                AlertChanged?.Invoke();
+            }
+            else
+            {
+                timer.Stop();
+                timer.Dispose();
+            }
+        };
     }
 }

@@ -3,8 +3,13 @@
 @layout EmptyLayout
 
 @using EShop.Shared.RequestModels.Identity
+@using EShop.WebApp.Core.CoreHttpClient
+@using EShop.WebApp.Models.Common
+@using EShop.WebApp.Models.Enums
 @using EShop.WebApp.Services.IdentityService
+@using EShop.WebApp.States
 
+@inject AlertState AlertState
 @inject IIdentityService IdentityService
 
 <div class="px-6 py-12 flex min-h-full flex-col justify-center lg:px-8">
@@ -28,9 +33,6 @@
             <div>
                 <div class="flex items-center justify-between">
                     <label for="password" class="text-gray-900 block text-sm font-medium leading-6">Password</label>
-                    <div class="text-sm">
-                        <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-500">Forgot password?</a>
-                    </div>
                 </div>
                 <div class="mt-2">
                     <InputText @bind-Value="@_registerRequest.Password" id="password" name="password" type="password" autocomplete="current-password" required class="py-1.5 text-gray-900 ring-gray-300 block w-full rounded-md border-0 shadow-sm ring-1 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> </InputText>
@@ -61,6 +63,16 @@
 
     private async Task ValidSubmit()
     {
-        await IdentityService.Register(_registerRequest);
+        var resultObject = await IdentityService.Register(_registerRequest);
+
+        if (resultObject.ResultCode.Equals(ResultCode.Failed))
+        {
+            AlertState.AddMessage(new AlertItem
+                {
+                    Message = resultObject.Messages,
+                    Title = "Error",
+                    Type = AlertType.Danger
+                });
+        }
     }
 }

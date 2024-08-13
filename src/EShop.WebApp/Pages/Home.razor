@@ -156,6 +156,11 @@
                 Data = new List<GetListProductResponse>()
             };
 
-        productPaginationResponse = await CatalogService.GetAllProducts();
+        var resultObject = await CatalogService.GetAllProducts();
+
+        if (resultObject.ResultCode.Equals(ResultCode.Success))
+        {
+            productPaginationResponse = resultObject.Data;
+        }
     }
 }

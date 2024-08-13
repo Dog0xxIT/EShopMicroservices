@@ -16,14 +16,14 @@ namespace EShop.WebApp.Services.CatalogService
             _coreHttpClient = coreHttpClient;
         }
 
-        public async Task<PaginationResponse<GetListProductResponse>> GetAllProducts()
+        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetAllProducts()
         {
             return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
                   clientName: UrlsConfig.ClientName,
                   uri: UrlsConfig.Catalog.GetAllProducts);
         }
 
-        public async Task<PaginationResponse<GetListProductResponse>> GetProductsByBrandId(int brandId)
+        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByBrandId(int brandId)
         {
             return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
                 clientName: UrlsConfig.ClientName,
@@ -31,7 +31,8 @@ namespace EShop.WebApp.Services.CatalogService
                 queryObj: new { brandId });
         }
 
-        public async Task<PaginationResponse<GetListProductResponse>> GetProductsByCategoryId(int categoryId)
+        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByCategoryId(
+            int categoryId)
         {
             return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
                 clientName: UrlsConfig.ClientName,
@@ -39,7 +40,8 @@ namespace EShop.WebApp.Services.CatalogService
                 queryObj: new { categoryId });
         }
 
-        public async Task<PaginationResponse<GetListProductResponse>> GetProductsByBrandAndCategoryId(int brandId, int categoryId)
+        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByBrandAndCategoryId(
+            int brandId, int categoryId)
         {
             return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
                 clientName: UrlsConfig.ClientName,
@@ -48,7 +50,7 @@ namespace EShop.WebApp.Services.CatalogService
         }
 
 
-        public async Task<Product> GetProductById(int productId)
+        public async Task<ResultObject<Product>> GetProductById(int productId)
         {
             return await _coreHttpClient.GetAsync<Product>(
                 clientName: UrlsConfig.ClientName,
@@ -57,28 +59,29 @@ namespace EShop.WebApp.Services.CatalogService
         }
 
 
-        public async Task<IEnumerable<Brand>> GetAllBrands()
+        public async Task<ResultObject<IEnumerable<Brand>>> GetAllBrands()
         {
             return await _coreHttpClient.GetAsync<IEnumerable<Brand>>(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Catalog.GetAllBrands);
         }
 
-        public async Task<IEnumerable<Category>> GetAllCategories()
+        public async Task<ResultObject<IEnumerable<Category>>> GetAllCategories()
         {
             return await _coreHttpClient.GetAsync<IEnumerable<Category>>(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Catalog.GetAllCategories);
         }
 
-        public async Task<PaginationResponse<GetListProductResponse>> GetAllImagesOfProduct(int productId)
+        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetAllImagesOfProduct(int productId)
         {
             return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Catalog.GetAllImagesOfProduct);
         }
 
-        public async Task<PaginationResponse<GetListProductResponse>> SearchWithSemanticRelevance(string text)
+        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> SearchWithSemanticRelevance(
+            string text)
         {
             return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
                 clientName: UrlsConfig.ClientName,
@@ -92,7 +95,7 @@ namespace EShop.WebApp.Services.CatalogService
             throw new NotImplementedException();
         }
 
-        public async Task<int> CreateProduct(CreateProductRequest request)
+        public async Task<ResultObject<int>> CreateProduct(CreateProductRequest request)
         {
             return await _coreHttpClient.PostAsync<int>(
                 clientName: UrlsConfig.ClientName,
@@ -100,7 +103,7 @@ namespace EShop.WebApp.Services.CatalogService
                 reqObj: request);
         }
 
-        public async Task<int> CreateBrand(CreateBrandRequest request)
+        public async Task<ResultObject<int>> CreateBrand(CreateBrandRequest request)
         {
             return await _coreHttpClient.PostAsync<int>(
                 clientName: UrlsConfig.ClientName,
@@ -108,7 +111,7 @@ namespace EShop.WebApp.Services.CatalogService
                 reqObj: request);
         }
 
-        public async Task<int> UpdateProduct(UpdateProductRequest request)
+        public async Task<ResultObject<int>> UpdateProduct(UpdateProductRequest request)
         {
             return await _coreHttpClient.PostAsync<int>(
                 clientName: UrlsConfig.ClientName,
@@ -116,7 +119,7 @@ namespace EShop.WebApp.Services.CatalogService
                 reqObj: request);
         }
 
-        public async Task<int> UpdateBrand(UpdateBrandRequest request)
+        public async Task<ResultObject<int>> UpdateBrand(UpdateBrandRequest request)
         {
             return await _coreHttpClient.PutAsync<int>(
                 clientName: UrlsConfig.ClientName,

@@ -2,9 +2,9 @@
 
 public interface ICoreHttpClient
 {
-    Task<T> GetAsync<T>(string clientName, string uri, object? queryObj = null) where T : class;
-    Task<T> PostAsync<T>(string clientName, string uri, object reqObj);
-    Task<T> PutAsync<T>(string clientName, string uri, object reqObj);
-    Task<T> PatchAsync<T>(string clientName, string uri, object reqObj);
-    Task<T> DeleteAsync<T>(string clientName, string uri);
+    Task<ResultObject<T>> GetAsync<T>(string clientName, string uri, object? queryObj = null) where T : class;
+    Task<ResultObject<T>> PostAsync<T>(string clientName, string uri, object reqObj);
+    Task<ResultObject<T>> PutAsync<T>(string clientName, string uri, object reqObj);
+    Task<ResultObject<T>> PatchAsync<T>(string clientName, string uri, object reqObj);
+    Task<ResultObject<T>> DeleteAsync<T>(string clientName, string uri);
 }

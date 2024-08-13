@@ -2,7 +2,7 @@
 
 public enum AlertType
 {
-    Primary,
+    Info,
     Success,
     Warning,
     Danger
