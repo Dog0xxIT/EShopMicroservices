@@ -1,0 +1,18 @@
+﻿using EShop.Application.Repositories;
+
+namespace EShop.Application.Services
+{
+    public interface IUnitOfWork
+    {
+        public IBasketItemRepository BasketItemRepository { get; }
+        public IBrandRepository BrandRepository { get; }
+        public ICategoryRepository CategoryRepository { get; }
+        public IOrderItemRepository OrderItemRepository { get; }
+        public IOrderRepository OrderRepository { get; }
+        public IPaymentRepository PaymentRepository { get; }
+        public IProductRepository ProductRepository { get; }
+        public IRatingRepository RatingRepository { get; }
+        public IUserRepository UserRepository { get; }
+        Task<int> Commit(CancellationToken cancellationToken = default);
+    }
+}
