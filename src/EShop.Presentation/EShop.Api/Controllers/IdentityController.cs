@@ -1,55 +1,40 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using EShop.Application.Configurations;
-using EShop.Application.Constants;
-using EShop.Application.Entities;
-using EShop.Application.Services;
+﻿using EShop.Application.Services.Interfaces;
+using EShop.Infrastructure.Services;
 using EShop.Shared.RequestModels.Identity;
 using EShop.Shared.ResponseModels;
 using EShop.Shared.ResponseModels.Identity;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
-namespace EShop.Application.Controllers
+namespace EShop.Api.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class IdentityController(
-        UserManager<User> userManager,
-        ILogger<IdentityController> logger,
-        SignInManager<User> signInManager,
-        JwtConfig jwtConfig,
-        IEmailSenderService emailSenderService)
-        : ControllerBase
+    public class IdentityController : ControllerBase
     {
-        private readonly UserManager<User> _userManager = userManager;
-        private readonly SignInManager<User> _signInManager = signInManager;
-        private readonly ILogger<IdentityController> _logger = logger;
-        private readonly JwtConfig _jwtConfig = jwtConfig;
-        private readonly IEmailSenderService _emailSenderService = emailSenderService;
+        private readonly IIdentityService _identityService;
+        private readonly IEmailSenderService _emailSenderService;
+        private readonly ILogger<IdentityController> _logger;
+
+        public IdentityController(IIdentityService identityService, IEmailSenderService emailSenderService, ILogger<IdentityController> logger)
+        {
+            _identityService = identityService;
+            _emailSenderService = emailSenderService;
+            _logger = logger;
+        }
 
         #region Get method
 
         [HttpGet]
         public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailRequest req)
         {
-            var userEntity = await _userManager.FindByEmailAsync(req.Email);
-            if (userEntity is null)
-            {
-                return NotFound("Not found user");
-            }
+            var resultService = await _identityService.ConfirmEmail(req.Email, req.Code);
 
-            var identityResult = await _userManager.ConfirmEmailAsync(userEntity, req.Code);
-
-            if (identityResult.Errors.Any())
+            if (resultService.Success)
             {
-                var errors = string.Join(' ', identityResult.Errors.Select(e => e.Description));
-                return Problem(errors);
+                return Ok(new SuccessObjectResponse());
             }
-            return Ok(new SuccessObjectResponse());
+            return Problem(resultService.MessageError);
         }
 
 
@@ -66,142 +51,88 @@ namespace EShop.Application.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterRequest req)
         {
-            var userEntity = new User
-            {
-                UserName = req.Email,
-                Email = req.Email,
-            };
+            var resultService = await _identityService.Register(req.Email, req.Email, req.Password);
 
-            var identityResult = await _userManager.CreateAsync(userEntity, req.Password);
-            if (identityResult.Errors.Any())
+            if (resultService.Success)
             {
-                var errors = string.Join(' ', identityResult.Errors.Select(e => e.Description));
-                return Problem(errors);
+                return Ok(new SuccessObjectResponse());
             }
-
-            identityResult = await _userManager.AddToRoleAsync(userEntity, RolesConstant.Customer);
-            if (identityResult.Errors.Any())
-            {
-                var errors = string.Join(' ', identityResult.Errors.Select(e => e.Description));
-                return Problem(errors);
-            }
-
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync(userEntity);
-            var domainName = HttpContext.Request.Host.Value;
-            var actionUri = Url.Action(nameof(ConfirmEmail), new ConfirmEmailRequest { Email = req.Email, Code = token });
-            var confirmationLink = $"https://{domainName}{actionUri}";
-            await _emailSenderService.SendConfirmationLinkAsync(userEntity, userEntity.Email, confirmationLink);
-
-            return Ok(new SuccessObjectResponse());
+            return Problem(resultService.MessageError);
         }
 
         [HttpPost]
         public async Task<IActionResult> SignIn(SignInRequest req)
         {
-            var user = await _userManager.FindByEmailAsync(req.Email);
-            if (user is null)
+            var resultService = await _identityService.SignIn(req.Email, req.Password, false);
+            if (resultService.Success)
             {
-                return Problem("Not exist user");
+                var cookieOptions = new CookieOptions()
+                {
+                    HttpOnly = true, // XSS
+                    Secure = true,
+                    Expires = DateTime.UtcNow.AddDays(1), // Expiration
+                    SameSite = SameSiteMode.Strict // CSRF
+                };
+
+                this.HttpContext.Response.Cookies.Append("jwt", resultService.Data, cookieOptions);
+                return Ok(new SuccessObjectResponse());
             }
-
-            var signInResult = await _signInManager.CheckPasswordSignInAsync(user, req.Password, false);
-
-            if (signInResult.IsNotAllowed)
-            {
-                return Problem("Confirm your email address");
-            }
-
-            if (signInResult.IsLockedOut)
-            {
-                return Problem("Account locked");
-            }
-
-            if (!signInResult.Succeeded)
-            {
-                //var errorsJson = JsonConvert.SerializeObject(signInResult);
-                return Problem("Password incorrect");
-            }
-
-            var roles = await _userManager.GetRolesAsync(user);
-            var claims = new List<Claim>
-            {
-                new("email", req.Email),
-                new("roles", string.Join(',', roles))
-            };
-            var token = GenerateJwtToken(claims);
-
-            //var cookieOptions = new CookieOptions()
-            //{
-            //    HttpOnly = true, // XSS
-            //    Secure = true,
-            //    Expires = DateTime.UtcNow.AddDays(1), // Expiration
-            //    SameSite = SameSiteMode.Strict // CSRF
-            //};
-
-            //this.HttpContext.Response.Cookies.Append("jwt", token, cookieOptions);
-
-            var response = new TokenResponse { Token = token };
-            return Ok(response);
+            return Problem(resultService.MessageError);
         }
 
         [Authorize]
         [HttpPost]
         public IActionResult RefreshToken(RefreshTokenRequest req)
         {
-            var jwtToken = new JwtSecurityToken(req.RefreshToken);
-            var claims = jwtToken.Claims.ToList();
-            var token = GenerateJwtToken(claims);
-            var response = new TokenResponse { Token = token };
-            return Ok(response);
+            var resultService = _identityService.RefreshToken(req.RefreshToken);
+
+            if (resultService.Success)
+            {
+                var response = new TokenResponse { Token = resultService.Data };
+                return Ok(response);
+            }
+            return Problem(resultService.MessageError);
         }
 
 
         [HttpPost]
         public async Task<IActionResult> ResendConfirmEmail(ResendConfirmEmailRequest req)
         {
-            var userEntity = await _userManager.FindByEmailAsync(req.Email);
-            if (userEntity == null)
-            {
-                return BadRequest("Not found user");
-            }
+            var existUser = await _identityService.CheckExistUserByEmailAsync(req.Email);
 
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync(userEntity);
-            var domainName = HttpContext.Request.Host.Value;
-            var actionUri = Url.Action(nameof(ConfirmEmail), new ConfirmEmailRequest { Email = req.Email, Code = token });
-            var confirmationLink = $"https://{domainName}{actionUri}";
-            await _emailSenderService.SendConfirmationLinkAsync(userEntity, req.Email, confirmationLink);
-            return Ok(new SuccessObjectResponse());
+            if (existUser)
+            {
+                var token = await _identityService.GenerateEmailConfirmationToken(req.Email);
+                var domainName = HttpContext.Request.Host.Value;
+                var actionUri = Url.Action(nameof(ConfirmEmail), new ConfirmEmailRequest { Email = req.Email, Code = token });
+                var confirmationLink = $"https://{domainName}{actionUri}";
+                await _emailSenderService.SendConfirmationLinkAsync(req.Email, req.Email, confirmationLink);
+                return Ok(new SuccessObjectResponse());
+            }
+            return Problem("Not found user");
         }
 
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordRequest req)
         {
-            var userEntity = await _userManager.FindByEmailAsync(req.Email);
-            if (userEntity == null)
-            {
-                return BadRequest("Not found user");
-            }
+            var resultService = await _identityService.ForgotPassword(req.Email);
 
-            var code = await _userManager.GeneratePasswordResetTokenAsync(userEntity);
-            await _emailSenderService.SendPasswordResetCodeAsync(userEntity, req.Email, code);
-            return Ok(new SuccessObjectResponse());
+            if (resultService.Success)
+            {
+                return Ok(new SuccessObjectResponse());
+            }
+            return Problem(resultService.MessageError);
         }
 
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordRequest req)
         {
-            var userEntity = await _userManager.FindByEmailAsync(req.Email);
-            if (userEntity == null)
+            var resultService = await _identityService.ResetPassword(req.Email, req.ResetCode, req.NewPassword);
+            if (resultService.Success)
             {
-                return BadRequest("Not found user");
+                return Ok(new SuccessObjectResponse());
             }
-
-            var identityResult = await _userManager.ResetPasswordAsync(userEntity, req.ResetCode, req.NewPassword);
-            if (identityResult.Errors.Any())
-            {
-                return Problem(identityResult.Errors.First().Description);
-            }
-            return Ok(new SuccessObjectResponse());
+            return Problem(resultService.MessageError);
         }
 
         [HttpPost]
@@ -217,27 +148,5 @@ namespace EShop.Application.Controllers
         }
 
         #endregion
-
-        private string GenerateJwtToken(List<Claim> claims)
-        {
-            var signKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtConfig.SecretKey));
-            var signingCredentials = new SigningCredentials(signKey, _jwtConfig.Algorithm);
-            var optionsHeader = new Dictionary<string, string>
-            {
-                ["alg"] = signingCredentials.Algorithm,
-                ["typ"] = JwtConstants.TokenType
-            };
-            var header = new JwtHeader(signingCredentials, optionsHeader);
-
-            var payload = new JwtPayload(
-                issuer: _jwtConfig.Issuer,
-                audience: _jwtConfig.Audience,
-                expires: DateTime.UtcNow.AddDays(Convert.ToInt64(_jwtConfig.Expires)),
-                notBefore: DateTime.UtcNow,
-                claims: claims);
-
-            var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-            return jwtSecurityTokenHandler.WriteToken(new JwtSecurityToken(header, payload));
-        }
     }
 }

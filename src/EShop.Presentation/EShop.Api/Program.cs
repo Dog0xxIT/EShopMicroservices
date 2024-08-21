@@ -1,7 +1,8 @@
 using System.Text;
 using EShop.Application.Configurations;
 using EShop.Application.Entities;
-using EShop.Application.Services;
+using EShop.Application.Services.ApplicationService;
+using EShop.Application.Services.Interfaces;
 using EShop.Infrastructure;
 using EShop.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -20,11 +21,12 @@ var smtpConfig = new SmtpConfig();
 builder.Configuration.GetSection(smtpConfig.SectionName).Bind(smtpConfig);
 
 builder.Services.AddSingleton(jwtConfig);
-
 builder.Services.AddSingleton(smtpConfig);
 
-builder.Services.AddSingleton<IEmailSenderService, EmailSenderService>();
-builder.Services.AddSingleton<ICloudinaryService, CloudinaryService>();
+builder.Services.AddTransient<IIdentityService, IdentityService>();
+builder.Services.AddTransient<ICatalogService, CatalogService>();
+builder.Services.AddTransient<IEmailSenderService, EmailSenderService>();
+builder.Services.AddTransient<ICloudinaryService, CloudinaryService>();
 
 // Add services to the container.
 builder.Services.
@@ -58,6 +60,14 @@ builder.Services
             ValidIssuer = jwtConfig.Issuer,
             ValidAudience = jwtConfig.Audience,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.SecretKey)),
+        };
+        options.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                context.Token = context.Request.Cookies["jwt"]; // Get token from cookie
+                return Task.CompletedTask;
+            },
         };
     });
 

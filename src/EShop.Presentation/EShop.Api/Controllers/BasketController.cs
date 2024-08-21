@@ -1,11 +1,11 @@
 ﻿using EShop.Application.Entities;
-using EShop.Application.Services;
+using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels;
 using EShop.Shared.RequestModels.Basket;
 using EShop.Shared.ResponseModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EShop.Application.Controllers
+namespace EShop.Api.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]

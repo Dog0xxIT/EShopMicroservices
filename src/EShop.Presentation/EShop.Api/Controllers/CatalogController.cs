@@ -1,37 +1,37 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using EShop.Application.Entities;
-using EShop.Application.Services;
+using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels;
 using EShop.Shared.RequestModels.Catalog;
 using EShop.Shared.ResponseModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EShop.Application.Controllers
+namespace EShop.Api.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
     public class CatalogController : Controller
     {
+        private readonly ICatalogService _catalogService;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<CatalogController> _logger;
         private readonly ICloudinaryService _cloudinaryService;
 
-        public CatalogController(IUnitOfWork unitOfWork, ILogger<CatalogController> logger, ICloudinaryService cloudinaryService)
+        public CatalogController(IUnitOfWork unitOfWork, ILogger<CatalogController> logger, ICloudinaryService cloudinaryService, ICatalogService catalogService)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
             _cloudinaryService = cloudinaryService;
+            _catalogService = catalogService;
         }
 
         #region Get method
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAllProducts([FromQuery] PaginationRequest paginationReq)
         {
-            var products = await _unitOfWork.ProductRepository
-                .Get(orderBy: queryable => (IOrderedQueryable<Product>)queryable
-                    .OrderBy(p => p.Id)
-                    .Skip(paginationReq.PageIndex)
-                    .Take(paginationReq.PageSize));
+            var products = await _catalogService.GetAllProducts(paginationReq.PageSize, paginationReq.PageIndex);
 
             var response = new PaginationResponse<Product>
             {
@@ -46,8 +46,7 @@ namespace EShop.Application.Controllers
         [HttpGet("{brandId}")]
         public async Task<IActionResult> GetProductsByBrandId([FromRoute] int brandId, [FromQuery] PaginationRequest paginationReq)
         {
-            var products = await _unitOfWork.ProductRepository
-                .Get(filter: p => p.BrandId == brandId);
+            var products = await _catalogService.GetProductsByBrandId(brandId, paginationReq.PageSize, paginationReq.PageIndex);
 
             var response = new PaginationResponse<Product>
             {
@@ -62,8 +61,7 @@ namespace EShop.Application.Controllers
         [HttpGet("{categoryId}")]
         public async Task<IActionResult> GetProductsByCategoryId([FromRoute] int categoryId, [FromQuery] PaginationRequest paginationReq)
         {
-            var products = await _unitOfWork.ProductRepository
-                .Get(filter: p => p.CategoryId == categoryId);
+            var products = await _catalogService.GetProductsByCategoryId(categoryId, paginationReq.PageSize, paginationReq.PageIndex);
 
             var response = new PaginationResponse<Product>
             {
@@ -81,8 +79,9 @@ namespace EShop.Application.Controllers
             [FromRoute] int brandId,
             [FromQuery] PaginationRequest paginationReq)
         {
-            var products = await _unitOfWork.ProductRepository
-                .Get(filter: p => p.CategoryId == categoryId && p.BrandId == brandId);
+            var products = await _catalogService.GetProductsByBrandAndCategoryId(
+                brandId, categoryId, 
+                paginationReq.PageSize, paginationReq.PageIndex);
 
             var response = new PaginationResponse<Product>
             {
@@ -97,12 +96,7 @@ namespace EShop.Application.Controllers
         [HttpGet("{productId}")]
         public async Task<IActionResult> GetProductById([FromRoute] int productId)
         {
-            var product = await _unitOfWork.ProductRepository
-                .Get
-                (
-                    filter: p => p.Id == productId,
-                    includeProperties: new List<string> { nameof(Product.Brand), nameof(Product.Category) }
-                );
+            var product = await _catalogService.GetProductById(productId);
 
             return Ok(product);
         }
@@ -111,6 +105,7 @@ namespace EShop.Application.Controllers
         public async Task<IActionResult> GetAllBrands([FromQuery] PaginationRequest paginationReq)
         {
             var brands = await _unitOfWork.BrandRepository.Get();
+
             return Ok(brands);
         }
 

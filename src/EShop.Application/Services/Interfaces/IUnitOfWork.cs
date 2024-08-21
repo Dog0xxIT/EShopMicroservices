@@ -1,6 +1,6 @@
 ﻿using EShop.Application.Repositories;
 
-namespace EShop.Application.Services
+namespace EShop.Application.Services.Interfaces
 {
     public interface IUnitOfWork
     {

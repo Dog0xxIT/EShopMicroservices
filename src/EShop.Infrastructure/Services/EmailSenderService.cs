@@ -1,6 +1,6 @@
 ﻿using EShop.Application.Configurations;
 using EShop.Application.Entities;
-using EShop.Application.Services;
+using EShop.Application.Services.Interfaces;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Logging;
 using MimeKit;
@@ -19,11 +19,11 @@ namespace EShop.Infrastructure.Services
             _smtpConfig = smtpConfig;
         }
 
-        public async Task SendConfirmationLinkAsync(User user, string email, string confirmationLink)
+        public async Task SendConfirmationLinkAsync(string userName, string email, string confirmationLink)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_smtpConfig.UserName, _smtpConfig.Host));
-            message.To.Add(new MailboxAddress(user.UserName, email));
+            message.To.Add(new MailboxAddress(userName, email));
             message.Subject = "Confirm your email";
             message.Body = new TextPart(TextFormat.Html)
             {
@@ -34,11 +34,11 @@ namespace EShop.Infrastructure.Services
         }
 
 
-        public async Task SendPasswordResetLinkAsync(User user, string email, string resetLink)
+        public async Task SendPasswordResetLinkAsync(string userName, string email, string resetLink)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_smtpConfig.UserName, _smtpConfig.Host));
-            message.To.Add(new MailboxAddress(user.UserName, email));
+            message.To.Add(new MailboxAddress(userName, email));
             message.Subject = "Reset your password";
             message.Body = new TextPart(TextFormat.Html)
             {
@@ -49,11 +49,11 @@ namespace EShop.Infrastructure.Services
         }
 
 
-        public async Task SendPasswordResetCodeAsync(User user, string email, string resetCode)
+        public async Task SendPasswordResetCodeAsync(string userName, string email, string resetCode)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_smtpConfig.UserName, _smtpConfig.Host));
-            message.To.Add(new MailboxAddress(user.UserName, email));
+            message.To.Add(new MailboxAddress(userName, email));
             message.Subject = "Reset your password";
             message.Body = new TextPart(TextFormat.Html)
             {

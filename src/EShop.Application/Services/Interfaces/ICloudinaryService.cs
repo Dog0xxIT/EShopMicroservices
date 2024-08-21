@@ -1,4 +1,4 @@
-﻿namespace EShop.Application.Services
+﻿namespace EShop.Application.Services.Interfaces
 {
     public interface ICloudinaryService
     {

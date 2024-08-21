@@ -1,5 +1,5 @@
 ﻿using EShop.Application.Repositories;
-using EShop.Application.Services;
+using EShop.Application.Services.Interfaces;
 using EShop.Infrastructure.Repositories;
 
 namespace EShop.Infrastructure.Services
