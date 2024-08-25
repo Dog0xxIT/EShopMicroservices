@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EShop.Shared.ResponseModels
 {
-    public class ProblemDetailsResponse
+    public sealed class ProblemDetailsResponse
     {
         public string Type { get; set; }
         public string Title { get; set; }

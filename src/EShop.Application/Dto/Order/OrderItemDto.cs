@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EShop.Shared.ResponseModels
+namespace EShop.Application.Dto.Order
 {
-    public sealed class SuccessObjectResponse
+    internal class OrderItemDto
     {
-        public const int Result = 1;
     }
 }

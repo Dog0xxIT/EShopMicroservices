@@ -5,7 +5,9 @@ using EShop.Application.Services.ApplicationService;
 using EShop.Application.Services.Interfaces;
 using EShop.Infrastructure;
 using EShop.Infrastructure.Services;
+using EShop.Shared.ResponseModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -117,6 +119,14 @@ builder.Services.AddSwaggerGen(options =>
     options.AddSecurityRequirement(securityRequirement);
 });
 
+builder.Services.AddHttpLogging(logging =>
+{
+    logging.LoggingFields = HttpLoggingFields.All;
+    logging.RequestBodyLogLimit = 4096;
+    logging.ResponseBodyLogLimit = 4096;
+    logging.CombineLogs = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -131,5 +141,6 @@ app.UseCors("AllowAll");
 //app.MapIdentityApi<User>();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseHttpLogging();
 app.MapControllers();
 app.Run();

@@ -1,9 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using EShop.Application.Constants;
+using EShop.Application.Dto.Catalog;
 using EShop.Application.Entities;
 using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels;
 using EShop.Shared.RequestModels.Catalog;
 using EShop.Shared.ResponseModels;
+using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,13 +30,12 @@ namespace EShop.Api.Controllers
         }
 
         #region Get method
-        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAllProducts([FromQuery] PaginationRequest paginationReq)
         {
             var products = await _catalogService.GetAllProducts(paginationReq.PageSize, paginationReq.PageIndex);
 
-            var response = new PaginationResponse<Product>
+            var response = new PaginationResponse<ProductDto>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,
@@ -48,7 +50,7 @@ namespace EShop.Api.Controllers
         {
             var products = await _catalogService.GetProductsByBrandId(brandId, paginationReq.PageSize, paginationReq.PageIndex);
 
-            var response = new PaginationResponse<Product>
+            var response = new PaginationResponse<ProductDto>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,
@@ -63,7 +65,7 @@ namespace EShop.Api.Controllers
         {
             var products = await _catalogService.GetProductsByCategoryId(categoryId, paginationReq.PageSize, paginationReq.PageIndex);
 
-            var response = new PaginationResponse<Product>
+            var response = new PaginationResponse<ProductDto>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,
@@ -80,10 +82,10 @@ namespace EShop.Api.Controllers
             [FromQuery] PaginationRequest paginationReq)
         {
             var products = await _catalogService.GetProductsByBrandAndCategoryId(
-                brandId, categoryId, 
+                brandId, categoryId,
                 paginationReq.PageSize, paginationReq.PageIndex);
 
-            var response = new PaginationResponse<Product>
+            var response = new PaginationResponse<ProductDto>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,
@@ -104,7 +106,7 @@ namespace EShop.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllBrands([FromQuery] PaginationRequest paginationReq)
         {
-            var brands = await _unitOfWork.BrandRepository.Get();
+            var brands = await _catalogService.GetAllBrands();
 
             return Ok(brands);
         }
@@ -112,7 +114,7 @@ namespace EShop.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllCategories()
         {
-            var categories = await _unitOfWork.CategoryRepository.Get();
+            var categories = await _catalogService.GetAllCategories();
             return Ok(categories);
         }
 
@@ -122,7 +124,7 @@ namespace EShop.Api.Controllers
             try
             {
                 await _cloudinaryService.GetAllProductImages(productId);
-                return Ok(new SuccessObjectResponse());
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -133,7 +135,7 @@ namespace EShop.Api.Controllers
         [HttpGet]
         public IActionResult SearchWithSemanticRelevance([FromQuery][Required] string text, [FromQuery] PaginationRequest paginationReq)
         {
-            return Ok(new SuccessObjectResponse());
+            return Ok();
         }
 
         #endregion
@@ -156,7 +158,7 @@ namespace EShop.Api.Controllers
                 product.PictureFileName = uri.AbsoluteUri;
                 _unitOfWork.ProductRepository.Update(product);
                 var result = await _unitOfWork.Commit();
-                return Ok(new SuccessObjectResponse());
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -167,70 +169,27 @@ namespace EShop.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductRequest req)
         {
-            var category = await _unitOfWork.CategoryRepository.GetById(req.CategoryId);
-            if (category is null)
-            {
-                return BadRequest("Not found category");
-            }
+            var createProductDto = req.Adapt<CreateProductDto>();
 
-            var brand = await _unitOfWork.BrandRepository.GetById(req.BrandId);
-            if (brand is null)
-            {
-                return BadRequest("Not found brand");
-            }
+            var serviceResult = await _catalogService.CreateProduct(createProductDto);
 
-            var product = new Product
+            if (serviceResult.Success)
             {
-                Name = req.Name,
-                Price = req.Price,
-                CategoryId = req.CategoryId,
-                BrandId = req.BrandId,
-                AvailableStock = req.AvailableStock,
-                RestockThreshold = req.RestockThreshold,
-                MaxStockThreshold = req.MaxStockThreshold,
-                Description = req.Description,
-            };
-            product.SetTimeCreated();
-
-            try
-            {
-                await _unitOfWork.ProductRepository.Create(product);
-                var result = await _unitOfWork.Commit();
-                return Ok(new SuccessObjectResponse());
+                return Ok();
             }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            return Problem(serviceResult.MessageError);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateBrand(CreateBrandRequest req)
         {
-            var duplicateBrandsCode = await _unitOfWork.BrandRepository
-                .Get(filter: p => p.Code == req.Code);
+            var serviceResult = await _catalogService.CreateBrand(req.Name, req.Code);
 
-            if (duplicateBrandsCode.Any())
+            if (serviceResult.Success)
             {
-                return ValidationProblem(detail: "Brand Code is unique");
+                return Ok();
             }
-
-            var brand = new Brand
-            {
-                Name = req.Name,
-                Code = req.Code
-            };
-
-            try
-            {
-                await _unitOfWork.BrandRepository.Create(brand);
-                var result = await _unitOfWork.Commit();
-                return Ok(new SuccessObjectResponse());
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            return Problem(serviceResult.MessageError);
         }
 
         #endregion
@@ -240,78 +199,27 @@ namespace EShop.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateProduct(UpdateProductRequest req)
         {
-            var product = await _unitOfWork.ProductRepository.GetById(req.Id);
+            var updateProductDto = req.Adapt<UpdateProductDto>();
 
-            if (product is null)
-            {
-                return NotFound();
-            }
+            var serviceResult = await _catalogService.UpdateProduct(updateProductDto);
 
-            var category = await _unitOfWork.CategoryRepository.GetById(req.CategoryId);
-            if (category is null)
+            if (serviceResult.Success)
             {
-                return BadRequest("Not found category");
+                return Ok();
             }
-
-            var brand = await _unitOfWork.BrandRepository.GetById(req.BrandId);
-            if (brand is null)
-            {
-                return BadRequest("Not found brand");
-            }
-
-            product.Name = req.Name;
-            product.Price = req.Price;
-            product.CategoryId = req.CategoryId;
-            product.BrandId = req.BrandId;
-            product.AvailableStock = req.AvailableStock;
-            product.RestockThreshold = req.RestockThreshold;
-            product.MaxStockThreshold = req.MaxStockThreshold;
-            product.Description = req.Description;
-            product.SetTimeLastModified();
-
-            try
-            {
-                _unitOfWork.ProductRepository.Update(product);
-                var result = await _unitOfWork.Commit();
-                return Ok(new SuccessObjectResponse());
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            return Problem(serviceResult.MessageError);
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateBrand(UpdateBrandRequest req)
         {
-            var brand = await _unitOfWork.BrandRepository.GetById(req.Id);
+            var serviceResult = await _catalogService.UpdateBrand(req.Id, req.Name, req.Code);
 
-            if (brand is null)
+            if (serviceResult.Success)
             {
-                return NotFound();
+                return Ok();
             }
-
-            var duplicateBrandsCode = await _unitOfWork.BrandRepository
-                .Get(filter: p => p.Code == req.Code);
-
-            if (duplicateBrandsCode.Any())
-            {
-                return ValidationProblem(detail: "Brand Code is unique");
-            }
-
-            brand.Name = req.Name;
-            brand.Code = req.Code;
-
-            try
-            {
-                _unitOfWork.BrandRepository.Update(brand);
-                var result = await _unitOfWork.Commit();
-                return Ok(new SuccessObjectResponse());
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            return Problem(serviceResult.MessageError);
         }
 
         #endregion

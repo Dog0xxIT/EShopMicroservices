@@ -1,4 +1,5 @@
 ﻿using EShop.Application.Entities;
+using EShop.Application.Services.ApplicationService;
 using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels;
 using EShop.Shared.RequestModels.Basket;
@@ -11,13 +12,13 @@ namespace EShop.Api.Controllers
     [Route("[controller]/[action]")]
     public class BasketController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IBasketService _basketService;
         private readonly ILogger<BasketController> _logger;
 
-        public BasketController(IUnitOfWork unitOfWork, ILogger<BasketController> logger)
+        public BasketController(ILogger<BasketController> logger, IBasketService basketService)
         {
-            _unitOfWork = unitOfWork;
             _logger = logger;
+            _basketService = basketService;
         }
 
         #region Get method
@@ -25,15 +26,7 @@ namespace EShop.Api.Controllers
         [HttpGet("{customerId}")]
         public async Task<IActionResult> GetBasketByCustomerId([FromQuery] int customerId, [FromQuery] PaginationRequest paginationReq)
         {
-            var basketItems = await _unitOfWork.BasketItemRepository
-                .Get
-                (
-                    filter: b => b.CustomerId == customerId,
-                    orderBy: queryable => (IOrderedQueryable<BasketItem>)queryable
-                        .OrderBy(p => p.Id)
-                        .Skip(paginationReq.PageIndex)
-                        .Take(paginationReq.PageSize)
-                );
+            var basketItems = await _basketService.GetBasketByCustomerId(customerId, paginationReq.PageSize, paginationReq.PageIndex);
 
             var response = new PaginationResponse<BasketItem>
             {
@@ -52,41 +45,12 @@ namespace EShop.Api.Controllers
         [HttpPatch]
         public async Task<IActionResult> UpdateQty(UpdateQtyRequest req)
         {
-            var basketItem = await _unitOfWork.BasketItemRepository.GetById(req.BasketId);
-
-            if (basketItem is null)
+            var serviceResult = await _basketService.UpdateQty(req.BasketId, req.ProductId, req.Qty);
+            if (serviceResult.Success)
             {
-                return BadRequest("Not found Basket");
+                return Ok();
             }
-
-            if (req.Qty <= 0)
-            {
-                _unitOfWork.BasketItemRepository.Delete(basketItem);
-            }
-
-            var product = await _unitOfWork.ProductRepository.GetById(basketItem.ProductId);
-            if (product is null)
-            {
-                return Problem();
-            }
-
-            if (req.Qty > product.AvailableStock)
-            {
-                return BadRequest("Qty order < AvailableStock");
-            }
-
-            basketItem.Quantity = req.Qty;
-            _unitOfWork.BasketItemRepository.Update(basketItem);
-
-            try
-            {
-                var result = await _unitOfWork.Commit();
-                return Ok(new SuccessObjectResponse());
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            return Problem(serviceResult.MessageError);
         }
 
         #endregion
@@ -96,23 +60,12 @@ namespace EShop.Api.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int basketId)
         {
-            var basketItem = await _unitOfWork.BasketItemRepository.GetById(basketId);
-
-            if (basketItem is null)
+            var serviceResult = await _basketService.Delete(basketId);
+            if (serviceResult.Success)
             {
-                return BadRequest("Not found Basket");
+                return Ok();
             }
-
-            try
-            {
-                _unitOfWork.BasketItemRepository.Delete(basketItem);
-                var result = await _unitOfWork.Commit();
-                return Ok(new SuccessObjectResponse());
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            return Problem(serviceResult.MessageError);
         }
 
         #endregion

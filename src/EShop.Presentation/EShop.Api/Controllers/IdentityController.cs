@@ -24,7 +24,6 @@ namespace EShop.Api.Controllers
         }
 
         #region Get method
-
         [HttpGet]
         public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailRequest req)
         {
@@ -32,7 +31,7 @@ namespace EShop.Api.Controllers
 
             if (resultService.Success)
             {
-                return Ok(new SuccessObjectResponse());
+                return Ok();
             }
             return Problem(resultService.MessageError);
         }
@@ -55,7 +54,7 @@ namespace EShop.Api.Controllers
 
             if (resultService.Success)
             {
-                return Ok(new SuccessObjectResponse());
+                return Ok();
             }
             return Problem(resultService.MessageError);
         }
@@ -75,7 +74,7 @@ namespace EShop.Api.Controllers
                 };
 
                 this.HttpContext.Response.Cookies.Append("jwt", resultService.Data, cookieOptions);
-                return Ok(new SuccessObjectResponse());
+                return Ok();
             }
             return Problem(resultService.MessageError);
         }
@@ -88,8 +87,14 @@ namespace EShop.Api.Controllers
 
             if (resultService.Success)
             {
-                var response = new TokenResponse { Token = resultService.Data };
-                return Ok(response);
+                var cookieOptions = new CookieOptions()
+                {
+                    HttpOnly = true, // XSS
+                    Secure = true,
+                    Expires = DateTime.UtcNow.AddDays(1), // Expiration
+                    SameSite = SameSiteMode.Strict // CSRF
+                };
+                return Ok();
             }
             return Problem(resultService.MessageError);
         }
@@ -107,7 +112,7 @@ namespace EShop.Api.Controllers
                 var actionUri = Url.Action(nameof(ConfirmEmail), new ConfirmEmailRequest { Email = req.Email, Code = token });
                 var confirmationLink = $"https://{domainName}{actionUri}";
                 await _emailSenderService.SendConfirmationLinkAsync(req.Email, req.Email, confirmationLink);
-                return Ok(new SuccessObjectResponse());
+                return Ok();
             }
             return Problem("Not found user");
         }
@@ -119,7 +124,7 @@ namespace EShop.Api.Controllers
 
             if (resultService.Success)
             {
-                return Ok(new SuccessObjectResponse());
+                 return Ok();
             }
             return Problem(resultService.MessageError);
         }
@@ -130,7 +135,7 @@ namespace EShop.Api.Controllers
             var resultService = await _identityService.ResetPassword(req.Email, req.ResetCode, req.NewPassword);
             if (resultService.Success)
             {
-                return Ok(new SuccessObjectResponse());
+                 return Ok();
             }
             return Problem(resultService.MessageError);
         }
@@ -138,13 +143,13 @@ namespace EShop.Api.Controllers
         [HttpPost]
         public IActionResult Manage2Fa(Manage2FaRequest req)
         {
-            return Ok(new SuccessObjectResponse());
+             return Ok();
         }
 
         [HttpPost]
         public IActionResult ManageInfo(ManageInfoRequest req)
         {
-            return Ok(new SuccessObjectResponse());
+             return Ok();
         }
 
         #endregion

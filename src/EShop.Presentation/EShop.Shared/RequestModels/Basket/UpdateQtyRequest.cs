@@ -11,6 +11,8 @@ namespace EShop.Shared.RequestModels.Basket
     {
         public int BasketId { get; set; }
 
+        public int ProductId { get; set; }
+
         [Range(0, Int32.MaxValue)]
         public int Qty { get; set; }
     }
