@@ -12,10 +12,11 @@ public interface ICatalogService
     Task<IEnumerable<CategoryDto>> GetAllCategories();
     Task<IEnumerable<ProductDto>> GetProductsByBrandAndCategoryId(int brandId, int categoryId, int pageSize = 10, int pageIndex = 0);
     Task<ProductDto?> GetProductById(int productId);
-    Task<IEnumerable<BrandDto>> GetAllBrands();
-    Task<ProductDto> SearchWithSemanticRelevance();
-    Task<ServiceResult<int>> CreateProduct(CreateProductDto createProductDto);
-    Task<ServiceResult<int>> CreateBrand(string name, string code);
-    Task<ServiceResult<int>> UpdateProduct(UpdateProductDto updateProductDto);
-    Task<ServiceResult<int>> UpdateBrand(int brandId, string name, string code);
+    Task<IEnumerable<BrandDto>> GetAllBrands(int pageSize = 10, int pageIndex = 0);
+    Task<ProductDto> SearchWithSemanticRelevance(string searchText);
+    Task<ServiceResult> CreateProduct(CreateProductDto createProductDto);
+    Task<ServiceResult> CreateBrand(string name, string code);
+    Task<ServiceResult> UpdateProduct(UpdateProductDto updateProductDto);
+    Task<ServiceResult> UpdateImageUrlProduct(int productId, string url);
+    Task<ServiceResult> UpdateBrand(int brandId, string name, string code);
 }

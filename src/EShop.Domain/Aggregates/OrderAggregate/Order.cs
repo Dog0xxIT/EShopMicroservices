@@ -67,7 +67,7 @@ namespace EShop.Domain.Aggregates.OrderAggregate
             {
                 //add validated new order item
                 var orderItem = new OrderItem(
-                    productId, productName, pictureUrl,
+                    0, productId, productName, pictureUrl,
                     unitPrice, discount, units);
                 _orderItems.Add(orderItem);
             }

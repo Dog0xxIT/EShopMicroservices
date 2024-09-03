@@ -7,15 +7,15 @@ using Microsoft.EntityFrameworkCore;
 namespace EShop.Infrastructure
 {
     /// <remarks>
-    /// Add migrations using the following command inside the 'EShop.Data' project directory:
-    ///  dotnet ef migrations add --startup-project '..\EShop.Api\EShop.Api.csproj' --context EShopDbContext [migration-name]
+    /// Add migrations using the following command inside the 'EShop.Infrastructure' project directory:
+    ///  dotnet ef migrations add --startup-project ..\EShop.Presentation\EShop.Api\EShop.Api.csproj --context EShopDbContext [migration-name]
     ///
     /// Remove migrations
-    /// dotnet ef migrations remove --startup-project ..\EShop.Api\EShop.Api.csproj
+    /// dotnet ef migrations remove --startup-project ..\EShop.Presentation\EShop.Api\EShop.Api.csproj
     ///
     /// 
     /// Update database
-    /// dotnet ef database update --startup-project ..\EShop.Api\EShop.Api.csproj --project .\EShop.Data.csproj
+    /// dotnet ef database update --startup-project ..\EShop.Presentation\EShop.Api\EShop.Api.csproj
     ///
     /// </remarks>
     /// 

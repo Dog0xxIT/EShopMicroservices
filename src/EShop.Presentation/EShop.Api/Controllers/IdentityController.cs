@@ -1,8 +1,6 @@
-﻿using EShop.Application.Services.Interfaces;
-using EShop.Infrastructure.Services;
+﻿
+using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Identity;
-using EShop.Shared.ResponseModels;
-using EShop.Shared.ResponseModels.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,19 +27,19 @@ namespace EShop.Api.Controllers
         {
             var resultService = await _identityService.ConfirmEmail(req.Email, req.Code);
 
-            if (resultService.Success)
+            if (resultService.Succeeded)
             {
                 return Ok();
             }
-            return Problem(resultService.MessageError);
+            return Problem(resultService.Errors.First());
         }
 
 
-        [HttpGet]
-        public IActionResult ManageInfo()
-        {
-            return Ok();
-        }
+        //[HttpGet]
+        //public IActionResult ManageInfo()
+        //{
+        //    return Ok();
+        //}
 
         #endregion
 
@@ -52,19 +50,35 @@ namespace EShop.Api.Controllers
         {
             var resultService = await _identityService.Register(req.Email, req.Email, req.Password);
 
-            if (resultService.Success)
+            if (!resultService.Succeeded)
             {
-                return Ok();
+                return Problem(resultService.Errors.First());
             }
-            return Problem(resultService.MessageError);
+
+            var token = await _identityService.GenerateEmailConfirmationToken(req.Email);
+            var domainName = HttpContext.Request.Host.Value;
+            var actionUri = Url.Action(
+                nameof(ConfirmEmail),
+                new ConfirmEmailRequest { Email = req.Email, Code = token });
+            var confirmationLink = $"https://{domainName}{actionUri}";
+            var resultEmailService = await _emailSenderService.SendConfirmationLinkAsync(req.Email, req.Email, confirmationLink);
+
+            if (!resultEmailService.Succeeded)
+            {
+                return Problem(resultEmailService.Errors.First());
+            }
+
+            return Ok();
         }
 
         [HttpPost]
         public async Task<IActionResult> SignIn(SignInRequest req)
         {
             var resultService = await _identityService.SignIn(req.Email, req.Password, false);
-            if (resultService.Success)
+            if (resultService.Succeeded)
             {
+                var token = await _identityService.GenerateJwtToken(req.Email);
+
                 var cookieOptions = new CookieOptions()
                 {
                     HttpOnly = true, // XSS
@@ -73,32 +87,26 @@ namespace EShop.Api.Controllers
                     SameSite = SameSiteMode.Strict // CSRF
                 };
 
-                this.HttpContext.Response.Cookies.Append("jwt", resultService.Data, cookieOptions);
+                this.HttpContext.Response.Cookies.Append("jwt", token, cookieOptions);
                 return Ok();
             }
-            return Problem(resultService.MessageError);
+            return Problem(resultService.Errors.First());
         }
 
-        [Authorize]
-        [HttpPost]
-        public IActionResult RefreshToken(RefreshTokenRequest req)
-        {
-            var resultService = _identityService.RefreshToken(req.RefreshToken);
-
-            if (resultService.Success)
-            {
-                var cookieOptions = new CookieOptions()
-                {
-                    HttpOnly = true, // XSS
-                    Secure = true,
-                    Expires = DateTime.UtcNow.AddDays(1), // Expiration
-                    SameSite = SameSiteMode.Strict // CSRF
-                };
-                return Ok();
-            }
-            return Problem(resultService.MessageError);
-        }
-
+        //[Authorize]
+        //[HttpPost]
+        //public IActionResult RefreshToken(RefreshTokenRequest req)
+        //{
+        //    var token = _identityService.RefreshToken(req.RefreshToken);
+        //    var cookieOptions = new CookieOptions()
+        //    {
+        //        HttpOnly = true, // XSS
+        //        Secure = true,
+        //        Expires = DateTime.UtcNow.AddDays(1), // Expiration
+        //        SameSite = SameSiteMode.Strict // CSRF
+        //    };
+        //    return Ok();
+        //}
 
         [HttpPost]
         public async Task<IActionResult> ResendConfirmEmail(ResendConfirmEmailRequest req)
@@ -109,7 +117,9 @@ namespace EShop.Api.Controllers
             {
                 var token = await _identityService.GenerateEmailConfirmationToken(req.Email);
                 var domainName = HttpContext.Request.Host.Value;
-                var actionUri = Url.Action(nameof(ConfirmEmail), new ConfirmEmailRequest { Email = req.Email, Code = token });
+                var actionUri = Url.Action(
+                    nameof(ConfirmEmail),
+                    new ConfirmEmailRequest { Email = req.Email, Code = token });
                 var confirmationLink = $"https://{domainName}{actionUri}";
                 await _emailSenderService.SendConfirmationLinkAsync(req.Email, req.Email, confirmationLink);
                 return Ok();
@@ -122,35 +132,35 @@ namespace EShop.Api.Controllers
         {
             var resultService = await _identityService.ForgotPassword(req.Email);
 
-            if (resultService.Success)
+            if (resultService.Succeeded)
             {
-                 return Ok();
+                return Ok();
             }
-            return Problem(resultService.MessageError);
+            return Problem(resultService.Errors.First());
         }
 
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordRequest req)
         {
             var resultService = await _identityService.ResetPassword(req.Email, req.ResetCode, req.NewPassword);
-            if (resultService.Success)
+            if (resultService.Succeeded)
             {
-                 return Ok();
+                return Ok();
             }
-            return Problem(resultService.MessageError);
+            return Problem(resultService.Errors.First());
         }
 
-        [HttpPost]
-        public IActionResult Manage2Fa(Manage2FaRequest req)
-        {
-             return Ok();
-        }
+        //[HttpPost]
+        //public IActionResult Manage2Fa(Manage2FaRequest req)
+        //{
+        //    return Ok();
+        //}
 
-        [HttpPost]
-        public IActionResult ManageInfo(ManageInfoRequest req)
-        {
-             return Ok();
-        }
+        //[HttpPost]
+        //public IActionResult ManageInfo(ManageInfoRequest req)
+        //{
+        //    return Ok();
+        //}
 
         #endregion
     }

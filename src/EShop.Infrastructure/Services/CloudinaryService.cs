@@ -1,6 +1,7 @@
 ﻿using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using dotenv.net;
+using EShop.Application.Dto;
 using EShop.Application.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 
@@ -31,13 +32,15 @@ namespace EShop.Infrastructure.Services
             return result.SecureUrl;
         }
 
-        public async Task GetAllProductImages(int productId)
+        public async Task<IEnumerable<string>> GetAllImagesByProductId(int productId)
         {
             var assetFolderResult = await _cloudinary.ListResourceByAssetFolderAsync($"EShop/Products/{productId}", true, true, true);
             _logger.LogInformation(assetFolderResult.JsonObj.ToString());
+
+            return new List<string>();
         }
 
-        public async Task DeleteImage(int productId)
+        public async Task<ServiceResult> DeleteImage(int productId)
         {
             throw new NotImplementedException();
         }

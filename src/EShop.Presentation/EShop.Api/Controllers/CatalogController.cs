@@ -108,7 +108,14 @@ namespace EShop.Api.Controllers
         {
             var brands = await _catalogService.GetAllBrands();
 
-            return Ok(brands);
+            var response = new PaginationResponse<BrandDto>
+            {
+                PageIndex = paginationReq.PageIndex,
+                PageSize = paginationReq.PageSize,
+                Count = brands.Count(),
+                Data = brands
+            };
+            return Ok(response);
         }
 
         [HttpGet]
@@ -118,25 +125,25 @@ namespace EShop.Api.Controllers
             return Ok(categories);
         }
 
-        [HttpGet("{productId}")]
-        public async Task<IActionResult> GetAllImagesOfProduct([FromRoute] int productId)
-        {
-            try
-            {
-                await _cloudinaryService.GetAllProductImages(productId);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
-        }
+        //[HttpGet("{productId}")]
+        //public async Task<IActionResult> GetAllImagesOfProduct([FromRoute] int productId)
+        //{
+        //    try
+        //    {
+        //        await _cloudinaryService.GetAllImagesByProductId(productId);
+        //        return Ok();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Problem(ex.Message);
+        //    }
+        //}
 
-        [HttpGet]
-        public IActionResult SearchWithSemanticRelevance([FromQuery][Required] string text, [FromQuery] PaginationRequest paginationReq)
-        {
-            return Ok();
-        }
+        //[HttpGet]
+        //public IActionResult SearchWithSemanticRelevance([FromQuery][Required] string text, [FromQuery] PaginationRequest paginationReq)
+        //{
+        //    return Ok();
+        //}
 
         #endregion
 
@@ -152,18 +159,15 @@ namespace EShop.Api.Controllers
                 return Problem("Not found product");
             }
 
-            try
+            var uri = await _cloudinaryService.UploadProductImage(req.ProductId, req.FormFile.FileName, req.FormFile.OpenReadStream());
+            product.PictureFileName = uri.AbsoluteUri;
+            var serviceResult = await _catalogService.UpdateImageUrlProduct(product.Id, uri.AbsoluteUri);
+            if (serviceResult.Succeeded)
             {
-                var uri = await _cloudinaryService.UploadProductImage(req.ProductId, req.FormFile.FileName, req.FormFile.OpenReadStream());
-                product.PictureFileName = uri.AbsoluteUri;
-                _unitOfWork.ProductRepository.Update(product);
-                var result = await _unitOfWork.Commit();
                 return Ok();
             }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            return Problem(serviceResult.Errors.First());
+
         }
 
         [HttpPost]
@@ -173,11 +177,11 @@ namespace EShop.Api.Controllers
 
             var serviceResult = await _catalogService.CreateProduct(createProductDto);
 
-            if (serviceResult.Success)
+            if (serviceResult.Succeeded)
             {
                 return Ok();
             }
-            return Problem(serviceResult.MessageError);
+            return Problem(serviceResult.Errors.First());
         }
 
         [HttpPost]
@@ -185,11 +189,11 @@ namespace EShop.Api.Controllers
         {
             var serviceResult = await _catalogService.CreateBrand(req.Name, req.Code);
 
-            if (serviceResult.Success)
+            if (serviceResult.Succeeded)
             {
                 return Ok();
             }
-            return Problem(serviceResult.MessageError);
+            return Problem(serviceResult.Errors.First());
         }
 
         #endregion
@@ -203,11 +207,11 @@ namespace EShop.Api.Controllers
 
             var serviceResult = await _catalogService.UpdateProduct(updateProductDto);
 
-            if (serviceResult.Success)
+            if (serviceResult.Succeeded)
             {
                 return Ok();
             }
-            return Problem(serviceResult.MessageError);
+            return Problem(serviceResult.Errors.First());
         }
 
         [HttpPut]
@@ -215,11 +219,11 @@ namespace EShop.Api.Controllers
         {
             var serviceResult = await _catalogService.UpdateBrand(req.Id, req.Name, req.Code);
 
-            if (serviceResult.Success)
+            if (serviceResult.Succeeded)
             {
                 return Ok();
             }
-            return Problem(serviceResult.MessageError);
+            return Problem(serviceResult.Errors.First());
         }
 
         #endregion

@@ -29,8 +29,22 @@ namespace EShop.Infrastructure.Services
             _jwtConfig = jwtConfig;
         }
 
-        public string GenerateJwtToken(List<Claim> claims)
+        public async Task<string> GenerateJwtToken(string email)
         {
+            // Get claims
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user is null)
+            {
+                return string.Empty;
+            }
+            var roles = await _userManager.GetRolesAsync(user);
+            var claims = new List<Claim>
+            {
+                new("email", email),
+                new("roles", string.Join(',', roles))
+            };
+
+            // GenerateToken
             var signKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtConfig.SecretKey));
             var signingCredentials = new SigningCredentials(signKey, _jwtConfig.Algorithm);
             var optionsHeader = new Dictionary<string, string>
@@ -53,44 +67,43 @@ namespace EShop.Infrastructure.Services
             return token;
         }
 
-        public ServiceResult<string> RefreshToken(string oldToken)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<bool> CheckExistUserByEmailAsync(string email)
         {
             var userEntity = await _userManager.FindByEmailAsync(email);
             return userEntity != null;
         }
 
-        public async Task<ServiceResult<int>> ConfirmEmail(string email, string code)
+        public Task<string> RefreshToken(string oldToken)
         {
-            var serviceResult = new ServiceResult<int>();
+            throw new NotImplementedException();
+        }
+
+        public async Task<ServiceResult> ConfirmEmail(string email, string code)
+        {
 
             var userEntity = await _userManager.FindByEmailAsync(email);
             if (userEntity is null)
             {
-                return new ServiceResult<int>(messageError: "Not found user");
+                return ServiceResult.Failed("Not found user");
             }
 
             var identityResult = await _userManager.ConfirmEmailAsync(userEntity, code);
 
             if (identityResult.Errors.Any())
             {
-                var errors = string.Join(' ', identityResult.Errors.Select(e => e.Description));
-                return new ServiceResult<int>(messageError: errors);
+                var errors = identityResult.Errors.Select(e => e.Description);
+                return ServiceResult.Failed(errors);
             }
 
-            return new ServiceResult<int> { Success = true };
+            return ServiceResult.Success;
         }
 
-        public async Task<ServiceResult<int>> ManageInfo()
+        public async Task<ServiceResult> ManageInfo()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ServiceResult<int>> Register(string userName, string email, string password)
+        public async Task<ServiceResult> Register(string userName, string email, string password)
         {
             var userEntity = new User
             {
@@ -101,54 +114,46 @@ namespace EShop.Infrastructure.Services
             var identityResult = await _userManager.CreateAsync(userEntity, password);
             if (identityResult.Errors.Any())
             {
-                var errors = string.Join(' ', identityResult.Errors.Select(e => e.Description));
-                return new ServiceResult<int>(messageError: errors);
+                var errors = identityResult.Errors.Select(e => e.Description);
+                return ServiceResult.Failed(errors);
             }
 
             identityResult = await _userManager.AddToRoleAsync(userEntity, RolesConstant.Customer);
             if (identityResult.Errors.Any())
             {
-                var errors = string.Join(' ', identityResult.Errors.Select(e => e.Description));
-                return new ServiceResult<int>(messageError: errors);
+                var errors = identityResult.Errors.Select(e => e.Description);
+                return ServiceResult.Failed(errors);
             }
 
-            return new ServiceResult<int> { Success = true };
+            return ServiceResult.Success;
         }
 
-        public async Task<ServiceResult<string>> SignIn(string email, string password, bool lockoutOnFailure)
+        public async Task<ServiceResult> SignIn(string email, string password, bool lockoutOnFailure)
         {
             var user = await _userManager.FindByEmailAsync(email);
             if (user is null)
             {
-                return new ServiceResult<string>(messageError: "Not exist user");
+                return ServiceResult.Failed("Not exist user");
             }
 
             var signInResult = await _signInManager.CheckPasswordSignInAsync(user, password, lockoutOnFailure);
 
             if (signInResult.IsNotAllowed)
             {
-                return new ServiceResult<string>(messageError: "Confirm your email address");
+                return ServiceResult.Failed("Confirm your email address");
             }
 
             if (signInResult.IsLockedOut)
             {
-                return new ServiceResult<string>(messageError: "Account locked");
+                return ServiceResult.Failed("Account locked");
             }
 
             if (!signInResult.Succeeded)
             {
-                return new ServiceResult<string>(messageError: "Password incorrect");
+                return ServiceResult.Failed("Password incorrect");
             }
 
-            var roles = await _userManager.GetRolesAsync(user);
-            var claims = new List<Claim>
-            {
-                new("email", email),
-                new("roles", string.Join(',', roles))
-            };
-
-            var token = GenerateJwtToken(claims);
-            return new ServiceResult<string>(data: token);
+            return ServiceResult.Success;
         }
 
         public async Task<string> GenerateEmailConfirmationToken(string email)
@@ -163,39 +168,39 @@ namespace EShop.Infrastructure.Services
             return token;
         }
 
-        public async Task<ServiceResult<int>> ForgotPassword(string email)
+        public async Task<ServiceResult> ForgotPassword(string email)
         {
             var userEntity = await _userManager.FindByEmailAsync(email);
             if (userEntity == null)
             {
-                return new ServiceResult<int>(messageError: "Not found user");
+                return ServiceResult.Failed("Not found user");
             }
 
             var code = await _userManager.GeneratePasswordResetTokenAsync(userEntity);
-            await _emailSenderService.SendPasswordResetCodeAsync(userEntity.UserName, email, code);
+            var serviceResult = await _emailSenderService.SendPasswordResetCodeAsync(userEntity.UserName, email, code);
 
-            return new ServiceResult<int> { Success = true };
+            return serviceResult;
         }
 
-        public async Task<ServiceResult<int>> ResetPassword(string email, string resetCode, string newPassword)
+        public async Task<ServiceResult> ResetPassword(string email, string resetCode, string newPassword)
         {
             var userEntity = await _userManager.FindByEmailAsync(email);
             if (userEntity == null)
             {
-                return new ServiceResult<int>(messageError: "Not found user");
+                return ServiceResult.Failed("Not found user");
             }
 
             var identityResult = await _userManager.ResetPasswordAsync(userEntity, resetCode, newPassword);
             if (identityResult.Errors.Any())
             {
-                var error = identityResult.Errors.First().Description;
-                return new ServiceResult<int>(messageError: error);
-            }
+                var errors = identityResult.Errors.Select(e => e.Description);
+                return ServiceResult.Failed(errors);
 
-            return new ServiceResult<int> { Success = true };
+            }
+            return ServiceResult.Success;
         }
 
-        public async Task<ServiceResult<int>> Manage2Fa()
+        public async Task<ServiceResult> Manage2Fa()
         {
             throw new NotImplementedException();
         }

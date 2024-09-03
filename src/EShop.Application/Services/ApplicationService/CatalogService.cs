@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using EShop.Application.Dto;
+﻿using EShop.Application.Dto;
 using EShop.Application.Dto.Catalog;
 using EShop.Application.Entities;
 using EShop.Application.Services.Interfaces;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using Mapster;
 
 namespace EShop.Application.Services.ApplicationService;
@@ -29,9 +27,9 @@ public class CatalogService : ICatalogService
                 .Take(pageSize));
 
 
-        var productDtoList = products.Adapt<IEnumerable<ProductDto>>();
+        var productsDto = products.Adapt<IEnumerable<ProductDto>>();
 
-        return productDtoList;
+        return productsDto;
     }
 
     public async Task<IEnumerable<ProductDto>> GetProductsByBrandId(int brandId, int pageSize = 10, int pageIndex = 0)
@@ -39,9 +37,9 @@ public class CatalogService : ICatalogService
         var products = await _unitOfWork.ProductRepository
             .Get(filter: p => p.BrandId == brandId);
 
-        var productDtoList = products.Adapt<IEnumerable<ProductDto>>();
+        var productsDto = products.Adapt<IEnumerable<ProductDto>>();
 
-        return productDtoList;
+        return productsDto;
     }
 
     public async Task<IEnumerable<ProductDto>> GetProductsByCategoryId(int categoryId, int pageSize = 10, int pageIndex = 0)
@@ -49,9 +47,9 @@ public class CatalogService : ICatalogService
         var products = await _unitOfWork.ProductRepository
             .Get(filter: p => p.CategoryId == categoryId);
 
-        var productDtoList = products.Adapt<IEnumerable<ProductDto>>();
+        var productsDto = products.Adapt<IEnumerable<ProductDto>>();
 
-        return productDtoList;
+        return productsDto;
     }
 
     public async Task<IEnumerable<CategoryDto>> GetAllCategories()
@@ -59,9 +57,9 @@ public class CatalogService : ICatalogService
         var categories = await _unitOfWork.CategoryRepository
             .Get();
 
-        var categoryDtoList = categories.Adapt<IEnumerable<CategoryDto>>();
+        var categoriesDto = categories.Adapt<IEnumerable<CategoryDto>>();
 
-        return categoryDtoList;
+        return categoriesDto;
     }
 
     public async Task<IEnumerable<ProductDto>> GetProductsByBrandAndCategoryId(int brandId, int categoryId, int pageSize = 10, int pageIndex = 0)
@@ -81,45 +79,143 @@ public class CatalogService : ICatalogService
         return product?.Adapt<ProductDto>();
     }
 
-    public async Task<IEnumerable<BrandDto>> GetAllBrands()
+    public async Task<IEnumerable<BrandDto>> GetAllBrands(int pageSize = 10, int pageIndex = 0)
     {
-        var brands = await _unitOfWork.BrandRepository.Get();
+        var brands = await _unitOfWork.BrandRepository
+            .Get(orderBy: queryable => (IOrderedQueryable<Brand>)queryable
+                .OrderBy(p => p.Id)
+                .Skip(pageIndex)
+                .Take(pageSize));
 
         return brands.Adapt<IEnumerable<BrandDto>>();
     }
 
-    public async Task<ProductDto> GetAllImagesOfProduct()
+    public async Task<ProductDto> SearchWithSemanticRelevance(string searchText)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<ProductDto> SearchWithSemanticRelevance()
+    public async Task<ServiceResult> CreateProduct(CreateProductDto createProductDto)
     {
-        throw new NotImplementedException();
+        var productEntity = new Product
+        {
+            Name = createProductDto.Name,
+            AvailableStock = createProductDto.AvailableStock,
+            BrandId = createProductDto.BrandId,
+            CategoryId = createProductDto.CategoryId,
+            Description = createProductDto.Description,
+            MaxStockThreshold = createProductDto.MaxStockThreshold,
+            Price = createProductDto.Price,
+        };
+
+        try
+        {
+            await _unitOfWork.ProductRepository.Create(productEntity);
+            await _unitOfWork.Commit();
+            return ServiceResult.Success;
+        }
+        catch (Exception ex)
+        {
+            return ServiceResult.Failed(ex.Message);
+        }
     }
 
-    public async Task<int> UploadProductImage()
+    public async Task<ServiceResult> CreateBrand(string name, string code)
     {
-        throw new NotImplementedException();
+        var brandEntity = new Brand
+        {
+            Name = name,
+            Code = code
+        };
+
+        try
+        {
+            await _unitOfWork.BrandRepository.Create(brandEntity);
+            await _unitOfWork.Commit();
+            return ServiceResult.Success;
+        }
+        catch (Exception ex)
+        {
+            return ServiceResult.Failed(ex.Message);
+        }
     }
 
-    public async Task<ServiceResult<int>> CreateProduct(CreateProductDto createProductDto)
+    public async Task<ServiceResult> UpdateProduct(UpdateProductDto updateProductDto)
     {
-        throw new NotImplementedException();
+        var productEntity = await _unitOfWork.ProductRepository.GetById(updateProductDto.Id);
+
+        if (productEntity is null)
+        {
+            return ServiceResult.Failed("Not exists product");
+        }
+
+        productEntity.Name = updateProductDto.Name;
+        productEntity.AvailableStock = updateProductDto.AvailableStock;
+        productEntity.BrandId = updateProductDto.BrandId;
+        productEntity.CategoryId = updateProductDto.CategoryId;
+        productEntity.Description = updateProductDto.Description;
+        productEntity.MaxStockThreshold = updateProductDto.MaxStockThreshold;
+        productEntity.Price = updateProductDto.Price;
+        productEntity.SetTimeLastModified();
+
+        try
+        {
+            _unitOfWork.ProductRepository.Update(productEntity);
+            await _unitOfWork.Commit();
+            return ServiceResult.Success;
+        }
+        catch (Exception ex)
+        {
+            return ServiceResult.Failed(ex.Message);
+        }
     }
 
-    public async Task<ServiceResult<int>> CreateBrand(string name, string code)
+    public async Task<ServiceResult> UpdateImageUrlProduct(int productId, string url)
     {
-        throw new NotImplementedException();
+        var productEntity = await _unitOfWork.ProductRepository.GetById(productId);
+
+        if (productEntity is null)
+        {
+            return ServiceResult.Failed("Not exists product");
+        }
+
+        productEntity.PictureFileName = url;
+        productEntity.SetTimeLastModified();
+
+        try
+        {
+            _unitOfWork.ProductRepository.Update(productEntity);
+            await _unitOfWork.Commit();
+            return ServiceResult.Success;
+        }
+        catch (Exception ex)
+        {
+            return ServiceResult.Failed(ex.Message);
+        }
     }
 
-    public async Task<ServiceResult<int>> UpdateProduct(UpdateProductDto updateProductDto)
+    public async Task<ServiceResult> UpdateBrand(int brandId, string name, string code)
     {
-        throw new NotImplementedException();
-    }
+        var brandEntity = await _unitOfWork.BrandRepository.GetById(brandId);
 
-    public async Task<ServiceResult<int>> UpdateBrand(int brandId, string name, string code)
-    {
-        throw new NotImplementedException();
+        if (brandEntity is null)
+        {
+            return ServiceResult.Failed("Not exists brand");
+        }
+
+        brandEntity.Name = name;
+        brandEntity.Code = code;
+        brandEntity.SetTimeLastModified();
+
+        try
+        {
+            _unitOfWork.BrandRepository.Update(brandEntity);
+            await _unitOfWork.Commit();
+            return ServiceResult.Success;
+        }
+        catch (Exception ex)
+        {
+            return ServiceResult.Failed(ex.Message);
+        }
     }
 }

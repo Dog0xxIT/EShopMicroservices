@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EShop.Application.Dto.Order
 {
-    internal class OrderDto
+    public class OrderDto
     {
     }
 }

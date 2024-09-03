@@ -1,9 +1,11 @@
-﻿namespace EShop.Application.Services.Interfaces
+﻿using EShop.Application.Dto;
+
+namespace EShop.Application.Services.Interfaces
 {
     public interface ICloudinaryService
     {
         Task<Uri> UploadProductImage(int productId, string fileName, Stream steam);
-        Task GetAllProductImages(int productId);
-        Task DeleteImage(int productId);
+        Task<IEnumerable<string>> GetAllImagesByProductId(int productId);
+        Task<ServiceResult> DeleteImage(int productId);
     }
 }

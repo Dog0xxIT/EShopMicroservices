@@ -1,4 +1,5 @@
-﻿using EShop.Application.Entities;
+﻿using EShop.Application.Dto.Basket;
+using EShop.Application.Entities;
 using EShop.Application.Services.ApplicationService;
 using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels;
@@ -28,7 +29,7 @@ namespace EShop.Api.Controllers
         {
             var basketItems = await _basketService.GetBasketByCustomerId(customerId, paginationReq.PageSize, paginationReq.PageIndex);
 
-            var response = new PaginationResponse<BasketItem>
+            var response = new PaginationResponse<BasketItemDto>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,
@@ -45,12 +46,12 @@ namespace EShop.Api.Controllers
         [HttpPatch]
         public async Task<IActionResult> UpdateQty(UpdateQtyRequest req)
         {
-            var serviceResult = await _basketService.UpdateQty(req.BasketId, req.ProductId, req.Qty);
-            if (serviceResult.Success)
+            var serviceResult = await _basketService.UpdateQty(req.BasketId, req.Qty);
+            if (serviceResult.Succeeded)
             {
                 return Ok();
             }
-            return Problem(serviceResult.MessageError);
+            return Problem(serviceResult.Errors.First());
         }
 
         #endregion
@@ -61,11 +62,11 @@ namespace EShop.Api.Controllers
         public async Task<IActionResult> Delete(int basketId)
         {
             var serviceResult = await _basketService.Delete(basketId);
-            if (serviceResult.Success)
+            if (serviceResult.Succeeded)
             {
                 return Ok();
             }
-            return Problem(serviceResult.MessageError);
+            return Problem(serviceResult.Errors.First());
         }
 
         #endregion

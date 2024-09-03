@@ -15,5 +15,7 @@ namespace EShop.Application.Entities
         public string? ZipCode { get; set; }
 
         public ICollection<Order>? Orders { get; set; }
+
+        public ICollection<Payment>? Payments { get; set; }
     }
 }

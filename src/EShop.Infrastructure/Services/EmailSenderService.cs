@@ -1,4 +1,5 @@
 ﻿using EShop.Application.Configurations;
+using EShop.Application.Dto;
 using EShop.Application.Entities;
 using EShop.Application.Services.Interfaces;
 using MailKit.Net.Smtp;
@@ -19,7 +20,7 @@ namespace EShop.Infrastructure.Services
             _smtpConfig = smtpConfig;
         }
 
-        public async Task SendConfirmationLinkAsync(string userName, string email, string confirmationLink)
+        public async Task<ServiceResult> SendConfirmationLinkAsync(string userName, string email, string confirmationLink)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_smtpConfig.UserName, _smtpConfig.Host));
@@ -30,11 +31,11 @@ namespace EShop.Infrastructure.Services
                 Text = $"Please confirm your account by <a href='{confirmationLink}'>clicking here</a>.",
             };
 
-            await SendAsync(message);
+            return await SendAsync(message);
         }
 
 
-        public async Task SendPasswordResetLinkAsync(string userName, string email, string resetLink)
+        public async Task<ServiceResult> SendPasswordResetLinkAsync(string userName, string email, string resetLink)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_smtpConfig.UserName, _smtpConfig.Host));
@@ -45,11 +46,11 @@ namespace EShop.Infrastructure.Services
                 Text = $"Please reset your password by <a href='{resetLink}'>clicking here</a>.",
             };
 
-            await SendAsync(message);
+            return await SendAsync(message);
         }
 
 
-        public async Task SendPasswordResetCodeAsync(string userName, string email, string resetCode)
+        public async Task<ServiceResult> SendPasswordResetCodeAsync(string userName, string email, string resetCode)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_smtpConfig.UserName, _smtpConfig.Host));
@@ -59,11 +60,10 @@ namespace EShop.Infrastructure.Services
             {
                 Text = $"Please reset your password using the following code: {resetCode}",
             };
-
-            await SendAsync(message);
+            return await SendAsync(message);
         }
 
-        public async Task SendAsync(MimeMessage message)
+        public async Task<ServiceResult> SendAsync(MimeMessage message)
         {
             using (var client = new SmtpClient())
             {
@@ -73,10 +73,16 @@ namespace EShop.Infrastructure.Services
                     await client.AuthenticateAsync(_smtpConfig.UserName, _smtpConfig.Password);
                     client.AuthenticationMechanisms.Remove("XOAUTH2");
                     await client.SendAsync(message);
+                    return ServiceResult.Success;
+                }
+                catch (Exception ex)
+                {
+                    return ServiceResult.Failed(ex.Message);
                 }
                 finally
                 {
                     await client.DisconnectAsync(true);
+
                 }
             }
         }

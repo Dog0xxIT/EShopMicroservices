@@ -1,33 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EShop.Application.Dto
 {
-    public class ServiceResult<T>
+    public class ServiceResult
     {
-        public bool Success { get; set; }
-        public string MessageError { get; set; }
-        public T Data { get; set; }
+        public bool Succeeded { get; private set; }
+        public IEnumerable<string> Errors { get; private set; }
 
-        public ServiceResult()
+        protected ServiceResult(bool success)
         {
+            Succeeded = success;
+            Errors = Enumerable.Empty<string>();
         }
 
-        public ServiceResult(string messageError)
+        public ServiceResult(IEnumerable<string> errors)
         {
-            MessageError = messageError;
-            Success = false;
-            Data = default(T);
+            Succeeded = false;
+            Errors = errors;
         }
 
-        public ServiceResult(T data)
-        {
-            Success = true;
-            Data = data;
-            MessageError = string.Empty;
-        }
+        public static ServiceResult Success => new(true);
+
+        public static ServiceResult Failed(params string[] errors) => new(errors);
+
+        public static ServiceResult Failed(IEnumerable<string> errors) => new(errors);
     }
 }

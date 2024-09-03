@@ -9,6 +9,8 @@ namespace EShop.Domain.Aggregates.OrderAggregate
 {
     public class OrderItem
     {
+        public int Id { get; private set; }
+
         public int ProductId { get; private set; }
 
         public string ProductName { get; private set; }
@@ -24,7 +26,7 @@ namespace EShop.Domain.Aggregates.OrderAggregate
         public double TotalPrice { get; private set; }
 
         public OrderItem(
-            int productId, string productName, string pictureUrl,
+            int id, int productId, string productName, string pictureUrl,
             double unitPrice, double discount, int units)
         {
             ProductName = productName ?? throw new ArgumentNullException(nameof(productName));
@@ -33,6 +35,7 @@ namespace EShop.Domain.Aggregates.OrderAggregate
             Discount = discount;
             Units = units;
             ProductId = productId;
+            Id = id;
             TotalPrice = UnitPrice * Units;
         }
 
