@@ -76,5 +76,10 @@ namespace EShop.Infrastructure.Repositories
             }
             _dbSet.Remove(entity);
         }
+
+        public Task<int> Count()
+        {
+            return _dbSet.CountAsync();
+        }
     }
 }

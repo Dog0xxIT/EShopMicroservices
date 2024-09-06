@@ -1,6 +1,6 @@
 ﻿using EShop.Application.Configurations;
-using EShop.Application.Dto;
 using EShop.Application.Entities;
+using EShop.Application.Services.ApplicationService;
 using EShop.Application.Services.Interfaces;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Logging;
