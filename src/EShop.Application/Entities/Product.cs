@@ -24,6 +24,8 @@
 
         public int MaxStockThreshold { get; set; }
 
+        public double Discount { get; set; }
+
         //[JsonIgnore]
         //public Vector Embedding { get; set; }
     }

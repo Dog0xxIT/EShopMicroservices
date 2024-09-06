@@ -25,5 +25,6 @@ builder.Services.AddScoped<ICoreHttpClient, CoreHttpClient>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
 builder.Services.AddScoped<ICatalogService, CatalogService>();
 builder.Services.AddSingleton<AlertState>();
+builder.Services.AddSingleton<JwtAuthenticationStateProvider>();
 
 await builder.Build().RunAsync();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EShop.Application.Dto.Catalog
+namespace EShop.Shared.ResponseModels.Catalog
 {
     public class CategoryDto
     {

@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Azure;
 using EShop.Application.Constants;
-using EShop.Application.Dto.Catalog;
 using EShop.Application.Entities;
 using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels;
 using EShop.Shared.RequestModels.Catalog;
 using EShop.Shared.ResponseModels;
+using EShop.Shared.ResponseModels.Catalog;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -33,45 +34,32 @@ namespace EShop.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllProducts([FromQuery] PaginationRequest paginationReq)
         {
-            var products = await _catalogService.GetAllProducts(paginationReq.PageSize, paginationReq.PageIndex);
+            var response = await _catalogService.GetAllProducts(paginationReq.PageSize, paginationReq.PageIndex);
 
-            var response = new PaginationResponse<ProductDto>
-            {
-                PageIndex = paginationReq.PageIndex,
-                PageSize = paginationReq.PageSize,
-                Count = products.Count(),
-                Data = products
-            };
+            return Ok(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetProductsByAdvanceFilter([FromForm] GetProductsByAdvanceFilterRequest getProductsByAdvanceFilterRequest, [FromQuery] PaginationRequest paginationReq)
+        {
+            var response = await _catalogService.GetProductsByAdvanceFilter(getProductsByAdvanceFilterRequest, paginationReq.PageSize, paginationReq.PageIndex);
+
             return Ok(response);
         }
 
         [HttpGet("{brandId}")]
         public async Task<IActionResult> GetProductsByBrandId([FromRoute] int brandId, [FromQuery] PaginationRequest paginationReq)
         {
-            var products = await _catalogService.GetProductsByBrandId(brandId, paginationReq.PageSize, paginationReq.PageIndex);
+            var response = await _catalogService.GetProductsByBrandId(brandId, paginationReq.PageSize, paginationReq.PageIndex);
 
-            var response = new PaginationResponse<ProductDto>
-            {
-                PageIndex = paginationReq.PageIndex,
-                PageSize = paginationReq.PageSize,
-                Count = products.Count(),
-                Data = products
-            };
             return Ok(response);
         }
 
         [HttpGet("{categoryId}")]
         public async Task<IActionResult> GetProductsByCategoryId([FromRoute] int categoryId, [FromQuery] PaginationRequest paginationReq)
         {
-            var products = await _catalogService.GetProductsByCategoryId(categoryId, paginationReq.PageSize, paginationReq.PageIndex);
+            var response = await _catalogService.GetProductsByCategoryId(categoryId, paginationReq.PageSize, paginationReq.PageIndex);
 
-            var response = new PaginationResponse<ProductDto>
-            {
-                PageIndex = paginationReq.PageIndex,
-                PageSize = paginationReq.PageSize,
-                Count = products.Count(),
-                Data = products
-            };
             return Ok(response);
         }
 
@@ -81,17 +69,10 @@ namespace EShop.Api.Controllers
             [FromRoute] int brandId,
             [FromQuery] PaginationRequest paginationReq)
         {
-            var products = await _catalogService.GetProductsByBrandAndCategoryId(
+            var response = await _catalogService.GetProductsByBrandAndCategoryId(
                 brandId, categoryId,
                 paginationReq.PageSize, paginationReq.PageIndex);
 
-            var response = new PaginationResponse<ProductDto>
-            {
-                PageIndex = paginationReq.PageIndex,
-                PageSize = paginationReq.PageSize,
-                Count = products.Count(),
-                Data = products
-            };
             return Ok(response);
         }
 
@@ -108,11 +89,11 @@ namespace EShop.Api.Controllers
         {
             var brands = await _catalogService.GetAllBrands();
 
-            var response = new PaginationResponse<BrandDto>
+            var response = new PaginationResponse<GetListBrandsResponse>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,
-                Count = brands.Count(),
+                Total = brands.Count(),
                 Data = brands
             };
             return Ok(response);

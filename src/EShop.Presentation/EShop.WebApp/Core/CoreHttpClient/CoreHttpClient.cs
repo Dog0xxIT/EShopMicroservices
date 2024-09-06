@@ -107,6 +107,45 @@ public class CoreHttpClient : ICoreHttpClient
         return default!;
     }
 
+    public async Task<ResultObject> PostAsync(string clientName, string uri, object reqObj)
+    {
+        var json = JsonConvert.SerializeObject(reqObj);
+        var stringContent = new StringContent(json, Encoding.UTF8, mediaType: "application/json");
+        var httpClient = _clientFactory.CreateClient(clientName);
+
+        try
+        {
+            _logger.LogInformation($"Request Object: {json}");
+            var client = await httpClient.PostAsync(uri, stringContent);
+
+            if (client.IsSuccessStatusCode)
+            {
+                _logger.LogInformation($"Status Code: {client.StatusCode}");
+                return new ResultObject
+                {
+                    ResultCode = ResultCode.Success,
+                    Messages = "Success",
+                };
+            }
+            else
+            {
+                var resultData = await client.Content.ReadFromJsonAsync<ProblemDetailsResponse>();
+                _logger.LogWarning($"Status Code: {client.StatusCode}");
+                return new ResultObject
+                {
+                    ResultCode = ResultCode.Failed,
+                    Messages = resultData!.Detail,
+                };
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Exception: {ex}");
+        }
+
+        return default!;
+    }
+
     public async Task<ResultObject<T>> PutAsync<T>(string clientName, string uri, object reqObj) where T : class
     {
         var json = JsonConvert.SerializeObject(reqObj);

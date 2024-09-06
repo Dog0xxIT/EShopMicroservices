@@ -29,11 +29,11 @@ namespace EShop.Api.Controllers
         {
             var basketItems = await _basketService.GetBasketByCustomerId(customerId, paginationReq.PageSize, paginationReq.PageIndex);
 
-            var response = new PaginationResponse<BasketItemDto>
+            var response = new PaginationResponse<BasketItemResponse>
             {
                 PageIndex = paginationReq.PageIndex,
                 PageSize = paginationReq.PageSize,
-                Count = basketItems.Count(),
+                Total = basketItems.Count(),
                 Data = basketItems
             };
             return Ok(response);

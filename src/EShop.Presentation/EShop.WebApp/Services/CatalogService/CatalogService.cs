@@ -1,4 +1,4 @@
-﻿using EShop.Application.Entities;
+﻿using EShop.Shared.RequestModels;
 using EShop.Shared.RequestModels.Catalog;
 using EShop.Shared.ResponseModels;
 using EShop.Shared.ResponseModels.Catalog;
@@ -16,11 +16,12 @@ namespace EShop.WebApp.Services.CatalogService
             _coreHttpClient = coreHttpClient;
         }
 
-        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetAllProducts()
+        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetAllProducts(PaginationRequest paginationRequest)
         {
             return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
                   clientName: UrlsConfig.ClientName,
-                  uri: UrlsConfig.Catalog.GetAllProducts);
+                  uri: UrlsConfig.Catalog.GetAllProducts,
+                  queryObj: paginationRequest);
         }
 
         public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByBrandId(int brandId)
@@ -32,12 +33,12 @@ namespace EShop.WebApp.Services.CatalogService
         }
 
         public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByCategoryId(
-            int categoryId)
+            int categoryId, PaginationRequest paginationRequest)
         {
             return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Catalog.GetProductsByCategoryId,
-                queryObj: new { categoryId });
+                uri: UrlsConfig.Catalog.GetProductsByCategoryId + $"/{categoryId}",
+                queryObj: paginationRequest);
         }
 
         public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByBrandAndCategoryId(
@@ -49,26 +50,23 @@ namespace EShop.WebApp.Services.CatalogService
                 queryObj: new { brandId, categoryId });
         }
 
-
-        public async Task<ResultObject<Product>> GetProductById(int productId)
+        public async Task<ResultObject<GetProductByIdResponse>> GetProductById(int productId)
         {
-            return await _coreHttpClient.GetAsync<Product>(
+            return await _coreHttpClient.GetAsync<GetProductByIdResponse>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Catalog.GetProductById,
-                queryObj: new { productId });
+                uri: UrlsConfig.Catalog.GetProductById + $"/{productId}");
         }
 
-
-        public async Task<ResultObject<IEnumerable<Brand>>> GetAllBrands()
+        public async Task<ResultObject<IEnumerable<GetAllBrandsResponse>>> GetAllBrands()
         {
-            return await _coreHttpClient.GetAsync<IEnumerable<Brand>>(
+            return await _coreHttpClient.GetAsync<IEnumerable<GetAllBrandsResponse>>(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Catalog.GetAllBrands);
         }
 
-        public async Task<ResultObject<IEnumerable<Category>>> GetAllCategories()
+        public async Task<ResultObject<IEnumerable<GetAllCategoriesResponse>>> GetAllCategories()
         {
-            return await _coreHttpClient.GetAsync<IEnumerable<Category>>(
+            return await _coreHttpClient.GetAsync<IEnumerable<GetAllCategoriesResponse>>(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Catalog.GetAllCategories);
         }
@@ -88,7 +86,6 @@ namespace EShop.WebApp.Services.CatalogService
                 uri: UrlsConfig.Catalog.SearchWithSemanticRelevance,
                 queryObj: text);
         }
-
 
         public async Task<ResultObject<SuccessObjectResponse>> UploadProductImage(UploadProductImageRequest request)
         {

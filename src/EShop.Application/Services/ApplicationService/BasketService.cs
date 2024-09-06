@@ -1,5 +1,4 @@
-﻿using EShop.Application.Dto;
-using EShop.Application.Dto.Basket;
+﻿using EShop.Application.Dto.Basket;
 using EShop.Application.Entities;
 using EShop.Application.Services.Interfaces;
 using Mapster;
@@ -18,7 +17,7 @@ public class BasketService : IBasketService
         _logger = logger;
     }
 
-    public async Task<IEnumerable<BasketItemDto>> GetBasketByCustomerId(int customerId, int pageSize = 10, int pageIndex = 0)
+    public async Task<IEnumerable<BasketItemResponse>> GetBasketByCustomerId(int customerId, int pageSize = 10, int pageIndex = 0)
     {
         var basketItems = await _unitOfWork.BasketItemRepository
             .Get(
@@ -29,7 +28,7 @@ public class BasketService : IBasketService
                 filter: b => b.CustomerId == customerId);
 
 
-        var basketItemsDto = basketItems.Adapt<IEnumerable<BasketItemDto>>();
+        var basketItemsDto = basketItems.Adapt<IEnumerable<BasketItemResponse>>();
 
         return basketItemsDto;
     }

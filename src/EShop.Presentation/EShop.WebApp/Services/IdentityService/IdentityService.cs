@@ -14,73 +14,73 @@ namespace EShop.WebApp.Services.IdentityService
             _coreHttpClient = coreHttpClient;
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> ConfirmEmail(ConfirmEmailRequest request)
+        public async Task<ResultObject> ConfirmEmail(ConfirmEmailRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Identity.ConfirmEmail,
                 reqObj: request);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> ManageInfo(ManageInfoRequest request)
+        public async Task<ResultObject> ManageInfo(ManageInfoRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Identity.ManageInfo,
                 reqObj: request);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> Register(RegisterRequest request)
+        public async Task<ResultObject> Register(RegisterRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Identity.Register,
                 reqObj: request);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> SignIn(SignInRequest request)
+        public async Task<ResultObject> SignIn(SignInRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Identity.SignIn,
                 reqObj: request);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> RefreshToken(RefreshTokenRequest request)
+        public async Task<ResultObject> RefreshToken(RefreshTokenRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Identity.SignIn,
                 reqObj: request);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> ResendConfirmEmail(ResendConfirmEmailRequest request)
+        public async Task<ResultObject> ResendConfirmEmail(ResendConfirmEmailRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Identity.SignIn,
                 reqObj: request);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> ForgotPassword(ForgotPasswordRequest request)
+        public async Task<ResultObject> ForgotPassword(ForgotPasswordRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Identity.ForgotPassword,
                 reqObj: request);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> ResetPassword(ResetPasswordRequest request)
+        public async Task<ResultObject> ResetPassword(ResetPasswordRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Identity.SignIn,
                 reqObj: request);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> Manage2Fa(Manage2FaRequest request)
+        public async Task<ResultObject> Manage2Fa(Manage2FaRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Identity.SignIn,
                 reqObj: request);

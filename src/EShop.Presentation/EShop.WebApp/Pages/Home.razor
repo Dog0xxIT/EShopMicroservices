@@ -1,4 +1,6 @@
 ﻿@page "/"
+
+@using EShop.Shared.RequestModels
 @using EShop.Shared.ResponseModels
 @using EShop.Shared.ResponseModels.Catalog
 @using EShop.WebApp.Core.CoreHttpClient
@@ -6,7 +8,7 @@
 @using EShop.WebApp.Services.AuthenticationService
 @using EShop.WebApp.Services.CatalogService
 @using EShop.WebApp.Components.Product
-
+@using EShop.WebApp.Components.Common
 
 @inject IAuthenticationService AuthenticationService
 @inject ICoreHttpClient CoreHttpClient
@@ -97,7 +99,17 @@
         </div>
 
         <div class="mb-4">
-            <CategorySection />
+            <div class="gap-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                @foreach (var category in _categoryList)
+                {
+                    <a @onclick="async () => await GetProductsByCategoryId(category.Id)" href="#" class="border-gray-200 bg-white px-4 py-2 flex items-center rounded-lg border hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        @((MarkupString)category.Icon)
+                        <span class="text-gray-900 text-sm font-medium dark:text-white">@category.Name</span>
+                    </a>
+                }
+            </div>
+
+
         </div>
 
         <div class="mb-4 gap-4 grid sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
@@ -105,19 +117,19 @@
             {
                 <ProductCart ProductId="@product.Id"
                              ProductName="@product.Name"
-                             Price="@product.Price.ToString("F3")"
-                             Rating="3"
-                             RatingCount="200"
-                             ImageUrl="@product.PictureFileName" />
+                             Price="@product.Price"
+                             Discount="@product.Discount"
+                             CountStar="@product.AvgStarPoint"
+                             RatingCount="@product.TotalRating"
+                             ImageUrl="@product.PictureLink" />
             }
         </div>
 
         <div class="w-full text-center">
-            <button type="button"
-                    class="border-gray-200 bg-white px-5 py-2.5 text-gray-900 rounded-lg border text-sm font-medium hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">
-                Show
-                more
-            </button>
+            <Pagination CurrentPage="_productPaginationResponse.PageIndex+1"
+                        TotalItem="_productPaginationResponse.Total"
+                        TotalItemOfCurrentPage="_productPaginationResponse.Data.Count()"
+                        TotalPage="_productPaginationResponse.Total"></Pagination>
         </div>
     </div>
     <!-- Filter modal -->
@@ -127,9 +139,10 @@
 @code
 {
     private List<BreadcrumbItem> _breadcrumbItems;
+    private PaginationRequest _paginationRequest;
     private PaginationResponse<GetListProductResponse> _productPaginationResponse;
+    private List<GetAllCategoriesResponse> _categoryList;
     private bool _visibleFilterModal;
-
     protected override async Task OnInitializedAsync()
     {
         _breadcrumbItems = new List<BreadcrumbItem>
@@ -150,13 +163,41 @@
                 Url = "/",
             },
         };
+        _paginationRequest = new() { PageIndex = 0, PageSize = 12 };
 
         _productPaginationResponse = new()
             {
                 Data = new List<GetListProductResponse>()
             };
+        _categoryList = new();
 
-        var resultObject = await CatalogService.GetAllProducts();
+        await GetAllCategories();
+        await GetAllProduct();
+    }
+
+    private async Task GetAllProduct()
+    {
+        var resultObject = await CatalogService.GetAllProducts(_paginationRequest);
+
+        if (resultObject.ResultCode.Equals(ResultCode.Success))
+        {
+            _productPaginationResponse = resultObject.Data;
+        }
+    }
+
+    private async Task GetAllCategories()
+    {
+        var resultObject = await CatalogService.GetAllCategories();
+
+        if (resultObject.ResultCode.Equals(ResultCode.Success))
+        {
+            _categoryList = resultObject.Data.ToList();
+        }
+    }
+
+    private async Task GetProductsByCategoryId(int categoryId)
+    {
+        var resultObject = await CatalogService.GetProductsByCategoryId(categoryId, _paginationRequest);
 
         if (resultObject.ResultCode.Equals(ResultCode.Success))
         {

@@ -1,4 +1,4 @@
-﻿using EShop.Application.Dto;
+﻿using EShop.Application.Services.ApplicationService;
 
 namespace EShop.Application.Services.Interfaces
 {

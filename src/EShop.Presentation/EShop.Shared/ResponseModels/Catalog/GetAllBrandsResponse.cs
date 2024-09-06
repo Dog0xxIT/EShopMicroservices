@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EShop.Application.Dto.Order
+namespace EShop.Shared.ResponseModels.Catalog
 {
-    public class OrderDto
+    public class GetAllBrandsResponse
     {
     }
 }

@@ -1,7 +1,7 @@
-﻿using EShop.Application.Dto;
-using EShop.Application.Dto.Order;
-using EShop.Application.Entities;
+﻿using EShop.Application.Entities;
+using EShop.Application.Services.ApplicationService;
 using EShop.Domain.Aggregates.BuyerAggregate;
+using EShop.Shared.ResponseModels.Order;
 
 namespace EShop.Application.Services.Interfaces
 {

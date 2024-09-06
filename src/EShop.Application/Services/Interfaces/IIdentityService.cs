@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-using EShop.Application.Dto;
 using EShop.Application.Entities;
+using EShop.Application.Services.ApplicationService;
 
 namespace EShop.Application.Services.Interfaces;
 

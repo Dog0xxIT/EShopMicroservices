@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EShop.Application.Dto.Order;
 using EShop.Application.Entities;
 using EShop.Domain.Aggregates.BuyerAggregate;
 using EShop.Domain.Enums;

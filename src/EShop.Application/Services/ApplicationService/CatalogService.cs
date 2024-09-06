@@ -1,9 +1,11 @@
-﻿using EShop.Application.Dto;
-using EShop.Application.Dto.Catalog;
-using EShop.Application.Entities;
+﻿using EShop.Application.Entities;
 using EShop.Application.Services.Interfaces;
+using EShop.Shared.RequestModels.Catalog;
+using EShop.Shared.ResponseModels;
 using Microsoft.Extensions.Logging;
 using Mapster;
+using EShop.Shared.ResponseModels.Catalog;
+using System.Linq.Expressions;
 
 namespace EShop.Application.Services.ApplicationService;
 
@@ -18,68 +20,230 @@ public class CatalogService : ICatalogService
         _logger = logger;
     }
 
-    public async Task<IEnumerable<ProductDto>> GetAllProducts(int pageSize = 10, int pageIndex = 0)
+    public async Task<PaginationResponse<GetListProductResponse>> GetAllProducts(int pageSize = 10, int pageIndex = 0)
     {
+        var totalProducts = await _unitOfWork.ProductRepository.Count();
+
         var products = await _unitOfWork.ProductRepository
             .Get(orderBy: queryable => (IOrderedQueryable<Product>)queryable
                 .OrderBy(p => p.Id)
                 .Skip(pageIndex)
                 .Take(pageSize));
 
+        var productsDto = new List<GetListProductResponse>();
 
-        var productsDto = products.Adapt<IEnumerable<ProductDto>>();
+        foreach (var product in products)
+        {
+            var rating = await _unitOfWork.RatingRepository
+                .Get(filter: r => r.ProductId == product.Id) ?? new List<Rating>();
 
-        return productsDto;
+            var totalRating = rating.Count();
+
+            productsDto.Add(
+                new GetListProductResponse
+                {
+                    Id = product.Id,
+                    CategoryId = product.CategoryId,
+                    AvailableStock = product.AvailableStock,
+                    Price = product.Price,
+                    BrandId = product.BrandId,
+                    Discount = product.Discount,
+                    Name = product.Name,
+                    PictureLink = product.PictureFileName,
+                    TotalRating = totalRating,
+                    AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
+                });
+        }
+
+        return new PaginationResponse<GetListProductResponse>
+        {
+            Total = totalProducts,
+            Data = productsDto,
+            PageIndex = pageIndex,
+            PageSize = pageSize
+        };
     }
 
-    public async Task<IEnumerable<ProductDto>> GetProductsByBrandId(int brandId, int pageSize = 10, int pageIndex = 0)
+    public async Task<PaginationResponse<GetListProductResponse>> GetProductsByBrandId(int brandId, int pageSize = 10, int pageIndex = 0)
     {
         var products = await _unitOfWork.ProductRepository
             .Get(filter: p => p.BrandId == brandId);
 
-        var productsDto = products.Adapt<IEnumerable<ProductDto>>();
+        var totalProducts = await _unitOfWork.ProductRepository.Count();
 
-        return productsDto;
+        var productsDto = new List<GetListProductResponse>();
+
+        foreach (var product in products)
+        {
+            var rating = await _unitOfWork.RatingRepository
+                .Get(filter: r => r.ProductId == product.Id) ?? new List<Rating>();
+
+            var totalRating = rating.Count();
+
+            productsDto.Add(
+                new GetListProductResponse
+                {
+                    Id = product.Id,
+                    CategoryId = product.CategoryId,
+                    AvailableStock = product.AvailableStock,
+                    Price = product.Price,
+                    BrandId = product.BrandId,
+                    Discount = product.Discount,
+                    Name = product.Name,
+                    PictureLink = product.PictureFileName,
+                    TotalRating = totalRating,
+                    AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
+                });
+        }
+
+        return new PaginationResponse<GetListProductResponse>
+        {
+            Total = totalProducts,
+            Data = productsDto,
+            PageIndex = pageIndex,
+            PageSize = pageSize
+        };
     }
 
-    public async Task<IEnumerable<ProductDto>> GetProductsByCategoryId(int categoryId, int pageSize = 10, int pageIndex = 0)
+    public async Task<PaginationResponse<GetListProductResponse>> GetProductsByCategoryId(int categoryId, int pageSize = 10, int pageIndex = 0)
     {
         var products = await _unitOfWork.ProductRepository
             .Get(filter: p => p.CategoryId == categoryId);
 
-        var productsDto = products.Adapt<IEnumerable<ProductDto>>();
+        var totalProducts = await _unitOfWork.ProductRepository.Count();
 
-        return productsDto;
+        var productsDto = new List<GetListProductResponse>();
+
+        foreach (var product in products)
+        {
+            var rating = await _unitOfWork.RatingRepository
+                .Get(filter: r => r.ProductId == product.Id) ?? new List<Rating>();
+
+            var totalRating = rating.Count();
+
+            productsDto.Add(
+                new GetListProductResponse
+                {
+                    Id = product.Id,
+                    CategoryId = product.CategoryId,
+                    AvailableStock = product.AvailableStock,
+                    Price = product.Price,
+                    BrandId = product.BrandId,
+                    Discount = product.Discount,
+                    Name = product.Name,
+                    PictureLink = product.PictureFileName,
+                    TotalRating = totalRating,
+                    AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
+                });
+        }
+
+        return new PaginationResponse<GetListProductResponse>
+        {
+            Total = totalProducts,
+            Data = productsDto,
+            PageIndex = pageIndex,
+            PageSize = pageSize
+        };
     }
 
-    public async Task<IEnumerable<CategoryDto>> GetAllCategories()
+    public async Task<IEnumerable<GetAllCategoriesResponse>> GetAllCategories()
     {
         var categories = await _unitOfWork.CategoryRepository
             .Get();
 
-        var categoriesDto = categories.Adapt<IEnumerable<CategoryDto>>();
+        var categoriesDto = categories.Adapt<IEnumerable<GetAllCategoriesResponse>>();
 
         return categoriesDto;
     }
 
-    public async Task<IEnumerable<ProductDto>> GetProductsByBrandAndCategoryId(int brandId, int categoryId, int pageSize = 10, int pageIndex = 0)
+    public async Task<PaginationResponse<GetListProductResponse>> GetProductsByBrandAndCategoryId(int brandId, int categoryId, int pageSize = 10, int pageIndex = 0)
     {
         var products = await _unitOfWork.ProductRepository
             .Get(filter: p => p.CategoryId == categoryId && p.BrandId == brandId);
 
-        var productDtoList = products.Adapt<IEnumerable<ProductDto>>();
+        var totalProducts = await _unitOfWork.ProductRepository.Count();
 
-        return productDtoList;
+        var productsDto = new List<GetListProductResponse>();
+
+        foreach (var product in products)
+        {
+            var rating = await _unitOfWork.RatingRepository
+                .Get(filter: r => r.ProductId == product.Id) ?? new List<Rating>();
+
+            var totalRating = rating.Count();
+
+            productsDto.Add(
+                new GetListProductResponse
+                {
+                    Id = product.Id,
+                    CategoryId = product.CategoryId,
+                    AvailableStock = product.AvailableStock,
+                    Price = product.Price,
+                    BrandId = product.BrandId,
+                    Discount = product.Discount,
+                    Name = product.Name,
+                    PictureLink = product.PictureFileName,
+                    TotalRating = totalRating,
+                    AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
+                });
+        }
+
+        return new PaginationResponse<GetListProductResponse>
+        {
+            Total = totalProducts,
+            Data = productsDto,
+            PageIndex = pageIndex,
+            PageSize = pageSize
+        };
     }
 
-    public async Task<ProductDto?> GetProductById(int productId)
+    public async Task<GetProductByIdResponse?> GetProductById(int productId)
     {
-        var product = await _unitOfWork.ProductRepository.GetById(productId);
+        var products = await _unitOfWork.ProductRepository
+            .Get(
+                filter: p => p.Id == productId,
+                includeProperties: new[] { nameof(Product.Brand), nameof(Product.Category) });
 
-        return product?.Adapt<ProductDto>();
+        var product = products.FirstOrDefault();
+        if (product == null)
+        {
+            return null;
+        }
+
+        var rating = await _unitOfWork.RatingRepository
+            .Get(filter: r => r.ProductId == product.Id) ?? new List<Rating>();
+
+        var totalRating = rating.Count();
+
+        return new GetProductByIdResponse
+        {
+            ProductId = product.Id,
+            Name = product.Name,
+            Summary = product.Description,
+            DescriptionSections = new List<string> { product.Description },
+            Price = product.Price,
+            PictureFileName = product.PictureFileName,
+            AvailableStock = product.Id,
+            CountReview = totalRating,
+            AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
+            Brand = new()
+            {
+                BrandId = product.BrandId,
+                BrandName = product.Brand.Name,
+                Thumbnail = product.Brand.AvatarLink,
+                Code = product.Brand.Code,
+            },
+            Category = new()
+            {
+                CategoryId = product.CategoryId,
+                CategoryName = product.Category.Name,
+                Thumbnail = product.Category.Icon,
+                Code = product.Category.Code,
+            },
+        };
     }
 
-    public async Task<IEnumerable<BrandDto>> GetAllBrands(int pageSize = 10, int pageIndex = 0)
+    public async Task<IEnumerable<GetListBrandsResponse>> GetAllBrands(int pageSize = 10, int pageIndex = 0)
     {
         var brands = await _unitOfWork.BrandRepository
             .Get(orderBy: queryable => (IOrderedQueryable<Brand>)queryable
@@ -87,10 +251,10 @@ public class CatalogService : ICatalogService
                 .Skip(pageIndex)
                 .Take(pageSize));
 
-        return brands.Adapt<IEnumerable<BrandDto>>();
+        return brands.Adapt<IEnumerable<GetListBrandsResponse>>();
     }
 
-    public async Task<ProductDto> SearchWithSemanticRelevance(string searchText)
+    public async Task<GetListProductResponse> SearchWithSemanticRelevance(string searchText)
     {
         throw new NotImplementedException();
     }
@@ -217,5 +381,59 @@ public class CatalogService : ICatalogService
         {
             return ServiceResult.Failed(ex.Message);
         }
+    }
+
+    public async Task<PaginationResponse<GetListProductResponse>> GetProductsByAdvanceFilter(
+        GetProductsByAdvanceFilterRequest advanceFilterRequest, int pageSize = 10,
+        int pageIndex = 0)
+    {
+        Expression<Func<Product, bool>> filter = p =>
+            p.Price >= advanceFilterRequest.MinPrice &&
+            p.Price <= advanceFilterRequest.MaxPrice &&
+            advanceFilterRequest.BrandIdList.Contains(p.BrandId);
+
+        var products = await _unitOfWork.ProductRepository
+            .Get(
+                filter: filter,
+                orderBy: queryable => (IOrderedQueryable<Product>)queryable
+                    .OrderBy(p => p.Id)
+                    .Skip(pageIndex)
+                    .Take(pageSize));
+
+        var productsDto = new List<GetListProductResponse>();
+
+
+        foreach (var product in products)
+        {
+            var rating = await _unitOfWork.RatingRepository
+                .Get(filter: r => r.ProductId == product.Id) ?? new List<Rating>();
+
+            var totalRating = rating.Count();
+
+            productsDto.Add(
+                new GetListProductResponse
+                {
+                    Id = product.Id,
+                    CategoryId = product.CategoryId,
+                    AvailableStock = product.AvailableStock,
+                    Price = product.Price,
+                    BrandId = product.BrandId,
+                    Discount = product.Discount,
+                    Name = product.Name,
+                    PictureLink = product.PictureFileName,
+                    TotalRating = totalRating,
+                    AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
+                });
+        }
+
+        var totalProducts = await _unitOfWork.ProductRepository.Count();
+
+        return new PaginationResponse<GetListProductResponse>
+        {
+            Total = totalProducts,
+            Data = productsDto,
+            PageIndex = pageIndex,
+            PageSize = pageSize
+        };
     }
 }

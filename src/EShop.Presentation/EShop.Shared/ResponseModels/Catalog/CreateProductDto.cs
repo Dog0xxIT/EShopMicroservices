@@ -5,18 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EShop.Application.Dto.Catalog
+namespace EShop.Shared.ResponseModels.Catalog
 {
-    public class UpdateProductDto
+    public class CreateProductDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
         public int CategoryId { get; set; }
         public int BrandId { get; set; }
         public int AvailableStock { get; set; }
         public int RestockThreshold { get; set; }
-        public int MaxStockThreshold { get; set; }
         public string Description { get; set; }
+        public int MaxStockThreshold { get; set; }
     }
 }

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EShop.Application.Dto;
-using EShop.Application.Dto.Order;
 using EShop.Application.Entities;
 using EShop.Application.Extensions;
 using EShop.Application.Services.Interfaces;
@@ -15,7 +13,8 @@ using Mapster;
 using Microsoft.Extensions.Logging;
 using OrderDomain = EShop.Domain.Aggregates.OrderAggregate.Order;
 using OrderItemDomain = EShop.Domain.Aggregates.OrderAggregate.OrderItem;
-using static EShop.Application.Dto.Order.CreateOrderDto;
+using static EShop.Shared.ResponseModels.Order.CreateOrderDto;
+using EShop.Shared.ResponseModels.Order;
 
 namespace EShop.Application.Services.ApplicationService
 {
