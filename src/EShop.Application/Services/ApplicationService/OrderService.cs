@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 using EShop.Application.Entities;
 using EShop.Application.Extensions;
 using EShop.Application.Services.Interfaces;
-using EShop.Domain.Aggregates.BuyerAggregate;
 using EShop.Domain.ValueObjects;
 using EShop.Domain.Enums;
 using Mapster;
 using Microsoft.Extensions.Logging;
 using OrderDomain = EShop.Domain.Aggregates.OrderAggregate.Order;
 using OrderItemDomain = EShop.Domain.Aggregates.OrderAggregate.OrderItem;
-using static EShop.Shared.ResponseModels.Order.CreateOrderDto;
 using EShop.Shared.ResponseModels.Order;
+using Address = EShop.Domain.ValueObjects.Address;
 
 namespace EShop.Application.Services.ApplicationService
 {
@@ -63,7 +62,7 @@ namespace EShop.Application.Services.ApplicationService
                     var product = await _unitOfWork.ProductRepository.GetById(orderItemDto.ProductId);
                     orderItemsDomain.Add(new OrderItemDomain(
                         0, orderItemDto.ProductId, product.Name,
-                        product.PictureFileName, product.Price, 0,
+                        product.ImageUrl, product.Price, 0,
                         orderItemDto.Units));
                 }
 
@@ -100,7 +99,7 @@ namespace EShop.Application.Services.ApplicationService
                     var product = await _unitOfWork.ProductRepository.GetById(orderItemDto.ProductId);
                     orderItemsDomain.Add(new OrderItemDomain(
                         0, orderItemDto.ProductId, product.Name,
-                        product.PictureFileName, product.Price, 0,
+                        product.ImageUrl, product.Price, 0,
                         orderItemDto.Units));
                 }
 

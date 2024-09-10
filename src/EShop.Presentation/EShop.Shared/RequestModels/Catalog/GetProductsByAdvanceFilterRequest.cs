@@ -11,5 +11,6 @@ namespace EShop.Shared.RequestModels.Catalog
         public double MinPrice { get; set; }
         public double MaxPrice { get; set; }
         public List<int> BrandIdList { get; set; }
+        public List<int> CategoryIdList { get; set; }
     }
 }

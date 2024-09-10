@@ -3,7 +3,9 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Web;
 using EShop.Shared.ResponseModels;
+using EShop.Shared.ResponseModels.Common;
 using Newtonsoft.Json;
+using ResultObject = EShop.Shared.ResponseModels.ResultObject;
 
 namespace EShop.WebApp.Core.CoreHttpClient;
 
@@ -93,45 +95,6 @@ public class CoreHttpClient : ICoreHttpClient
                 var resultData = await client.Content.ReadFromJsonAsync<ProblemDetailsResponse>();
                 _logger.LogWarning($"Status Code: {client.StatusCode}");
                 return new ResultObject<T>
-                {
-                    ResultCode = ResultCode.Failed,
-                    Messages = resultData!.Detail,
-                };
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError($"Exception: {ex}");
-        }
-
-        return default!;
-    }
-
-    public async Task<ResultObject> PostAsync(string clientName, string uri, object reqObj)
-    {
-        var json = JsonConvert.SerializeObject(reqObj);
-        var stringContent = new StringContent(json, Encoding.UTF8, mediaType: "application/json");
-        var httpClient = _clientFactory.CreateClient(clientName);
-
-        try
-        {
-            _logger.LogInformation($"Request Object: {json}");
-            var client = await httpClient.PostAsync(uri, stringContent);
-
-            if (client.IsSuccessStatusCode)
-            {
-                _logger.LogInformation($"Status Code: {client.StatusCode}");
-                return new ResultObject
-                {
-                    ResultCode = ResultCode.Success,
-                    Messages = "Success",
-                };
-            }
-            else
-            {
-                var resultData = await client.Content.ReadFromJsonAsync<ProblemDetailsResponse>();
-                _logger.LogWarning($"Status Code: {client.StatusCode}");
-                return new ResultObject
                 {
                     ResultCode = ResultCode.Failed,
                     Messages = resultData!.Detail,

@@ -1,31 +1,28 @@
 ﻿using EShop.Application.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace EShop.Application.Entities
 {
     public class Order : Entity
     {
-        public string? Street { get; set; }
-
-        public string? City { get; set; }
-
-        public string? State { get; set; }
-
-        public string? Country { get; set; }
-
-        public string? ZipCode { get; set; }
-
-        public string? Description { get; set; }
-
         public OrderStatus OrderStatus { get; set; }
+
+        public int AddressId { get; set; }
+
+        public double Amount { get; set; }
 
         public int BuyerId { get; set; }
 
-        public User Buyer { get; set; }
-
         public int? PaymentId { get; set; }
 
-        public Payment? Payment { get; set; }
+        [DeleteBehavior(DeleteBehavior.NoAction)]
+        public User Buyer { get; set; } = new();
 
-        public ICollection<OrderItem>? OrderItems { get; set; }
+        public Address Address { get; set; }
+
+        public Payment Payment { get; set; }
+
+        public ICollection<OrderItem> OrderItems { get; }
+
     }
 }

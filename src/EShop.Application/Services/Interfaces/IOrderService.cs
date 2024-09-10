@@ -1,6 +1,4 @@
-﻿using EShop.Application.Entities;
-using EShop.Application.Services.ApplicationService;
-using EShop.Domain.Aggregates.BuyerAggregate;
+﻿using EShop.Application.Services.ApplicationService;
 using EShop.Shared.ResponseModels.Order;
 
 namespace EShop.Application.Services.Interfaces

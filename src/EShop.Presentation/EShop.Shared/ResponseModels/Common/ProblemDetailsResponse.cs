@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EShop.Shared.ResponseModels
+namespace EShop.Shared.ResponseModels.Common
 {
     public sealed class ProblemDetailsResponse
     {

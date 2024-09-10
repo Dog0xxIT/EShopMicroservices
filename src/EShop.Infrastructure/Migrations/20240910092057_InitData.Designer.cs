@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EShop.Infrastructure.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    [Migration("20240906093351_UpdateSvgCategories")]
-    partial class UpdateSvgCategories
+    [Migration("20240910092057_InitData")]
+    partial class InitData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,62 @@ namespace EShop.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("EShop.Application.Entities.BasketItem", b =>
+            modelBuilder.Entity("EShop.Application.Entities.Address", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLine2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Created")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("LastModified")
+                        .HasColumnType("float");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Addresses");
+                });
+
+            modelBuilder.Entity("EShop.Application.Entities.Basket", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,17 +91,44 @@ namespace EShop.Infrastructure.Migrations
                     b.Property<double>("Created")
                         .HasColumnType("float");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<double>("LastModified")
                         .HasColumnType("float");
 
-                    b.Property<string>("PictureUrl")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Total")
+                        .HasColumnType("float");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Baskets");
+                });
+
+            modelBuilder.Entity("EShop.Application.Entities.BasketItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BasketId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Created")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("LastModified")
+                        .HasColumnType("float");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -59,7 +141,7 @@ namespace EShop.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("BasketId");
 
                     b.HasIndex("ProductId");
 
@@ -74,7 +156,7 @@ namespace EShop.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AvatarLink")
+                    b.Property<string>("AvatarUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -84,6 +166,10 @@ namespace EShop.Infrastructure.Migrations
 
                     b.Property<double>("Created")
                         .HasColumnType("float");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -103,9 +189,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "APPLE",
-                            Created = 1725615230.9485631,
+                            Created = 1725960056.2015641,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Apple"
@@ -113,9 +200,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "SAMSUNG",
-                            Created = 1725615230.9485636,
+                            Created = 1725960056.2015643,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Samsung"
@@ -123,9 +211,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "MICROSOFT",
-                            Created = 1725615230.9485636,
+                            Created = 1725960056.2015643,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Microsoft"
@@ -133,9 +222,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "GOOGLE",
-                            Created = 1725615230.9485638,
+                            Created = 1725960056.2015646,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Google"
@@ -143,9 +233,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 5,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "AMAZON",
-                            Created = 1725615230.9485641,
+                            Created = 1725960056.2015648,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Amazon"
@@ -153,9 +244,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 6,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "FACEBOOK",
-                            Created = 1725615230.9485641,
+                            Created = 1725960056.2015648,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Facebook"
@@ -163,9 +255,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 7,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "INTEL",
-                            Created = 1725615230.9485641,
+                            Created = 1725960056.2015648,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Intel"
@@ -173,9 +266,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 8,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "IBM",
-                            Created = 1725615230.9485643,
+                            Created = 1725960056.201565,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "IBM"
@@ -183,9 +277,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 9,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "SONY",
-                            Created = 1725615230.9485643,
+                            Created = 1725960056.2015653,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Sony"
@@ -193,9 +288,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 10,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "DELL",
-                            Created = 1725615230.9485643,
+                            Created = 1725960056.2015653,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Dell"
@@ -203,9 +299,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 11,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "HP",
-                            Created = 1725615230.9485643,
+                            Created = 1725960056.2015653,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "HP"
@@ -213,9 +310,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 12,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "LG",
-                            Created = 1725615230.9485645,
+                            Created = 1725960056.2015655,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "LG"
@@ -223,9 +321,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 13,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "HUAWEI",
-                            Created = 1725615230.9485648,
+                            Created = 1725960056.2015655,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Huawei"
@@ -233,9 +332,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 14,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "CISCO",
-                            Created = 1725615230.9485648,
+                            Created = 1725960056.2015655,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Cisco"
@@ -243,9 +343,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 15,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "ORACLE",
-                            Created = 1725615230.9485648,
+                            Created = 1725960056.2015655,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Oracle"
@@ -253,9 +354,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 16,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "NVIDIA",
-                            Created = 1725615230.948565,
+                            Created = 1725960056.2015657,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Nvidia"
@@ -263,9 +365,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 17,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "AMD",
-                            Created = 1725615230.9485652,
+                            Created = 1725960056.201566,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "AMD"
@@ -273,9 +376,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 18,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "LENOVO",
-                            Created = 1725615230.9485652,
+                            Created = 1725960056.201566,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Lenovo"
@@ -283,9 +387,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 19,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "ASUS",
-                            Created = 1725615230.9485652,
+                            Created = 1725960056.201566,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Asus"
@@ -293,9 +398,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 20,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "ACER",
-                            Created = 1725615230.9485655,
+                            Created = 1725960056.2015662,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Acer"
@@ -303,9 +409,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 21,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "NIKE",
-                            Created = 1725615230.9485714,
+                            Created = 1725960056.2015665,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Nike"
@@ -313,9 +420,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 22,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "ADIDAS",
-                            Created = 1725615230.9485717,
+                            Created = 1725960056.2015665,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Adidas"
@@ -323,9 +431,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 23,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "PUMA",
-                            Created = 1725615230.9485717,
+                            Created = 1725960056.2015665,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Puma"
@@ -333,9 +442,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 24,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "UA",
-                            Created = 1725615230.9485717,
+                            Created = 1725960056.2015667,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Under Armour"
@@ -343,9 +453,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 25,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "REEBOK",
-                            Created = 1725615230.9485717,
+                            Created = 1725960056.2015667,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Reebok"
@@ -353,9 +464,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 26,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "NB",
-                            Created = 1725615230.9485717,
+                            Created = 1725960056.2015667,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "New Balance"
@@ -363,9 +475,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 27,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "ASICS",
-                            Created = 1725615230.9485719,
+                            Created = 1725960056.2015667,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Asics"
@@ -373,9 +486,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 28,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "CONV",
-                            Created = 1725615230.9485719,
+                            Created = 1725960056.2015672,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Converse"
@@ -383,9 +497,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 29,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "VANS",
-                            Created = 1725615230.9485719,
+                            Created = 1725960056.2015672,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Vans"
@@ -393,9 +508,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 30,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "SKETCH",
-                            Created = 1725615230.9485722,
+                            Created = 1725960056.2015672,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Sketchers"
@@ -403,9 +519,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 31,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "FILA",
-                            Created = 1725615230.9485724,
+                            Created = 1725960056.2015674,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Fila"
@@ -413,9 +530,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 32,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "HM",
-                            Created = 1725615230.9485724,
+                            Created = 1725960056.2015676,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "H&M"
@@ -423,9 +541,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 33,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "ZARA",
-                            Created = 1725615230.9485724,
+                            Created = 1725960056.2015676,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Zara"
@@ -433,9 +552,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 34,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "UNIQLO",
-                            Created = 1725615230.9485724,
+                            Created = 1725960056.2015676,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Uniqlo"
@@ -443,9 +563,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 35,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "GUCCI",
-                            Created = 1725615230.9485726,
+                            Created = 1725960056.2015679,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Gucci"
@@ -453,9 +574,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 36,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "LV",
-                            Created = 1725615230.9485729,
+                            Created = 1725960056.2015679,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Louis Vuitton"
@@ -463,9 +585,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 37,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "PRADA",
-                            Created = 1725615230.9485729,
+                            Created = 1725960056.2015679,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Prada"
@@ -473,9 +596,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 38,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "CHANEL",
-                            Created = 1725615230.9485729,
+                            Created = 1725960056.2015679,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Chanel"
@@ -483,9 +607,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 39,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "HERMES",
-                            Created = 1725615230.9485731,
+                            Created = 1725960056.2015681,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Hermès"
@@ -493,9 +618,10 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 40,
-                            AvatarLink = "",
+                            AvatarUrl = "",
                             Code = "BURBERRY",
-                            Created = 1725615230.9485731,
+                            Created = 1725960056.2015684,
+                            Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Burberry"
@@ -516,6 +642,10 @@ namespace EShop.Infrastructure.Migrations
 
                     b.Property<double>("Created")
                         .HasColumnType("float");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Icon")
                         .IsRequired()
@@ -540,18 +670,20 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 1,
                             Code = "COMP",
-                            Created = 1725615230.9485557,
-                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n    <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 15v5m-3 0h6M4 11h16M5 15h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1Z\"></path>\r\n</svg>",
+                            Created = 1725960056.201556,
+                            Description = "",
+                            Icon = "<svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 15v5m-3 0h6M4 11h16M5 15h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1Z\"></path>\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            Name = "Computers & Office Supplies"
+                            Name = "Computers & Office"
                         },
                         new
                         {
                             Id = 2,
                             Code = "COLL",
-                            Created = 1725615230.9485564,
-                            Icon = " <svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M16.872 9.687 20 6.56 17.44 4 4 17.44 6.56 20 16.873 9.687Zm0 0-2.56-2.56M6 7v2m0 0v2m0-2H4m2 0h2m7 7v2m0 0v2m0-2h-2m2 0h2M8 4h.01v.01H8V4Zm2 2h.01v.01H10V6Zm2-2h.01v.01H12V4Zm8 8h.01v.01H20V12Zm-2 2h.01v.01H18V14Zm2 2h.01v.01H20V16Z\"></path>\r\n </svg>",
+                            Created = 1725960056.2015572,
+                            Description = "",
+                            Icon = "  <svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M16.872 9.687 20 6.56 17.44 4 4 17.44 6.56 20 16.873 9.687Zm0 0-2.56-2.56M6 7v2m0 0v2m0-2H4m2 0h2m7 7v2m0 0v2m0-2h-2m2 0h2M8 4h.01v.01H8V4Zm2 2h.01v.01H10V6Zm2-2h.01v.01H12V4Zm8 8h.01v.01H20V12Zm-2 2h.01v.01H18V14Zm2 2h.01v.01H20V16Z\"></path>\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Collectibles & Toys"
@@ -560,8 +692,9 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 3,
                             Code = "BOOK",
-                            Created = 1725615230.9485564,
-                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n      <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4\"></path>\r\n  </svg>",
+                            Created = 1725960056.2015574,
+                            Description = "",
+                            Icon = "<svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4\"></path>\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Books"
@@ -570,8 +703,9 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 4,
                             Code = "FASH",
-                            Created = 1725615230.9485567,
-                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z\"></path>\r\n </svg>",
+                            Created = 1725960056.2015576,
+                            Description = "",
+                            Icon = "<svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z\"></path>\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Fashion & Clothes"
@@ -580,8 +714,9 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 5,
                             Code = "ELEC",
-                            Created = 1725615230.9485569,
-                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"2\" d=\"M4.37 7.657c2.063.528 2.396 2.806 3.202 3.87 1.07 1.413 2.075 1.228 3.192 2.644 1.805 2.289 1.312 5.705 1.312 6.705M20 15h-1a4 4 0 0 0-4 4v1M8.587 3.992c0 .822.112 1.886 1.515 2.58 1.402.693 2.918.351 2.918 2.334 0 .276 0 2.008 1.972 2.008 2.026.031 2.026-1.678 2.026-2.008 0-.65.527-.9 1.177-.9H20M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z\"></path>\r\n </svg>",
+                            Created = 1725960056.2015576,
+                            Description = "",
+                            Icon = "<svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 9a3 3 0 0 1 3-3m-2 15h4m0-3c0-4.1 4-4.9 4-9A6 6 0 1 0 6 9c0 4 4 5 4 9h4Z\"></path>\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Electronics"
@@ -590,8 +725,9 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 6,
                             Code = "FOOD",
-                            Created = 1725615230.9485569,
-                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 7h.01m3.486 1.513h.01m-6.978 0h.01M6.99 12H7m9 4h2.706a1.957 1.957 0 0 0 1.883-1.325A9 9 0 1 0 3.043 12.89 9.1 9.1 0 0 0 8.2 20.1a8.62 8.62 0 0 0 3.769.9 2.013 2.013 0 0 0 2.03-2v-.857A2.036 2.036 0 0 1 16 16Z\"></path>\r\n </svg>",
+                            Created = 1725960056.2015579,
+                            Description = "",
+                            Icon = "<svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M6 12c.263 0 .524-.06.767-.175a2 2 0 0 0 .65-.491c.186-.21.333-.46.433-.734.1-.274.15-.568.15-.864a2.4 2.4 0 0 0 .586 1.591c.375.422.884.659 1.414.659.53 0 1.04-.237 1.414-.659A2.4 2.4 0 0 0 12 9.736a2.4 2.4 0 0 0 .586 1.591c.375.422.884.659 1.414.659.53 0 1.04-.237 1.414-.659A2.4 2.4 0 0 0 16 9.736c0 .295.052.588.152.861s.248.521.434.73a2 2 0 0 0 .649.488 1.809 1.809 0 0 0 1.53 0 2.03 2.03 0 0 0 .65-.488c.185-.209.332-.457.433-.73.1-.273.152-.566.152-.861 0-.974-1.108-3.85-1.618-5.121A.983.983 0 0 0 17.466 4H6.456a.986.986 0 0 0-.93.645C5.045 5.962 4 8.905 4 9.736c.023.59.241 1.148.611 1.567.37.418.865.667 1.389.697Zm0 0c.328 0 .651-.091.94-.266A2.1 2.1 0 0 0 7.66 11h.681a2.1 2.1 0 0 0 .718.734c.29.175.613.266.942.266.328 0 .651-.091.94-.266.29-.174.537-.427.719-.734h.681a2.1 2.1 0 0 0 .719.734c.289.175.612.266.94.266.329 0 .652-.091.942-.266.29-.174.536-.427.718-.734h.681c.183.307.43.56.719.734.29.174.613.266.941.266a1.819 1.819 0 0 0 1.06-.351M6 12a1.766 1.766 0 0 1-1.163-.476M5 12v7a1 1 0 0 0 1 1h2v-5h3v5h7a1 1 0 0 0 1-1v-7m-5 3v2h2v-2h-2Z\"></path>\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Food & Groceries"
@@ -600,7 +736,8 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 7,
                             Code = "MUSC",
-                            Created = 1725615230.9485569,
+                            Created = 1725960056.2015581,
+                            Description = "",
                             Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n       <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 9a3 3 0 0 1 3-3m-2 15h4m0-3c0-4.1 4-4.9 4-9A6 6 0 1 0 6 9c0 4 4 5 4 9h4Z\"></path>\r\n   </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -610,7 +747,8 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 8,
                             Code = "TVPJ",
-                            Created = 1725615230.9485569,
+                            Created = 1725960056.2015581,
+                            Description = "",
                             Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n    <path stroke=\"currentColor\"\r\n          stroke-linecap=\"round\"\r\n          stroke-linejoin=\"round\"\r\n          stroke-width=\"2\"\r\n          d=\"M6 12c.263 0 .524-.06.767-.175a2 2 0 0 0 .65-.491c.186-.21.333-.46.433-.734.1-.274.15-.568.15-.864a2.4 2.4 0 0 0 .586 1.591c.375.422.884.659 1.414.659.53 0 1.04-.237 1.414-.659A2.4 2.4 0 0 0 12 9.736a2.4 2.4 0 0 0 .586 1.591c.375.422.884.659 1.414.659.53 0 1.04-.237 1.414-.659A2.4 2.4 0 0 0 16 9.736c0 .295.052.588.152.861s.248.521.434.73a2 2 0 0 0 .649.488 1.809 1.809 0 0 0 1.53 0 2.03 2.03 0 0 0 .65-.488c.185-.209.332-.457.433-.73.1-.273.152-.566.152-.861 0-.974-1.108-3.85-1.618-5.121A.983.983 0 0 0 17.466 4H6.456a.986.986 0 0 0-.93.645C5.045 5.962 4 8.905 4 9.736c.023.59.241 1.148.611 1.567.37.418.865.667 1.389.697Zm0 0c.328 0 .651-.091.94-.266A2.1 2.1 0 0 0 7.66 11h.681a2.1 2.1 0 0 0 .718.734c.29.175.613.266.942.266.328 0 .651-.091.94-.266.29-.174.537-.427.719-.734h.681a2.1 2.1 0 0 0 .719.734c.289.175.612.266.94.266.329 0 .652-.091.942-.266.29-.174.536-.427.718-.734h.681c.183.307.43.56.719.734.29.174.613.266.941.266a1.819 1.819 0 0 0 1.06-.351M6 12a1.766 1.766 0 0 1-1.163-.476M5 12v7a1 1 0 0 0 1 1h2v-5h3v5h7a1 1 0 0 0 1-1v-7m-5 3v2h2v-2h-2Z\"></path>\r\n</svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -620,7 +758,8 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 9,
                             Code = "HEAL",
-                            Created = 1725615230.9485571,
+                            Created = 1725960056.2015581,
+                            Description = "",
                             Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n      <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 16H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v1M9 12H4m8 8V9h8v11h-8Zm0 0H9m8-4a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z\"></path>\r\n  </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -630,7 +769,8 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 10,
                             Code = "HAIR",
-                            Created = 1725615230.9485571,
+                            Created = 1725960056.2015581,
+                            Description = "",
                             Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15.041 13.862A4.999 4.999 0 0 1 17 17.831V21M7 3v3.169a5 5 0 0 0 1.891 3.916M17 3v3.169a5 5 0 0 1-2.428 4.288l-5.144 3.086A5 5 0 0 0 7 17.831V21M7 5h10M7.399 8h9.252M8 16h8.652M7 19h10\"></path>\r\n </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -640,7 +780,8 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 11,
                             Code = "GAMC",
-                            Created = 1725615230.9485571,
+                            Created = 1725960056.2015584,
+                            Description = "",
                             Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5\"></path>\r\n </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -650,7 +791,8 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 12,
                             Code = "CAR",
-                            Created = 1725615230.9485574,
+                            Created = 1725960056.2015584,
+                            Description = "",
                             Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M14.079 6.839a3 3 0 0 0-4.255.1M13 20h1.083A3.916 3.916 0 0 0 18 16.083V9A6 6 0 1 0 6 9v7m7 4v-1a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1Zm-7-4v-6H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h1Zm12-6h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1v-6Z\" />\r\n </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -660,7 +802,8 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 13,
                             Code = "PHOT",
-                            Created = 1725615230.9485576,
+                            Created = 1725960056.2015586,
+                            Description = "",
                             Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z\"></path>\r\n </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -670,7 +813,8 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 14,
                             Code = "SEC",
-                            Created = 1725615230.9485576,
+                            Created = 1725960056.2015588,
+                            Description = "",
                             Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n      <path stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 18V8a1 1 0 0 1 1-1h1.5l1.707-1.707A1 1 0 0 1 8.914 5h6.172a1 1 0 0 1 .707.293L17.5 7H19a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z\"></path>\r\n      <path stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z\"></path>\r\n  </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -680,7 +824,8 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 15,
                             Code = "PERI",
-                            Created = 1725615230.9485576,
+                            Created = 1725960056.2015588,
+                            Description = "",
                             Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\"\r\n           stroke-linecap=\"round\"\r\n           stroke-linejoin=\"round\"\r\n           stroke-width=\"2\"\r\n           d=\"M21 12a28.076 28.076 0 0 1-1.091 9M7.231 4.37a8.994 8.994 0 0 1 12.88 3.73M2.958 15S3 14.577 3 12a8.949 8.949 0 0 1 1.735-5.307m12.84 3.088A5.98 5.98 0 0 1 18 12a30 30 0 0 1-.464 6.232M6 12a6 6 0 0 1 9.352-4.974M4 21a5.964 5.964 0 0 1 1.01-3.328 5.15 5.15 0 0 0 .786-1.926m8.66 2.486a13.96 13.96 0 0 1-.962 2.683M7.5 19.336C9 17.092 9 14.845 9 12a3 3 0 1 1 6 0c0 .749 0 1.521-.031 2.311M12 12c0 3 0 6-2 9\" />\r\n </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -690,8 +835,9 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 16,
                             Code = "PHON",
-                            Created = 1725615230.9485579,
-                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linecap=\"square\" stroke-width=\"2\" d=\"M8 15h7.01v.01H15L8 15Z\" />\r\n     <path stroke=\"currentColor\" stroke-linecap=\"square\" stroke-width=\"2\" d=\"M20 6H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Z\" />\r\n     <path stroke=\"currentColor\" stroke-linecap=\"square\" stroke-width=\"2\" d=\"M6 9h.01v.01H6V9Zm0 3h.01v.01H6V12Zm0 3h.01v.01H6V15Zm3-6h.01v.01H9V9Zm0 3h.01v.01H9V12Zm3-3h.01v.01H12V9Zm0 3h.01v.01H12V12Zm3 0h.01v.01H15V12Zm3 0h.01v.01H18V12Zm0 3h.01v.01H18V15Zm-3-6h.01v.01H15V9Zm3 0h.01v.01H18V9Z\" />\r\n </svg>",
+                            Created = 1725960056.2015588,
+                            Description = "",
+                            Icon = " <svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z\" />\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Phone Accessories"
@@ -700,7 +846,8 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 17,
                             Code = "WATCH",
-                            Created = 1725615230.9485581,
+                            Created = 1725960056.2015591,
+                            Description = "",
                             Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n      <path stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5Zm16 14a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2ZM4 13a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6Zm16-2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6Z\" />\r\n  </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -710,8 +857,9 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 18,
                             Code = "PRNT",
-                            Created = 1725615230.9485581,
-                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z\" />\r\n </svg>",
+                            Created = 1725960056.2015593,
+                            Description = "",
+                            Icon = "<svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M16.444 18H19a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h2.556M17 11V5a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6h10ZM7 15h10v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-4Z\" />\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Printers"
@@ -720,8 +868,9 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 19,
                             Code = "PROJ",
-                            Created = 1725615230.9485581,
-                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M16.444 18H19a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h2.556M17 11V5a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6h10ZM7 15h10v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-4Z\" />\r\n </svg>",
+                            Created = 1725960056.2015593,
+                            Description = "",
+                            Icon = "<svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M19 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1Zm0 0-4 4m5 0H4m1 0 4-4m1 4 4-4m-4 7v6l4-3-4-3Z\" />\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Projectors"
@@ -730,8 +879,9 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 20,
                             Code = "SKIN",
-                            Created = 1725615230.9485581,
-                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n      <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M19 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1Zm0 0-4 4m5 0H4m1 0 4-4m1 4 4-4m-4 7v6l4-3-4-3Z\" />\r\n  </svg>",
+                            Created = 1725960056.2015593,
+                            Description = "",
+                            Icon = "  <svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z\" />\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Skin Care Products"
@@ -740,21 +890,45 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 21,
                             Code = "PHOT",
-                            Created = 1725615230.9485581,
-                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n     <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z\" />\r\n </svg>",
+                            Created = 1725960056.2015595,
+                            Description = "",
+                            Icon = "<svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 18V8a1 1 0 0 1 1-1h1.5l1.707-1.707A1 1 0 0 1 8.914 5h6.172a1 1 0 0 1 .707.293L17.5 7H19a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z\"></path>\r\n          <path stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z\"></path>\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            Name = "Photo & Video Equipment"
+                            Name = "Photo & Video"
                         },
                         new
                         {
                             Id = 22,
                             Code = "OFFS",
-                            Created = 1725615230.9485583,
-                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n    <path stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M10 12v1h4v-1m4 7H6a1 1 0 0 1-1-1V9h14v9a1 1 0 0 1-1 1ZM4 5h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z\" />\r\n</svg>>",
+                            Created = 1725960056.2015595,
+                            Description = "",
+                            Icon = "  <svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M10 12v1h4v-1m4 7H6a1 1 0 0 1-1-1V9h14v9a1 1 0 0 1-1 1ZM4 5h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z\" />\r\n        </svg>",
                             IsDeleted = false,
                             LastModified = 0.0,
                             Name = "Office Supplies"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Code = "S&O",
+                            Created = 1725960056.2015595,
+                            Description = "",
+                            Icon = "<svg class=\"me-2 h-4 w-4 text-gray-900 shrink-0 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n    <path stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M10 12v1h4v-1m4 7H6a1 1 0 0 1-1-1V9h14v9a1 1 0 0 1-1 1ZM4 5h16a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z\" />\r\n</svg>",
+                            IsDeleted = false,
+                            LastModified = 0.0,
+                            Name = "Sports & Outdoors"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Code = "P&H",
+                            Created = 1725960056.2015598,
+                            Description = "",
+                            Icon = "<svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 7h.01m3.486 1.513h.01m-6.978 0h.01M6.99 12H7m9 4h2.706a1.957 1.957 0 0 0 1.883-1.325A9 9 0 1 0 3.043 12.89 9.1 9.1 0 0 0 8.2 20.1a8.62 8.62 0 0 0 3.769.9 2.013 2.013 0 0 0 2.03-2v-.857A2.036 2.036 0 0 1 16 16Z\"></path>\r\n        </svg>",
+                            IsDeleted = false,
+                            LastModified = 0.0,
+                            Name = "Painting & Hobby"
                         });
                 });
 
@@ -766,20 +940,17 @@ namespace EShop.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AddressId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
                     b.Property<int>("BuyerId")
                         .HasColumnType("int");
 
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("Created")
                         .HasColumnType("float");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -793,16 +964,9 @@ namespace EShop.Infrastructure.Migrations
                     b.Property<int?>("PaymentId")
                         .HasColumnType("int");
 
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Street")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
 
                     b.HasIndex("BuyerId");
 
@@ -916,9 +1080,6 @@ namespace EShop.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AvailableStock")
-                        .HasColumnType("int");
-
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
@@ -929,10 +1090,15 @@ namespace EShop.Infrastructure.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Discount")
                         .HasColumnType("float");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -940,21 +1106,24 @@ namespace EShop.Infrastructure.Migrations
                     b.Property<double>("LastModified")
                         .HasColumnType("float");
 
-                    b.Property<int>("MaxStockThreshold")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PictureFileName")
+                    b.Property<string>("OtherAttributes")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("RestockThreshold")
-                        .HasColumnType("int");
+                    b.Property<string>("Sku")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Summary")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -968,6802 +1137,6802 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            AvailableStock = 77,
                             BrandId = 2,
                             CategoryId = 2,
-                            Created = 1725615230.948576,
+                            Created = 1725960056.2015719,
                             Description = "Description for product 1",
                             Discount = 0.0,
+                            ImageUrl = "product1.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 54,
                             Name = "Product 1",
-                            PictureFileName = "product1.jpg",
-                            Price = 746.73000000000002,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 583.78999999999996,
+                            Sku = "sku-1",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 2,
-                            AvailableStock = 68,
                             BrandId = 3,
                             CategoryId = 3,
-                            Created = 1725615230.9485841,
+                            Created = 1725960056.201582,
                             Description = "Description for product 2",
                             Discount = 0.0,
+                            ImageUrl = "product2.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 51,
                             Name = "Product 2",
-                            PictureFileName = "product2.jpg",
-                            Price = 347.47000000000003,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 898.41999999999996,
+                            Sku = "sku-2",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 3,
-                            AvailableStock = 8,
                             BrandId = 4,
                             CategoryId = 4,
-                            Created = 1725615230.9485846,
+                            Created = 1725960056.2015824,
                             Description = "Description for product 3",
                             Discount = 0.0,
+                            ImageUrl = "product3.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 85,
                             Name = "Product 3",
-                            PictureFileName = "product3.jpg",
-                            Price = 151.21000000000001,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 344.69999999999999,
+                            Sku = "sku-3",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 4,
-                            AvailableStock = 8,
                             BrandId = 5,
                             CategoryId = 5,
-                            Created = 1725615230.9485853,
+                            Created = 1725960056.2015829,
                             Description = "Description for product 4",
                             Discount = 0.0,
+                            ImageUrl = "product4.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 169,
                             Name = "Product 4",
-                            PictureFileName = "product4.jpg",
-                            Price = 484.37,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 468.72000000000003,
+                            Sku = "sku-4",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 5,
-                            AvailableStock = 72,
                             BrandId = 6,
                             CategoryId = 6,
-                            Created = 1725615230.948586,
+                            Created = 1725960056.2015831,
                             Description = "Description for product 5",
                             Discount = 0.0,
+                            ImageUrl = "product5.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 149,
                             Name = "Product 5",
-                            PictureFileName = "product5.jpg",
-                            Price = 871.44000000000005,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 285.14999999999998,
+                            Sku = "sku-5",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 6,
-                            AvailableStock = 46,
                             BrandId = 7,
                             CategoryId = 7,
-                            Created = 1725615230.9485867,
+                            Created = 1725960056.2015841,
                             Description = "Description for product 6",
                             Discount = 0.0,
+                            ImageUrl = "product6.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 33,
                             Name = "Product 6",
-                            PictureFileName = "product6.jpg",
-                            Price = 683.01999999999998,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 223.81999999999999,
+                            Sku = "sku-6",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 7,
-                            AvailableStock = 54,
                             BrandId = 8,
                             CategoryId = 8,
-                            Created = 1725615230.9485872,
+                            Created = 1725960056.2015843,
                             Description = "Description for product 7",
                             Discount = 0.0,
+                            ImageUrl = "product7.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 83,
                             Name = "Product 7",
-                            PictureFileName = "product7.jpg",
-                            Price = 412.06,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 889.41999999999996,
+                            Sku = "sku-7",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 8,
-                            AvailableStock = 86,
                             BrandId = 9,
                             CategoryId = 9,
-                            Created = 1725615230.9485879,
+                            Created = 1725960056.2015848,
                             Description = "Description for product 8",
                             Discount = 0.0,
+                            ImageUrl = "product8.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 92,
                             Name = "Product 8",
-                            PictureFileName = "product8.jpg",
-                            Price = 945.19000000000005,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 497.0,
+                            Sku = "sku-8",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 9,
-                            AvailableStock = 49,
                             BrandId = 10,
                             CategoryId = 10,
-                            Created = 1725615230.9485884,
+                            Created = 1725960056.2015853,
                             Description = "Description for product 9",
                             Discount = 0.0,
+                            ImageUrl = "product9.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 173,
                             Name = "Product 9",
-                            PictureFileName = "product9.jpg",
-                            Price = 603.01999999999998,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 258.94999999999999,
+                            Sku = "sku-9",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 10,
-                            AvailableStock = 58,
                             BrandId = 11,
                             CategoryId = 11,
-                            Created = 1725615230.9485891,
+                            Created = 1725960056.2015855,
                             Description = "Description for product 10",
                             Discount = 0.0,
+                            ImageUrl = "product10.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 37,
                             Name = "Product 10",
-                            PictureFileName = "product10.jpg",
-                            Price = 520.88999999999999,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 592.69000000000005,
+                            Sku = "sku-10",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 11,
-                            AvailableStock = 67,
                             BrandId = 12,
                             CategoryId = 12,
-                            Created = 1725615230.948596,
+                            Created = 1725960056.2015862,
                             Description = "Description for product 11",
                             Discount = 0.0,
+                            ImageUrl = "product11.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 50,
                             Name = "Product 11",
-                            PictureFileName = "product11.jpg",
-                            Price = 565.63999999999999,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 294.36000000000001,
+                            Sku = "sku-11",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 12,
-                            AvailableStock = 19,
                             BrandId = 13,
                             CategoryId = 13,
-                            Created = 1725615230.9485965,
+                            Created = 1725960056.2015865,
                             Description = "Description for product 12",
                             Discount = 0.0,
+                            ImageUrl = "product12.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 136,
                             Name = "Product 12",
-                            PictureFileName = "product12.jpg",
-                            Price = 229.15000000000001,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 362.54000000000002,
+                            Sku = "sku-12",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 13,
-                            AvailableStock = 95,
                             BrandId = 14,
                             CategoryId = 14,
-                            Created = 1725615230.9485972,
+                            Created = 1725960056.2015867,
                             Description = "Description for product 13",
                             Discount = 0.0,
+                            ImageUrl = "product13.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 191,
                             Name = "Product 13",
-                            PictureFileName = "product13.jpg",
-                            Price = 354.27999999999997,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 662.73000000000002,
+                            Sku = "sku-13",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 14,
-                            AvailableStock = 68,
                             BrandId = 15,
                             CategoryId = 15,
-                            Created = 1725615230.9485977,
+                            Created = 1725960056.2015874,
                             Description = "Description for product 14",
                             Discount = 0.0,
+                            ImageUrl = "product14.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 36,
                             Name = "Product 14",
-                            PictureFileName = "product14.jpg",
-                            Price = 283.18000000000001,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 282.91000000000003,
+                            Sku = "sku-14",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 15,
-                            AvailableStock = 82,
                             BrandId = 16,
                             CategoryId = 16,
-                            Created = 1725615230.9485984,
+                            Created = 1725960056.2015879,
                             Description = "Description for product 15",
                             Discount = 0.0,
+                            ImageUrl = "product15.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 158,
                             Name = "Product 15",
-                            PictureFileName = "product15.jpg",
-                            Price = 564.76999999999998,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 755.76999999999998,
+                            Sku = "sku-15",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 16,
-                            AvailableStock = 97,
                             BrandId = 17,
                             CategoryId = 17,
-                            Created = 1725615230.9485991,
+                            Created = 1725960056.2015882,
                             Description = "Description for product 16",
                             Discount = 0.0,
+                            ImageUrl = "product16.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 155,
                             Name = "Product 16",
-                            PictureFileName = "product16.jpg",
-                            Price = 812.15999999999997,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 863.91999999999996,
+                            Sku = "sku-16",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 17,
-                            AvailableStock = 75,
                             BrandId = 18,
                             CategoryId = 18,
-                            Created = 1725615230.9485996,
+                            Created = 1725960056.2015886,
                             Description = "Description for product 17",
                             Discount = 0.0,
+                            ImageUrl = "product17.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 195,
                             Name = "Product 17",
-                            PictureFileName = "product17.jpg",
-                            Price = 177.90000000000001,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 644.29999999999995,
+                            Sku = "sku-17",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 18,
-                            AvailableStock = 58,
                             BrandId = 19,
                             CategoryId = 19,
-                            Created = 1725615230.9486003,
+                            Created = 1725960056.2015891,
                             Description = "Description for product 18",
                             Discount = 0.0,
+                            ImageUrl = "product18.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 82,
                             Name = "Product 18",
-                            PictureFileName = "product18.jpg",
-                            Price = 736.78999999999996,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 871.05999999999995,
+                            Sku = "sku-18",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 19,
-                            AvailableStock = 51,
                             BrandId = 20,
                             CategoryId = 20,
-                            Created = 1725615230.9486012,
+                            Created = 1725960056.2015896,
                             Description = "Description for product 19",
                             Discount = 0.0,
+                            ImageUrl = "product19.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 152,
                             Name = "Product 19",
-                            PictureFileName = "product19.jpg",
-                            Price = 113.13,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 7.96,
+                            Sku = "sku-19",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 20,
-                            AvailableStock = 46,
                             BrandId = 21,
                             CategoryId = 1,
-                            Created = 1725615230.9486015,
+                            Created = 1725960056.2015913,
                             Description = "Description for product 20",
                             Discount = 0.0,
+                            ImageUrl = "product20.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 159,
                             Name = "Product 20",
-                            PictureFileName = "product20.jpg",
-                            Price = 233.87,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 582.38999999999999,
+                            Sku = "sku-20",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 21,
-                            AvailableStock = 74,
                             BrandId = 22,
                             CategoryId = 2,
-                            Created = 1725615230.9486024,
+                            Created = 1725960056.2015915,
                             Description = "Description for product 21",
                             Discount = 0.0,
+                            ImageUrl = "product21.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 198,
                             Name = "Product 21",
-                            PictureFileName = "product21.jpg",
-                            Price = 562.52999999999997,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 164.46000000000001,
+                            Sku = "sku-21",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 22,
-                            AvailableStock = 33,
                             BrandId = 23,
                             CategoryId = 3,
-                            Created = 1725615230.9486029,
+                            Created = 1725960056.2015922,
                             Description = "Description for product 22",
                             Discount = 0.0,
+                            ImageUrl = "product22.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 56,
                             Name = "Product 22",
-                            PictureFileName = "product22.jpg",
-                            Price = 198.27000000000001,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 1.6399999999999999,
+                            Sku = "sku-22",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 23,
-                            AvailableStock = 18,
                             BrandId = 24,
                             CategoryId = 4,
-                            Created = 1725615230.9486036,
+                            Created = 1725960056.2015924,
                             Description = "Description for product 23",
                             Discount = 0.0,
+                            ImageUrl = "product23.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 34,
                             Name = "Product 23",
-                            PictureFileName = "product23.jpg",
-                            Price = 338.54000000000002,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 240.97999999999999,
+                            Sku = "sku-23",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 24,
-                            AvailableStock = 44,
                             BrandId = 25,
                             CategoryId = 5,
-                            Created = 1725615230.9486077,
+                            Created = 1725960056.2015927,
                             Description = "Description for product 24",
                             Discount = 0.0,
+                            ImageUrl = "product24.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 112,
                             Name = "Product 24",
-                            PictureFileName = "product24.jpg",
-                            Price = 539.85000000000002,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 892.91999999999996,
+                            Sku = "sku-24",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 25,
-                            AvailableStock = 99,
                             BrandId = 26,
                             CategoryId = 6,
-                            Created = 1725615230.9486084,
+                            Created = 1725960056.2015932,
                             Description = "Description for product 25",
                             Discount = 0.0,
+                            ImageUrl = "product25.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 63,
                             Name = "Product 25",
-                            PictureFileName = "product25.jpg",
-                            Price = 0.20000000000000001,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 619.41999999999996,
+                            Sku = "sku-25",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 26,
-                            AvailableStock = 86,
                             BrandId = 27,
                             CategoryId = 7,
-                            Created = 1725615230.9486089,
+                            Created = 1725960056.2015939,
                             Description = "Description for product 26",
                             Discount = 0.0,
+                            ImageUrl = "product26.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 115,
                             Name = "Product 26",
-                            PictureFileName = "product26.jpg",
-                            Price = 752.79999999999995,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 495.60000000000002,
+                            Sku = "sku-26",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 27,
-                            AvailableStock = 74,
                             BrandId = 28,
                             CategoryId = 8,
-                            Created = 1725615230.9486096,
+                            Created = 1725960056.2015941,
                             Description = "Description for product 27",
                             Discount = 0.0,
+                            ImageUrl = "product27.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 155,
                             Name = "Product 27",
-                            PictureFileName = "product27.jpg",
-                            Price = 587.97000000000003,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 963.66999999999996,
+                            Sku = "sku-27",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 28,
-                            AvailableStock = 93,
                             BrandId = 29,
                             CategoryId = 9,
-                            Created = 1725615230.9486103,
+                            Created = 1725960056.2015944,
                             Description = "Description for product 28",
                             Discount = 0.0,
+                            ImageUrl = "product28.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 145,
                             Name = "Product 28",
-                            PictureFileName = "product28.jpg",
-                            Price = 873.80999999999995,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 852.53999999999996,
+                            Sku = "sku-28",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 29,
-                            AvailableStock = 32,
                             BrandId = 30,
                             CategoryId = 10,
-                            Created = 1725615230.9486108,
+                            Created = 1725960056.2015948,
                             Description = "Description for product 29",
                             Discount = 0.0,
+                            ImageUrl = "product29.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 123,
                             Name = "Product 29",
-                            PictureFileName = "product29.jpg",
-                            Price = 968.66999999999996,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 48.149999999999999,
+                            Sku = "sku-29",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 30,
-                            AvailableStock = 11,
                             BrandId = 31,
                             CategoryId = 11,
-                            Created = 1725615230.9486115,
+                            Created = 1725960056.2015953,
                             Description = "Description for product 30",
                             Discount = 0.0,
+                            ImageUrl = "product30.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 191,
                             Name = "Product 30",
-                            PictureFileName = "product30.jpg",
-                            Price = 202.40000000000001,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 654.35000000000002,
+                            Sku = "sku-30",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 31,
-                            AvailableStock = 90,
                             BrandId = 32,
                             CategoryId = 12,
-                            Created = 1725615230.9486122,
+                            Created = 1725960056.2015955,
                             Description = "Description for product 31",
                             Discount = 0.0,
+                            ImageUrl = "product31.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 86,
                             Name = "Product 31",
-                            PictureFileName = "product31.jpg",
-                            Price = 510.44999999999999,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 863.85000000000002,
+                            Sku = "sku-31",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 32,
-                            AvailableStock = 16,
                             BrandId = 33,
                             CategoryId = 13,
-                            Created = 1725615230.9486127,
+                            Created = 1725960056.201596,
                             Description = "Description for product 32",
                             Discount = 0.0,
+                            ImageUrl = "product32.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 119,
                             Name = "Product 32",
-                            PictureFileName = "product32.jpg",
-                            Price = 335.44999999999999,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 142.5,
+                            Sku = "sku-32",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 33,
-                            AvailableStock = 75,
                             BrandId = 34,
                             CategoryId = 14,
-                            Created = 1725615230.9486132,
+                            Created = 1725960056.2015965,
                             Description = "Description for product 33",
                             Discount = 0.0,
+                            ImageUrl = "product33.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 51,
                             Name = "Product 33",
-                            PictureFileName = "product33.jpg",
-                            Price = 237.96000000000001,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 963.54999999999995,
+                            Sku = "sku-33",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 34,
-                            AvailableStock = 78,
                             BrandId = 35,
                             CategoryId = 15,
-                            Created = 1725615230.9486139,
+                            Created = 1725960056.2015967,
                             Description = "Description for product 34",
                             Discount = 0.0,
+                            ImageUrl = "product34.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 144,
                             Name = "Product 34",
-                            PictureFileName = "product34.jpg",
-                            Price = 949.77999999999997,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 380.56,
+                            Sku = "sku-34",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 35,
-                            AvailableStock = 62,
                             BrandId = 36,
                             CategoryId = 16,
-                            Created = 1725615230.9486146,
+                            Created = 1725960056.2015972,
                             Description = "Description for product 35",
                             Discount = 0.0,
+                            ImageUrl = "product35.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 141,
                             Name = "Product 35",
-                            PictureFileName = "product35.jpg",
-                            Price = 504.95999999999998,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 240.68000000000001,
+                            Sku = "sku-35",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 36,
-                            AvailableStock = 93,
                             BrandId = 37,
                             CategoryId = 17,
-                            Created = 1725615230.9486153,
+                            Created = 1725960056.2015977,
                             Description = "Description for product 36",
                             Discount = 0.0,
+                            ImageUrl = "product36.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 140,
                             Name = "Product 36",
-                            PictureFileName = "product36.jpg",
-                            Price = 792.71000000000004,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 150.96000000000001,
+                            Sku = "sku-36",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 37,
-                            AvailableStock = 65,
                             BrandId = 38,
                             CategoryId = 18,
-                            Created = 1725615230.9486227,
+                            Created = 1725960056.2015979,
                             Description = "Description for product 37",
                             Discount = 0.0,
+                            ImageUrl = "product37.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 37,
                             Name = "Product 37",
-                            PictureFileName = "product37.jpg",
-                            Price = 873.21000000000004,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 675.59000000000003,
+                            Sku = "sku-37",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 38,
-                            AvailableStock = 75,
                             BrandId = 39,
                             CategoryId = 19,
-                            Created = 1725615230.9486237,
+                            Created = 1725960056.2016022,
                             Description = "Description for product 38",
                             Discount = 0.0,
+                            ImageUrl = "product38.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 160,
                             Name = "Product 38",
-                            PictureFileName = "product38.jpg",
-                            Price = 659.07000000000005,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 304.69999999999999,
+                            Sku = "sku-38",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 39,
-                            AvailableStock = 82,
                             BrandId = 40,
                             CategoryId = 20,
-                            Created = 1725615230.9486239,
+                            Created = 1725960056.2016027,
                             Description = "Description for product 39",
                             Discount = 0.0,
+                            ImageUrl = "product39.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 183,
                             Name = "Product 39",
-                            PictureFileName = "product39.jpg",
-                            Price = 364.00999999999999,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 546.50999999999999,
+                            Sku = "sku-39",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 40,
-                            AvailableStock = 68,
                             BrandId = 1,
                             CategoryId = 1,
-                            Created = 1725615230.9486248,
+                            Created = 1725960056.2016029,
                             Description = "Description for product 40",
                             Discount = 0.0,
+                            ImageUrl = "product40.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 116,
                             Name = "Product 40",
-                            PictureFileName = "product40.jpg",
-                            Price = 728.91999999999996,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 179.5,
+                            Sku = "sku-40",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 41,
-                            AvailableStock = 89,
                             BrandId = 2,
                             CategoryId = 2,
-                            Created = 1725615230.9486251,
+                            Created = 1725960056.2016034,
                             Description = "Description for product 41",
                             Discount = 0.0,
+                            ImageUrl = "product41.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 80,
                             Name = "Product 41",
-                            PictureFileName = "product41.jpg",
-                            Price = 94.980000000000004,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 898.02999999999997,
+                            Sku = "sku-41",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 42,
-                            AvailableStock = 45,
                             BrandId = 3,
                             CategoryId = 3,
-                            Created = 1725615230.948626,
+                            Created = 1725960056.2016039,
                             Description = "Description for product 42",
                             Discount = 0.0,
+                            ImageUrl = "product42.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 106,
                             Name = "Product 42",
-                            PictureFileName = "product42.jpg",
-                            Price = 721.72000000000003,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 749.33000000000004,
+                            Sku = "sku-42",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 43,
-                            AvailableStock = 60,
                             BrandId = 4,
                             CategoryId = 4,
-                            Created = 1725615230.9486265,
+                            Created = 1725960056.2016044,
                             Description = "Description for product 43",
                             Discount = 0.0,
+                            ImageUrl = "product43.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 128,
                             Name = "Product 43",
-                            PictureFileName = "product43.jpg",
-                            Price = 171.19999999999999,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 507.17000000000002,
+                            Sku = "sku-43",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 44,
-                            AvailableStock = 43,
                             BrandId = 5,
                             CategoryId = 5,
-                            Created = 1725615230.9486272,
+                            Created = 1725960056.2016046,
                             Description = "Description for product 44",
                             Discount = 0.0,
+                            ImageUrl = "product44.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 135,
                             Name = "Product 44",
-                            PictureFileName = "product44.jpg",
-                            Price = 108.76000000000001,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 405.94,
+                            Sku = "sku-44",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 45,
-                            AvailableStock = 12,
                             BrandId = 6,
                             CategoryId = 6,
-                            Created = 1725615230.9486277,
+                            Created = 1725960056.2016051,
                             Description = "Description for product 45",
                             Discount = 0.0,
+                            ImageUrl = "product45.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 28,
                             Name = "Product 45",
-                            PictureFileName = "product45.jpg",
-                            Price = 637.29999999999995,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 161.25,
+                            Sku = "sku-45",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 46,
-                            AvailableStock = 77,
                             BrandId = 7,
                             CategoryId = 7,
-                            Created = 1725615230.9486284,
+                            Created = 1725960056.2016056,
                             Description = "Description for product 46",
                             Discount = 0.0,
+                            ImageUrl = "product46.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 167,
                             Name = "Product 46",
-                            PictureFileName = "product46.jpg",
-                            Price = 593.26999999999998,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 53.289999999999999,
+                            Sku = "sku-46",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 47,
-                            AvailableStock = 73,
                             BrandId = 8,
                             CategoryId = 8,
-                            Created = 1725615230.9486289,
+                            Created = 1725960056.201606,
                             Description = "Description for product 47",
                             Discount = 0.0,
+                            ImageUrl = "product47.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 65,
                             Name = "Product 47",
-                            PictureFileName = "product47.jpg",
-                            Price = 534.75999999999999,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 177.40000000000001,
+                            Sku = "sku-47",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 48,
-                            AvailableStock = 76,
                             BrandId = 9,
                             CategoryId = 9,
-                            Created = 1725615230.9486296,
+                            Created = 1725960056.2016065,
                             Description = "Description for product 48",
                             Discount = 0.0,
+                            ImageUrl = "product48.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 167,
                             Name = "Product 48",
-                            PictureFileName = "product48.jpg",
-                            Price = 385.93000000000001,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 177.84,
+                            Sku = "sku-48",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 49,
-                            AvailableStock = 10,
                             BrandId = 10,
                             CategoryId = 10,
-                            Created = 1725615230.9486301,
+                            Created = 1725960056.2016065,
                             Description = "Description for product 49",
                             Discount = 0.0,
+                            ImageUrl = "product49.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 88,
                             Name = "Product 49",
-                            PictureFileName = "product49.jpg",
-                            Price = 133.25999999999999,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 55.259999999999998,
+                            Sku = "sku-49",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 50,
-                            AvailableStock = 1,
                             BrandId = 11,
                             CategoryId = 11,
-                            Created = 1725615230.9486308,
+                            Created = 1725960056.2016072,
                             Description = "Description for product 50",
                             Discount = 0.0,
+                            ImageUrl = "product50.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 84,
                             Name = "Product 50",
-                            PictureFileName = "product50.jpg",
-                            Price = 672.53999999999996,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 958.35000000000002,
+                            Sku = "sku-50",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 51,
-                            AvailableStock = 36,
                             BrandId = 12,
                             CategoryId = 12,
-                            Created = 1725615230.9486394,
+                            Created = 1725960056.2016077,
                             Description = "Description for product 51",
                             Discount = 0.0,
+                            ImageUrl = "product51.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 67,
                             Name = "Product 51",
-                            PictureFileName = "product51.jpg",
-                            Price = 961.97000000000003,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 517.46000000000004,
+                            Sku = "sku-51",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 52,
-                            AvailableStock = 98,
                             BrandId = 13,
                             CategoryId = 13,
-                            Created = 1725615230.9486401,
+                            Created = 1725960056.2016079,
                             Description = "Description for product 52",
                             Discount = 0.0,
+                            ImageUrl = "product52.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 69,
                             Name = "Product 52",
-                            PictureFileName = "product52.jpg",
-                            Price = 249.19,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 385.5,
+                            Sku = "sku-52",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 53,
-                            AvailableStock = 6,
                             BrandId = 14,
                             CategoryId = 14,
-                            Created = 1725615230.9486406,
+                            Created = 1725960056.2016082,
                             Description = "Description for product 53",
                             Discount = 0.0,
+                            ImageUrl = "product53.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 144,
                             Name = "Product 53",
-                            PictureFileName = "product53.jpg",
-                            Price = 754.92999999999995,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 914.39999999999998,
+                            Sku = "sku-53",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 54,
-                            AvailableStock = 6,
                             BrandId = 15,
                             CategoryId = 15,
-                            Created = 1725615230.9486413,
+                            Created = 1725960056.2016089,
                             Description = "Description for product 54",
                             Discount = 0.0,
+                            ImageUrl = "product54.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 27,
                             Name = "Product 54",
-                            PictureFileName = "product54.jpg",
-                            Price = 672.86000000000001,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 565.94000000000005,
+                            Sku = "sku-54",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 55,
-                            AvailableStock = 53,
                             BrandId = 16,
                             CategoryId = 16,
-                            Created = 1725615230.9486418,
+                            Created = 1725960056.2016091,
                             Description = "Description for product 55",
                             Discount = 0.0,
+                            ImageUrl = "product55.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 88,
                             Name = "Product 55",
-                            PictureFileName = "product55.jpg",
-                            Price = 846.08000000000004,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 599.90999999999997,
+                            Sku = "sku-55",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 56,
-                            AvailableStock = 64,
                             BrandId = 17,
                             CategoryId = 17,
-                            Created = 1725615230.9486425,
+                            Created = 1725960056.2016096,
                             Description = "Description for product 56",
                             Discount = 0.0,
+                            ImageUrl = "product56.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 98,
                             Name = "Product 56",
-                            PictureFileName = "product56.jpg",
-                            Price = 114.08,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 297.47000000000003,
+                            Sku = "sku-56",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 57,
-                            AvailableStock = 17,
                             BrandId = 18,
                             CategoryId = 18,
-                            Created = 1725615230.948643,
+                            Created = 1725960056.2016101,
                             Description = "Description for product 57",
                             Discount = 0.0,
+                            ImageUrl = "product57.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 103,
                             Name = "Product 57",
-                            PictureFileName = "product57.jpg",
-                            Price = 978.59000000000003,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 540.50999999999999,
+                            Sku = "sku-57",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 58,
-                            AvailableStock = 64,
                             BrandId = 19,
                             CategoryId = 19,
-                            Created = 1725615230.9486437,
+                            Created = 1725960056.2016132,
                             Description = "Description for product 58",
                             Discount = 0.0,
+                            ImageUrl = "product58.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 149,
                             Name = "Product 58",
-                            PictureFileName = "product58.jpg",
-                            Price = 145.06,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 323.97000000000003,
+                            Sku = "sku-58",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 59,
-                            AvailableStock = 51,
                             BrandId = 20,
                             CategoryId = 20,
-                            Created = 1725615230.9486444,
+                            Created = 1725960056.2016137,
                             Description = "Description for product 59",
                             Discount = 0.0,
+                            ImageUrl = "product59.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 130,
                             Name = "Product 59",
-                            PictureFileName = "product59.jpg",
-                            Price = 944.02999999999997,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 596.22000000000003,
+                            Sku = "sku-59",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 60,
-                            AvailableStock = 37,
                             BrandId = 21,
                             CategoryId = 1,
-                            Created = 1725615230.9486449,
+                            Created = 1725960056.2016139,
                             Description = "Description for product 60",
                             Discount = 0.0,
+                            ImageUrl = "product60.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 83,
                             Name = "Product 60",
-                            PictureFileName = "product60.jpg",
-                            Price = 607.89999999999998,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 37.469999999999999,
+                            Sku = "sku-60",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 61,
-                            AvailableStock = 93,
                             BrandId = 22,
                             CategoryId = 2,
-                            Created = 1725615230.9486454,
+                            Created = 1725960056.2016144,
                             Description = "Description for product 61",
                             Discount = 0.0,
+                            ImageUrl = "product61.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 174,
                             Name = "Product 61",
-                            PictureFileName = "product61.jpg",
-                            Price = 195.41999999999999,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 532.27999999999997,
+                            Sku = "sku-61",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 62,
-                            AvailableStock = 99,
                             BrandId = 23,
                             CategoryId = 3,
-                            Created = 1725615230.9486461,
+                            Created = 1725960056.2016149,
                             Description = "Description for product 62",
                             Discount = 0.0,
+                            ImageUrl = "product62.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 76,
                             Name = "Product 62",
-                            PictureFileName = "product62.jpg",
-                            Price = 885.28999999999996,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 400.61000000000001,
+                            Sku = "sku-62",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 63,
-                            AvailableStock = 15,
                             BrandId = 24,
                             CategoryId = 4,
-                            Created = 1725615230.9486465,
+                            Created = 1725960056.2016151,
                             Description = "Description for product 63",
                             Discount = 0.0,
+                            ImageUrl = "product63.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 177,
                             Name = "Product 63",
-                            PictureFileName = "product63.jpg",
-                            Price = 944.88999999999999,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 178.72999999999999,
+                            Sku = "sku-63",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 64,
-                            AvailableStock = 25,
                             BrandId = 25,
                             CategoryId = 5,
-                            Created = 1725615230.9486473,
+                            Created = 1725960056.2016156,
                             Description = "Description for product 64",
                             Discount = 0.0,
+                            ImageUrl = "product64.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 189,
                             Name = "Product 64",
-                            PictureFileName = "product64.jpg",
-                            Price = 683.05999999999995,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 296.14999999999998,
+                            Sku = "sku-64",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 65,
-                            AvailableStock = 97,
                             BrandId = 26,
                             CategoryId = 6,
-                            Created = 1725615230.9486537,
+                            Created = 1725960056.201616,
                             Description = "Description for product 65",
                             Discount = 0.0,
+                            ImageUrl = "product65.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 143,
                             Name = "Product 65",
-                            PictureFileName = "product65.jpg",
-                            Price = 19.93,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 960.10000000000002,
+                            Sku = "sku-65",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 66,
-                            AvailableStock = 36,
                             BrandId = 27,
                             CategoryId = 7,
-                            Created = 1725615230.9486547,
+                            Created = 1725960056.2016165,
                             Description = "Description for product 66",
                             Discount = 0.0,
+                            ImageUrl = "product66.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 182,
                             Name = "Product 66",
-                            PictureFileName = "product66.jpg",
-                            Price = 817.60000000000002,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 409.23000000000002,
+                            Sku = "sku-66",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 67,
-                            AvailableStock = 11,
                             BrandId = 28,
                             CategoryId = 8,
-                            Created = 1725615230.9486551,
+                            Created = 1725960056.201617,
                             Description = "Description for product 67",
                             Discount = 0.0,
+                            ImageUrl = "product67.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 104,
                             Name = "Product 67",
-                            PictureFileName = "product67.jpg",
-                            Price = 164.61000000000001,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 443.60000000000002,
+                            Sku = "sku-67",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 68,
-                            AvailableStock = 69,
                             BrandId = 29,
                             CategoryId = 9,
-                            Created = 1725615230.9486558,
+                            Created = 1725960056.2016175,
                             Description = "Description for product 68",
                             Discount = 0.0,
+                            ImageUrl = "product68.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 184,
                             Name = "Product 68",
-                            PictureFileName = "product68.jpg",
-                            Price = 693.38999999999999,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 242.59999999999999,
+                            Sku = "sku-68",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 69,
-                            AvailableStock = 55,
                             BrandId = 30,
                             CategoryId = 10,
-                            Created = 1725615230.9486563,
+                            Created = 1725960056.2016177,
                             Description = "Description for product 69",
                             Discount = 0.0,
+                            ImageUrl = "product69.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 57,
                             Name = "Product 69",
-                            PictureFileName = "product69.jpg",
-                            Price = 228.66999999999999,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 32.700000000000003,
+                            Sku = "sku-69",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 70,
-                            AvailableStock = 90,
                             BrandId = 31,
                             CategoryId = 11,
-                            Created = 1725615230.948657,
+                            Created = 1725960056.2016182,
                             Description = "Description for product 70",
                             Discount = 0.0,
+                            ImageUrl = "product70.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 77,
                             Name = "Product 70",
-                            PictureFileName = "product70.jpg",
-                            Price = 881.21000000000004,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 791.97000000000003,
+                            Sku = "sku-70",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 71,
-                            AvailableStock = 9,
                             BrandId = 32,
                             CategoryId = 12,
-                            Created = 1725615230.9486575,
+                            Created = 1725960056.2016184,
                             Description = "Description for product 71",
                             Discount = 0.0,
+                            ImageUrl = "product71.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 158,
                             Name = "Product 71",
-                            PictureFileName = "product71.jpg",
-                            Price = 897.97000000000003,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 536.24000000000001,
+                            Sku = "sku-71",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 72,
-                            AvailableStock = 9,
                             BrandId = 33,
                             CategoryId = 13,
-                            Created = 1725615230.9486582,
+                            Created = 1725960056.2016189,
                             Description = "Description for product 72",
                             Discount = 0.0,
+                            ImageUrl = "product72.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 154,
                             Name = "Product 72",
-                            PictureFileName = "product72.jpg",
-                            Price = 69.629999999999995,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 490.06999999999999,
+                            Sku = "sku-72",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 73,
-                            AvailableStock = 9,
                             BrandId = 34,
                             CategoryId = 14,
-                            Created = 1725615230.9486587,
+                            Created = 1725960056.2016191,
                             Description = "Description for product 73",
                             Discount = 0.0,
+                            ImageUrl = "product73.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 101,
                             Name = "Product 73",
-                            PictureFileName = "product73.jpg",
-                            Price = 17.629999999999999,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 611.88999999999999,
+                            Sku = "sku-73",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 74,
-                            AvailableStock = 4,
                             BrandId = 35,
                             CategoryId = 15,
-                            Created = 1725615230.9486594,
+                            Created = 1725960056.2016196,
                             Description = "Description for product 74",
                             Discount = 0.0,
+                            ImageUrl = "product74.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 119,
                             Name = "Product 74",
-                            PictureFileName = "product74.jpg",
-                            Price = 486.19,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 27.800000000000001,
+                            Sku = "sku-74",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 75,
-                            AvailableStock = 73,
                             BrandId = 36,
                             CategoryId = 16,
-                            Created = 1725615230.9486599,
+                            Created = 1725960056.2016385,
                             Description = "Description for product 75",
                             Discount = 0.0,
+                            ImageUrl = "product75.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 135,
                             Name = "Product 75",
-                            PictureFileName = "product75.jpg",
-                            Price = 586.55999999999995,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 249.81,
+                            Sku = "sku-75",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 76,
-                            AvailableStock = 72,
                             BrandId = 37,
                             CategoryId = 17,
-                            Created = 1725615230.9486609,
+                            Created = 1725960056.2016387,
                             Description = "Description for product 76",
                             Discount = 0.0,
+                            ImageUrl = "product76.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 190,
                             Name = "Product 76",
-                            PictureFileName = "product76.jpg",
-                            Price = 212.22999999999999,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 695.34000000000003,
+                            Sku = "sku-76",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 77,
-                            AvailableStock = 78,
                             BrandId = 38,
                             CategoryId = 18,
-                            Created = 1725615230.9486668,
+                            Created = 1725960056.2016392,
                             Description = "Description for product 77",
                             Discount = 0.0,
+                            ImageUrl = "product77.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 118,
                             Name = "Product 77",
-                            PictureFileName = "product77.jpg",
-                            Price = 425.61000000000001,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 754.66999999999996,
+                            Sku = "sku-77",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 78,
-                            AvailableStock = 78,
                             BrandId = 39,
                             CategoryId = 19,
-                            Created = 1725615230.9486673,
+                            Created = 1725960056.2016399,
                             Description = "Description for product 78",
                             Discount = 0.0,
+                            ImageUrl = "product78.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 87,
                             Name = "Product 78",
-                            PictureFileName = "product78.jpg",
-                            Price = 556.54999999999995,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 308.39999999999998,
+                            Sku = "sku-78",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 79,
-                            AvailableStock = 41,
                             BrandId = 40,
                             CategoryId = 20,
-                            Created = 1725615230.948668,
+                            Created = 1725960056.2016401,
                             Description = "Description for product 79",
                             Discount = 0.0,
+                            ImageUrl = "product79.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 195,
                             Name = "Product 79",
-                            PictureFileName = "product79.jpg",
-                            Price = 828.14999999999998,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 954.22000000000003,
+                            Sku = "sku-79",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 80,
-                            AvailableStock = 94,
                             BrandId = 1,
                             CategoryId = 1,
-                            Created = 1725615230.9486685,
+                            Created = 1725960056.2016406,
                             Description = "Description for product 80",
                             Discount = 0.0,
+                            ImageUrl = "product80.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 97,
                             Name = "Product 80",
-                            PictureFileName = "product80.jpg",
-                            Price = 828.98000000000002,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 599.24000000000001,
+                            Sku = "sku-80",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 81,
-                            AvailableStock = 62,
                             BrandId = 2,
                             CategoryId = 2,
-                            Created = 1725615230.9486692,
+                            Created = 1725960056.2016408,
                             Description = "Description for product 81",
                             Discount = 0.0,
+                            ImageUrl = "product81.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 191,
                             Name = "Product 81",
-                            PictureFileName = "product81.jpg",
-                            Price = 793.55999999999995,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 184.59,
+                            Sku = "sku-81",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 82,
-                            AvailableStock = 44,
                             BrandId = 3,
                             CategoryId = 3,
-                            Created = 1725615230.9486697,
+                            Created = 1725960056.2016413,
                             Description = "Description for product 82",
                             Discount = 0.0,
+                            ImageUrl = "product82.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 44,
                             Name = "Product 82",
-                            PictureFileName = "product82.jpg",
-                            Price = 645.59000000000003,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 136.94999999999999,
+                            Sku = "sku-82",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 83,
-                            AvailableStock = 97,
                             BrandId = 4,
                             CategoryId = 4,
-                            Created = 1725615230.9486704,
+                            Created = 1725960056.2016418,
                             Description = "Description for product 83",
                             Discount = 0.0,
+                            ImageUrl = "product83.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 95,
                             Name = "Product 83",
-                            PictureFileName = "product83.jpg",
-                            Price = 134.00999999999999,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 680.02999999999997,
+                            Sku = "sku-83",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 84,
-                            AvailableStock = 17,
                             BrandId = 5,
                             CategoryId = 5,
-                            Created = 1725615230.9486709,
+                            Created = 1725960056.201642,
                             Description = "Description for product 84",
                             Discount = 0.0,
+                            ImageUrl = "product84.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 67,
                             Name = "Product 84",
-                            PictureFileName = "product84.jpg",
-                            Price = 520.75999999999999,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 236.59999999999999,
+                            Sku = "sku-84",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 85,
-                            AvailableStock = 93,
                             BrandId = 6,
                             CategoryId = 6,
-                            Created = 1725615230.9486716,
+                            Created = 1725960056.2016425,
                             Description = "Description for product 85",
                             Discount = 0.0,
+                            ImageUrl = "product85.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 78,
                             Name = "Product 85",
-                            PictureFileName = "product85.jpg",
-                            Price = 967.25,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 658.24000000000001,
+                            Sku = "sku-85",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 86,
-                            AvailableStock = 78,
                             BrandId = 7,
                             CategoryId = 7,
-                            Created = 1725615230.9486721,
+                            Created = 1725960056.201643,
                             Description = "Description for product 86",
                             Discount = 0.0,
+                            ImageUrl = "product86.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 77,
                             Name = "Product 86",
-                            PictureFileName = "product86.jpg",
-                            Price = 305.25999999999999,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 415.99000000000001,
+                            Sku = "sku-86",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 87,
-                            AvailableStock = 29,
                             BrandId = 8,
                             CategoryId = 8,
-                            Created = 1725615230.9486728,
+                            Created = 1725960056.2016435,
                             Description = "Description for product 87",
                             Discount = 0.0,
+                            ImageUrl = "product87.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 94,
                             Name = "Product 87",
-                            PictureFileName = "product87.jpg",
-                            Price = 596.15999999999997,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 98.349999999999994,
+                            Sku = "sku-87",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 88,
-                            AvailableStock = 49,
                             BrandId = 9,
                             CategoryId = 9,
-                            Created = 1725615230.9486732,
+                            Created = 1725960056.2016437,
                             Description = "Description for product 88",
                             Discount = 0.0,
+                            ImageUrl = "product88.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 163,
                             Name = "Product 88",
-                            PictureFileName = "product88.jpg",
-                            Price = 12.4,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 737.57000000000005,
+                            Sku = "sku-88",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 89,
-                            AvailableStock = 69,
                             BrandId = 10,
                             CategoryId = 10,
-                            Created = 1725615230.948674,
+                            Created = 1725960056.2016439,
                             Description = "Description for product 89",
                             Discount = 0.0,
+                            ImageUrl = "product89.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 142,
                             Name = "Product 89",
-                            PictureFileName = "product89.jpg",
-                            Price = 164.5,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 895.90999999999997,
+                            Sku = "sku-89",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 90,
-                            AvailableStock = 16,
                             BrandId = 11,
                             CategoryId = 11,
-                            Created = 1725615230.9486744,
+                            Created = 1725960056.2016447,
                             Description = "Description for product 90",
                             Discount = 0.0,
+                            ImageUrl = "product90.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 95,
                             Name = "Product 90",
-                            PictureFileName = "product90.jpg",
-                            Price = 11.91,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 987.94000000000005,
+                            Sku = "sku-90",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 91,
-                            AvailableStock = 7,
                             BrandId = 12,
                             CategoryId = 12,
-                            Created = 1725615230.9486792,
+                            Created = 1725960056.2016449,
                             Description = "Description for product 91",
                             Discount = 0.0,
+                            ImageUrl = "product91.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 197,
                             Name = "Product 91",
-                            PictureFileName = "product91.jpg",
-                            Price = 122.73999999999999,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 507.13999999999999,
+                            Sku = "sku-91",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 92,
-                            AvailableStock = 70,
                             BrandId = 13,
                             CategoryId = 13,
-                            Created = 1725615230.9486797,
+                            Created = 1725960056.2016454,
                             Description = "Description for product 92",
                             Discount = 0.0,
+                            ImageUrl = "product92.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 87,
                             Name = "Product 92",
-                            PictureFileName = "product92.jpg",
-                            Price = 112.58,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 357.06,
+                            Sku = "sku-92",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 93,
-                            AvailableStock = 88,
                             BrandId = 14,
                             CategoryId = 14,
-                            Created = 1725615230.9486804,
+                            Created = 1725960056.2016456,
                             Description = "Description for product 93",
                             Discount = 0.0,
+                            ImageUrl = "product93.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 86,
                             Name = "Product 93",
-                            PictureFileName = "product93.jpg",
-                            Price = 915.45000000000005,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 200.16,
+                            Sku = "sku-93",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 94,
-                            AvailableStock = 26,
                             BrandId = 15,
                             CategoryId = 15,
-                            Created = 1725615230.9486809,
+                            Created = 1725960056.2016463,
                             Description = "Description for product 94",
                             Discount = 0.0,
+                            ImageUrl = "product94.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 154,
                             Name = "Product 94",
-                            PictureFileName = "product94.jpg",
-                            Price = 88.519999999999996,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 464.0,
+                            Sku = "sku-94",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 95,
-                            AvailableStock = 50,
                             BrandId = 16,
                             CategoryId = 16,
-                            Created = 1725615230.9486816,
+                            Created = 1725960056.2016487,
                             Description = "Description for product 95",
                             Discount = 0.0,
+                            ImageUrl = "product95.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 187,
                             Name = "Product 95",
-                            PictureFileName = "product95.jpg",
-                            Price = 134.99000000000001,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 362.02999999999997,
+                            Sku = "sku-95",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 96,
-                            AvailableStock = 58,
                             BrandId = 17,
                             CategoryId = 17,
-                            Created = 1725615230.9486821,
+                            Created = 1725960056.2016492,
                             Description = "Description for product 96",
                             Discount = 0.0,
+                            ImageUrl = "product96.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 69,
                             Name = "Product 96",
-                            PictureFileName = "product96.jpg",
-                            Price = 902.13,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 694.05999999999995,
+                            Sku = "sku-96",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 97,
-                            AvailableStock = 98,
                             BrandId = 18,
                             CategoryId = 18,
-                            Created = 1725615230.9486828,
+                            Created = 1725960056.2016497,
                             Description = "Description for product 97",
                             Discount = 0.0,
+                            ImageUrl = "product97.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 174,
                             Name = "Product 97",
-                            PictureFileName = "product97.jpg",
-                            Price = 125.95999999999999,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 21.420000000000002,
+                            Sku = "sku-97",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 98,
-                            AvailableStock = 35,
                             BrandId = 19,
                             CategoryId = 19,
-                            Created = 1725615230.9486835,
+                            Created = 1725960056.2016501,
                             Description = "Description for product 98",
                             Discount = 0.0,
+                            ImageUrl = "product98.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 91,
                             Name = "Product 98",
-                            PictureFileName = "product98.jpg",
-                            Price = 175.56,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 883.47000000000003,
+                            Sku = "sku-98",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 99,
-                            AvailableStock = 41,
                             BrandId = 20,
                             CategoryId = 20,
-                            Created = 1725615230.948684,
+                            Created = 1725960056.2016506,
                             Description = "Description for product 99",
                             Discount = 0.0,
+                            ImageUrl = "product99.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 156,
                             Name = "Product 99",
-                            PictureFileName = "product99.jpg",
-                            Price = 44.0,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 938.45000000000005,
+                            Sku = "sku-99",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 100,
-                            AvailableStock = 90,
                             BrandId = 21,
                             CategoryId = 1,
-                            Created = 1725615230.9486847,
+                            Created = 1725960056.2016509,
                             Description = "Description for product 100",
                             Discount = 0.0,
+                            ImageUrl = "product100.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 58,
                             Name = "Product 100",
-                            PictureFileName = "product100.jpg",
-                            Price = 318.38,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 332.0,
+                            Sku = "sku-100",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 101,
-                            AvailableStock = 78,
                             BrandId = 22,
                             CategoryId = 2,
-                            Created = 1725615230.9486852,
+                            Created = 1725960056.2016513,
                             Description = "Description for product 101",
                             Discount = 0.0,
+                            ImageUrl = "product101.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 28,
                             Name = "Product 101",
-                            PictureFileName = "product101.jpg",
-                            Price = 286.47000000000003,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 959.25,
+                            Sku = "sku-101",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 102,
-                            AvailableStock = 78,
                             BrandId = 23,
                             CategoryId = 3,
-                            Created = 1725615230.9486859,
+                            Created = 1725960056.2016521,
                             Description = "Description for product 102",
                             Discount = 0.0,
+                            ImageUrl = "product102.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 161,
                             Name = "Product 102",
-                            PictureFileName = "product102.jpg",
-                            Price = 645.26999999999998,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 339.49000000000001,
+                            Sku = "sku-102",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 103,
-                            AvailableStock = 45,
                             BrandId = 24,
                             CategoryId = 4,
-                            Created = 1725615230.9486864,
+                            Created = 1725960056.2016523,
                             Description = "Description for product 103",
                             Discount = 0.0,
+                            ImageUrl = "product103.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 179,
                             Name = "Product 103",
-                            PictureFileName = "product103.jpg",
-                            Price = 662.32000000000005,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 746.45000000000005,
+                            Sku = "sku-103",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 104,
-                            AvailableStock = 62,
                             BrandId = 25,
                             CategoryId = 5,
-                            Created = 1725615230.9486873,
+                            Created = 1725960056.2016525,
                             Description = "Description for product 104",
                             Discount = 0.0,
+                            ImageUrl = "product104.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 173,
                             Name = "Product 104",
-                            PictureFileName = "product104.jpg",
-                            Price = 12.779999999999999,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 791.82000000000005,
+                            Sku = "sku-104",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 105,
-                            AvailableStock = 37,
                             BrandId = 26,
                             CategoryId = 6,
-                            Created = 1725615230.9486933,
+                            Created = 1725960056.201653,
                             Description = "Description for product 105",
                             Discount = 0.0,
+                            ImageUrl = "product105.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 64,
                             Name = "Product 105",
-                            PictureFileName = "product105.jpg",
-                            Price = 728.30999999999995,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 647.02999999999997,
+                            Sku = "sku-105",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 106,
-                            AvailableStock = 71,
                             BrandId = 27,
                             CategoryId = 7,
-                            Created = 1725615230.9486938,
+                            Created = 1725960056.2016537,
                             Description = "Description for product 106",
                             Discount = 0.0,
+                            ImageUrl = "product106.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 160,
                             Name = "Product 106",
-                            PictureFileName = "product106.jpg",
-                            Price = 620.21000000000004,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 591.12,
+                            Sku = "sku-106",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 107,
-                            AvailableStock = 82,
                             BrandId = 28,
                             CategoryId = 8,
-                            Created = 1725615230.9486945,
+                            Created = 1725960056.2016537,
                             Description = "Description for product 107",
                             Discount = 0.0,
+                            ImageUrl = "product107.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 193,
                             Name = "Product 107",
-                            PictureFileName = "product107.jpg",
-                            Price = 770.77999999999997,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 524.25999999999999,
+                            Sku = "sku-107",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 108,
-                            AvailableStock = 9,
                             BrandId = 29,
                             CategoryId = 9,
-                            Created = 1725615230.9486952,
+                            Created = 1725960056.2016542,
                             Description = "Description for product 108",
                             Discount = 0.0,
+                            ImageUrl = "product108.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 32,
                             Name = "Product 108",
-                            PictureFileName = "product108.jpg",
-                            Price = 887.88999999999999,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 871.47000000000003,
+                            Sku = "sku-108",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 109,
-                            AvailableStock = 88,
                             BrandId = 30,
                             CategoryId = 10,
-                            Created = 1725615230.9486957,
+                            Created = 1725960056.2016544,
                             Description = "Description for product 109",
                             Discount = 0.0,
+                            ImageUrl = "product109.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 83,
                             Name = "Product 109",
-                            PictureFileName = "product109.jpg",
-                            Price = 611.98000000000002,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 270.51999999999998,
+                            Sku = "sku-109",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 110,
-                            AvailableStock = 34,
                             BrandId = 31,
                             CategoryId = 11,
-                            Created = 1725615230.9486964,
+                            Created = 1725960056.2016549,
                             Description = "Description for product 110",
                             Discount = 0.0,
+                            ImageUrl = "product110.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 130,
                             Name = "Product 110",
-                            PictureFileName = "product110.jpg",
-                            Price = 325.88,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 24.280000000000001,
+                            Sku = "sku-110",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 111,
-                            AvailableStock = 19,
                             BrandId = 32,
                             CategoryId = 12,
-                            Created = 1725615230.9486971,
+                            Created = 1725960056.2016551,
                             Description = "Description for product 111",
                             Discount = 0.0,
+                            ImageUrl = "product111.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 189,
                             Name = "Product 111",
-                            PictureFileName = "product111.jpg",
-                            Price = 364.06999999999999,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 185.11000000000001,
+                            Sku = "sku-111",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 112,
-                            AvailableStock = 84,
                             BrandId = 33,
                             CategoryId = 13,
-                            Created = 1725615230.9486976,
+                            Created = 1725960056.2016556,
                             Description = "Description for product 112",
                             Discount = 0.0,
+                            ImageUrl = "product112.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 38,
                             Name = "Product 112",
-                            PictureFileName = "product112.jpg",
-                            Price = 65.0,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 412.27999999999997,
+                            Sku = "sku-112",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 113,
-                            AvailableStock = 59,
                             BrandId = 34,
                             CategoryId = 14,
-                            Created = 1725615230.9486983,
+                            Created = 1725960056.2016561,
                             Description = "Description for product 113",
                             Discount = 0.0,
+                            ImageUrl = "product113.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 76,
                             Name = "Product 113",
-                            PictureFileName = "product113.jpg",
-                            Price = 234.05000000000001,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 427.50999999999999,
+                            Sku = "sku-113",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 114,
-                            AvailableStock = 90,
                             BrandId = 35,
                             CategoryId = 15,
-                            Created = 1725615230.9486988,
+                            Created = 1725960056.2016585,
                             Description = "Description for product 114",
                             Discount = 0.0,
+                            ImageUrl = "product114.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 70,
                             Name = "Product 114",
-                            PictureFileName = "product114.jpg",
-                            Price = 770.59000000000003,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 280.36000000000001,
+                            Sku = "sku-114",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 115,
-                            AvailableStock = 65,
                             BrandId = 36,
                             CategoryId = 16,
-                            Created = 1725615230.9486997,
+                            Created = 1725960056.201659,
                             Description = "Description for product 115",
                             Discount = 0.0,
+                            ImageUrl = "product115.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 123,
                             Name = "Product 115",
-                            PictureFileName = "product115.jpg",
-                            Price = 291.52999999999997,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 293.5,
+                            Sku = "sku-115",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 116,
-                            AvailableStock = 68,
                             BrandId = 37,
                             CategoryId = 17,
-                            Created = 1725615230.9487002,
+                            Created = 1725960056.2016592,
                             Description = "Description for product 116",
                             Discount = 0.0,
+                            ImageUrl = "product116.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 31,
                             Name = "Product 116",
-                            PictureFileName = "product116.jpg",
-                            Price = 968.45000000000005,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 812.29999999999995,
+                            Sku = "sku-116",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 117,
-                            AvailableStock = 42,
                             BrandId = 38,
                             CategoryId = 18,
-                            Created = 1725615230.9487009,
+                            Created = 1725960056.2016597,
                             Description = "Description for product 117",
                             Discount = 0.0,
+                            ImageUrl = "product117.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 137,
                             Name = "Product 117",
-                            PictureFileName = "product117.jpg",
-                            Price = 217.75999999999999,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 759.48000000000002,
+                            Sku = "sku-117",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 118,
-                            AvailableStock = 26,
                             BrandId = 39,
                             CategoryId = 19,
-                            Created = 1725615230.9487014,
+                            Created = 1725960056.2016602,
                             Description = "Description for product 118",
                             Discount = 0.0,
+                            ImageUrl = "product118.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 114,
                             Name = "Product 118",
-                            PictureFileName = "product118.jpg",
-                            Price = 137.47,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 89.209999999999994,
+                            Sku = "sku-118",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 119,
-                            AvailableStock = 19,
                             BrandId = 40,
                             CategoryId = 20,
-                            Created = 1725615230.9487071,
+                            Created = 1725960056.2016604,
                             Description = "Description for product 119",
                             Discount = 0.0,
+                            ImageUrl = "product119.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 192,
                             Name = "Product 119",
-                            PictureFileName = "product119.jpg",
-                            Price = 52.579999999999998,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 869.54999999999995,
+                            Sku = "sku-119",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 120,
-                            AvailableStock = 64,
                             BrandId = 1,
                             CategoryId = 1,
-                            Created = 1725615230.9487081,
+                            Created = 1725960056.2016609,
                             Description = "Description for product 120",
                             Discount = 0.0,
+                            ImageUrl = "product120.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 177,
                             Name = "Product 120",
-                            PictureFileName = "product120.jpg",
-                            Price = 557.89999999999998,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 528.82000000000005,
+                            Sku = "sku-120",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 121,
-                            AvailableStock = 72,
                             BrandId = 2,
                             CategoryId = 2,
-                            Created = 1725615230.9487083,
+                            Created = 1725960056.2016611,
                             Description = "Description for product 121",
                             Discount = 0.0,
+                            ImageUrl = "product121.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 122,
                             Name = "Product 121",
-                            PictureFileName = "product121.jpg",
-                            Price = 637.0,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 344.47000000000003,
+                            Sku = "sku-121",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 122,
-                            AvailableStock = 7,
                             BrandId = 3,
                             CategoryId = 3,
-                            Created = 1725615230.948709,
+                            Created = 1725960056.2016616,
                             Description = "Description for product 122",
                             Discount = 0.0,
+                            ImageUrl = "product122.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 167,
                             Name = "Product 122",
-                            PictureFileName = "product122.jpg",
-                            Price = 296.32999999999998,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 631.57000000000005,
+                            Sku = "sku-122",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 123,
-                            AvailableStock = 30,
                             BrandId = 4,
                             CategoryId = 4,
-                            Created = 1725615230.9487095,
+                            Created = 1725960056.2016621,
                             Description = "Description for product 123",
                             Discount = 0.0,
+                            ImageUrl = "product123.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 147,
                             Name = "Product 123",
-                            PictureFileName = "product123.jpg",
-                            Price = 350.69,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 778.76999999999998,
+                            Sku = "sku-123",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 124,
-                            AvailableStock = 97,
                             BrandId = 5,
                             CategoryId = 5,
-                            Created = 1725615230.9487102,
+                            Created = 1725960056.2016623,
                             Description = "Description for product 124",
                             Discount = 0.0,
+                            ImageUrl = "product124.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 179,
                             Name = "Product 124",
-                            PictureFileName = "product124.jpg",
-                            Price = 404.67000000000002,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 150.93000000000001,
+                            Sku = "sku-124",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 125,
-                            AvailableStock = 3,
                             BrandId = 6,
                             CategoryId = 6,
-                            Created = 1725615230.9487109,
+                            Created = 1725960056.2016628,
                             Description = "Description for product 125",
                             Discount = 0.0,
+                            ImageUrl = "product125.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 43,
                             Name = "Product 125",
-                            PictureFileName = "product125.jpg",
-                            Price = 50.719999999999999,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 473.94,
+                            Sku = "sku-125",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 126,
-                            AvailableStock = 5,
                             BrandId = 7,
                             CategoryId = 7,
-                            Created = 1725615230.9487112,
+                            Created = 1725960056.2016633,
                             Description = "Description for product 126",
                             Discount = 0.0,
+                            ImageUrl = "product126.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 155,
                             Name = "Product 126",
-                            PictureFileName = "product126.jpg",
-                            Price = 839.50999999999999,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 81.159999999999997,
+                            Sku = "sku-126",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 127,
-                            AvailableStock = 48,
                             BrandId = 8,
                             CategoryId = 8,
-                            Created = 1725615230.9487121,
+                            Created = 1725960056.2016635,
                             Description = "Description for product 127",
                             Discount = 0.0,
+                            ImageUrl = "product127.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 50,
                             Name = "Product 127",
-                            PictureFileName = "product127.jpg",
-                            Price = 339.89999999999998,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 633.98000000000002,
+                            Sku = "sku-127",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 128,
-                            AvailableStock = 99,
                             BrandId = 9,
                             CategoryId = 9,
-                            Created = 1725615230.9487123,
+                            Created = 1725960056.201664,
                             Description = "Description for product 128",
                             Discount = 0.0,
+                            ImageUrl = "product128.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 80,
                             Name = "Product 128",
-                            PictureFileName = "product128.jpg",
-                            Price = 937.96000000000004,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 611.10000000000002,
+                            Sku = "sku-128",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 129,
-                            AvailableStock = 13,
                             BrandId = 10,
                             CategoryId = 10,
-                            Created = 1725615230.9487133,
+                            Created = 1725960056.2016644,
                             Description = "Description for product 129",
                             Discount = 0.0,
+                            ImageUrl = "product129.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 148,
                             Name = "Product 129",
-                            PictureFileName = "product129.jpg",
-                            Price = 637.95000000000005,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 134.56,
+                            Sku = "sku-129",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 130,
-                            AvailableStock = 73,
                             BrandId = 11,
                             CategoryId = 11,
-                            Created = 1725615230.9487169,
+                            Created = 1725960056.2016673,
                             Description = "Description for product 130",
                             Discount = 0.0,
+                            ImageUrl = "product130.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 143,
                             Name = "Product 130",
-                            PictureFileName = "product130.jpg",
-                            Price = 468.54000000000002,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 742.49000000000001,
+                            Sku = "sku-130",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 131,
-                            AvailableStock = 41,
                             BrandId = 12,
                             CategoryId = 12,
-                            Created = 1725615230.9487176,
+                            Created = 1725960056.2016675,
                             Description = "Description for product 131",
                             Discount = 0.0,
+                            ImageUrl = "product131.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 134,
                             Name = "Product 131",
-                            PictureFileName = "product131.jpg",
-                            Price = 418.44,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 490.63,
+                            Sku = "sku-131",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 132,
-                            AvailableStock = 28,
                             BrandId = 13,
                             CategoryId = 13,
-                            Created = 1725615230.9487183,
+                            Created = 1725960056.201668,
                             Description = "Description for product 132",
                             Discount = 0.0,
+                            ImageUrl = "product132.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 63,
                             Name = "Product 132",
-                            PictureFileName = "product132.jpg",
-                            Price = 945.10000000000002,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 935.73000000000002,
+                            Sku = "sku-132",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 133,
-                            AvailableStock = 76,
                             BrandId = 14,
                             CategoryId = 14,
-                            Created = 1725615230.9487188,
+                            Created = 1725960056.2016685,
                             Description = "Description for product 133",
                             Discount = 0.0,
+                            ImageUrl = "product133.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 61,
                             Name = "Product 133",
-                            PictureFileName = "product133.jpg",
-                            Price = 629.15999999999997,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 711.29999999999995,
+                            Sku = "sku-133",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 134,
-                            AvailableStock = 19,
                             BrandId = 15,
                             CategoryId = 15,
-                            Created = 1725615230.9487195,
+                            Created = 1725960056.2016687,
                             Description = "Description for product 134",
                             Discount = 0.0,
+                            ImageUrl = "product134.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 30,
                             Name = "Product 134",
-                            PictureFileName = "product134.jpg",
-                            Price = 929.74000000000001,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 947.61000000000001,
+                            Sku = "sku-134",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 135,
-                            AvailableStock = 92,
                             BrandId = 16,
                             CategoryId = 16,
-                            Created = 1725615230.94872,
+                            Created = 1725960056.2016692,
                             Description = "Description for product 135",
                             Discount = 0.0,
+                            ImageUrl = "product135.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 35,
                             Name = "Product 135",
-                            PictureFileName = "product135.jpg",
-                            Price = 292.56999999999999,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 441.0,
+                            Sku = "sku-135",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 136,
-                            AvailableStock = 75,
                             BrandId = 17,
                             CategoryId = 17,
-                            Created = 1725615230.9487207,
+                            Created = 1725960056.2016697,
                             Description = "Description for product 136",
                             Discount = 0.0,
+                            ImageUrl = "product136.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 190,
                             Name = "Product 136",
-                            PictureFileName = "product136.jpg",
-                            Price = 998.84000000000003,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 186.75,
+                            Sku = "sku-136",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 137,
-                            AvailableStock = 81,
                             BrandId = 18,
                             CategoryId = 18,
-                            Created = 1725615230.9487212,
+                            Created = 1725960056.2016697,
                             Description = "Description for product 137",
                             Discount = 0.0,
+                            ImageUrl = "product137.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 189,
                             Name = "Product 137",
-                            PictureFileName = "product137.jpg",
-                            Price = 680.13999999999999,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 130.94999999999999,
+                            Sku = "sku-137",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 138,
-                            AvailableStock = 53,
                             BrandId = 19,
                             CategoryId = 19,
-                            Created = 1725615230.9487219,
+                            Created = 1725960056.2016704,
                             Description = "Description for product 138",
                             Discount = 0.0,
+                            ImageUrl = "product138.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 193,
                             Name = "Product 138",
-                            PictureFileName = "product138.jpg",
-                            Price = 883.32000000000005,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 675.04999999999995,
+                            Sku = "sku-138",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 139,
-                            AvailableStock = 92,
                             BrandId = 20,
                             CategoryId = 20,
-                            Created = 1725615230.9487224,
+                            Created = 1725960056.2016709,
                             Description = "Description for product 139",
                             Discount = 0.0,
+                            ImageUrl = "product139.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 104,
                             Name = "Product 139",
-                            PictureFileName = "product139.jpg",
-                            Price = 936.01999999999998,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 562.08000000000004,
+                            Sku = "sku-139",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 140,
-                            AvailableStock = 46,
                             BrandId = 21,
                             CategoryId = 1,
-                            Created = 1725615230.9487231,
+                            Created = 1725960056.2016709,
                             Description = "Description for product 140",
                             Discount = 0.0,
+                            ImageUrl = "product140.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 92,
                             Name = "Product 140",
-                            PictureFileName = "product140.jpg",
-                            Price = 858.10000000000002,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 720.51999999999998,
+                            Sku = "sku-140",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 141,
-                            AvailableStock = 80,
                             BrandId = 22,
                             CategoryId = 2,
-                            Created = 1725615230.9487236,
+                            Created = 1725960056.2016714,
                             Description = "Description for product 141",
                             Discount = 0.0,
+                            ImageUrl = "product141.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 75,
                             Name = "Product 141",
-                            PictureFileName = "product141.jpg",
-                            Price = 358.42000000000002,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 183.53999999999999,
+                            Sku = "sku-141",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 142,
-                            AvailableStock = 65,
                             BrandId = 23,
                             CategoryId = 3,
-                            Created = 1725615230.9487243,
+                            Created = 1725960056.2016721,
                             Description = "Description for product 142",
                             Discount = 0.0,
+                            ImageUrl = "product142.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 147,
                             Name = "Product 142",
-                            PictureFileName = "product142.jpg",
-                            Price = 39.439999999999998,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 290.60000000000002,
+                            Sku = "sku-142",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 143,
-                            AvailableStock = 93,
                             BrandId = 24,
                             CategoryId = 4,
-                            Created = 1725615230.9487276,
+                            Created = 1725960056.2016723,
                             Description = "Description for product 143",
                             Discount = 0.0,
+                            ImageUrl = "product143.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 90,
                             Name = "Product 143",
-                            PictureFileName = "product143.jpg",
-                            Price = 303.74000000000001,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 723.49000000000001,
+                            Sku = "sku-143",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 144,
-                            AvailableStock = 10,
                             BrandId = 25,
                             CategoryId = 5,
-                            Created = 1725615230.9487283,
+                            Created = 1725960056.2016726,
                             Description = "Description for product 144",
                             Discount = 0.0,
+                            ImageUrl = "product144.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 39,
                             Name = "Product 144",
-                            PictureFileName = "product144.jpg",
-                            Price = 919.48000000000002,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 705.24000000000001,
+                            Sku = "sku-144",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 145,
-                            AvailableStock = 43,
                             BrandId = 26,
                             CategoryId = 6,
-                            Created = 1725615230.9487288,
+                            Created = 1725960056.201673,
                             Description = "Description for product 145",
                             Discount = 0.0,
+                            ImageUrl = "product145.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 122,
                             Name = "Product 145",
-                            PictureFileName = "product145.jpg",
-                            Price = 978.10000000000002,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 823.32000000000005,
+                            Sku = "sku-145",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 146,
-                            AvailableStock = 8,
                             BrandId = 27,
                             CategoryId = 7,
-                            Created = 1725615230.9487295,
+                            Created = 1725960056.2016735,
                             Description = "Description for product 146",
                             Discount = 0.0,
+                            ImageUrl = "product146.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 126,
                             Name = "Product 146",
-                            PictureFileName = "product146.jpg",
-                            Price = 332.94,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 643.20000000000005,
+                            Sku = "sku-146",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 147,
-                            AvailableStock = 42,
                             BrandId = 28,
                             CategoryId = 8,
-                            Created = 1725615230.94873,
+                            Created = 1725960056.201674,
                             Description = "Description for product 147",
                             Discount = 0.0,
+                            ImageUrl = "product147.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 79,
                             Name = "Product 147",
-                            PictureFileName = "product147.jpg",
-                            Price = 787.37,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 354.31,
+                            Sku = "sku-147",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 148,
-                            AvailableStock = 87,
                             BrandId = 29,
                             CategoryId = 9,
-                            Created = 1725615230.9487307,
+                            Created = 1725960056.2016764,
                             Description = "Description for product 148",
                             Discount = 0.0,
+                            ImageUrl = "product148.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 70,
                             Name = "Product 148",
-                            PictureFileName = "product148.jpg",
-                            Price = 29.379999999999999,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 63.810000000000002,
+                            Sku = "sku-148",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 149,
-                            AvailableStock = 26,
                             BrandId = 30,
                             CategoryId = 10,
-                            Created = 1725615230.9487312,
+                            Created = 1725960056.2016768,
                             Description = "Description for product 149",
                             Discount = 0.0,
+                            ImageUrl = "product149.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 172,
                             Name = "Product 149",
-                            PictureFileName = "product149.jpg",
-                            Price = 528.30999999999995,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 266.58999999999997,
+                            Sku = "sku-149",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 150,
-                            AvailableStock = 20,
                             BrandId = 31,
                             CategoryId = 11,
-                            Created = 1725615230.9487319,
+                            Created = 1725960056.2016771,
                             Description = "Description for product 150",
                             Discount = 0.0,
+                            ImageUrl = "product150.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 63,
                             Name = "Product 150",
-                            PictureFileName = "product150.jpg",
-                            Price = 513.54999999999995,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 252.84,
+                            Sku = "sku-150",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 151,
-                            AvailableStock = 90,
                             BrandId = 32,
                             CategoryId = 12,
-                            Created = 1725615230.9487324,
+                            Created = 1725960056.2016776,
                             Description = "Description for product 151",
                             Discount = 0.0,
+                            ImageUrl = "product151.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 52,
                             Name = "Product 151",
-                            PictureFileName = "product151.jpg",
-                            Price = 197.62,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 109.08,
+                            Sku = "sku-151",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 152,
-                            AvailableStock = 19,
                             BrandId = 33,
                             CategoryId = 13,
-                            Created = 1725615230.9487331,
+                            Created = 1725960056.201678,
                             Description = "Description for product 152",
                             Discount = 0.0,
+                            ImageUrl = "product152.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 126,
                             Name = "Product 152",
-                            PictureFileName = "product152.jpg",
-                            Price = 933.73000000000002,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 711.28999999999996,
+                            Sku = "sku-152",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 153,
-                            AvailableStock = 2,
                             BrandId = 34,
                             CategoryId = 14,
-                            Created = 1725615230.9487336,
+                            Created = 1725960056.2016785,
                             Description = "Description for product 153",
                             Discount = 0.0,
+                            ImageUrl = "product153.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 99,
                             Name = "Product 153",
-                            PictureFileName = "product153.jpg",
-                            Price = 327.54000000000002,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 558.09000000000003,
+                            Sku = "sku-153",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 154,
-                            AvailableStock = 52,
                             BrandId = 35,
                             CategoryId = 15,
-                            Created = 1725615230.9487343,
+                            Created = 1725960056.201679,
                             Description = "Description for product 154",
                             Discount = 0.0,
+                            ImageUrl = "product154.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 152,
                             Name = "Product 154",
-                            PictureFileName = "product154.jpg",
-                            Price = 898.27999999999997,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 204.49000000000001,
+                            Sku = "sku-154",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 155,
-                            AvailableStock = 47,
                             BrandId = 36,
                             CategoryId = 16,
-                            Created = 1725615230.9487348,
+                            Created = 1725960056.2016795,
                             Description = "Description for product 155",
                             Discount = 0.0,
+                            ImageUrl = "product155.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 63,
                             Name = "Product 155",
-                            PictureFileName = "product155.jpg",
-                            Price = 297.06999999999999,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 291.88,
+                            Sku = "sku-155",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 156,
-                            AvailableStock = 58,
                             BrandId = 37,
                             CategoryId = 17,
-                            Created = 1725615230.9487355,
+                            Created = 1725960056.2016797,
                             Description = "Description for product 156",
                             Discount = 0.0,
+                            ImageUrl = "product156.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 190,
                             Name = "Product 156",
-                            PictureFileName = "product156.jpg",
-                            Price = 3.3500000000000001,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 72.459999999999994,
+                            Sku = "sku-156",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 157,
-                            AvailableStock = 65,
                             BrandId = 38,
                             CategoryId = 18,
-                            Created = 1725615230.9487393,
+                            Created = 1725960056.2016802,
                             Description = "Description for product 157",
                             Discount = 0.0,
+                            ImageUrl = "product157.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 163,
                             Name = "Product 157",
-                            PictureFileName = "product157.jpg",
-                            Price = 253.30000000000001,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 392.85000000000002,
+                            Sku = "sku-157",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 158,
-                            AvailableStock = 30,
                             BrandId = 39,
                             CategoryId = 19,
-                            Created = 1725615230.94874,
+                            Created = 1725960056.2016809,
                             Description = "Description for product 158",
                             Discount = 0.0,
+                            ImageUrl = "product158.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 67,
                             Name = "Product 158",
-                            PictureFileName = "product158.jpg",
-                            Price = 453.89999999999998,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 634.63,
+                            Sku = "sku-158",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 159,
-                            AvailableStock = 51,
                             BrandId = 40,
                             CategoryId = 20,
-                            Created = 1725615230.9487407,
+                            Created = 1725960056.2016811,
                             Description = "Description for product 159",
                             Discount = 0.0,
+                            ImageUrl = "product159.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 109,
                             Name = "Product 159",
-                            PictureFileName = "product159.jpg",
-                            Price = 108.43000000000001,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 626.39999999999998,
+                            Sku = "sku-159",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 160,
-                            AvailableStock = 65,
                             BrandId = 1,
                             CategoryId = 1,
-                            Created = 1725615230.9487412,
+                            Created = 1725960056.2016814,
                             Description = "Description for product 160",
                             Discount = 0.0,
+                            ImageUrl = "product160.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 187,
                             Name = "Product 160",
-                            PictureFileName = "product160.jpg",
-                            Price = 80.450000000000003,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 962.20000000000005,
+                            Sku = "sku-160",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 161,
-                            AvailableStock = 17,
                             BrandId = 2,
                             CategoryId = 2,
-                            Created = 1725615230.9487419,
+                            Created = 1725960056.2016819,
                             Description = "Description for product 161",
                             Discount = 0.0,
+                            ImageUrl = "product161.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 54,
                             Name = "Product 161",
-                            PictureFileName = "product161.jpg",
-                            Price = 413.51999999999998,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 646.21000000000004,
+                            Sku = "sku-161",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 162,
-                            AvailableStock = 37,
                             BrandId = 3,
                             CategoryId = 3,
-                            Created = 1725615230.9487424,
+                            Created = 1725960056.2016823,
                             Description = "Description for product 162",
                             Discount = 0.0,
+                            ImageUrl = "product162.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 154,
                             Name = "Product 162",
-                            PictureFileName = "product162.jpg",
-                            Price = 254.72,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 726.39999999999998,
+                            Sku = "sku-162",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 163,
-                            AvailableStock = 57,
                             BrandId = 4,
                             CategoryId = 4,
-                            Created = 1725615230.9487431,
+                            Created = 1725960056.2016828,
                             Description = "Description for product 163",
                             Discount = 0.0,
+                            ImageUrl = "product163.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 79,
                             Name = "Product 163",
-                            PictureFileName = "product163.jpg",
-                            Price = 16.460000000000001,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 454.56999999999999,
+                            Sku = "sku-163",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 164,
-                            AvailableStock = 36,
                             BrandId = 5,
                             CategoryId = 5,
-                            Created = 1725615230.9487436,
+                            Created = 1725960056.2016833,
                             Description = "Description for product 164",
                             Discount = 0.0,
+                            ImageUrl = "product164.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 34,
                             Name = "Product 164",
-                            PictureFileName = "product164.jpg",
-                            Price = 500.16000000000003,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 889.0,
+                            Sku = "sku-164",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 165,
-                            AvailableStock = 55,
                             BrandId = 6,
                             CategoryId = 6,
-                            Created = 1725615230.9487443,
+                            Created = 1725960056.2016835,
                             Description = "Description for product 165",
                             Discount = 0.0,
+                            ImageUrl = "product165.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 125,
                             Name = "Product 165",
-                            PictureFileName = "product165.jpg",
-                            Price = 902.0,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 572.80999999999995,
+                            Sku = "sku-165",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 166,
-                            AvailableStock = 38,
                             BrandId = 7,
                             CategoryId = 7,
-                            Created = 1725615230.9487448,
+                            Created = 1725960056.201684,
                             Description = "Description for product 166",
                             Discount = 0.0,
+                            ImageUrl = "product166.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 102,
                             Name = "Product 166",
-                            PictureFileName = "product166.jpg",
-                            Price = 704.44000000000005,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 813.89999999999998,
+                            Sku = "sku-166",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 167,
-                            AvailableStock = 76,
                             BrandId = 8,
                             CategoryId = 8,
-                            Created = 1725615230.9487455,
+                            Created = 1725960056.2016857,
                             Description = "Description for product 167",
                             Discount = 0.0,
+                            ImageUrl = "product167.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 134,
                             Name = "Product 167",
-                            PictureFileName = "product167.jpg",
-                            Price = 640.66999999999996,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 34.420000000000002,
+                            Sku = "sku-167",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 168,
-                            AvailableStock = 59,
                             BrandId = 9,
                             CategoryId = 9,
-                            Created = 1725615230.948746,
+                            Created = 1725960056.2016859,
                             Description = "Description for product 168",
                             Discount = 0.0,
+                            ImageUrl = "product168.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 150,
                             Name = "Product 168",
-                            PictureFileName = "product168.jpg",
-                            Price = 213.47999999999999,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 858.85000000000002,
+                            Sku = "sku-168",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 169,
-                            AvailableStock = 74,
                             BrandId = 10,
                             CategoryId = 10,
-                            Created = 1725615230.9487467,
+                            Created = 1725960056.2016864,
                             Description = "Description for product 169",
                             Discount = 0.0,
+                            ImageUrl = "product169.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 46,
                             Name = "Product 169",
-                            PictureFileName = "product169.jpg",
-                            Price = 526.88999999999999,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 532.45000000000005,
+                            Sku = "sku-169",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 170,
-                            AvailableStock = 68,
                             BrandId = 11,
                             CategoryId = 11,
-                            Created = 1725615230.9487472,
+                            Created = 1725960056.2016871,
                             Description = "Description for product 170",
                             Discount = 0.0,
+                            ImageUrl = "product170.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 142,
                             Name = "Product 170",
-                            PictureFileName = "product170.jpg",
-                            Price = 224.72,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 309.86000000000001,
+                            Sku = "sku-170",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 171,
-                            AvailableStock = 43,
                             BrandId = 12,
                             CategoryId = 12,
-                            Created = 1725615230.9487531,
+                            Created = 1725960056.2016871,
                             Description = "Description for product 171",
                             Discount = 0.0,
+                            ImageUrl = "product171.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 53,
                             Name = "Product 171",
-                            PictureFileName = "product171.jpg",
-                            Price = 814.65999999999997,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 822.45000000000005,
+                            Sku = "sku-171",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 172,
-                            AvailableStock = 36,
                             BrandId = 13,
                             CategoryId = 13,
-                            Created = 1725615230.9487536,
+                            Created = 1725960056.2016876,
                             Description = "Description for product 172",
                             Discount = 0.0,
+                            ImageUrl = "product172.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 158,
                             Name = "Product 172",
-                            PictureFileName = "product172.jpg",
-                            Price = 615.24000000000001,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 608.53999999999996,
+                            Sku = "sku-172",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 173,
-                            AvailableStock = 30,
                             BrandId = 14,
                             CategoryId = 14,
-                            Created = 1725615230.9487543,
+                            Created = 1725960056.2016881,
                             Description = "Description for product 173",
                             Discount = 0.0,
+                            ImageUrl = "product173.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 100,
                             Name = "Product 173",
-                            PictureFileName = "product173.jpg",
-                            Price = 760.87,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 517.73000000000002,
+                            Sku = "sku-173",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 174,
-                            AvailableStock = 22,
                             BrandId = 15,
                             CategoryId = 15,
-                            Created = 1725615230.9487548,
+                            Created = 1725960056.2016888,
                             Description = "Description for product 174",
                             Discount = 0.0,
+                            ImageUrl = "product174.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 170,
                             Name = "Product 174",
-                            PictureFileName = "product174.jpg",
-                            Price = 811.07000000000005,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 843.40999999999997,
+                            Sku = "sku-174",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 175,
-                            AvailableStock = 42,
                             BrandId = 16,
                             CategoryId = 16,
-                            Created = 1725615230.9487555,
+                            Created = 1725960056.2016892,
                             Description = "Description for product 175",
                             Discount = 0.0,
+                            ImageUrl = "product175.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 30,
                             Name = "Product 175",
-                            PictureFileName = "product175.jpg",
-                            Price = 916.19000000000005,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 974.75,
+                            Sku = "sku-175",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 176,
-                            AvailableStock = 22,
                             BrandId = 17,
                             CategoryId = 17,
-                            Created = 1725615230.948756,
+                            Created = 1725960056.2016895,
                             Description = "Description for product 176",
                             Discount = 0.0,
+                            ImageUrl = "product176.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 98,
                             Name = "Product 176",
-                            PictureFileName = "product176.jpg",
-                            Price = 350.17000000000002,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 926.87,
+                            Sku = "sku-176",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 177,
-                            AvailableStock = 57,
                             BrandId = 18,
                             CategoryId = 18,
-                            Created = 1725615230.9487567,
+                            Created = 1725960056.2016897,
                             Description = "Description for product 177",
                             Discount = 0.0,
+                            ImageUrl = "product177.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 120,
                             Name = "Product 177",
-                            PictureFileName = "product177.jpg",
-                            Price = 145.99000000000001,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 466.67000000000002,
+                            Sku = "sku-177",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 178,
-                            AvailableStock = 70,
                             BrandId = 19,
                             CategoryId = 19,
-                            Created = 1725615230.9487572,
+                            Created = 1725960056.2016904,
                             Description = "Description for product 178",
                             Discount = 0.0,
+                            ImageUrl = "product178.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 59,
                             Name = "Product 178",
-                            PictureFileName = "product178.jpg",
-                            Price = 642.40999999999997,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 28.739999999999998,
+                            Sku = "sku-178",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 179,
-                            AvailableStock = 28,
                             BrandId = 20,
                             CategoryId = 20,
-                            Created = 1725615230.9487579,
+                            Created = 1725960056.2016909,
                             Description = "Description for product 179",
                             Discount = 0.0,
+                            ImageUrl = "product179.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 158,
                             Name = "Product 179",
-                            PictureFileName = "product179.jpg",
-                            Price = 908.37,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 49.450000000000003,
+                            Sku = "sku-179",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 180,
-                            AvailableStock = 81,
                             BrandId = 21,
                             CategoryId = 1,
-                            Created = 1725615230.9487584,
+                            Created = 1725960056.2016912,
                             Description = "Description for product 180",
                             Discount = 0.0,
+                            ImageUrl = "product180.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 81,
                             Name = "Product 180",
-                            PictureFileName = "product180.jpg",
-                            Price = 514.29999999999995,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 497.27999999999997,
+                            Sku = "sku-180",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 181,
-                            AvailableStock = 5,
                             BrandId = 22,
                             CategoryId = 2,
-                            Created = 1725615230.9487593,
+                            Created = 1725960056.2016964,
                             Description = "Description for product 181",
                             Discount = 0.0,
+                            ImageUrl = "product181.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 22,
                             Name = "Product 181",
-                            PictureFileName = "product181.jpg",
-                            Price = 581.59000000000003,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 230.58000000000001,
+                            Sku = "sku-181",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 182,
-                            AvailableStock = 74,
                             BrandId = 23,
                             CategoryId = 3,
-                            Created = 1725615230.9487596,
+                            Created = 1725960056.2016973,
                             Description = "Description for product 182",
                             Discount = 0.0,
+                            ImageUrl = "product182.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 178,
                             Name = "Product 182",
-                            PictureFileName = "product182.jpg",
-                            Price = 970.57000000000005,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 429.00999999999999,
+                            Sku = "sku-182",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 183,
-                            AvailableStock = 48,
                             BrandId = 24,
                             CategoryId = 4,
-                            Created = 1725615230.9487605,
+                            Created = 1725960056.2016981,
                             Description = "Description for product 183",
                             Discount = 0.0,
+                            ImageUrl = "product183.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 23,
                             Name = "Product 183",
-                            PictureFileName = "product183.jpg",
-                            Price = 579.75999999999999,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 774.27999999999997,
+                            Sku = "sku-183",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 184,
-                            AvailableStock = 60,
                             BrandId = 25,
                             CategoryId = 5,
-                            Created = 1725615230.9487607,
+                            Created = 1725960056.2016983,
                             Description = "Description for product 184",
                             Discount = 0.0,
+                            ImageUrl = "product184.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 82,
                             Name = "Product 184",
-                            PictureFileName = "product184.jpg",
-                            Price = 86.890000000000001,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 511.97000000000003,
+                            Sku = "sku-184",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 185,
-                            AvailableStock = 95,
                             BrandId = 26,
                             CategoryId = 6,
-                            Created = 1725615230.9487669,
+                            Created = 1725960056.2016993,
                             Description = "Description for product 185",
                             Discount = 0.0,
+                            ImageUrl = "product185.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 21,
                             Name = "Product 185",
-                            PictureFileName = "product185.jpg",
-                            Price = 546.03999999999996,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 843.25999999999999,
+                            Sku = "sku-185",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 186,
-                            AvailableStock = 91,
                             BrandId = 27,
                             CategoryId = 7,
-                            Created = 1725615230.9487677,
+                            Created = 1725960056.201704,
                             Description = "Description for product 186",
                             Discount = 0.0,
+                            ImageUrl = "product186.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 51,
                             Name = "Product 186",
-                            PictureFileName = "product186.jpg",
-                            Price = 390.50999999999999,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 146.69999999999999,
+                            Sku = "sku-186",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 187,
-                            AvailableStock = 16,
                             BrandId = 28,
                             CategoryId = 8,
-                            Created = 1725615230.9487681,
+                            Created = 1725960056.2017047,
                             Description = "Description for product 187",
                             Discount = 0.0,
+                            ImageUrl = "product187.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 103,
                             Name = "Product 187",
-                            PictureFileName = "product187.jpg",
-                            Price = 123.38,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 280.43000000000001,
+                            Sku = "sku-187",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 188,
-                            AvailableStock = 66,
                             BrandId = 29,
                             CategoryId = 9,
-                            Created = 1725615230.9487689,
+                            Created = 1725960056.2017052,
                             Description = "Description for product 188",
                             Discount = 0.0,
+                            ImageUrl = "product188.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 178,
                             Name = "Product 188",
-                            PictureFileName = "product188.jpg",
-                            Price = 475.80000000000001,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 295.63,
+                            Sku = "sku-188",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 189,
-                            AvailableStock = 68,
                             BrandId = 30,
                             CategoryId = 10,
-                            Created = 1725615230.9487693,
+                            Created = 1725960056.2017057,
                             Description = "Description for product 189",
                             Discount = 0.0,
+                            ImageUrl = "product189.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 28,
                             Name = "Product 189",
-                            PictureFileName = "product189.jpg",
-                            Price = 269.87,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 440.88999999999999,
+                            Sku = "sku-189",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 190,
-                            AvailableStock = 89,
                             BrandId = 31,
                             CategoryId = 11,
-                            Created = 1725615230.94877,
+                            Created = 1725960056.2017064,
                             Description = "Description for product 190",
                             Discount = 0.0,
+                            ImageUrl = "product190.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 139,
                             Name = "Product 190",
-                            PictureFileName = "product190.jpg",
-                            Price = 460.81999999999999,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 357.94,
+                            Sku = "sku-190",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 191,
-                            AvailableStock = 15,
                             BrandId = 32,
                             CategoryId = 12,
-                            Created = 1725615230.9487705,
+                            Created = 1725960056.2017069,
                             Description = "Description for product 191",
                             Discount = 0.0,
+                            ImageUrl = "product191.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 124,
                             Name = "Product 191",
-                            PictureFileName = "product191.jpg",
-                            Price = 192.88999999999999,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 718.98000000000002,
+                            Sku = "sku-191",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 192,
-                            AvailableStock = 86,
                             BrandId = 33,
                             CategoryId = 13,
-                            Created = 1725615230.9487753,
+                            Created = 1725960056.2017074,
                             Description = "Description for product 192",
                             Discount = 0.0,
+                            ImageUrl = "product192.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 73,
                             Name = "Product 192",
-                            PictureFileName = "product192.jpg",
-                            Price = 494.61000000000001,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 355.81,
+                            Sku = "sku-192",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 193,
-                            AvailableStock = 92,
                             BrandId = 34,
                             CategoryId = 14,
-                            Created = 1725615230.9487758,
+                            Created = 1725960056.2017081,
                             Description = "Description for product 193",
                             Discount = 0.0,
+                            ImageUrl = "product193.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 56,
                             Name = "Product 193",
-                            PictureFileName = "product193.jpg",
-                            Price = 294.44,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 139.08000000000001,
+                            Sku = "sku-193",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 194,
-                            AvailableStock = 18,
                             BrandId = 35,
                             CategoryId = 15,
-                            Created = 1725615230.9487765,
+                            Created = 1725960056.2017086,
                             Description = "Description for product 194",
                             Discount = 0.0,
+                            ImageUrl = "product194.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 180,
                             Name = "Product 194",
-                            PictureFileName = "product194.jpg",
-                            Price = 638.65999999999997,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 330.45999999999998,
+                            Sku = "sku-194",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 195,
-                            AvailableStock = 48,
                             BrandId = 36,
                             CategoryId = 16,
-                            Created = 1725615230.948777,
+                            Created = 1725960056.201709,
                             Description = "Description for product 195",
                             Discount = 0.0,
+                            ImageUrl = "product195.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 40,
                             Name = "Product 195",
-                            PictureFileName = "product195.jpg",
-                            Price = 337.42000000000002,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 207.19999999999999,
+                            Sku = "sku-195",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 196,
-                            AvailableStock = 64,
                             BrandId = 37,
                             CategoryId = 17,
-                            Created = 1725615230.9487777,
+                            Created = 1725960056.2017095,
                             Description = "Description for product 196",
                             Discount = 0.0,
+                            ImageUrl = "product196.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 31,
                             Name = "Product 196",
-                            PictureFileName = "product196.jpg",
-                            Price = 28.77,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 4.7800000000000002,
+                            Sku = "sku-196",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 197,
-                            AvailableStock = 2,
                             BrandId = 38,
                             CategoryId = 18,
-                            Created = 1725615230.9487782,
+                            Created = 1725960056.2017095,
                             Description = "Description for product 197",
                             Discount = 0.0,
+                            ImageUrl = "product197.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 141,
                             Name = "Product 197",
-                            PictureFileName = "product197.jpg",
-                            Price = 167.47,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 469.11000000000001,
+                            Sku = "sku-197",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 198,
-                            AvailableStock = 56,
                             BrandId = 39,
                             CategoryId = 19,
-                            Created = 1725615230.9487817,
+                            Created = 1725960056.2017102,
                             Description = "Description for product 198",
                             Discount = 0.0,
+                            ImageUrl = "product198.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 163,
                             Name = "Product 198",
-                            PictureFileName = "product198.jpg",
-                            Price = 420.83999999999997,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 109.06,
+                            Sku = "sku-198",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 199,
-                            AvailableStock = 3,
                             BrandId = 40,
                             CategoryId = 20,
-                            Created = 1725615230.9487824,
+                            Created = 1725960056.2017107,
                             Description = "Description for product 199",
                             Discount = 0.0,
+                            ImageUrl = "product199.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 185,
                             Name = "Product 199",
-                            PictureFileName = "product199.jpg",
-                            Price = 38.840000000000003,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 228.69,
+                            Sku = "sku-199",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 200,
-                            AvailableStock = 89,
                             BrandId = 1,
                             CategoryId = 1,
-                            Created = 1725615230.9487832,
+                            Created = 1725960056.2017109,
                             Description = "Description for product 200",
                             Discount = 0.0,
+                            ImageUrl = "product200.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 78,
                             Name = "Product 200",
-                            PictureFileName = "product200.jpg",
-                            Price = 301.47000000000003,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 902.30999999999995,
+                            Sku = "sku-200",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 201,
-                            AvailableStock = 19,
                             BrandId = 2,
                             CategoryId = 2,
-                            Created = 1725615230.9487836,
+                            Created = 1725960056.2017112,
                             Description = "Description for product 201",
                             Discount = 0.0,
+                            ImageUrl = "product201.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 30,
                             Name = "Product 201",
-                            PictureFileName = "product201.jpg",
-                            Price = 380.30000000000001,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 718.0,
+                            Sku = "sku-201",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 202,
-                            AvailableStock = 44,
                             BrandId = 3,
                             CategoryId = 3,
-                            Created = 1725615230.9487844,
+                            Created = 1725960056.2017119,
                             Description = "Description for product 202",
                             Discount = 0.0,
+                            ImageUrl = "product202.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 99,
                             Name = "Product 202",
-                            PictureFileName = "product202.jpg",
-                            Price = 696.87,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 30.98,
+                            Sku = "sku-202",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 203,
-                            AvailableStock = 28,
                             BrandId = 4,
                             CategoryId = 4,
-                            Created = 1725615230.9487848,
+                            Created = 1725960056.2017121,
                             Description = "Description for product 203",
                             Discount = 0.0,
+                            ImageUrl = "product203.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 162,
                             Name = "Product 203",
-                            PictureFileName = "product203.jpg",
-                            Price = 981.64999999999998,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 664.88999999999999,
+                            Sku = "sku-203",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 204,
-                            AvailableStock = 5,
                             BrandId = 5,
                             CategoryId = 5,
-                            Created = 1725615230.9487855,
+                            Created = 1725960056.2017126,
                             Description = "Description for product 204",
                             Discount = 0.0,
+                            ImageUrl = "product204.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 139,
                             Name = "Product 204",
-                            PictureFileName = "product204.jpg",
-                            Price = 689.79999999999995,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 647.87,
+                            Sku = "sku-204",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 205,
-                            AvailableStock = 92,
                             BrandId = 6,
                             CategoryId = 6,
-                            Created = 1725615230.9487863,
+                            Created = 1725960056.2017128,
                             Description = "Description for product 205",
                             Discount = 0.0,
+                            ImageUrl = "product205.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 37,
                             Name = "Product 205",
-                            PictureFileName = "product205.jpg",
-                            Price = 683.0,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 105.44,
+                            Sku = "sku-205",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 206,
-                            AvailableStock = 3,
                             BrandId = 7,
                             CategoryId = 7,
-                            Created = 1725615230.9487867,
+                            Created = 1725960056.2017164,
                             Description = "Description for product 206",
                             Discount = 0.0,
+                            ImageUrl = "product206.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 44,
                             Name = "Product 206",
-                            PictureFileName = "product206.jpg",
-                            Price = 753.92999999999995,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 655.48000000000002,
+                            Sku = "sku-206",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 207,
-                            AvailableStock = 73,
                             BrandId = 8,
                             CategoryId = 8,
-                            Created = 1725615230.9487875,
+                            Created = 1725960056.2017167,
                             Description = "Description for product 207",
                             Discount = 0.0,
+                            ImageUrl = "product207.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 23,
                             Name = "Product 207",
-                            PictureFileName = "product207.jpg",
-                            Price = 199.47999999999999,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 985.46000000000004,
+                            Sku = "sku-207",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 208,
-                            AvailableStock = 88,
                             BrandId = 9,
                             CategoryId = 9,
-                            Created = 1725615230.9487879,
+                            Created = 1725960056.2017169,
                             Description = "Description for product 208",
                             Discount = 0.0,
+                            ImageUrl = "product208.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 124,
                             Name = "Product 208",
-                            PictureFileName = "product208.jpg",
-                            Price = 411.01999999999998,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 637.76999999999998,
+                            Sku = "sku-208",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 209,
-                            AvailableStock = 63,
                             BrandId = 10,
                             CategoryId = 10,
-                            Created = 1725615230.9487884,
+                            Created = 1725960056.2017171,
                             Description = "Description for product 209",
                             Discount = 0.0,
+                            ImageUrl = "product209.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 123,
                             Name = "Product 209",
-                            PictureFileName = "product209.jpg",
-                            Price = 567.38,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 757.02999999999997,
+                            Sku = "sku-209",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 210,
-                            AvailableStock = 7,
                             BrandId = 11,
                             CategoryId = 11,
-                            Created = 1725615230.9487891,
+                            Created = 1725960056.2017179,
                             Description = "Description for product 210",
                             Discount = 0.0,
+                            ImageUrl = "product210.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 29,
                             Name = "Product 210",
-                            PictureFileName = "product210.jpg",
-                            Price = 61.600000000000001,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 286.95999999999998,
+                            Sku = "sku-210",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 211,
-                            AvailableStock = 30,
                             BrandId = 12,
                             CategoryId = 12,
-                            Created = 1725615230.9487896,
+                            Created = 1725960056.2017181,
                             Description = "Description for product 211",
                             Discount = 0.0,
+                            ImageUrl = "product211.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 127,
                             Name = "Product 211",
-                            PictureFileName = "product211.jpg",
-                            Price = 616.33000000000004,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 596.75,
+                            Sku = "sku-211",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 212,
-                            AvailableStock = 76,
                             BrandId = 13,
                             CategoryId = 13,
-                            Created = 1725615230.9487967,
+                            Created = 1725960056.2017183,
                             Description = "Description for product 212",
                             Discount = 0.0,
+                            ImageUrl = "product212.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 189,
                             Name = "Product 212",
-                            PictureFileName = "product212.jpg",
-                            Price = 381.75,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 818.99000000000001,
+                            Sku = "sku-212",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 213,
-                            AvailableStock = 4,
                             BrandId = 14,
                             CategoryId = 14,
-                            Created = 1725615230.9487975,
+                            Created = 1725960056.2017188,
                             Description = "Description for product 213",
                             Discount = 0.0,
+                            ImageUrl = "product213.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 176,
                             Name = "Product 213",
-                            PictureFileName = "product213.jpg",
-                            Price = 836.04999999999995,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 636.17999999999995,
+                            Sku = "sku-213",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 214,
-                            AvailableStock = 63,
                             BrandId = 15,
                             CategoryId = 15,
-                            Created = 1725615230.9487979,
+                            Created = 1725960056.2017193,
                             Description = "Description for product 214",
                             Discount = 0.0,
+                            ImageUrl = "product214.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 116,
                             Name = "Product 214",
-                            PictureFileName = "product214.jpg",
-                            Price = 118.70999999999999,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 15.66,
+                            Sku = "sku-214",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 215,
-                            AvailableStock = 1,
                             BrandId = 16,
                             CategoryId = 16,
-                            Created = 1725615230.9487987,
+                            Created = 1725960056.2017198,
                             Description = "Description for product 215",
                             Discount = 0.0,
+                            ImageUrl = "product215.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 114,
                             Name = "Product 215",
-                            PictureFileName = "product215.jpg",
-                            Price = 20.199999999999999,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 650.48000000000002,
+                            Sku = "sku-215",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 216,
-                            AvailableStock = 78,
                             BrandId = 17,
                             CategoryId = 17,
-                            Created = 1725615230.9487991,
+                            Created = 1725960056.20172,
                             Description = "Description for product 216",
                             Discount = 0.0,
+                            ImageUrl = "product216.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 112,
                             Name = "Product 216",
-                            PictureFileName = "product216.jpg",
-                            Price = 634.27999999999997,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 189.34,
+                            Sku = "sku-216",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 217,
-                            AvailableStock = 30,
                             BrandId = 18,
                             CategoryId = 18,
-                            Created = 1725615230.9487998,
+                            Created = 1725960056.2017205,
                             Description = "Description for product 217",
                             Discount = 0.0,
+                            ImageUrl = "product217.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 115,
                             Name = "Product 217",
-                            PictureFileName = "product217.jpg",
-                            Price = 99.390000000000001,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 71.780000000000001,
+                            Sku = "sku-217",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 218,
-                            AvailableStock = 40,
                             BrandId = 19,
                             CategoryId = 19,
-                            Created = 1725615230.9488003,
+                            Created = 1725960056.201721,
                             Description = "Description for product 218",
                             Discount = 0.0,
+                            ImageUrl = "product218.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 103,
                             Name = "Product 218",
-                            PictureFileName = "product218.jpg",
-                            Price = 698.89999999999998,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 556.63,
+                            Sku = "sku-218",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 219,
-                            AvailableStock = 52,
                             BrandId = 20,
                             CategoryId = 20,
-                            Created = 1725615230.948801,
+                            Created = 1725960056.2017214,
                             Description = "Description for product 219",
                             Discount = 0.0,
+                            ImageUrl = "product219.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 80,
                             Name = "Product 219",
-                            PictureFileName = "product219.jpg",
-                            Price = 806.02999999999997,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 443.54000000000002,
+                            Sku = "sku-219",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 220,
-                            AvailableStock = 62,
                             BrandId = 21,
                             CategoryId = 1,
-                            Created = 1725615230.9488015,
+                            Created = 1725960056.2017217,
                             Description = "Description for product 220",
                             Discount = 0.0,
+                            ImageUrl = "product220.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 193,
                             Name = "Product 220",
-                            PictureFileName = "product220.jpg",
-                            Price = 248.78999999999999,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 759.76999999999998,
+                            Sku = "sku-220",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 221,
-                            AvailableStock = 75,
                             BrandId = 22,
                             CategoryId = 2,
-                            Created = 1725615230.9488022,
+                            Created = 1725960056.2017219,
                             Description = "Description for product 221",
                             Discount = 0.0,
+                            ImageUrl = "product221.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 89,
                             Name = "Product 221",
-                            PictureFileName = "product221.jpg",
-                            Price = 988.90999999999997,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 945.01999999999998,
+                            Sku = "sku-221",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 222,
-                            AvailableStock = 32,
                             BrandId = 23,
                             CategoryId = 3,
-                            Created = 1725615230.9488027,
+                            Created = 1725960056.2017226,
                             Description = "Description for product 222",
                             Discount = 0.0,
+                            ImageUrl = "product222.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 42,
                             Name = "Product 222",
-                            PictureFileName = "product222.jpg",
-                            Price = 554.57000000000005,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 941.65999999999997,
+                            Sku = "sku-222",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 223,
-                            AvailableStock = 6,
                             BrandId = 24,
                             CategoryId = 4,
-                            Created = 1725615230.9488034,
+                            Created = 1725960056.2017229,
                             Description = "Description for product 223",
                             Discount = 0.0,
+                            ImageUrl = "product223.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 180,
                             Name = "Product 223",
-                            PictureFileName = "product223.jpg",
-                            Price = 273.31,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 447.61000000000001,
+                            Sku = "sku-223",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 224,
-                            AvailableStock = 1,
                             BrandId = 25,
                             CategoryId = 5,
-                            Created = 1725615230.9488039,
+                            Created = 1725960056.2017231,
                             Description = "Description for product 224",
                             Discount = 0.0,
+                            ImageUrl = "product224.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 22,
                             Name = "Product 224",
-                            PictureFileName = "product224.jpg",
-                            Price = 567.62,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 112.65000000000001,
+                            Sku = "sku-224",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 225,
-                            AvailableStock = 37,
                             BrandId = 26,
                             CategoryId = 6,
-                            Created = 1725615230.9488046,
+                            Created = 1725960056.2017255,
                             Description = "Description for product 225",
                             Discount = 0.0,
+                            ImageUrl = "product225.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 176,
                             Name = "Product 225",
-                            PictureFileName = "product225.jpg",
-                            Price = 111.48,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 177.84,
+                            Sku = "sku-225",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 226,
-                            AvailableStock = 6,
                             BrandId = 27,
                             CategoryId = 7,
-                            Created = 1725615230.9488132,
+                            Created = 1725960056.201726,
                             Description = "Description for product 226",
                             Discount = 0.0,
+                            ImageUrl = "product226.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 51,
                             Name = "Product 226",
-                            PictureFileName = "product226.jpg",
-                            Price = 58.280000000000001,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 649.48000000000002,
+                            Sku = "sku-226",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 227,
-                            AvailableStock = 15,
                             BrandId = 28,
                             CategoryId = 8,
-                            Created = 1725615230.9488139,
+                            Created = 1725960056.2017264,
                             Description = "Description for product 227",
                             Discount = 0.0,
+                            ImageUrl = "product227.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 25,
                             Name = "Product 227",
-                            PictureFileName = "product227.jpg",
-                            Price = 690.66999999999996,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 413.44,
+                            Sku = "sku-227",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 228,
-                            AvailableStock = 50,
                             BrandId = 29,
                             CategoryId = 9,
-                            Created = 1725615230.9488144,
+                            Created = 1725960056.2017269,
                             Description = "Description for product 228",
                             Discount = 0.0,
+                            ImageUrl = "product228.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 63,
                             Name = "Product 228",
-                            PictureFileName = "product228.jpg",
-                            Price = 972.13999999999999,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 156.55000000000001,
+                            Sku = "sku-228",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 229,
-                            AvailableStock = 91,
                             BrandId = 30,
                             CategoryId = 10,
-                            Created = 1725615230.9488151,
+                            Created = 1725960056.2017272,
                             Description = "Description for product 229",
                             Discount = 0.0,
+                            ImageUrl = "product229.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 198,
                             Name = "Product 229",
-                            PictureFileName = "product229.jpg",
-                            Price = 413.63,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 24.710000000000001,
+                            Sku = "sku-229",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 230,
-                            AvailableStock = 82,
                             BrandId = 31,
                             CategoryId = 11,
-                            Created = 1725615230.9488156,
+                            Created = 1725960056.2017279,
                             Description = "Description for product 230",
                             Discount = 0.0,
+                            ImageUrl = "product230.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 78,
                             Name = "Product 230",
-                            PictureFileName = "product230.jpg",
-                            Price = 549.85000000000002,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 174.11000000000001,
+                            Sku = "sku-230",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 231,
-                            AvailableStock = 17,
                             BrandId = 32,
                             CategoryId = 12,
-                            Created = 1725615230.9488163,
+                            Created = 1725960056.2017281,
                             Description = "Description for product 231",
                             Discount = 0.0,
+                            ImageUrl = "product231.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 199,
                             Name = "Product 231",
-                            PictureFileName = "product231.jpg",
-                            Price = 638.17999999999995,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 645.00999999999999,
+                            Sku = "sku-231",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 232,
-                            AvailableStock = 89,
                             BrandId = 33,
                             CategoryId = 13,
-                            Created = 1725615230.9488168,
+                            Created = 1725960056.2017283,
                             Description = "Description for product 232",
                             Discount = 0.0,
+                            ImageUrl = "product232.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 104,
                             Name = "Product 232",
-                            PictureFileName = "product232.jpg",
-                            Price = 838.75,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 450.38,
+                            Sku = "sku-232",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 233,
-                            AvailableStock = 79,
                             BrandId = 34,
                             CategoryId = 14,
-                            Created = 1725615230.9488175,
+                            Created = 1725960056.2017288,
                             Description = "Description for product 233",
                             Discount = 0.0,
+                            ImageUrl = "product233.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 31,
                             Name = "Product 233",
-                            PictureFileName = "product233.jpg",
-                            Price = 737.41999999999996,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 514.13,
+                            Sku = "sku-233",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 234,
-                            AvailableStock = 77,
                             BrandId = 35,
                             CategoryId = 15,
-                            Created = 1725615230.948818,
+                            Created = 1725960056.2017293,
                             Description = "Description for product 234",
                             Discount = 0.0,
+                            ImageUrl = "product234.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 194,
                             Name = "Product 234",
-                            PictureFileName = "product234.jpg",
-                            Price = 911.97000000000003,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 675.72000000000003,
+                            Sku = "sku-234",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 235,
-                            AvailableStock = 55,
                             BrandId = 36,
                             CategoryId = 16,
-                            Created = 1725615230.9488187,
+                            Created = 1725960056.2017298,
                             Description = "Description for product 235",
                             Discount = 0.0,
+                            ImageUrl = "product235.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 125,
                             Name = "Product 235",
-                            PictureFileName = "product235.jpg",
-                            Price = 807.40999999999997,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 267.55000000000001,
+                            Sku = "sku-235",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 236,
-                            AvailableStock = 68,
                             BrandId = 37,
                             CategoryId = 17,
-                            Created = 1725615230.9488192,
+                            Created = 1725960056.20173,
                             Description = "Description for product 236",
                             Discount = 0.0,
+                            ImageUrl = "product236.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 55,
                             Name = "Product 236",
-                            PictureFileName = "product236.jpg",
-                            Price = 545.88999999999999,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 492.0,
+                            Sku = "sku-236",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 237,
-                            AvailableStock = 4,
                             BrandId = 38,
                             CategoryId = 18,
-                            Created = 1725615230.9488199,
+                            Created = 1725960056.2017305,
                             Description = "Description for product 237",
                             Discount = 0.0,
+                            ImageUrl = "product237.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 44,
                             Name = "Product 237",
-                            PictureFileName = "product237.jpg",
-                            Price = 458.91000000000003,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 486.92000000000002,
+                            Sku = "sku-237",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 238,
-                            AvailableStock = 87,
                             BrandId = 39,
                             CategoryId = 19,
-                            Created = 1725615230.9488204,
+                            Created = 1725960056.201731,
                             Description = "Description for product 238",
                             Discount = 0.0,
+                            ImageUrl = "product238.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 43,
                             Name = "Product 238",
-                            PictureFileName = "product238.jpg",
-                            Price = 819.13,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 222.94,
+                            Sku = "sku-238",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 239,
-                            AvailableStock = 81,
                             BrandId = 40,
                             CategoryId = 20,
-                            Created = 1725615230.9488211,
+                            Created = 1725960056.2017314,
                             Description = "Description for product 239",
                             Discount = 0.0,
+                            ImageUrl = "product239.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 68,
                             Name = "Product 239",
-                            PictureFileName = "product239.jpg",
-                            Price = 794.86000000000001,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 151.33000000000001,
+                            Sku = "sku-239",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 240,
-                            AvailableStock = 79,
                             BrandId = 1,
                             CategoryId = 1,
-                            Created = 1725615230.948827,
+                            Created = 1725960056.2017317,
                             Description = "Description for product 240",
                             Discount = 0.0,
+                            ImageUrl = "product240.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 30,
                             Name = "Product 240",
-                            PictureFileName = "product240.jpg",
-                            Price = 808.61000000000001,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 209.62,
+                            Sku = "sku-240",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 241,
-                            AvailableStock = 39,
                             BrandId = 2,
                             CategoryId = 2,
-                            Created = 1725615230.9488275,
+                            Created = 1725960056.2017319,
                             Description = "Description for product 241",
                             Discount = 0.0,
+                            ImageUrl = "product241.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 61,
                             Name = "Product 241",
-                            PictureFileName = "product241.jpg",
-                            Price = 575.07000000000005,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 675.48000000000002,
+                            Sku = "sku-241",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 242,
-                            AvailableStock = 32,
                             BrandId = 3,
                             CategoryId = 3,
-                            Created = 1725615230.9488282,
+                            Created = 1725960056.2017324,
                             Description = "Description for product 242",
                             Discount = 0.0,
+                            ImageUrl = "product242.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 56,
                             Name = "Product 242",
-                            PictureFileName = "product242.jpg",
-                            Price = 218.47,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 695.07000000000005,
+                            Sku = "sku-242",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 243,
-                            AvailableStock = 57,
                             BrandId = 4,
                             CategoryId = 4,
-                            Created = 1725615230.9488287,
+                            Created = 1725960056.2017329,
                             Description = "Description for product 243",
                             Discount = 0.0,
+                            ImageUrl = "product243.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 143,
                             Name = "Product 243",
-                            PictureFileName = "product243.jpg",
-                            Price = 103.95999999999999,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 778.19000000000005,
+                            Sku = "sku-243",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 244,
-                            AvailableStock = 49,
                             BrandId = 5,
                             CategoryId = 5,
-                            Created = 1725615230.9488297,
+                            Created = 1725960056.2017355,
                             Description = "Description for product 244",
                             Discount = 0.0,
+                            ImageUrl = "product244.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 24,
                             Name = "Product 244",
-                            PictureFileName = "product244.jpg",
-                            Price = 161.24000000000001,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 162.90000000000001,
+                            Sku = "sku-244",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 245,
-                            AvailableStock = 43,
                             BrandId = 6,
                             CategoryId = 6,
-                            Created = 1725615230.9488299,
+                            Created = 1725960056.201736,
                             Description = "Description for product 245",
                             Discount = 0.0,
+                            ImageUrl = "product245.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 118,
                             Name = "Product 245",
-                            PictureFileName = "product245.jpg",
-                            Price = 116.92,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 417.69,
+                            Sku = "sku-245",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 246,
-                            AvailableStock = 70,
                             BrandId = 7,
                             CategoryId = 7,
-                            Created = 1725615230.9488308,
+                            Created = 1725960056.2017365,
                             Description = "Description for product 246",
                             Discount = 0.0,
+                            ImageUrl = "product246.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 33,
                             Name = "Product 246",
-                            PictureFileName = "product246.jpg",
-                            Price = 907.77999999999997,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 676.83000000000004,
+                            Sku = "sku-246",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 247,
-                            AvailableStock = 88,
                             BrandId = 8,
                             CategoryId = 8,
-                            Created = 1725615230.9488311,
+                            Created = 1725960056.2017369,
                             Description = "Description for product 247",
                             Discount = 0.0,
+                            ImageUrl = "product247.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 52,
                             Name = "Product 247",
-                            PictureFileName = "product247.jpg",
-                            Price = 162.25999999999999,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 79.209999999999994,
+                            Sku = "sku-247",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 248,
-                            AvailableStock = 32,
                             BrandId = 9,
                             CategoryId = 9,
-                            Created = 1725615230.948832,
+                            Created = 1725960056.2017372,
                             Description = "Description for product 248",
                             Discount = 0.0,
+                            ImageUrl = "product248.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 41,
                             Name = "Product 248",
-                            PictureFileName = "product248.jpg",
-                            Price = 108.22,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 157.19999999999999,
+                            Sku = "sku-248",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 249,
-                            AvailableStock = 78,
                             BrandId = 10,
                             CategoryId = 10,
-                            Created = 1725615230.9488325,
+                            Created = 1725960056.2017376,
                             Description = "Description for product 249",
                             Discount = 0.0,
+                            ImageUrl = "product249.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 127,
                             Name = "Product 249",
-                            PictureFileName = "product249.jpg",
-                            Price = 130.43000000000001,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 883.34000000000003,
+                            Sku = "sku-249",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 250,
-                            AvailableStock = 85,
                             BrandId = 11,
                             CategoryId = 11,
-                            Created = 1725615230.9488332,
+                            Created = 1725960056.2017381,
                             Description = "Description for product 250",
                             Discount = 0.0,
+                            ImageUrl = "product250.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 171,
                             Name = "Product 250",
-                            PictureFileName = "product250.jpg",
-                            Price = 378.69,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 145.09999999999999,
+                            Sku = "sku-250",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 251,
-                            AvailableStock = 60,
                             BrandId = 12,
                             CategoryId = 12,
-                            Created = 1725615230.9488337,
+                            Created = 1725960056.2017386,
                             Description = "Description for product 251",
                             Discount = 0.0,
+                            ImageUrl = "product251.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 55,
                             Name = "Product 251",
-                            PictureFileName = "product251.jpg",
-                            Price = 266.08999999999997,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 740.77999999999997,
+                            Sku = "sku-251",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 252,
-                            AvailableStock = 93,
                             BrandId = 13,
                             CategoryId = 13,
-                            Created = 1725615230.9488344,
+                            Created = 1725960056.2017391,
                             Description = "Description for product 252",
                             Discount = 0.0,
+                            ImageUrl = "product252.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 90,
                             Name = "Product 252",
-                            PictureFileName = "product252.jpg",
-                            Price = 121.45,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 392.25999999999999,
+                            Sku = "sku-252",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 253,
-                            AvailableStock = 31,
                             BrandId = 14,
                             CategoryId = 14,
-                            Created = 1725615230.9488404,
+                            Created = 1725960056.2017393,
                             Description = "Description for product 253",
                             Discount = 0.0,
+                            ImageUrl = "product253.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 62,
                             Name = "Product 253",
-                            PictureFileName = "product253.jpg",
-                            Price = 184.15000000000001,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 825.89999999999998,
+                            Sku = "sku-253",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 254,
-                            AvailableStock = 26,
                             BrandId = 15,
                             CategoryId = 15,
-                            Created = 1725615230.9488411,
+                            Created = 1725960056.2017398,
                             Description = "Description for product 254",
                             Discount = 0.0,
+                            ImageUrl = "product254.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 137,
                             Name = "Product 254",
-                            PictureFileName = "product254.jpg",
-                            Price = 943.75,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 756.32000000000005,
+                            Sku = "sku-254",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 255,
-                            AvailableStock = 77,
                             BrandId = 16,
                             CategoryId = 16,
-                            Created = 1725615230.9488416,
+                            Created = 1725960056.2017403,
                             Description = "Description for product 255",
                             Discount = 0.0,
+                            ImageUrl = "product255.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 159,
                             Name = "Product 255",
-                            PictureFileName = "product255.jpg",
-                            Price = 653.21000000000004,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 710.23000000000002,
+                            Sku = "sku-255",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 256,
-                            AvailableStock = 63,
                             BrandId = 17,
                             CategoryId = 17,
-                            Created = 1725615230.9488423,
+                            Created = 1725960056.2017405,
                             Description = "Description for product 256",
                             Discount = 0.0,
+                            ImageUrl = "product256.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 126,
                             Name = "Product 256",
-                            PictureFileName = "product256.jpg",
-                            Price = 66.230000000000004,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 617.21000000000004,
+                            Sku = "sku-256",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 257,
-                            AvailableStock = 8,
                             BrandId = 18,
                             CategoryId = 18,
-                            Created = 1725615230.9488428,
+                            Created = 1725960056.2017407,
                             Description = "Description for product 257",
                             Discount = 0.0,
+                            ImageUrl = "product257.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 90,
                             Name = "Product 257",
-                            PictureFileName = "product257.jpg",
-                            Price = 356.48000000000002,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 792.65999999999997,
+                            Sku = "sku-257",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 258,
-                            AvailableStock = 35,
                             BrandId = 19,
                             CategoryId = 19,
-                            Created = 1725615230.9488437,
+                            Created = 1725960056.2017436,
                             Description = "Description for product 258",
                             Discount = 0.0,
+                            ImageUrl = "product258.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 149,
                             Name = "Product 258",
-                            PictureFileName = "product258.jpg",
-                            Price = 42.979999999999997,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 218.90000000000001,
+                            Sku = "sku-258",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 259,
-                            AvailableStock = 41,
                             BrandId = 20,
                             CategoryId = 20,
-                            Created = 1725615230.9488442,
+                            Created = 1725960056.2017441,
                             Description = "Description for product 259",
                             Discount = 0.0,
+                            ImageUrl = "product259.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 43,
                             Name = "Product 259",
-                            PictureFileName = "product259.jpg",
-                            Price = 998.74000000000001,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 208.09,
+                            Sku = "sku-259",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 260,
-                            AvailableStock = 57,
                             BrandId = 21,
                             CategoryId = 1,
-                            Created = 1725615230.9488499,
+                            Created = 1725960056.2017443,
                             Description = "Description for product 260",
                             Discount = 0.0,
+                            ImageUrl = "product260.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 34,
                             Name = "Product 260",
-                            PictureFileName = "product260.jpg",
-                            Price = 569.94000000000005,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 266.13,
+                            Sku = "sku-260",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 261,
-                            AvailableStock = 38,
                             BrandId = 22,
                             CategoryId = 2,
-                            Created = 1725615230.9488504,
+                            Created = 1725960056.2017448,
                             Description = "Description for product 261",
                             Discount = 0.0,
+                            ImageUrl = "product261.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 115,
                             Name = "Product 261",
-                            PictureFileName = "product261.jpg",
-                            Price = 908.49000000000001,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 898.87,
+                            Sku = "sku-261",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 262,
-                            AvailableStock = 8,
                             BrandId = 23,
                             CategoryId = 3,
-                            Created = 1725615230.9488511,
+                            Created = 1725960056.2017455,
                             Description = "Description for product 262",
                             Discount = 0.0,
+                            ImageUrl = "product262.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 193,
                             Name = "Product 262",
-                            PictureFileName = "product262.jpg",
-                            Price = 292.80000000000001,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 671.47000000000003,
+                            Sku = "sku-262",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 263,
-                            AvailableStock = 98,
                             BrandId = 24,
                             CategoryId = 4,
-                            Created = 1725615230.9488516,
+                            Created = 1725960056.2017455,
                             Description = "Description for product 263",
                             Discount = 0.0,
+                            ImageUrl = "product263.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 31,
                             Name = "Product 263",
-                            PictureFileName = "product263.jpg",
-                            Price = 291.01999999999998,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 86.799999999999997,
+                            Sku = "sku-263",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 264,
-                            AvailableStock = 89,
                             BrandId = 25,
                             CategoryId = 5,
-                            Created = 1725615230.9488523,
+                            Created = 1725960056.201746,
                             Description = "Description for product 264",
                             Discount = 0.0,
+                            ImageUrl = "product264.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 103,
                             Name = "Product 264",
-                            PictureFileName = "product264.jpg",
-                            Price = 631.14999999999998,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 897.38999999999999,
+                            Sku = "sku-264",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 265,
-                            AvailableStock = 29,
                             BrandId = 26,
                             CategoryId = 6,
-                            Created = 1725615230.9488528,
+                            Created = 1725960056.2017465,
                             Description = "Description for product 265",
                             Discount = 0.0,
+                            ImageUrl = "product265.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 83,
                             Name = "Product 265",
-                            PictureFileName = "product265.jpg",
-                            Price = 215.21000000000001,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 793.86000000000001,
+                            Sku = "sku-265",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 266,
-                            AvailableStock = 72,
                             BrandId = 27,
                             CategoryId = 7,
-                            Created = 1725615230.9488535,
+                            Created = 1725960056.2017467,
                             Description = "Description for product 266",
                             Discount = 0.0,
+                            ImageUrl = "product266.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 33,
                             Name = "Product 266",
-                            PictureFileName = "product266.jpg",
-                            Price = 402.55000000000001,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 512.08000000000004,
+                            Sku = "sku-266",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 267,
-                            AvailableStock = 32,
                             BrandId = 28,
                             CategoryId = 8,
-                            Created = 1725615230.948854,
+                            Created = 1725960056.2017472,
                             Description = "Description for product 267",
                             Discount = 0.0,
+                            ImageUrl = "product267.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 23,
                             Name = "Product 267",
-                            PictureFileName = "product267.jpg",
-                            Price = 811.62,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 215.41,
+                            Sku = "sku-267",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 268,
-                            AvailableStock = 15,
                             BrandId = 29,
                             CategoryId = 9,
-                            Created = 1725615230.9488547,
+                            Created = 1725960056.2017477,
                             Description = "Description for product 268",
                             Discount = 0.0,
+                            ImageUrl = "product268.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 172,
                             Name = "Product 268",
-                            PictureFileName = "product268.jpg",
-                            Price = 366.69,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 586.08000000000004,
+                            Sku = "sku-268",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 269,
-                            AvailableStock = 53,
                             BrandId = 30,
                             CategoryId = 10,
-                            Created = 1725615230.9488552,
+                            Created = 1725960056.2017479,
                             Description = "Description for product 269",
                             Discount = 0.0,
+                            ImageUrl = "product269.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 30,
                             Name = "Product 269",
-                            PictureFileName = "product269.jpg",
-                            Price = 431.36000000000001,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 337.24000000000001,
+                            Sku = "sku-269",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 270,
-                            AvailableStock = 5,
                             BrandId = 31,
                             CategoryId = 11,
-                            Created = 1725615230.9488561,
+                            Created = 1725960056.2017484,
                             Description = "Description for product 270",
                             Discount = 0.0,
+                            ImageUrl = "product270.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 21,
                             Name = "Product 270",
-                            PictureFileName = "product270.jpg",
-                            Price = 165.41999999999999,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 258.25,
+                            Sku = "sku-270",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 271,
-                            AvailableStock = 15,
                             BrandId = 32,
                             CategoryId = 12,
-                            Created = 1725615230.9488564,
+                            Created = 1725960056.2017488,
                             Description = "Description for product 271",
                             Discount = 0.0,
+                            ImageUrl = "product271.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 93,
                             Name = "Product 271",
-                            PictureFileName = "product271.jpg",
-                            Price = 950.50999999999999,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 891.53999999999996,
+                            Sku = "sku-271",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 272,
-                            AvailableStock = 55,
                             BrandId = 33,
                             CategoryId = 13,
-                            Created = 1725615230.9488573,
+                            Created = 1725960056.2017491,
                             Description = "Description for product 272",
                             Discount = 0.0,
+                            ImageUrl = "product272.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 86,
                             Name = "Product 272",
-                            PictureFileName = "product272.jpg",
-                            Price = 18.739999999999998,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 472.36000000000001,
+                            Sku = "sku-272",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 273,
-                            AvailableStock = 71,
                             BrandId = 34,
                             CategoryId = 14,
-                            Created = 1725615230.9488575,
+                            Created = 1725960056.2017517,
                             Description = "Description for product 273",
                             Discount = 0.0,
+                            ImageUrl = "product273.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 77,
                             Name = "Product 273",
-                            PictureFileName = "product273.jpg",
-                            Price = 293.24000000000001,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 789.44000000000005,
+                            Sku = "sku-273",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 274,
-                            AvailableStock = 83,
                             BrandId = 35,
                             CategoryId = 15,
-                            Created = 1725615230.9488635,
+                            Created = 1725960056.2017519,
                             Description = "Description for product 274",
                             Discount = 0.0,
+                            ImageUrl = "product274.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 177,
                             Name = "Product 274",
-                            PictureFileName = "product274.jpg",
-                            Price = 332.68000000000001,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 226.58000000000001,
+                            Sku = "sku-274",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 275,
-                            AvailableStock = 90,
                             BrandId = 36,
                             CategoryId = 16,
-                            Created = 1725615230.9488645,
+                            Created = 1725960056.2017524,
                             Description = "Description for product 275",
                             Discount = 0.0,
+                            ImageUrl = "product275.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 94,
                             Name = "Product 275",
-                            PictureFileName = "product275.jpg",
-                            Price = 761.13999999999999,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 581.80999999999995,
+                            Sku = "sku-275",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 276,
-                            AvailableStock = 88,
                             BrandId = 37,
                             CategoryId = 17,
-                            Created = 1725615230.9488647,
+                            Created = 1725960056.2017529,
                             Description = "Description for product 276",
                             Discount = 0.0,
+                            ImageUrl = "product276.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 64,
                             Name = "Product 276",
-                            PictureFileName = "product276.jpg",
-                            Price = 178.53999999999999,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 936.48000000000002,
+                            Sku = "sku-276",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 277,
-                            AvailableStock = 43,
                             BrandId = 38,
                             CategoryId = 18,
-                            Created = 1725615230.9488654,
+                            Created = 1725960056.2017531,
                             Description = "Description for product 277",
                             Discount = 0.0,
+                            ImageUrl = "product277.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 193,
                             Name = "Product 277",
-                            PictureFileName = "product277.jpg",
-                            Price = 233.59,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 537.71000000000004,
+                            Sku = "sku-277",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 278,
-                            AvailableStock = 49,
                             BrandId = 39,
                             CategoryId = 19,
-                            Created = 1725615230.9488659,
+                            Created = 1725960056.2017539,
                             Description = "Description for product 278",
                             Discount = 0.0,
+                            ImageUrl = "product278.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 67,
                             Name = "Product 278",
-                            PictureFileName = "product278.jpg",
-                            Price = 155.86000000000001,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 357.45999999999998,
+                            Sku = "sku-278",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 279,
-                            AvailableStock = 12,
                             BrandId = 40,
                             CategoryId = 20,
-                            Created = 1725615230.9488666,
+                            Created = 1725960056.2017541,
                             Description = "Description for product 279",
                             Discount = 0.0,
+                            ImageUrl = "product279.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 193,
                             Name = "Product 279",
-                            PictureFileName = "product279.jpg",
-                            Price = 601.53999999999996,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 603.76999999999998,
+                            Sku = "sku-279",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 280,
-                            AvailableStock = 88,
                             BrandId = 1,
                             CategoryId = 1,
-                            Created = 1725615230.9488671,
+                            Created = 1725960056.2017543,
                             Description = "Description for product 280",
                             Discount = 0.0,
+                            ImageUrl = "product280.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 142,
                             Name = "Product 280",
-                            PictureFileName = "product280.jpg",
-                            Price = 652.91999999999996,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 931.51999999999998,
+                            Sku = "sku-280",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 281,
-                            AvailableStock = 85,
                             BrandId = 2,
                             CategoryId = 2,
-                            Created = 1725615230.9488678,
+                            Created = 1725960056.2017548,
                             Description = "Description for product 281",
                             Discount = 0.0,
+                            ImageUrl = "product281.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 112,
                             Name = "Product 281",
-                            PictureFileName = "product281.jpg",
-                            Price = 749.94000000000005,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 339.83999999999997,
+                            Sku = "sku-281",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 282,
-                            AvailableStock = 42,
                             BrandId = 3,
                             CategoryId = 3,
-                            Created = 1725615230.9488685,
+                            Created = 1725960056.2017553,
                             Description = "Description for product 282",
                             Discount = 0.0,
+                            ImageUrl = "product282.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 63,
                             Name = "Product 282",
-                            PictureFileName = "product282.jpg",
-                            Price = 581.37,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 652.27999999999997,
+                            Sku = "sku-282",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 283,
-                            AvailableStock = 30,
                             BrandId = 4,
                             CategoryId = 4,
-                            Created = 1725615230.948869,
+                            Created = 1725960056.2017558,
                             Description = "Description for product 283",
                             Discount = 0.0,
+                            ImageUrl = "product283.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 31,
                             Name = "Product 283",
-                            PictureFileName = "product283.jpg",
-                            Price = 801.20000000000005,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 152.53,
+                            Sku = "sku-283",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 284,
-                            AvailableStock = 23,
                             BrandId = 5,
                             CategoryId = 5,
-                            Created = 1725615230.9488697,
+                            Created = 1725960056.2017562,
                             Description = "Description for product 284",
                             Discount = 0.0,
+                            ImageUrl = "product284.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 36,
                             Name = "Product 284",
-                            PictureFileName = "product284.jpg",
-                            Price = 240.93000000000001,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 801.53999999999996,
+                            Sku = "sku-284",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 285,
-                            AvailableStock = 60,
                             BrandId = 6,
                             CategoryId = 6,
-                            Created = 1725615230.9488702,
+                            Created = 1725960056.2017565,
                             Description = "Description for product 285",
                             Discount = 0.0,
+                            ImageUrl = "product285.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 160,
                             Name = "Product 285",
-                            PictureFileName = "product285.jpg",
-                            Price = 487.69,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 213.13999999999999,
+                            Sku = "sku-285",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 286,
-                            AvailableStock = 78,
                             BrandId = 7,
                             CategoryId = 7,
-                            Created = 1725615230.9488709,
+                            Created = 1725960056.2017572,
                             Description = "Description for product 286",
                             Discount = 0.0,
+                            ImageUrl = "product286.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 169,
                             Name = "Product 286",
-                            PictureFileName = "product286.jpg",
-                            Price = 567.13999999999999,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 665.76999999999998,
+                            Sku = "sku-286",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 287,
-                            AvailableStock = 29,
                             BrandId = 8,
                             CategoryId = 8,
-                            Created = 1725615230.9488711,
+                            Created = 1725960056.2017577,
                             Description = "Description for product 287",
                             Discount = 0.0,
+                            ImageUrl = "product287.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 62,
                             Name = "Product 287",
-                            PictureFileName = "product287.jpg",
-                            Price = 495.43000000000001,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 283.00999999999999,
+                            Sku = "sku-287",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 288,
-                            AvailableStock = 96,
                             BrandId = 9,
                             CategoryId = 9,
-                            Created = 1725615230.9488771,
+                            Created = 1725960056.2017579,
                             Description = "Description for product 288",
                             Discount = 0.0,
+                            ImageUrl = "product288.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 150,
                             Name = "Product 288",
-                            PictureFileName = "product288.jpg",
-                            Price = 297.31999999999999,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 845.04999999999995,
+                            Sku = "sku-288",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 289,
-                            AvailableStock = 74,
                             BrandId = 10,
                             CategoryId = 10,
-                            Created = 1725615230.9488776,
+                            Created = 1725960056.2017581,
                             Description = "Description for product 289",
                             Discount = 0.0,
+                            ImageUrl = "product289.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 52,
                             Name = "Product 289",
-                            PictureFileName = "product289.jpg",
-                            Price = 569.09000000000003,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 573.19000000000005,
+                            Sku = "sku-289",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 290,
-                            AvailableStock = 85,
                             BrandId = 11,
                             CategoryId = 11,
-                            Created = 1725615230.9488783,
+                            Created = 1725960056.2017589,
                             Description = "Description for product 290",
                             Discount = 0.0,
+                            ImageUrl = "product290.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 23,
                             Name = "Product 290",
-                            PictureFileName = "product290.jpg",
-                            Price = 544.83000000000004,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 626.63,
+                            Sku = "sku-290",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 291,
-                            AvailableStock = 72,
                             BrandId = 12,
                             CategoryId = 12,
-                            Created = 1725615230.9488788,
+                            Created = 1725960056.2017591,
                             Description = "Description for product 291",
                             Discount = 0.0,
+                            ImageUrl = "product291.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 104,
                             Name = "Product 291",
-                            PictureFileName = "product291.jpg",
-                            Price = 217.56999999999999,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 256.94999999999999,
+                            Sku = "sku-291",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 292,
-                            AvailableStock = 16,
                             BrandId = 13,
                             CategoryId = 13,
-                            Created = 1725615230.9488795,
+                            Created = 1725960056.2017593,
                             Description = "Description for product 292",
                             Discount = 0.0,
+                            ImageUrl = "product292.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 117,
                             Name = "Product 292",
-                            PictureFileName = "product292.jpg",
-                            Price = 295.69,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 777.58000000000004,
+                            Sku = "sku-292",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 293,
-                            AvailableStock = 59,
                             BrandId = 14,
                             CategoryId = 14,
-                            Created = 1725615230.94888,
+                            Created = 1725960056.2017622,
                             Description = "Description for product 293",
                             Discount = 0.0,
+                            ImageUrl = "product293.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 81,
                             Name = "Product 293",
-                            PictureFileName = "product293.jpg",
-                            Price = 483.55000000000001,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 933.38999999999999,
+                            Sku = "sku-293",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 294,
-                            AvailableStock = 73,
                             BrandId = 15,
                             CategoryId = 15,
-                            Created = 1725615230.9488807,
+                            Created = 1725960056.2017629,
                             Description = "Description for product 294",
                             Discount = 0.0,
+                            ImageUrl = "product294.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 166,
                             Name = "Product 294",
-                            PictureFileName = "product294.jpg",
-                            Price = 277.88,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 799.61000000000001,
+                            Sku = "sku-294",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 295,
-                            AvailableStock = 23,
                             BrandId = 16,
                             CategoryId = 16,
-                            Created = 1725615230.9488811,
+                            Created = 1725960056.2017629,
                             Description = "Description for product 295",
                             Discount = 0.0,
+                            ImageUrl = "product295.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 190,
                             Name = "Product 295",
-                            PictureFileName = "product295.jpg",
-                            Price = 578.38999999999999,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 718.70000000000005,
+                            Sku = "sku-295",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 296,
-                            AvailableStock = 30,
                             BrandId = 17,
                             CategoryId = 17,
-                            Created = 1725615230.9488816,
+                            Created = 1725960056.2017634,
                             Description = "Description for product 296",
                             Discount = 0.0,
+                            ImageUrl = "product296.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 85,
                             Name = "Product 296",
-                            PictureFileName = "product296.jpg",
-                            Price = 777.25999999999999,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 238.74000000000001,
+                            Sku = "sku-296",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 297,
-                            AvailableStock = 90,
                             BrandId = 18,
                             CategoryId = 18,
-                            Created = 1725615230.9488823,
+                            Created = 1725960056.2017639,
                             Description = "Description for product 297",
                             Discount = 0.0,
+                            ImageUrl = "product297.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 96,
                             Name = "Product 297",
-                            PictureFileName = "product297.jpg",
-                            Price = 580.52999999999997,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 469.79000000000002,
+                            Sku = "sku-297",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 298,
-                            AvailableStock = 33,
                             BrandId = 19,
                             CategoryId = 19,
-                            Created = 1725615230.9488828,
+                            Created = 1725960056.2017643,
                             Description = "Description for product 298",
                             Discount = 0.0,
+                            ImageUrl = "product298.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 101,
                             Name = "Product 298",
-                            PictureFileName = "product298.jpg",
-                            Price = 346.44999999999999,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 905.10000000000002,
+                            Sku = "sku-298",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 299,
-                            AvailableStock = 52,
                             BrandId = 20,
                             CategoryId = 20,
-                            Created = 1725615230.9488835,
+                            Created = 1725960056.2017646,
                             Description = "Description for product 299",
                             Discount = 0.0,
+                            ImageUrl = "product299.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 21,
                             Name = "Product 299",
-                            PictureFileName = "product299.jpg",
-                            Price = 957.63,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 258.36000000000001,
+                            Sku = "sku-299",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 300,
-                            AvailableStock = 69,
                             BrandId = 21,
                             CategoryId = 1,
-                            Created = 1725615230.948884,
+                            Created = 1725960056.2017651,
                             Description = "Description for product 300",
                             Discount = 0.0,
+                            ImageUrl = "product300.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 79,
                             Name = "Product 300",
-                            PictureFileName = "product300.jpg",
-                            Price = 526.72000000000003,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 485.44999999999999,
+                            Sku = "sku-300",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 301,
-                            AvailableStock = 68,
                             BrandId = 22,
                             CategoryId = 2,
-                            Created = 1725615230.9488847,
+                            Created = 1725960056.2017653,
                             Description = "Description for product 301",
                             Discount = 0.0,
+                            ImageUrl = "product301.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 69,
                             Name = "Product 301",
-                            PictureFileName = "product301.jpg",
-                            Price = 510.32999999999998,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 636.64999999999998,
+                            Sku = "sku-301",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 302,
-                            AvailableStock = 5,
                             BrandId = 23,
                             CategoryId = 3,
-                            Created = 1725615230.9488883,
+                            Created = 1725960056.201766,
                             Description = "Description for product 302",
                             Discount = 0.0,
+                            ImageUrl = "product302.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 110,
                             Name = "Product 302",
-                            PictureFileName = "product302.jpg",
-                            Price = 571.52999999999997,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 72.689999999999998,
+                            Sku = "sku-302",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 303,
-                            AvailableStock = 67,
                             BrandId = 24,
                             CategoryId = 4,
-                            Created = 1725615230.948889,
+                            Created = 1725960056.2017663,
                             Description = "Description for product 303",
                             Discount = 0.0,
+                            ImageUrl = "product303.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 106,
                             Name = "Product 303",
-                            PictureFileName = "product303.jpg",
-                            Price = 782.75999999999999,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 485.19,
+                            Sku = "sku-303",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 304,
-                            AvailableStock = 34,
                             BrandId = 25,
                             CategoryId = 5,
-                            Created = 1725615230.9488895,
+                            Created = 1725960056.2017665,
                             Description = "Description for product 304",
                             Discount = 0.0,
+                            ImageUrl = "product304.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 137,
                             Name = "Product 304",
-                            PictureFileName = "product304.jpg",
-                            Price = 100.13,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 43.340000000000003,
+                            Sku = "sku-304",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 305,
-                            AvailableStock = 19,
                             BrandId = 26,
                             CategoryId = 6,
-                            Created = 1725615230.9488902,
+                            Created = 1725960056.2017667,
                             Description = "Description for product 305",
                             Discount = 0.0,
+                            ImageUrl = "product305.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 108,
                             Name = "Product 305",
-                            PictureFileName = "product305.jpg",
-                            Price = 155.88999999999999,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 808.86000000000001,
+                            Sku = "sku-305",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 306,
-                            AvailableStock = 9,
                             BrandId = 27,
                             CategoryId = 7,
-                            Created = 1725615230.9488907,
+                            Created = 1725960056.2017674,
                             Description = "Description for product 306",
                             Discount = 0.0,
+                            ImageUrl = "product306.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 155,
                             Name = "Product 306",
-                            PictureFileName = "product306.jpg",
-                            Price = 589.34000000000003,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 506.38,
+                            Sku = "sku-306",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 307,
-                            AvailableStock = 40,
                             BrandId = 28,
                             CategoryId = 8,
-                            Created = 1725615230.9488914,
+                            Created = 1725960056.2017677,
                             Description = "Description for product 307",
                             Discount = 0.0,
+                            ImageUrl = "product307.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 171,
                             Name = "Product 307",
-                            PictureFileName = "product307.jpg",
-                            Price = 284.24000000000001,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 587.77999999999997,
+                            Sku = "sku-307",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 308,
-                            AvailableStock = 48,
                             BrandId = 29,
                             CategoryId = 9,
-                            Created = 1725615230.9488921,
+                            Created = 1725960056.2017679,
                             Description = "Description for product 308",
                             Discount = 0.0,
+                            ImageUrl = "product308.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 196,
                             Name = "Product 308",
-                            PictureFileName = "product308.jpg",
-                            Price = 684.99000000000001,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 419.69,
+                            Sku = "sku-308",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 309,
-                            AvailableStock = 75,
                             BrandId = 30,
                             CategoryId = 10,
-                            Created = 1725615230.9488926,
+                            Created = 1725960056.2017684,
                             Description = "Description for product 309",
                             Discount = 0.0,
+                            ImageUrl = "product309.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 50,
                             Name = "Product 309",
-                            PictureFileName = "product309.jpg",
-                            Price = 486.01999999999998,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 960.88999999999999,
+                            Sku = "sku-309",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 310,
-                            AvailableStock = 43,
                             BrandId = 31,
                             CategoryId = 11,
-                            Created = 1725615230.9488933,
+                            Created = 1725960056.2017691,
                             Description = "Description for product 310",
                             Discount = 0.0,
+                            ImageUrl = "product310.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 189,
                             Name = "Product 310",
-                            PictureFileName = "product310.jpg",
-                            Price = 504.44999999999999,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 501.25999999999999,
+                            Sku = "sku-310",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 311,
-                            AvailableStock = 23,
                             BrandId = 32,
                             CategoryId = 12,
-                            Created = 1725615230.948894,
+                            Created = 1725960056.2017691,
                             Description = "Description for product 311",
                             Discount = 0.0,
+                            ImageUrl = "product311.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 159,
                             Name = "Product 311",
-                            PictureFileName = "product311.jpg",
-                            Price = 498.13999999999999,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 331.13999999999999,
+                            Sku = "sku-311",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 312,
-                            AvailableStock = 55,
                             BrandId = 33,
                             CategoryId = 13,
-                            Created = 1725615230.9488945,
+                            Created = 1725960056.2017839,
                             Description = "Description for product 312",
                             Discount = 0.0,
+                            ImageUrl = "product312.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 106,
                             Name = "Product 312",
-                            PictureFileName = "product312.jpg",
-                            Price = 894.30999999999995,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 164.22999999999999,
+                            Sku = "sku-312",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 313,
-                            AvailableStock = 8,
                             BrandId = 34,
                             CategoryId = 14,
-                            Created = 1725615230.9488952,
+                            Created = 1725960056.2017844,
                             Description = "Description for product 313",
                             Discount = 0.0,
+                            ImageUrl = "product313.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 150,
                             Name = "Product 313",
-                            PictureFileName = "product313.jpg",
-                            Price = 6.2599999999999998,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 68.060000000000002,
+                            Sku = "sku-313",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 314,
-                            AvailableStock = 63,
                             BrandId = 35,
                             CategoryId = 15,
-                            Created = 1725615230.9488957,
+                            Created = 1725960056.2017848,
                             Description = "Description for product 314",
                             Discount = 0.0,
+                            ImageUrl = "product314.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 167,
                             Name = "Product 314",
-                            PictureFileName = "product314.jpg",
-                            Price = 106.36,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 598.10000000000002,
+                            Sku = "sku-314",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 315,
-                            AvailableStock = 40,
                             BrandId = 36,
                             CategoryId = 16,
-                            Created = 1725615230.9489021,
+                            Created = 1725960056.2017851,
                             Description = "Description for product 315",
                             Discount = 0.0,
+                            ImageUrl = "product315.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 194,
                             Name = "Product 315",
-                            PictureFileName = "product315.jpg",
-                            Price = 835.02999999999997,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 495.75999999999999,
+                            Sku = "sku-315",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 316,
-                            AvailableStock = 67,
                             BrandId = 37,
                             CategoryId = 17,
-                            Created = 1725615230.9489028,
+                            Created = 1725960056.2017856,
                             Description = "Description for product 316",
                             Discount = 0.0,
+                            ImageUrl = "product316.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 32,
                             Name = "Product 316",
-                            PictureFileName = "product316.jpg",
-                            Price = 930.63,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 419.24000000000001,
+                            Sku = "sku-316",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 317,
-                            AvailableStock = 47,
                             BrandId = 38,
                             CategoryId = 18,
-                            Created = 1725615230.9489036,
+                            Created = 1725960056.201786,
                             Description = "Description for product 317",
                             Discount = 0.0,
+                            ImageUrl = "product317.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 46,
                             Name = "Product 317",
-                            PictureFileName = "product317.jpg",
-                            Price = 642.87,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 181.97999999999999,
+                            Sku = "sku-317",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 318,
-                            AvailableStock = 11,
                             BrandId = 39,
                             CategoryId = 19,
-                            Created = 1725615230.948904,
+                            Created = 1725960056.2017865,
                             Description = "Description for product 318",
                             Discount = 0.0,
+                            ImageUrl = "product318.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 97,
                             Name = "Product 318",
-                            PictureFileName = "product318.jpg",
-                            Price = 496.5,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 335.10000000000002,
+                            Sku = "sku-318",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 319,
-                            AvailableStock = 33,
                             BrandId = 40,
                             CategoryId = 20,
-                            Created = 1725615230.9489045,
+                            Created = 1725960056.201787,
                             Description = "Description for product 319",
                             Discount = 0.0,
+                            ImageUrl = "product319.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 86,
                             Name = "Product 319",
-                            PictureFileName = "product319.jpg",
-                            Price = 48.799999999999997,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 168.74000000000001,
+                            Sku = "sku-319",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 320,
-                            AvailableStock = 82,
                             BrandId = 1,
                             CategoryId = 1,
-                            Created = 1725615230.9489052,
+                            Created = 1725960056.2017875,
                             Description = "Description for product 320",
                             Discount = 0.0,
+                            ImageUrl = "product320.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 151,
                             Name = "Product 320",
-                            PictureFileName = "product320.jpg",
-                            Price = 128.63999999999999,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 186.47999999999999,
+                            Sku = "sku-320",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 321,
-                            AvailableStock = 6,
                             BrandId = 2,
                             CategoryId = 2,
-                            Created = 1725615230.9489057,
+                            Created = 1725960056.2017877,
                             Description = "Description for product 321",
                             Discount = 0.0,
+                            ImageUrl = "product321.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 67,
                             Name = "Product 321",
-                            PictureFileName = "product321.jpg",
-                            Price = 436.55000000000001,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 912.09000000000003,
+                            Sku = "sku-321",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 322,
-                            AvailableStock = 97,
                             BrandId = 3,
                             CategoryId = 3,
-                            Created = 1725615230.9489064,
+                            Created = 1725960056.2017882,
                             Description = "Description for product 322",
                             Discount = 0.0,
+                            ImageUrl = "product322.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 117,
                             Name = "Product 322",
-                            PictureFileName = "product322.jpg",
-                            Price = 84.989999999999995,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 258.63,
+                            Sku = "sku-322",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 323,
-                            AvailableStock = 18,
                             BrandId = 4,
                             CategoryId = 4,
-                            Created = 1725615230.9489069,
+                            Created = 1725960056.2017887,
                             Description = "Description for product 323",
                             Discount = 0.0,
+                            ImageUrl = "product323.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 84,
                             Name = "Product 323",
-                            PictureFileName = "product323.jpg",
-                            Price = 814.39999999999998,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 577.90999999999997,
+                            Sku = "sku-323",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 324,
-                            AvailableStock = 54,
                             BrandId = 5,
                             CategoryId = 5,
-                            Created = 1725615230.9489076,
+                            Created = 1725960056.2017889,
                             Description = "Description for product 324",
                             Discount = 0.0,
+                            ImageUrl = "product324.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 129,
                             Name = "Product 324",
-                            PictureFileName = "product324.jpg",
-                            Price = 596.76999999999998,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 496.18000000000001,
+                            Sku = "sku-324",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 325,
-                            AvailableStock = 93,
                             BrandId = 6,
                             CategoryId = 6,
-                            Created = 1725615230.9489081,
+                            Created = 1725960056.2017891,
                             Description = "Description for product 325",
                             Discount = 0.0,
+                            ImageUrl = "product325.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 179,
                             Name = "Product 325",
-                            PictureFileName = "product325.jpg",
-                            Price = 11.06,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 637.05999999999995,
+                            Sku = "sku-325",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 326,
-                            AvailableStock = 45,
                             BrandId = 7,
                             CategoryId = 7,
-                            Created = 1725615230.9489088,
+                            Created = 1725960056.2017896,
                             Description = "Description for product 326",
                             Discount = 0.0,
+                            ImageUrl = "product326.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 171,
                             Name = "Product 326",
-                            PictureFileName = "product326.jpg",
-                            Price = 714.45000000000005,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 600.88999999999999,
+                            Sku = "sku-326",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 327,
-                            AvailableStock = 24,
                             BrandId = 8,
                             CategoryId = 8,
-                            Created = 1725615230.9489093,
+                            Created = 1725960056.2017901,
                             Description = "Description for product 327",
                             Discount = 0.0,
+                            ImageUrl = "product327.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 193,
                             Name = "Product 327",
-                            PictureFileName = "product327.jpg",
-                            Price = 753.32000000000005,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 737.45000000000005,
+                            Sku = "sku-327",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 328,
-                            AvailableStock = 21,
                             BrandId = 9,
                             CategoryId = 9,
-                            Created = 1725615230.94891,
+                            Created = 1725960056.2017903,
                             Description = "Description for product 328",
                             Discount = 0.0,
+                            ImageUrl = "product328.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 133,
                             Name = "Product 328",
-                            PictureFileName = "product328.jpg",
-                            Price = 893.88,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 866.82000000000005,
+                            Sku = "sku-328",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 329,
-                            AvailableStock = 55,
                             BrandId = 10,
                             CategoryId = 10,
-                            Created = 1725615230.9489193,
+                            Created = 1725960056.2017908,
                             Description = "Description for product 329",
                             Discount = 0.0,
+                            ImageUrl = "product329.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 45,
                             Name = "Product 329",
-                            PictureFileName = "product329.jpg",
-                            Price = 457.91000000000003,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 852.42999999999995,
+                            Sku = "sku-329",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 330,
-                            AvailableStock = 43,
                             BrandId = 11,
                             CategoryId = 11,
-                            Created = 1725615230.9489195,
+                            Created = 1725960056.2017913,
                             Description = "Description for product 330",
                             Discount = 0.0,
+                            ImageUrl = "product330.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 57,
                             Name = "Product 330",
-                            PictureFileName = "product330.jpg",
-                            Price = 493.91000000000003,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 786.95000000000005,
+                            Sku = "sku-330",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 331,
-                            AvailableStock = 83,
                             BrandId = 12,
                             CategoryId = 12,
-                            Created = 1725615230.9489205,
+                            Created = 1725960056.2017958,
                             Description = "Description for product 331",
                             Discount = 0.0,
+                            ImageUrl = "product331.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 82,
                             Name = "Product 331",
-                            PictureFileName = "product331.jpg",
-                            Price = 410.61000000000001,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 791.44000000000005,
+                            Sku = "sku-331",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 332,
-                            AvailableStock = 60,
                             BrandId = 13,
                             CategoryId = 13,
-                            Created = 1725615230.948921,
+                            Created = 1725960056.2017963,
                             Description = "Description for product 332",
                             Discount = 0.0,
+                            ImageUrl = "product332.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 79,
                             Name = "Product 332",
-                            PictureFileName = "product332.jpg",
-                            Price = 21.739999999999998,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 817.10000000000002,
+                            Sku = "sku-332",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 333,
-                            AvailableStock = 71,
                             BrandId = 14,
                             CategoryId = 14,
-                            Created = 1725615230.9489217,
+                            Created = 1725960056.2017963,
                             Description = "Description for product 333",
                             Discount = 0.0,
+                            ImageUrl = "product333.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 116,
                             Name = "Product 333",
-                            PictureFileName = "product333.jpg",
-                            Price = 989.09000000000003,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 775.91999999999996,
+                            Sku = "sku-333",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 334,
-                            AvailableStock = 89,
                             BrandId = 15,
                             CategoryId = 15,
-                            Created = 1725615230.9489222,
+                            Created = 1725960056.201797,
                             Description = "Description for product 334",
                             Discount = 0.0,
+                            ImageUrl = "product334.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 76,
                             Name = "Product 334",
-                            PictureFileName = "product334.jpg",
-                            Price = 281.56,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 890.38,
+                            Sku = "sku-334",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 335,
-                            AvailableStock = 36,
                             BrandId = 16,
                             CategoryId = 16,
-                            Created = 1725615230.9489229,
+                            Created = 1725960056.2017975,
                             Description = "Description for product 335",
                             Discount = 0.0,
+                            ImageUrl = "product335.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 177,
                             Name = "Product 335",
-                            PictureFileName = "product335.jpg",
-                            Price = 140.28,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 282.63999999999999,
+                            Sku = "sku-335",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 336,
-                            AvailableStock = 66,
                             BrandId = 17,
                             CategoryId = 17,
-                            Created = 1725615230.9489233,
+                            Created = 1725960056.2017977,
                             Description = "Description for product 336",
                             Discount = 0.0,
+                            ImageUrl = "product336.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 48,
                             Name = "Product 336",
-                            PictureFileName = "product336.jpg",
-                            Price = 127.44,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 179.03,
+                            Sku = "sku-336",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 337,
-                            AvailableStock = 37,
                             BrandId = 18,
                             CategoryId = 18,
-                            Created = 1725615230.9489241,
+                            Created = 1725960056.201798,
                             Description = "Description for product 337",
                             Discount = 0.0,
+                            ImageUrl = "product337.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 39,
                             Name = "Product 337",
-                            PictureFileName = "product337.jpg",
-                            Price = 760.38999999999999,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 602.51999999999998,
+                            Sku = "sku-337",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 338,
-                            AvailableStock = 12,
                             BrandId = 19,
                             CategoryId = 19,
-                            Created = 1725615230.9489245,
+                            Created = 1725960056.2017987,
                             Description = "Description for product 338",
                             Discount = 0.0,
+                            ImageUrl = "product338.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 154,
                             Name = "Product 338",
-                            PictureFileName = "product338.jpg",
-                            Price = 813.78999999999996,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 128.55000000000001,
+                            Sku = "sku-338",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 339,
-                            AvailableStock = 9,
                             BrandId = 20,
                             CategoryId = 20,
-                            Created = 1725615230.9489253,
+                            Created = 1725960056.2017989,
                             Description = "Description for product 339",
                             Discount = 0.0,
+                            ImageUrl = "product339.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 191,
                             Name = "Product 339",
-                            PictureFileName = "product339.jpg",
-                            Price = 862.49000000000001,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 556.36000000000001,
+                            Sku = "sku-339",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 340,
-                            AvailableStock = 29,
                             BrandId = 21,
                             CategoryId = 1,
-                            Created = 1725615230.9489257,
+                            Created = 1725960056.2017992,
                             Description = "Description for product 340",
                             Discount = 0.0,
+                            ImageUrl = "product340.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 50,
                             Name = "Product 340",
-                            PictureFileName = "product340.jpg",
-                            Price = 690.63999999999999,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 363.02999999999997,
+                            Sku = "sku-340",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 341,
-                            AvailableStock = 31,
                             BrandId = 22,
                             CategoryId = 2,
-                            Created = 1725615230.9489264,
+                            Created = 1725960056.2017996,
                             Description = "Description for product 341",
                             Discount = 0.0,
+                            ImageUrl = "product341.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 196,
                             Name = "Product 341",
-                            PictureFileName = "product341.jpg",
-                            Price = 56.0,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 394.22000000000003,
+                            Sku = "sku-341",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 342,
-                            AvailableStock = 22,
                             BrandId = 23,
                             CategoryId = 3,
-                            Created = 1725615230.9489269,
+                            Created = 1725960056.2018001,
                             Description = "Description for product 342",
                             Discount = 0.0,
+                            ImageUrl = "product342.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 199,
                             Name = "Product 342",
-                            PictureFileName = "product342.jpg",
-                            Price = 439.35000000000002,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 935.97000000000003,
+                            Sku = "sku-342",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 343,
-                            AvailableStock = 27,
                             BrandId = 24,
                             CategoryId = 4,
-                            Created = 1725615230.9489329,
+                            Created = 1725960056.2018003,
                             Description = "Description for product 343",
                             Discount = 0.0,
+                            ImageUrl = "product343.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 158,
                             Name = "Product 343",
-                            PictureFileName = "product343.jpg",
-                            Price = 803.27999999999997,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 61.159999999999997,
+                            Sku = "sku-343",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 344,
-                            AvailableStock = 20,
                             BrandId = 25,
                             CategoryId = 5,
-                            Created = 1725615230.9489336,
+                            Created = 1725960056.2018008,
                             Description = "Description for product 344",
                             Discount = 0.0,
+                            ImageUrl = "product344.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 93,
                             Name = "Product 344",
-                            PictureFileName = "product344.jpg",
-                            Price = 973.45000000000005,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 41.380000000000003,
+                            Sku = "sku-344",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 345,
-                            AvailableStock = 73,
                             BrandId = 26,
                             CategoryId = 6,
-                            Created = 1725615230.9489341,
+                            Created = 1725960056.2018013,
                             Description = "Description for product 345",
                             Discount = 0.0,
+                            ImageUrl = "product345.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 152,
                             Name = "Product 345",
-                            PictureFileName = "product345.jpg",
-                            Price = 910.11000000000001,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 913.92999999999995,
+                            Sku = "sku-345",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 346,
-                            AvailableStock = 61,
                             BrandId = 27,
                             CategoryId = 7,
-                            Created = 1725615230.9489346,
+                            Created = 1725960056.2018015,
                             Description = "Description for product 346",
                             Discount = 0.0,
+                            ImageUrl = "product346.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 86,
                             Name = "Product 346",
-                            PictureFileName = "product346.jpg",
-                            Price = 753.09000000000003,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 817.99000000000001,
+                            Sku = "sku-346",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 347,
-                            AvailableStock = 21,
                             BrandId = 28,
                             CategoryId = 8,
-                            Created = 1725615230.9489353,
+                            Created = 1725960056.201802,
                             Description = "Description for product 347",
                             Discount = 0.0,
+                            ImageUrl = "product347.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 185,
                             Name = "Product 347",
-                            PictureFileName = "product347.jpg",
-                            Price = 475.05000000000001,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 779.41999999999996,
+                            Sku = "sku-347",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 348,
-                            AvailableStock = 61,
                             BrandId = 29,
                             CategoryId = 9,
-                            Created = 1725615230.9489357,
+                            Created = 1725960056.2018025,
                             Description = "Description for product 348",
                             Discount = 0.0,
+                            ImageUrl = "product348.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 156,
                             Name = "Product 348",
-                            PictureFileName = "product348.jpg",
-                            Price = 875.38,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 533.83000000000004,
+                            Sku = "sku-348",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 349,
-                            AvailableStock = 71,
                             BrandId = 30,
                             CategoryId = 10,
-                            Created = 1725615230.9489365,
+                            Created = 1725960056.2018027,
                             Description = "Description for product 349",
                             Discount = 0.0,
+                            ImageUrl = "product349.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 133,
                             Name = "Product 349",
-                            PictureFileName = "product349.jpg",
-                            Price = 45.509999999999998,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 437.81999999999999,
+                            Sku = "sku-349",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 350,
-                            AvailableStock = 51,
                             BrandId = 31,
                             CategoryId = 11,
-                            Created = 1725615230.9489369,
+                            Created = 1725960056.2018063,
                             Description = "Description for product 350",
                             Discount = 0.0,
+                            ImageUrl = "product350.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 92,
                             Name = "Product 350",
-                            PictureFileName = "product350.jpg",
-                            Price = 504.50999999999999,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 283.69999999999999,
+                            Sku = "sku-350",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 351,
-                            AvailableStock = 47,
                             BrandId = 32,
                             CategoryId = 12,
-                            Created = 1725615230.9489377,
+                            Created = 1725960056.2018068,
                             Description = "Description for product 351",
                             Discount = 0.0,
+                            ImageUrl = "product351.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 88,
                             Name = "Product 351",
-                            PictureFileName = "product351.jpg",
-                            Price = 214.58000000000001,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 147.96000000000001,
+                            Sku = "sku-351",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 352,
-                            AvailableStock = 91,
                             BrandId = 33,
                             CategoryId = 13,
-                            Created = 1725615230.9489381,
+                            Created = 1725960056.2018073,
                             Description = "Description for product 352",
                             Discount = 0.0,
+                            ImageUrl = "product352.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 108,
                             Name = "Product 352",
-                            PictureFileName = "product352.jpg",
-                            Price = 435.37,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 305.01999999999998,
+                            Sku = "sku-352",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 353,
-                            AvailableStock = 69,
                             BrandId = 34,
                             CategoryId = 14,
-                            Created = 1725615230.9489388,
+                            Created = 1725960056.2018075,
                             Description = "Description for product 353",
                             Discount = 0.0,
+                            ImageUrl = "product353.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 141,
                             Name = "Product 353",
-                            PictureFileName = "product353.jpg",
-                            Price = 671.16999999999996,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 836.23000000000002,
+                            Sku = "sku-353",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 354,
-                            AvailableStock = 70,
                             BrandId = 35,
                             CategoryId = 15,
-                            Created = 1725615230.9489393,
+                            Created = 1725960056.201808,
                             Description = "Description for product 354",
                             Discount = 0.0,
+                            ImageUrl = "product354.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 188,
                             Name = "Product 354",
-                            PictureFileName = "product354.jpg",
-                            Price = 204.05000000000001,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 577.46000000000004,
+                            Sku = "sku-354",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 355,
-                            AvailableStock = 50,
                             BrandId = 36,
                             CategoryId = 16,
-                            Created = 1725615230.94894,
+                            Created = 1725960056.2018085,
                             Description = "Description for product 355",
                             Discount = 0.0,
+                            ImageUrl = "product355.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 196,
                             Name = "Product 355",
-                            PictureFileName = "product355.jpg",
-                            Price = 921.58000000000004,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 796.89999999999998,
+                            Sku = "sku-355",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 356,
-                            AvailableStock = 88,
                             BrandId = 37,
                             CategoryId = 17,
-                            Created = 1725615230.9489405,
+                            Created = 1725960056.2018087,
                             Description = "Description for product 356",
                             Discount = 0.0,
+                            ImageUrl = "product356.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 72,
                             Name = "Product 356",
-                            PictureFileName = "product356.jpg",
-                            Price = 459.81999999999999,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 346.58999999999997,
+                            Sku = "sku-356",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 357,
-                            AvailableStock = 78,
                             BrandId = 38,
                             CategoryId = 18,
-                            Created = 1725615230.9489465,
+                            Created = 1725960056.2018092,
                             Description = "Description for product 357",
                             Discount = 0.0,
+                            ImageUrl = "product357.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 161,
                             Name = "Product 357",
-                            PictureFileName = "product357.jpg",
-                            Price = 437.62,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 37.960000000000001,
+                            Sku = "sku-357",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 358,
-                            AvailableStock = 14,
                             BrandId = 39,
                             CategoryId = 19,
-                            Created = 1725615230.9489472,
+                            Created = 1725960056.2018096,
                             Description = "Description for product 358",
                             Discount = 0.0,
+                            ImageUrl = "product358.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 105,
                             Name = "Product 358",
-                            PictureFileName = "product358.jpg",
-                            Price = 325.93000000000001,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 199.81,
+                            Sku = "sku-358",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 359,
-                            AvailableStock = 13,
                             BrandId = 40,
                             CategoryId = 20,
-                            Created = 1725615230.9489477,
+                            Created = 1725960056.2018099,
                             Description = "Description for product 359",
                             Discount = 0.0,
+                            ImageUrl = "product359.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 154,
                             Name = "Product 359",
-                            PictureFileName = "product359.jpg",
-                            Price = 771.15999999999997,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 464.95999999999998,
+                            Sku = "sku-359",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 360,
-                            AvailableStock = 53,
                             BrandId = 1,
                             CategoryId = 1,
-                            Created = 1725615230.9489484,
+                            Created = 1725960056.2018104,
                             Description = "Description for product 360",
                             Discount = 0.0,
+                            ImageUrl = "product360.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 53,
                             Name = "Product 360",
-                            PictureFileName = "product360.jpg",
-                            Price = 831.94000000000005,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 733.63,
+                            Sku = "sku-360",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 361,
-                            AvailableStock = 15,
                             BrandId = 2,
                             CategoryId = 2,
-                            Created = 1725615230.9489489,
+                            Created = 1725960056.2018108,
                             Description = "Description for product 361",
                             Discount = 0.0,
+                            ImageUrl = "product361.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 29,
                             Name = "Product 361",
-                            PictureFileName = "product361.jpg",
-                            Price = 208.53,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 685.97000000000003,
+                            Sku = "sku-361",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 362,
-                            AvailableStock = 5,
                             BrandId = 3,
                             CategoryId = 3,
-                            Created = 1725615230.9489493,
+                            Created = 1725960056.2018113,
                             Description = "Description for product 362",
                             Discount = 0.0,
+                            ImageUrl = "product362.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 182,
                             Name = "Product 362",
-                            PictureFileName = "product362.jpg",
-                            Price = 305.99000000000001,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 601.22000000000003,
+                            Sku = "sku-362",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 363,
-                            AvailableStock = 55,
                             BrandId = 4,
                             CategoryId = 4,
-                            Created = 1725615230.9489501,
+                            Created = 1725960056.2018116,
                             Description = "Description for product 363",
                             Discount = 0.0,
+                            ImageUrl = "product363.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 45,
                             Name = "Product 363",
-                            PictureFileName = "product363.jpg",
-                            Price = 886.69000000000005,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 760.57000000000005,
+                            Sku = "sku-363",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 364,
-                            AvailableStock = 20,
                             BrandId = 5,
                             CategoryId = 5,
-                            Created = 1725615230.9489505,
+                            Created = 1725960056.201812,
                             Description = "Description for product 364",
                             Discount = 0.0,
+                            ImageUrl = "product364.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 165,
                             Name = "Product 364",
-                            PictureFileName = "product364.jpg",
-                            Price = 36.240000000000002,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 719.54999999999995,
+                            Sku = "sku-364",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 365,
-                            AvailableStock = 36,
                             BrandId = 6,
                             CategoryId = 6,
-                            Created = 1725615230.9489512,
+                            Created = 1725960056.2018125,
                             Description = "Description for product 365",
                             Discount = 0.0,
+                            ImageUrl = "product365.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 130,
                             Name = "Product 365",
-                            PictureFileName = "product365.jpg",
-                            Price = 152.13,
-                            RestockThreshold = 8
+                            OtherAttributes = "",
+                            Price = 691.19000000000005,
+                            Sku = "sku-365",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 366,
-                            AvailableStock = 42,
                             BrandId = 7,
                             CategoryId = 7,
-                            Created = 1725615230.9489517,
+                            Created = 1725960056.201813,
                             Description = "Description for product 366",
                             Discount = 0.0,
+                            ImageUrl = "product366.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 173,
                             Name = "Product 366",
-                            PictureFileName = "product366.jpg",
-                            Price = 69.180000000000007,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 869.74000000000001,
+                            Sku = "sku-366",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 367,
-                            AvailableStock = 61,
                             BrandId = 8,
                             CategoryId = 8,
-                            Created = 1725615230.9489524,
+                            Created = 1725960056.2018135,
                             Description = "Description for product 367",
                             Discount = 0.0,
+                            ImageUrl = "product367.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 87,
                             Name = "Product 367",
-                            PictureFileName = "product367.jpg",
-                            Price = 529.30999999999995,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 97.319999999999993,
+                            Sku = "sku-367",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 368,
-                            AvailableStock = 13,
                             BrandId = 9,
                             CategoryId = 9,
-                            Created = 1725615230.9489529,
+                            Created = 1725960056.2018137,
                             Description = "Description for product 368",
                             Discount = 0.0,
+                            ImageUrl = "product368.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 97,
                             Name = "Product 368",
-                            PictureFileName = "product368.jpg",
-                            Price = 613.38999999999999,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 488.63999999999999,
+                            Sku = "sku-368",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 369,
-                            AvailableStock = 99,
                             BrandId = 10,
                             CategoryId = 10,
-                            Created = 1725615230.9489536,
+                            Created = 1725960056.2018161,
                             Description = "Description for product 369",
                             Discount = 0.0,
+                            ImageUrl = "product369.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 91,
                             Name = "Product 369",
-                            PictureFileName = "product369.jpg",
-                            Price = 702.72000000000003,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 268.98000000000002,
+                            Sku = "sku-369",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 370,
-                            AvailableStock = 83,
                             BrandId = 11,
                             CategoryId = 11,
-                            Created = 1725615230.9489541,
+                            Created = 1725960056.2018166,
                             Description = "Description for product 370",
                             Discount = 0.0,
+                            ImageUrl = "product370.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 188,
                             Name = "Product 370",
-                            PictureFileName = "product370.jpg",
-                            Price = 271.13999999999999,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 224.0,
+                            Sku = "sku-370",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 371,
-                            AvailableStock = 33,
                             BrandId = 12,
                             CategoryId = 12,
-                            Created = 1725615230.9489615,
+                            Created = 1725960056.2018168,
                             Description = "Description for product 371",
                             Discount = 0.0,
+                            ImageUrl = "product371.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 198,
                             Name = "Product 371",
-                            PictureFileName = "product371.jpg",
-                            Price = 635.29999999999995,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 480.98000000000002,
+                            Sku = "sku-371",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 372,
-                            AvailableStock = 81,
                             BrandId = 13,
                             CategoryId = 13,
-                            Created = 1725615230.948962,
+                            Created = 1725960056.2018173,
                             Description = "Description for product 372",
                             Discount = 0.0,
+                            ImageUrl = "product372.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 167,
                             Name = "Product 372",
-                            PictureFileName = "product372.jpg",
-                            Price = 398.17000000000002,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 402.26999999999998,
+                            Sku = "sku-372",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 373,
-                            AvailableStock = 78,
                             BrandId = 14,
                             CategoryId = 14,
-                            Created = 1725615230.9489627,
+                            Created = 1725960056.2018175,
                             Description = "Description for product 373",
                             Discount = 0.0,
+                            ImageUrl = "product373.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 161,
                             Name = "Product 373",
-                            PictureFileName = "product373.jpg",
-                            Price = 254.22999999999999,
-                            RestockThreshold = 9
+                            OtherAttributes = "",
+                            Price = 997.83000000000004,
+                            Sku = "sku-373",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 374,
-                            AvailableStock = 51,
                             BrandId = 15,
                             CategoryId = 15,
-                            Created = 1725615230.9489632,
+                            Created = 1725960056.201818,
                             Description = "Description for product 374",
                             Discount = 0.0,
+                            ImageUrl = "product374.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 71,
                             Name = "Product 374",
-                            PictureFileName = "product374.jpg",
-                            Price = 174.97,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 941.49000000000001,
+                            Sku = "sku-374",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 375,
-                            AvailableStock = 6,
                             BrandId = 16,
                             CategoryId = 16,
-                            Created = 1725615230.9489639,
+                            Created = 1725960056.2018185,
                             Description = "Description for product 375",
                             Discount = 0.0,
+                            ImageUrl = "product375.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 107,
                             Name = "Product 375",
-                            PictureFileName = "product375.jpg",
-                            Price = 172.13999999999999,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 774.29999999999995,
+                            Sku = "sku-375",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 376,
-                            AvailableStock = 82,
                             BrandId = 17,
                             CategoryId = 17,
-                            Created = 1725615230.9489644,
+                            Created = 1725960056.2018187,
                             Description = "Description for product 376",
                             Discount = 0.0,
+                            ImageUrl = "product376.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 195,
                             Name = "Product 376",
-                            PictureFileName = "product376.jpg",
-                            Price = 990.39999999999998,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 143.19999999999999,
+                            Sku = "sku-376",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 377,
-                            AvailableStock = 39,
                             BrandId = 18,
                             CategoryId = 18,
-                            Created = 1725615230.9489651,
+                            Created = 1725960056.2018192,
                             Description = "Description for product 377",
                             Discount = 0.0,
+                            ImageUrl = "product377.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 40,
                             Name = "Product 377",
-                            PictureFileName = "product377.jpg",
-                            Price = 674.82000000000005,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 334.62,
+                            Sku = "sku-377",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 378,
-                            AvailableStock = 2,
                             BrandId = 19,
                             CategoryId = 19,
-                            Created = 1725615230.9489655,
+                            Created = 1725960056.2018197,
                             Description = "Description for product 378",
                             Discount = 0.0,
+                            ImageUrl = "product378.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 122,
                             Name = "Product 378",
-                            PictureFileName = "product378.jpg",
-                            Price = 993.14999999999998,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 80.379999999999995,
+                            Sku = "sku-378",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 379,
-                            AvailableStock = 74,
                             BrandId = 20,
                             CategoryId = 20,
-                            Created = 1725615230.9489663,
+                            Created = 1725960056.2018199,
                             Description = "Description for product 379",
                             Discount = 0.0,
+                            ImageUrl = "product379.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 147,
                             Name = "Product 379",
-                            PictureFileName = "product379.jpg",
-                            Price = 236.59999999999999,
-                            RestockThreshold = 5
+                            OtherAttributes = "",
+                            Price = 435.81999999999999,
+                            Sku = "sku-379",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 380,
-                            AvailableStock = 79,
                             BrandId = 21,
                             CategoryId = 1,
-                            Created = 1725615230.9489667,
+                            Created = 1725960056.2018204,
                             Description = "Description for product 380",
                             Discount = 0.0,
+                            ImageUrl = "product380.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 187,
                             Name = "Product 380",
-                            PictureFileName = "product380.jpg",
-                            Price = 354.31999999999999,
-                            RestockThreshold = 3
+                            OtherAttributes = "",
+                            Price = 553.59000000000003,
+                            Sku = "sku-380",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 381,
-                            AvailableStock = 72,
                             BrandId = 22,
                             CategoryId = 2,
-                            Created = 1725615230.9489675,
+                            Created = 1725960056.2018209,
                             Description = "Description for product 381",
                             Discount = 0.0,
+                            ImageUrl = "product381.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 185,
                             Name = "Product 381",
-                            PictureFileName = "product381.jpg",
-                            Price = 370.02999999999997,
-                            RestockThreshold = 19
+                            OtherAttributes = "",
+                            Price = 551.23000000000002,
+                            Sku = "sku-381",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 382,
-                            AvailableStock = 52,
                             BrandId = 23,
                             CategoryId = 3,
-                            Created = 1725615230.9489679,
+                            Created = 1725960056.2018211,
                             Description = "Description for product 382",
                             Discount = 0.0,
+                            ImageUrl = "product382.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 197,
                             Name = "Product 382",
-                            PictureFileName = "product382.jpg",
-                            Price = 621.58000000000004,
-                            RestockThreshold = 7
+                            OtherAttributes = "",
+                            Price = 995.11000000000001,
+                            Sku = "sku-382",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 383,
-                            AvailableStock = 82,
                             BrandId = 24,
                             CategoryId = 4,
-                            Created = 1725615230.9489686,
+                            Created = 1725960056.2018216,
                             Description = "Description for product 383",
                             Discount = 0.0,
+                            ImageUrl = "product383.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 159,
                             Name = "Product 383",
-                            PictureFileName = "product383.jpg",
-                            Price = 512.53999999999996,
-                            RestockThreshold = 13
+                            OtherAttributes = "",
+                            Price = 492.77999999999997,
+                            Sku = "sku-383",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 384,
-                            AvailableStock = 39,
                             BrandId = 25,
                             CategoryId = 5,
-                            Created = 1725615230.9489748,
+                            Created = 1725960056.201822,
                             Description = "Description for product 384",
                             Discount = 0.0,
+                            ImageUrl = "product384.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 71,
                             Name = "Product 384",
-                            PictureFileName = "product384.jpg",
-                            Price = 139.27000000000001,
-                            RestockThreshold = 16
+                            OtherAttributes = "",
+                            Price = 981.98000000000002,
+                            Sku = "sku-384",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 385,
-                            AvailableStock = 1,
                             BrandId = 26,
                             CategoryId = 6,
-                            Created = 1725615230.9489751,
+                            Created = 1725960056.2018223,
                             Description = "Description for product 385",
                             Discount = 0.0,
+                            ImageUrl = "product385.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 121,
                             Name = "Product 385",
-                            PictureFileName = "product385.jpg",
-                            Price = 269.11000000000001,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 638.27999999999997,
+                            Sku = "sku-385",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 386,
-                            AvailableStock = 32,
                             BrandId = 27,
                             CategoryId = 7,
-                            Created = 1725615230.948976,
+                            Created = 1725960056.2018228,
                             Description = "Description for product 386",
                             Discount = 0.0,
+                            ImageUrl = "product386.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 25,
                             Name = "Product 386",
-                            PictureFileName = "product386.jpg",
-                            Price = 20.609999999999999,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 626.33000000000004,
+                            Sku = "sku-386",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 387,
-                            AvailableStock = 16,
                             BrandId = 28,
                             CategoryId = 8,
-                            Created = 1725615230.9489765,
+                            Created = 1725960056.2018232,
                             Description = "Description for product 387",
                             Discount = 0.0,
+                            ImageUrl = "product387.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 30,
                             Name = "Product 387",
-                            PictureFileName = "product387.jpg",
-                            Price = 654.67999999999995,
-                            RestockThreshold = 11
+                            OtherAttributes = "",
+                            Price = 327.72000000000003,
+                            Sku = "sku-387",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 388,
-                            AvailableStock = 66,
                             BrandId = 29,
                             CategoryId = 9,
-                            Created = 1725615230.9489772,
+                            Created = 1725960056.2018237,
                             Description = "Description for product 388",
                             Discount = 0.0,
+                            ImageUrl = "product388.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 192,
                             Name = "Product 388",
-                            PictureFileName = "product388.jpg",
-                            Price = 899.33000000000004,
-                            RestockThreshold = 18
+                            OtherAttributes = "",
+                            Price = 351.22000000000003,
+                            Sku = "sku-388",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 389,
-                            AvailableStock = 39,
                             BrandId = 30,
                             CategoryId = 10,
-                            Created = 1725615230.9489777,
+                            Created = 1725960056.2018261,
                             Description = "Description for product 389",
                             Discount = 0.0,
+                            ImageUrl = "product389.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 29,
                             Name = "Product 389",
-                            PictureFileName = "product389.jpg",
-                            Price = 569.60000000000002,
-                            RestockThreshold = 4
+                            OtherAttributes = "",
+                            Price = 21.030000000000001,
+                            Sku = "sku-389",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 390,
-                            AvailableStock = 9,
                             BrandId = 31,
                             CategoryId = 11,
-                            Created = 1725615230.9489784,
+                            Created = 1725960056.2018263,
                             Description = "Description for product 390",
                             Discount = 0.0,
+                            ImageUrl = "product390.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 138,
                             Name = "Product 390",
-                            PictureFileName = "product390.jpg",
-                            Price = 862.10000000000002,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 254.19999999999999,
+                            Sku = "sku-390",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 391,
-                            AvailableStock = 44,
                             BrandId = 32,
                             CategoryId = 12,
-                            Created = 1725615230.9489789,
+                            Created = 1725960056.2018268,
                             Description = "Description for product 391",
                             Discount = 0.0,
+                            ImageUrl = "product391.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 67,
                             Name = "Product 391",
-                            PictureFileName = "product391.jpg",
-                            Price = 559.38,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 656.38,
+                            Sku = "sku-391",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 392,
-                            AvailableStock = 97,
                             BrandId = 33,
                             CategoryId = 13,
-                            Created = 1725615230.9489796,
+                            Created = 1725960056.2018273,
                             Description = "Description for product 392",
                             Discount = 0.0,
+                            ImageUrl = "product392.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 106,
                             Name = "Product 392",
-                            PictureFileName = "product392.jpg",
-                            Price = 185.40000000000001,
-                            RestockThreshold = 1
+                            OtherAttributes = "",
+                            Price = 223.80000000000001,
+                            Sku = "sku-392",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 393,
-                            AvailableStock = 88,
                             BrandId = 34,
                             CategoryId = 14,
-                            Created = 1725615230.9489801,
+                            Created = 1725960056.2018275,
                             Description = "Description for product 393",
                             Discount = 0.0,
+                            ImageUrl = "product393.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 187,
                             Name = "Product 393",
-                            PictureFileName = "product393.jpg",
-                            Price = 22.010000000000002,
-                            RestockThreshold = 14
+                            OtherAttributes = "",
+                            Price = 475.95999999999998,
+                            Sku = "sku-393",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 394,
-                            AvailableStock = 29,
                             BrandId = 35,
                             CategoryId = 15,
-                            Created = 1725615230.9489808,
+                            Created = 1725960056.201828,
                             Description = "Description for product 394",
                             Discount = 0.0,
+                            ImageUrl = "product394.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 187,
                             Name = "Product 394",
-                            PictureFileName = "product394.jpg",
-                            Price = 105.18000000000001,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 922.64999999999998,
+                            Sku = "sku-394",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 395,
-                            AvailableStock = 15,
                             BrandId = 36,
                             CategoryId = 16,
-                            Created = 1725615230.9489813,
+                            Created = 1725960056.2018285,
                             Description = "Description for product 395",
                             Discount = 0.0,
+                            ImageUrl = "product395.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 187,
                             Name = "Product 395",
-                            PictureFileName = "product395.jpg",
-                            Price = 596.71000000000004,
-                            RestockThreshold = 12
+                            OtherAttributes = "",
+                            Price = 460.79000000000002,
+                            Sku = "sku-395",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 396,
-                            AvailableStock = 12,
                             BrandId = 37,
                             CategoryId = 17,
-                            Created = 1725615230.948982,
+                            Created = 1725960056.2018287,
                             Description = "Description for product 396",
                             Discount = 0.0,
+                            ImageUrl = "product396.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 41,
                             Name = "Product 396",
-                            PictureFileName = "product396.jpg",
-                            Price = 62.149999999999999,
-                            RestockThreshold = 6
+                            OtherAttributes = "",
+                            Price = 996.37,
+                            Sku = "sku-396",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 397,
-                            AvailableStock = 68,
                             BrandId = 38,
                             CategoryId = 18,
-                            Created = 1725615230.9489827,
+                            Created = 1725960056.201829,
                             Description = "Description for product 397",
                             Discount = 0.0,
+                            ImageUrl = "product397.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 134,
                             Name = "Product 397",
-                            PictureFileName = "product397.jpg",
-                            Price = 74.310000000000002,
-                            RestockThreshold = 2
+                            OtherAttributes = "",
+                            Price = 59.270000000000003,
+                            Sku = "sku-397",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 398,
-                            AvailableStock = 46,
                             BrandId = 39,
                             CategoryId = 19,
-                            Created = 1725615230.9489884,
+                            Created = 1725960056.2018297,
                             Description = "Description for product 398",
                             Discount = 0.0,
+                            ImageUrl = "product398.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 190,
                             Name = "Product 398",
-                            PictureFileName = "product398.jpg",
-                            Price = 518.64999999999998,
-                            RestockThreshold = 17
+                            OtherAttributes = "",
+                            Price = 705.75999999999999,
+                            Sku = "sku-398",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 399,
-                            AvailableStock = 95,
                             BrandId = 40,
                             CategoryId = 20,
-                            Created = 1725615230.9489889,
+                            Created = 1725960056.2018299,
                             Description = "Description for product 399",
                             Discount = 0.0,
+                            ImageUrl = "product399.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 34,
                             Name = "Product 399",
-                            PictureFileName = "product399.jpg",
-                            Price = 508.38999999999999,
-                            RestockThreshold = 10
+                            OtherAttributes = "",
+                            Price = 52.399999999999999,
+                            Sku = "sku-399",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 400,
-                            AvailableStock = 74,
                             BrandId = 1,
                             CategoryId = 1,
-                            Created = 1725615230.9489896,
+                            Created = 1725960056.2018304,
                             Description = "Description for product 400",
                             Discount = 0.0,
+                            ImageUrl = "product400.jpg",
                             IsDeleted = false,
                             LastModified = 0.0,
-                            MaxStockThreshold = 24,
                             Name = "Product 400",
-                            PictureFileName = "product400.jpg",
-                            Price = 758.5,
-                            RestockThreshold = 15
+                            OtherAttributes = "",
+                            Price = 538.61000000000001,
+                            Sku = "sku-400",
+                            Summary = ""
                         });
                 });
 
@@ -7776,6 +7945,7 @@ namespace EShop.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Comment")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Created")
@@ -7816,14 +7986,12 @@ namespace EShop.Infrastructure.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("City")
+                    b.Property<string>("AvatarUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -7859,21 +8027,12 @@ namespace EShop.Infrastructure.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Street")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -7921,35 +8080,35 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "324b8689-ebb1-4583-a6b0-bca68e737ce3",
+                            ConcurrencyStamp = "82c57fc9-b610-4d27-a879-249192052ccb",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "c534491e-679b-4ca0-b734-33413aa102a6",
+                            ConcurrencyStamp = "a72d42b9-e9ab-4384-9885-e2fb23661810",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "2d12a4ff-54c2-4032-962b-3518dcc79308",
+                            ConcurrencyStamp = "e3f02b5f-f3ae-4eb3-98e6-28fec7cf740a",
                             Name = "SalesManager",
                             NormalizedName = "SALESMANAGER"
                         },
                         new
                         {
                             Id = 4,
-                            ConcurrencyStamp = "dacf88e4-bafe-4984-baea-e3a29af8e6fc",
+                            ConcurrencyStamp = "4abb5484-a885-42ee-9ecb-0af1abb6b66c",
                             Name = "StoreManager",
                             NormalizedName = "STOREMANAGER"
                         },
                         new
                         {
                             Id = 5,
-                            ConcurrencyStamp = "c9fd0ebf-df5c-446a-9efd-44eaa18a9d52",
+                            ConcurrencyStamp = "d91e1ee3-4f27-4e67-99aa-c59604b91e0d",
                             Name = "SystemAdministrator",
                             NormalizedName = "SYSTEMADMINISTRATOR"
                         });
@@ -8058,11 +8217,33 @@ namespace EShop.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("EShop.Application.Entities.Address", b =>
+                {
+                    b.HasOne("EShop.Application.Entities.User", "User")
+                        .WithMany("Addresses")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EShop.Application.Entities.Basket", b =>
+                {
+                    b.HasOne("EShop.Application.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("EShop.Application.Entities.BasketItem", b =>
                 {
-                    b.HasOne("EShop.Application.Entities.User", "Customer")
+                    b.HasOne("EShop.Application.Entities.Basket", "Basket")
                         .WithMany()
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("BasketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -8072,22 +8253,30 @@ namespace EShop.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customer");
+                    b.Navigation("Basket");
 
                     b.Navigation("Product");
                 });
 
             modelBuilder.Entity("EShop.Application.Entities.Order", b =>
                 {
+                    b.HasOne("EShop.Application.Entities.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EShop.Application.Entities.User", "Buyer")
                         .WithMany("Orders")
                         .HasForeignKey("BuyerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("EShop.Application.Entities.Payment", "Payment")
                         .WithMany()
                         .HasForeignKey("PaymentId");
+
+                    b.Navigation("Address");
 
                     b.Navigation("Buyer");
 
@@ -8212,6 +8401,8 @@ namespace EShop.Infrastructure.Migrations
 
             modelBuilder.Entity("EShop.Application.Entities.User", b =>
                 {
+                    b.Navigation("Addresses");
+
                     b.Navigation("Orders");
 
                     b.Navigation("Payments");

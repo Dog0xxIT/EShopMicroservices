@@ -1,7 +1,8 @@
-﻿using EShop.Shared.RequestModels;
-using EShop.Shared.RequestModels.Catalog;
+﻿using EShop.Shared.RequestModels.Catalog;
+using EShop.Shared.RequestModels.Common;
 using EShop.Shared.ResponseModels;
 using EShop.Shared.ResponseModels.Catalog;
+using EShop.Shared.ResponseModels.Common;
 using EShop.WebApp.Core;
 using EShop.WebApp.Core.CoreHttpClient;
 
@@ -87,38 +88,38 @@ namespace EShop.WebApp.Services.CatalogService
                 queryObj: text);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> UploadProductImage(UploadProductImageRequest request)
+        public async Task<ResultObject<TypedResult>> UploadProductImage(UploadProductImageRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> CreateProduct(CreateProductRequest request)
+        public async Task<ResultObject<TypedResult>> CreateProduct(CreateProductRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync<TypedResult>(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Catalog.CreateProduct,
                 reqObj: request);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> CreateBrand(CreateBrandRequest request)
+        public async Task<ResultObject<TypedResult>> CreateBrand(CreateBrandRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync<TypedResult>(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Catalog.CreateBrand,
                 reqObj: request);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> UpdateProduct(UpdateProductRequest request)
+        public async Task<ResultObject<TypedResult>> UpdateProduct(UpdateProductRequest request)
         {
-            return await _coreHttpClient.PostAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PostAsync<TypedResult>(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Catalog.UpdateProduct,
                 reqObj: request);
         }
 
-        public async Task<ResultObject<SuccessObjectResponse>> UpdateBrand(UpdateBrandRequest request)
+        public async Task<ResultObject<TypedResult>> UpdateBrand(UpdateBrandRequest request)
         {
-            return await _coreHttpClient.PutAsync<SuccessObjectResponse>(
+            return await _coreHttpClient.PutAsync<TypedResult>(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Catalog.UpdateBrand,
                 reqObj: request);

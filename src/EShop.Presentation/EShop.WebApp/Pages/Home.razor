@@ -1,8 +1,8 @@
 ﻿@page "/"
 
-@using EShop.Shared.RequestModels
-@using EShop.Shared.ResponseModels
+@using EShop.Shared.RequestModels.Common
 @using EShop.Shared.ResponseModels.Catalog
+@using EShop.Shared.ResponseModels.Common
 @using EShop.WebApp.Core.CoreHttpClient
 @using EShop.WebApp.Models.Common
 @using EShop.WebApp.Services.AuthenticationService
@@ -126,10 +126,10 @@
         </div>
 
         <div class="w-full text-center">
-            <Pagination CurrentPage="_productPaginationResponse.PageIndex+1"
-                        TotalItem="_productPaginationResponse.Total"
+            <Pagination TotalItem="_productPaginationResponse.Total"
                         TotalItemOfCurrentPage="_productPaginationResponse.Data.Count()"
-                        TotalPage="_productPaginationResponse.Total"></Pagination>
+                        TotalPage="_productPaginationResponse.Total"
+                        PageChangedEventCallback="@GetAllProduct" @bind-PageIndex="_productPaginationResponse.PageIndex"></Pagination>
         </div>
     </div>
     <!-- Filter modal -->

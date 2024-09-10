@@ -20,7 +20,7 @@
             LastModified = DateTime.UtcNow.Subtract(DateTime.UnixEpoch).TotalSeconds;
         }
 
-        public Entity()
+        protected Entity()
         {
             SetTimeCreated();
         }

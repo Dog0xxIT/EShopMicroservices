@@ -24,8 +24,8 @@ public class BasketService : IBasketService
                 orderBy: queryable => (IOrderedQueryable<BasketItem>)queryable
                     .OrderBy(p => p.Id)
                     .Skip(pageIndex)
-                    .Take(pageSize),
-                filter: b => b.CustomerId == customerId);
+                    .Take(pageSize)
+                /*filter: b => b.CustomerId == customerId*/);
 
 
         var basketItemsDto = basketItems.Adapt<IEnumerable<BasketItemResponse>>();

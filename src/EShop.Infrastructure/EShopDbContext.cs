@@ -21,6 +21,8 @@ namespace EShop.Infrastructure
     /// 
     public class EShopDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -37,6 +39,11 @@ namespace EShop.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<User>().ToTable("Users", "dbo");
+            //modelBuilder.Entity<IdentityRole>().ToTable("Roles", "dbo");
+            //modelBuilder.Entity<IdentityUserRole<int>>().ToTable("UserRoles", "dbo");
+            //modelBuilder.Entity<IdentityUserClaim<int>>().ToTable("UserClaims", "dbo");
+            //modelBuilder.Entity<IdentityUserLogin<int>>().ToTable("UserLogins", "dbo");
             modelBuilder.SeedData();
         }
     }

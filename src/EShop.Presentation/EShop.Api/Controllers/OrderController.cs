@@ -3,6 +3,7 @@ using EShop.Application.Enums;
 using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Order;
 using EShop.Shared.ResponseModels;
+using EShop.Shared.ResponseModels.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Api.Controllers
@@ -46,14 +47,14 @@ namespace EShop.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateRequest req)
         {
-            return Ok();
+            return Ok(TypedResult.Succeeded);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateDraft(CreateDraftRequest req)
         {
             //var orderDraft = new Order(req.BuyerId);
-            return Ok();
+            return Ok(TypedResult.Succeeded);
         }
 
         #endregion
@@ -75,7 +76,7 @@ namespace EShop.Api.Controllers
             {
                 _unitOfWork.OrderRepository.Update(order);
                 var result = await _unitOfWork.Commit();
-                return Ok();
+                return Ok(TypedResult.Succeeded);
             }
             catch (Exception ex)
             {
@@ -98,7 +99,7 @@ namespace EShop.Api.Controllers
             {
                 _unitOfWork.OrderRepository.Update(order);
                 var result = await _unitOfWork.Commit();
-                return Ok();
+                return Ok(TypedResult.Succeeded);
             }
             catch (Exception ex)
             {

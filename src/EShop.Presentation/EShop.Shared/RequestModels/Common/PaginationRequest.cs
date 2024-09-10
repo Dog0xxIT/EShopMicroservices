@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EShop.Shared.RequestModels
+namespace EShop.Shared.RequestModels.Common
 {
     public class PaginationRequest
     {

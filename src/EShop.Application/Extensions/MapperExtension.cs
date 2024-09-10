@@ -37,15 +37,15 @@ namespace EShop.Application.Extensions
 
         public static OrderEntityDomain MapToOrderEntityDomain(this OrderEntityApplication rootEntity)
         {
-            var address = new Address(
-                rootEntity.Street, rootEntity.City, rootEntity.State,
-                rootEntity.Country, rootEntity.ZipCode);
+            //var address = new Address(
+            //    rootEntity.Street, rootEntity.City, rootEntity.State,
+            //    rootEntity.Country, rootEntity.ZipCode);
 
             var orderItems = rootEntity.OrderItems?.Select(MapToOrderItemEntityDomain).ToList();
 
             var orderEntityDomain = new OrderEntityDomain(
                 rootEntity.Id, DateTime.UtcNow, rootEntity.BuyerId,
-                rootEntity.PaymentId ?? 0, address, (OrderStatus)rootEntity.OrderStatus, orderItems);
+                rootEntity.PaymentId ?? 0, null, (OrderStatus)rootEntity.OrderStatus, orderItems);
 
             return orderEntityDomain;
         }
@@ -58,13 +58,13 @@ namespace EShop.Application.Extensions
                 BuyerId = rootEntity.BuyerId,
                 PaymentId = rootEntity.PaymentId,
                 OrderStatus = (Enums.OrderStatus)rootEntity.OrderStatus,
-                Description = rootEntity.Description,
-                City = rootEntity.Address.City,
-                Country = rootEntity.Address.Country,
-                State = rootEntity.Address.State,
-                Street = rootEntity.Address.Street,
-                ZipCode = rootEntity.Address.ZipCode,
-                OrderItems = rootEntity.OrderItems.Select(MapToOrderItemEntityApplication).ToList(),
+                //Description = rootEntity.Description,
+                //City = rootEntity.Address.City,
+                //Country = rootEntity.Address.Country,
+                //State = rootEntity.Address.State,
+                //Street = rootEntity.Address.Street,
+                //ZipCode = rootEntity.Address.ZipCode,
+                //OrderItems = rootEntity.OrderItems.Select(MapToOrderItemEntityApplication).ToList(),
             };
         }
 

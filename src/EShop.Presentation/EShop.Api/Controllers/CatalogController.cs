@@ -3,10 +3,11 @@ using Azure;
 using EShop.Application.Constants;
 using EShop.Application.Entities;
 using EShop.Application.Services.Interfaces;
-using EShop.Shared.RequestModels;
 using EShop.Shared.RequestModels.Catalog;
+using EShop.Shared.RequestModels.Common;
 using EShop.Shared.ResponseModels;
 using EShop.Shared.ResponseModels.Catalog;
+using EShop.Shared.ResponseModels.Common;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,42 +40,6 @@ namespace EShop.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetProductsByAdvanceFilter([FromForm] GetProductsByAdvanceFilterRequest getProductsByAdvanceFilterRequest, [FromQuery] PaginationRequest paginationReq)
-        {
-            var response = await _catalogService.GetProductsByAdvanceFilter(getProductsByAdvanceFilterRequest, paginationReq.PageSize, paginationReq.PageIndex);
-
-            return Ok(response);
-        }
-
-        [HttpGet("{brandId}")]
-        public async Task<IActionResult> GetProductsByBrandId([FromRoute] int brandId, [FromQuery] PaginationRequest paginationReq)
-        {
-            var response = await _catalogService.GetProductsByBrandId(brandId, paginationReq.PageSize, paginationReq.PageIndex);
-
-            return Ok(response);
-        }
-
-        [HttpGet("{categoryId}")]
-        public async Task<IActionResult> GetProductsByCategoryId([FromRoute] int categoryId, [FromQuery] PaginationRequest paginationReq)
-        {
-            var response = await _catalogService.GetProductsByCategoryId(categoryId, paginationReq.PageSize, paginationReq.PageIndex);
-
-            return Ok(response);
-        }
-
-        [HttpGet("category/{categoryId}/brand/{brandId}")]
-        public async Task<IActionResult> GetProductsByBrandAndCategoryId(
-            [FromRoute] int categoryId,
-            [FromRoute] int brandId,
-            [FromQuery] PaginationRequest paginationReq)
-        {
-            var response = await _catalogService.GetProductsByBrandAndCategoryId(
-                brandId, categoryId,
-                paginationReq.PageSize, paginationReq.PageIndex);
-
-            return Ok(response);
-        }
 
         [HttpGet("{productId}")]
         public async Task<IActionResult> GetProductById([FromRoute] int productId)
@@ -129,6 +94,13 @@ namespace EShop.Api.Controllers
         #endregion
 
         #region Post method
+        [HttpPost]
+        public async Task<IActionResult> GetProductsByAdvanceFilter([FromForm] GetProductsByAdvanceFilterRequest getProductsByAdvanceFilterRequest, [FromQuery] PaginationRequest paginationReq)
+        {
+            var response = await _catalogService.GetProductsByAdvanceFilter(getProductsByAdvanceFilterRequest, paginationReq.PageSize, paginationReq.PageIndex);
+
+            return Ok(response);
+        }
 
         [HttpPost]
         public async Task<IActionResult> UploadProductImage(UploadProductImageRequest req)
@@ -141,11 +113,11 @@ namespace EShop.Api.Controllers
             }
 
             var uri = await _cloudinaryService.UploadProductImage(req.ProductId, req.FormFile.FileName, req.FormFile.OpenReadStream());
-            product.PictureFileName = uri.AbsoluteUri;
+            product.ImageUrl = uri.AbsoluteUri;
             var serviceResult = await _catalogService.UpdateImageUrlProduct(product.Id, uri.AbsoluteUri);
             if (serviceResult.Succeeded)
             {
-                return Ok();
+                return Ok(TypedResult.Succeeded);
             }
             return Problem(serviceResult.Errors.First());
 
@@ -160,7 +132,7 @@ namespace EShop.Api.Controllers
 
             if (serviceResult.Succeeded)
             {
-                return Ok();
+                return Ok(TypedResult.Succeeded);
             }
             return Problem(serviceResult.Errors.First());
         }
@@ -172,7 +144,7 @@ namespace EShop.Api.Controllers
 
             if (serviceResult.Succeeded)
             {
-                return Ok();
+                return Ok(TypedResult.Succeeded);
             }
             return Problem(serviceResult.Errors.First());
         }

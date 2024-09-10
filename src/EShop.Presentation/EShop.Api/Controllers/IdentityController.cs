@@ -1,6 +1,7 @@
 ﻿
 using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Identity;
+using EShop.Shared.ResponseModels.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,7 +30,7 @@ namespace EShop.Api.Controllers
 
             if (resultService.Succeeded)
             {
-                return Ok();
+                return Ok(TypedResult.Succeeded);
             }
             return Problem(resultService.Errors.First());
         }
@@ -68,7 +69,7 @@ namespace EShop.Api.Controllers
                 return Problem(resultEmailService.Errors.First());
             }
 
-            return Ok();
+            return Ok(TypedResult.Succeeded);
         }
 
         [HttpPost]
@@ -88,7 +89,7 @@ namespace EShop.Api.Controllers
                 };
 
                 this.HttpContext.Response.Cookies.Append("jwt", token, cookieOptions);
-                return Ok();
+                return Ok(TypedResult.Succeeded);
             }
             return Problem(resultService.Errors.First());
         }
@@ -134,7 +135,7 @@ namespace EShop.Api.Controllers
 
             if (resultService.Succeeded)
             {
-                return Ok();
+                return Ok(TypedResult.Succeeded);
             }
             return Problem(resultService.Errors.First());
         }
@@ -145,7 +146,7 @@ namespace EShop.Api.Controllers
             var resultService = await _identityService.ResetPassword(req.Email, req.ResetCode, req.NewPassword);
             if (resultService.Succeeded)
             {
-                return Ok();
+                return Ok(TypedResult.Succeeded);
             }
             return Problem(resultService.Errors.First());
         }

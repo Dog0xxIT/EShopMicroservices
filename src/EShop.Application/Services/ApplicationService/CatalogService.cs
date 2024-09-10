@@ -1,11 +1,11 @@
 ﻿using EShop.Application.Entities;
 using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Catalog;
-using EShop.Shared.ResponseModels;
 using Microsoft.Extensions.Logging;
 using Mapster;
 using EShop.Shared.ResponseModels.Catalog;
 using System.Linq.Expressions;
+using EShop.Shared.ResponseModels.Common;
 
 namespace EShop.Application.Services.ApplicationService;
 
@@ -44,12 +44,12 @@ public class CatalogService : ICatalogService
                 {
                     Id = product.Id,
                     CategoryId = product.CategoryId,
-                    AvailableStock = product.AvailableStock,
+                    //AvailableStock = product.AvailableStock,
                     Price = product.Price,
                     BrandId = product.BrandId,
                     Discount = product.Discount,
                     Name = product.Name,
-                    PictureLink = product.PictureFileName,
+                    PictureLink = product.ImageUrl,
                     TotalRating = totalRating,
                     AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
                 });
@@ -63,89 +63,6 @@ public class CatalogService : ICatalogService
             PageSize = pageSize
         };
     }
-
-    public async Task<PaginationResponse<GetListProductResponse>> GetProductsByBrandId(int brandId, int pageSize = 10, int pageIndex = 0)
-    {
-        var products = await _unitOfWork.ProductRepository
-            .Get(filter: p => p.BrandId == brandId);
-
-        var totalProducts = await _unitOfWork.ProductRepository.Count();
-
-        var productsDto = new List<GetListProductResponse>();
-
-        foreach (var product in products)
-        {
-            var rating = await _unitOfWork.RatingRepository
-                .Get(filter: r => r.ProductId == product.Id) ?? new List<Rating>();
-
-            var totalRating = rating.Count();
-
-            productsDto.Add(
-                new GetListProductResponse
-                {
-                    Id = product.Id,
-                    CategoryId = product.CategoryId,
-                    AvailableStock = product.AvailableStock,
-                    Price = product.Price,
-                    BrandId = product.BrandId,
-                    Discount = product.Discount,
-                    Name = product.Name,
-                    PictureLink = product.PictureFileName,
-                    TotalRating = totalRating,
-                    AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
-                });
-        }
-
-        return new PaginationResponse<GetListProductResponse>
-        {
-            Total = totalProducts,
-            Data = productsDto,
-            PageIndex = pageIndex,
-            PageSize = pageSize
-        };
-    }
-
-    public async Task<PaginationResponse<GetListProductResponse>> GetProductsByCategoryId(int categoryId, int pageSize = 10, int pageIndex = 0)
-    {
-        var products = await _unitOfWork.ProductRepository
-            .Get(filter: p => p.CategoryId == categoryId);
-
-        var totalProducts = await _unitOfWork.ProductRepository.Count();
-
-        var productsDto = new List<GetListProductResponse>();
-
-        foreach (var product in products)
-        {
-            var rating = await _unitOfWork.RatingRepository
-                .Get(filter: r => r.ProductId == product.Id) ?? new List<Rating>();
-
-            var totalRating = rating.Count();
-
-            productsDto.Add(
-                new GetListProductResponse
-                {
-                    Id = product.Id,
-                    CategoryId = product.CategoryId,
-                    AvailableStock = product.AvailableStock,
-                    Price = product.Price,
-                    BrandId = product.BrandId,
-                    Discount = product.Discount,
-                    Name = product.Name,
-                    PictureLink = product.PictureFileName,
-                    TotalRating = totalRating,
-                    AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
-                });
-        }
-
-        return new PaginationResponse<GetListProductResponse>
-        {
-            Total = totalProducts,
-            Data = productsDto,
-            PageIndex = pageIndex,
-            PageSize = pageSize
-        };
-    }
-
     public async Task<IEnumerable<GetAllCategoriesResponse>> GetAllCategories()
     {
         var categories = await _unitOfWork.CategoryRepository
@@ -154,47 +71,6 @@ public class CatalogService : ICatalogService
         var categoriesDto = categories.Adapt<IEnumerable<GetAllCategoriesResponse>>();
 
         return categoriesDto;
-    }
-
-    public async Task<PaginationResponse<GetListProductResponse>> GetProductsByBrandAndCategoryId(int brandId, int categoryId, int pageSize = 10, int pageIndex = 0)
-    {
-        var products = await _unitOfWork.ProductRepository
-            .Get(filter: p => p.CategoryId == categoryId && p.BrandId == brandId);
-
-        var totalProducts = await _unitOfWork.ProductRepository.Count();
-
-        var productsDto = new List<GetListProductResponse>();
-
-        foreach (var product in products)
-        {
-            var rating = await _unitOfWork.RatingRepository
-                .Get(filter: r => r.ProductId == product.Id) ?? new List<Rating>();
-
-            var totalRating = rating.Count();
-
-            productsDto.Add(
-                new GetListProductResponse
-                {
-                    Id = product.Id,
-                    CategoryId = product.CategoryId,
-                    AvailableStock = product.AvailableStock,
-                    Price = product.Price,
-                    BrandId = product.BrandId,
-                    Discount = product.Discount,
-                    Name = product.Name,
-                    PictureLink = product.PictureFileName,
-                    TotalRating = totalRating,
-                    AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
-                });
-        }
-
-        return new PaginationResponse<GetListProductResponse>
-        {
-            Total = totalProducts,
-            Data = productsDto,
-            PageIndex = pageIndex,
-            PageSize = pageSize
-        };
     }
 
     public async Task<GetProductByIdResponse?> GetProductById(int productId)
@@ -222,7 +98,7 @@ public class CatalogService : ICatalogService
             Summary = product.Description,
             DescriptionSections = new List<string> { product.Description },
             Price = product.Price,
-            PictureFileName = product.PictureFileName,
+            PictureFileName = product.ImageUrl,
             AvailableStock = product.Id,
             CountReview = totalRating,
             AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
@@ -230,7 +106,7 @@ public class CatalogService : ICatalogService
             {
                 BrandId = product.BrandId,
                 BrandName = product.Brand.Name,
-                Thumbnail = product.Brand.AvatarLink,
+                //Thumbnail = product.Brand.AvatarLink,
                 Code = product.Brand.Code,
             },
             Category = new()
@@ -264,11 +140,11 @@ public class CatalogService : ICatalogService
         var productEntity = new Product
         {
             Name = createProductDto.Name,
-            AvailableStock = createProductDto.AvailableStock,
+            //AvailableStock = createProductDto.AvailableStock,
             BrandId = createProductDto.BrandId,
             CategoryId = createProductDto.CategoryId,
             Description = createProductDto.Description,
-            MaxStockThreshold = createProductDto.MaxStockThreshold,
+            //MaxStockThreshold = createProductDto.MaxStockThreshold,
             Price = createProductDto.Price,
         };
 
@@ -314,11 +190,11 @@ public class CatalogService : ICatalogService
         }
 
         productEntity.Name = updateProductDto.Name;
-        productEntity.AvailableStock = updateProductDto.AvailableStock;
+        //productEntity.AvailableStock = updateProductDto.AvailableStock;
         productEntity.BrandId = updateProductDto.BrandId;
         productEntity.CategoryId = updateProductDto.CategoryId;
         productEntity.Description = updateProductDto.Description;
-        productEntity.MaxStockThreshold = updateProductDto.MaxStockThreshold;
+        //productEntity.MaxStockThreshold = updateProductDto.MaxStockThreshold;
         productEntity.Price = updateProductDto.Price;
         productEntity.SetTimeLastModified();
 
@@ -343,7 +219,7 @@ public class CatalogService : ICatalogService
             return ServiceResult.Failed("Not exists product");
         }
 
-        productEntity.PictureFileName = url;
+        productEntity.ImageUrl = url;
         productEntity.SetTimeLastModified();
 
         try
@@ -415,12 +291,12 @@ public class CatalogService : ICatalogService
                 {
                     Id = product.Id,
                     CategoryId = product.CategoryId,
-                    AvailableStock = product.AvailableStock,
+                    //AvailableStock = product.AvailableStock,
                     Price = product.Price,
                     BrandId = product.BrandId,
                     Discount = product.Discount,
                     Name = product.Name,
-                    PictureLink = product.PictureFileName,
+                    PictureLink = product.ImageUrl,
                     TotalRating = totalRating,
                     AvgStarPoint = totalRating != 0 ? rating.Sum(r => r.StarPoint) / totalRating : default,
                 });

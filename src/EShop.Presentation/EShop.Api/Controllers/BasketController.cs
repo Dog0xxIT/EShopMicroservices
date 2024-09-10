@@ -1,10 +1,8 @@
 ﻿using EShop.Application.Dto.Basket;
-using EShop.Application.Entities;
-using EShop.Application.Services.ApplicationService;
 using EShop.Application.Services.Interfaces;
-using EShop.Shared.RequestModels;
 using EShop.Shared.RequestModels.Basket;
-using EShop.Shared.ResponseModels;
+using EShop.Shared.RequestModels.Common;
+using EShop.Shared.ResponseModels.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Api.Controllers
@@ -49,7 +47,7 @@ namespace EShop.Api.Controllers
             var serviceResult = await _basketService.UpdateQty(req.BasketId, req.Qty);
             if (serviceResult.Succeeded)
             {
-                return Ok();
+                return Ok(TypedResult.Succeeded);
             }
             return Problem(serviceResult.Errors.First());
         }
@@ -64,7 +62,7 @@ namespace EShop.Api.Controllers
             var serviceResult = await _basketService.Delete(basketId);
             if (serviceResult.Succeeded)
             {
-                return Ok();
+                return Ok(TypedResult.Succeeded);
             }
             return Problem(serviceResult.Errors.First());
         }

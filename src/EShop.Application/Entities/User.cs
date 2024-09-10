@@ -4,18 +4,13 @@ namespace EShop.Application.Entities
 {
     public class User : IdentityUser<int>
     {
-        public string? Street { get; set; }
+        public string AvatarUrl { get; set; }
 
-        public string? City { get; set; }
+        public ICollection<Order> Orders { get; }
 
-        public string? State { get; set; }
+        public ICollection<Payment> Payments { get; }
 
-        public string? Country { get; set; }
+        public ICollection<Address> Addresses { get; }
 
-        public string? ZipCode { get; set; }
-
-        public ICollection<Order>? Orders { get; set; }
-
-        public ICollection<Payment>? Payments { get; set; }
     }
 }
