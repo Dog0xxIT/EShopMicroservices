@@ -89,7 +89,7 @@ namespace EShop.Api.Controllers
                     HttpOnly = true, // XSS
                     Secure = true,
                     Expires = DateTime.UtcNow.AddDays(1), // Expiration
-                    SameSite = SameSiteMode.Strict // CSRF
+                    SameSite = SameSiteMode.None // CSRF
                 };
 
                 this.HttpContext.Response.Cookies.Append("jwt", token, cookieOptions);

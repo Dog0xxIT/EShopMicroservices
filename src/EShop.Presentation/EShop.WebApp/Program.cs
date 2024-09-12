@@ -19,7 +19,6 @@ builder.Services.AddHttpClient(UrlsConfig.ClientName, httpClient =>
 {
     httpClient.BaseAddress = new Uri("https://localhost:7093");
 });
-
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, JwtAuthenticationStateProvider>();
 builder.Services.AddCascadingAuthenticationState();

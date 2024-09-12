@@ -9,6 +9,7 @@ using System;
 using System.Net.Http.Json;
 using EShop.Shared.ResponseModels.Identity;
 using EShop.WebApp.Core;
+using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 namespace EShop.WebApp.States;
 
@@ -43,7 +44,13 @@ public class JwtAuthenticationStateProvider : AuthenticationStateProvider
 
         try
         {
-            var client = await httpClient.GetAsync(UrlsConfig.Identity.ManageInfo);
+            var request = new HttpRequestMessage();
+            request.Method = HttpMethod.Get;
+            request.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
+            //request.Headers.Add("X-Requested-With", ["XMLHttpRequest"]);
+            request.RequestUri = new Uri("https://localhost:7093/Identity/ManageInfo");
+
+            var client = await httpClient.SendAsync(request);
 
             if (client.IsSuccessStatusCode)
             {
