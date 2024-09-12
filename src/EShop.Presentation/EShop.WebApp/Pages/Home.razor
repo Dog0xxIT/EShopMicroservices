@@ -5,12 +5,10 @@
 @using EShop.Shared.ResponseModels.Common
 @using EShop.WebApp.Core.CoreHttpClient
 @using EShop.WebApp.Models.Common
-@using EShop.WebApp.Services.AuthenticationService
 @using EShop.WebApp.Services.CatalogService
 @using EShop.WebApp.Components.Product
 @using EShop.WebApp.Components.Common
 
-@inject IAuthenticationService AuthenticationService
 @inject ICoreHttpClient CoreHttpClient
 @inject ICatalogService CatalogService
 
@@ -127,9 +125,10 @@
 
         <div class="w-full text-center">
             <Pagination TotalItem="_productPaginationResponse.Total"
-                        TotalItemOfCurrentPage="_productPaginationResponse.Data.Count()"
-                        TotalPage="_productPaginationResponse.Total"
-                        PageChangedEventCallback="@GetAllProduct" @bind-PageIndex="_productPaginationResponse.PageIndex"></Pagination>
+                        TotalPage="@_totalPage"
+                        ButtonCount="10"
+                        CurrentPage="@_currentPage"
+                        OnChangedCurrentPage="OnChangedCurrentPage"></Pagination>
         </div>
     </div>
     <!-- Filter modal -->
@@ -143,6 +142,9 @@
     private PaginationResponse<GetListProductResponse> _productPaginationResponse;
     private List<GetAllCategoriesResponse> _categoryList;
     private bool _visibleFilterModal;
+    private int _totalPage;
+    private int _currentPage;
+
     protected override async Task OnInitializedAsync()
     {
         _breadcrumbItems = new List<BreadcrumbItem>
@@ -182,6 +184,12 @@
         if (resultObject.ResultCode.Equals(ResultCode.Success))
         {
             _productPaginationResponse = resultObject.Data;
+            if (_productPaginationResponse.PageSize != 0)
+            {
+                _totalPage = _productPaginationResponse.Total / _productPaginationResponse.PageSize;
+            }
+
+            _currentPage = _productPaginationResponse.PageIndex + 1;
         }
     }
 
@@ -203,5 +211,13 @@
         {
             _productPaginationResponse = resultObject.Data;
         }
+    }
+
+    private async Task OnChangedCurrentPage(int newPageIndex)
+    {
+        _currentPage = newPageIndex;
+        _paginationRequest.PageIndex = _currentPage - 1;
+        await GetAllProduct();
+        StateHasChanged();
     }
 }

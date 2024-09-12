@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EShop.Domain.Common;
-using EShop.Domain.Exceptions;
-
-namespace EShop.Domain.Aggregates.BuyerAggregate
+﻿namespace EShop.Domain.Aggregates.BuyerAggregate
 {
     public class Buyer : IAggregateRoot
     {
@@ -18,7 +10,7 @@ namespace EShop.Domain.Aggregates.BuyerAggregate
         // Using a private collection field, better for DDD Aggregate's encapsulation
         // so OrderItems cannot be added from "outside the AggregateRoot" directly to the collection,
         // but only through the method OrderAggregateRoot.AddOrderItem() which includes behavior.
-        private List<PaymentMethod> _paymentMethods;
+        private readonly List<PaymentMethod> _paymentMethods;
 
         public IEnumerable<PaymentMethod> PaymentMethods => _paymentMethods.AsReadOnly();
 
@@ -39,7 +31,7 @@ namespace EShop.Domain.Aggregates.BuyerAggregate
 
             if (existingPayment != null)
             {
-                throw DomainExceptions.ExistingPayment;
+                throw DomainException.ExistingPayment;
             }
             var payment = new PaymentMethod(
                 id, alias, securityNumber,

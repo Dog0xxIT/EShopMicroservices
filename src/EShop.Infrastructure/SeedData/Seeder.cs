@@ -2,6 +2,8 @@
 using EShop.Application.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.FileIO;
+using System.Globalization;
 
 namespace EShop.Infrastructure.SeedData
 {
@@ -152,26 +154,46 @@ namespace EShop.Infrastructure.SeedData
             #region Product
 
             var products = new List<Product>();
-            for (var i = 1; i <= 400; i++)
+            using (var reader = new StreamReader("../../EShop.Infrastructure/SeedData/dataset/final-products.csv"))
             {
-                products.Add(new Product
+                var headerLine = reader.ReadLine(); // Read and discard header line
+                var id = 1;
+
+                while (!reader.EndOfStream && id < 10000)
                 {
-                    Id = i,
-                    Name = $"Product {i}",
-                    Description = $"Description for product {i}",
-                    Price = Math.Round(new Random().NextDouble() * 1000, 2),
-                    ImageUrl = $"product{i}.jpg",
-                    CategoryId = (i % 20) + 1, // Assuming you have 20 categories
-                    BrandId = (i % 40) + 1,    // Assuming you have 40 brands
-                    Summary = "",
-                    OtherAttributes = "",
-                    Sku = $"sku-{i}",
-                });
+                    var line = reader.ReadLine();
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+
+                    var values = ParseCsvLine(line);
+
+                    // Assign values from the CSV to your product properties
+                    products.Add(new Product
+                    {
+                        Id = id++,
+                        Name = values[1],  // Assuming second value is Name
+                        Description = $"Description for product {values[1]}", // Assuming Description uses Name
+                        Price = double.Parse(values[3], CultureInfo.InvariantCulture), // Assuming fourth value is Price
+                        ImageUrl = values[2], // Assuming third value is ImageUrl
+                        CategoryId = (id % 20) + 1, // Random CategoryId
+                        BrandId = (id % 40) + 1,  // Random BrandId
+                        Summary = $"Summary for product {values[1]}",
+                        OtherAttributes = "",
+                        Sku = $"{values[0]}", // Assuming first value is SKU
+                    });
+                }
             }
 
             modelBuilder.Entity<Product>().HasData(products);
 
             #endregion
+        }
+
+        public static string[] ParseCsvLine(string csvLine)
+        {
+            var parser = new TextFieldParser(new StringReader(csvLine));
+            parser.SetDelimiters(",");
+            parser.HasFieldsEnclosedInQuotes = true;
+            return parser.ReadFields();
         }
     }
 }

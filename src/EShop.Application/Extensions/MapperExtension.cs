@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using EShop.Application.Entities;
 using EShop.Domain.Aggregates.BuyerAggregate;
 using EShop.Domain.Enums;
-using EShop.Domain.ValueObjects;
 using OrderEntityApplication = EShop.Application.Entities.Order;
 using OrderItemEntityApplication = EShop.Application.Entities.OrderItem;
 using OrderEntityDomain = EShop.Domain.Aggregates.OrderAggregate.Order;

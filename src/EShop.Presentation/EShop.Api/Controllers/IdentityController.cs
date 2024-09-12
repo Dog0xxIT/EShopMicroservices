@@ -4,6 +4,7 @@ using EShop.Shared.RequestModels.Identity;
 using EShop.Shared.ResponseModels.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Ocsp;
 
 namespace EShop.Api.Controllers
 {
@@ -36,11 +37,14 @@ namespace EShop.Api.Controllers
         }
 
 
-        //[HttpGet]
-        //public IActionResult ManageInfo()
-        //{
-        //    return Ok();
-        //}
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> ManageInfo()
+        {
+            var jwtToken = HttpContext.Request.Cookies["jwt"]!;
+            var resultService = await _identityService.ManageInfo(jwtToken);
+            return Ok(resultService);
+        }
 
         #endregion
 

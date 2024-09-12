@@ -2,13 +2,14 @@
 using System.Security.Claims;
 using EShop.Application.Entities;
 using EShop.Application.Services.ApplicationService;
+using EShop.Shared.ResponseModels.Identity;
 
 namespace EShop.Application.Services.Interfaces;
 
 public interface IIdentityService
 {
     Task<ServiceResult> ConfirmEmail(string email, string code);
-    Task<ServiceResult> ManageInfo();
+    Task<ManageInfoResponse> ManageInfo(string jwtToken);
     Task<ServiceResult> Register(string userName, string email, string password);
     Task<ServiceResult> SignIn(string email, string password, bool lockoutOnFailure);
     Task<string> GenerateEmailConfirmationToken(string email);

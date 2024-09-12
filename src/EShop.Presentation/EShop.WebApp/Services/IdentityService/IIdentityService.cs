@@ -1,6 +1,7 @@
 ﻿using EShop.Shared.RequestModels.Identity;
 using EShop.Shared.ResponseModels;
 using EShop.Shared.ResponseModels.Common;
+using EShop.Shared.ResponseModels.Identity;
 using EShop.WebApp.Core.CoreHttpClient;
 using EShop.WebApp.Pages.User;
 

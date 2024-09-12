@@ -1,9 +1,4 @@
-﻿using EShop.Domain.Aggregates.BuyerAggregate;
-using EShop.Domain.Common;
-using EShop.Domain.Enums;
-using EShop.Domain.ValueObjects;
-
-namespace EShop.Domain.Aggregates.OrderAggregate
+﻿namespace EShop.Domain.Aggregates.OrderAggregate
 {
     public class Order : IAggregateRoot
     {
@@ -55,7 +50,7 @@ namespace EShop.Domain.Aggregates.OrderAggregate
 
             if (existingOrderForProduct != null)
             {
-                //if previous line exist modify it with higher discount and units..
+                //if previous line exist modify it with higher discount and units.
                 if (discount > existingOrderForProduct.Discount)
                 {
                     existingOrderForProduct.SetNewDiscount(discount);
@@ -81,37 +76,93 @@ namespace EShop.Domain.Aggregates.OrderAggregate
 
         public void SetAwaitingValidationStatus()
         {
-
+            if (OrderStatus == OrderStatus.Submitted)
+            {
+                //AddDomainEvent(new OrderStatusChangedToAwaitingValidationDomainEvent(Id, _orderItems));
+                OrderStatus = OrderStatus.AwaitingValidation;
+            }
         }
 
         public void SetStockConfirmedStatus()
         {
+            if (OrderStatus == OrderStatus.AwaitingValidation)
+            {
+                //AddDomainEvent(new OrderStatusChangedToStockConfirmedDomainEvent(Id));
 
+                OrderStatus = OrderStatus.StockConfirmed;
+                Description = "All the items were confirmed with available stock.";
+            }
         }
 
         public void SetPaidStatus()
         {
+            if (OrderStatus == OrderStatus.StockConfirmed)
+            {
+                //AddDomainEvent(new OrderStatusChangedToPaidDomainEvent(Id, OrderItems));
 
+                OrderStatus = OrderStatus.Paid;
+                Description = "The payment was performed at a simulated \"American Bank checking bank account ending on XX35071\"";
+            }
         }
 
         public void SetShippedStatus()
         {
+            if (OrderStatus != OrderStatus.Paid)
+            {
+                StatusChangeException(OrderStatus.Shipped);
+            }
 
+            OrderStatus = OrderStatus.Shipped;
+            Description = "The order was shipped.";
+            //AddDomainEvent(new OrderShippedDomainEvent(this));
         }
 
         public void SetCancelledStatus()
         {
+            if (OrderStatus == OrderStatus.Paid ||
+                OrderStatus == OrderStatus.Shipped)
+            {
+                StatusChangeException(OrderStatus.Cancelled);
+            }
 
+            OrderStatus = OrderStatus.Cancelled;
+            Description = $"The order was cancelled.";
+            //AddDomainEvent(new OrderCancelledDomainEvent(this));
         }
 
-        public void SetCancelledStatusWhenStockIsRejected()
+        public void SetCancelledStatusWhenStockIsRejected(IEnumerable<int> orderStockRejectedItems)
         {
+            if (OrderStatus == OrderStatus.AwaitingValidation)
+            {
+                OrderStatus = OrderStatus.Cancelled;
 
+                var itemsStockRejectedProductNames = OrderItems
+                    .Where(c => orderStockRejectedItems.Contains(c.ProductId))
+                    .Select(c => c.ProductName);
+
+                var itemsStockRejectedDescription = string.Join(", ", itemsStockRejectedProductNames);
+                Description = $"The product items don't have stock: ({itemsStockRejectedDescription}).";
+            }
         }
 
-        public void StatusChangeException()
+        private void AddOrderStartedDomainEvent(string userId, string userName, int cardTypeId, string cardNumber,
+                string cardSecurityNumber, string cardHolderName, DateTime cardExpiration)
         {
+            //var orderStartedDomainEvent = new OrderStartedDomainEvent(this, userId, userName, cardTypeId,
+            //                                                            cardNumber, cardSecurityNumber,
+            //                                                            cardHolderName, cardExpiration);
 
+            //this.AddDomainEvent(orderStartedDomainEvent);
+        }
+
+        private void StatusChangeException(OrderStatus orderStatusToChange)
+        {
+            throw new DomainException($"Is not possible to change the order status from {OrderStatus} to {orderStatusToChange}.");
+        }
+
+        public double GetTotal()
+        {
+            return _orderItems.Sum(o => o.Units * o.UnitPrice);
         }
     }
 }

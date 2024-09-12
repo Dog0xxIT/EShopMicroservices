@@ -10,10 +10,7 @@ namespace EShop.WebApp.Services.CatalogService;
 public interface ICatalogService
 {
     Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetAllProducts(PaginationRequest paginationRequest);
-    Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByBrandId(int brandId);
     Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByCategoryId(int categoryId, PaginationRequest paginationRequest);
-    Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByBrandAndCategoryId(int brandId,
-        int categoryId);
     Task<ResultObject<GetProductByIdResponse>> GetProductById(int productId);
     Task<ResultObject<IEnumerable<GetAllBrandsResponse>>> GetAllBrands();
     Task<ResultObject<IEnumerable<GetAllCategoriesResponse>>> GetAllCategories();

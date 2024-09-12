@@ -3,6 +3,7 @@ using EShop.Shared.ResponseModels;
 using EShop.WebApp.Core;
 using EShop.WebApp.Core.CoreHttpClient;
 using EShop.Shared.ResponseModels.Common;
+using EShop.Shared.ResponseModels.Identity;
 
 namespace EShop.WebApp.Services.IdentityService
 {

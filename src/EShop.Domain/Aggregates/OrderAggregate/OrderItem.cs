@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EShop.Domain.Exceptions;
-
-namespace EShop.Domain.Aggregates.OrderAggregate
+﻿namespace EShop.Domain.Aggregates.OrderAggregate
 {
     public class OrderItem
     {
@@ -43,7 +36,7 @@ namespace EShop.Domain.Aggregates.OrderAggregate
         {
             if (discount < 0 || discount > this.TotalPrice)
             {
-                throw DomainExceptions.InvalidDiscount;
+                throw DomainException.InvalidDiscount;
             }
 
             Discount = discount;
@@ -53,7 +46,7 @@ namespace EShop.Domain.Aggregates.OrderAggregate
         {
             if (units < 0)
             {
-                throw DomainExceptions.InvalidUnits;
+                throw DomainException.InvalidUnits;
             }
 
             Units += units;

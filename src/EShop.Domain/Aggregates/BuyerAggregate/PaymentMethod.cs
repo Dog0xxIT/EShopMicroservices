@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EShop.Domain.Enums;
-using EShop.Domain.Exceptions;
-
-namespace EShop.Domain.Aggregates.BuyerAggregate
+﻿namespace EShop.Domain.Aggregates.BuyerAggregate
 {
     public class PaymentMethod
     {
@@ -25,7 +17,7 @@ namespace EShop.Domain.Aggregates.BuyerAggregate
         {
             if (Expiration < DateTime.UtcNow)
             {
-                throw DomainExceptions.CardExpiry;
+                throw DomainException.CardExpiry;
             }
             Id = id;
             Alias = alias ?? throw new ArgumentNullException(nameof(alias));

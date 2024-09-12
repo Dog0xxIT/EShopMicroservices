@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EShop.Application.Entities;
 using EShop.Application.Extensions;
 using EShop.Application.Services.Interfaces;
-using EShop.Domain.ValueObjects;
 using EShop.Domain.Enums;
 using Mapster;
 using Microsoft.Extensions.Logging;
 using OrderDomain = EShop.Domain.Aggregates.OrderAggregate.Order;
 using OrderItemDomain = EShop.Domain.Aggregates.OrderAggregate.OrderItem;
 using EShop.Shared.ResponseModels.Order;
-using Address = EShop.Domain.ValueObjects.Address;
+using Address = EShop.Domain.Aggregates.OrderAggregate.Address;
+using Order = EShop.Application.Entities.Order;
 
 namespace EShop.Application.Services.ApplicationService
 {

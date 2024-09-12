@@ -6,6 +6,7 @@ using EShop.Application.Constants;
 using EShop.Application.Entities;
 using EShop.Application.Services.ApplicationService;
 using EShop.Application.Services.Interfaces;
+using EShop.Shared.ResponseModels.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -98,9 +99,27 @@ namespace EShop.Infrastructure.Services
             return ServiceResult.Success;
         }
 
-        public async Task<ServiceResult> ManageInfo()
+        public async Task<ManageInfoResponse> ManageInfo(string jwtToken)
         {
-            throw new NotImplementedException();
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(jwtToken);
+            if (jwtSecurityToken != null)
+            {
+                var email = jwtSecurityToken.Claims.FirstOrDefault(claim => claim.Type == "email")?.Value;
+                var roles = jwtSecurityToken.Claims.FirstOrDefault(claim => claim.Type == "roles")?.Value;
+
+                return new ManageInfoResponse
+                {
+                    Email = email ?? "",
+                    Roles = roles?.Split(",").ToList() ?? new(),
+                };
+            }
+
+            return new ManageInfoResponse
+            {
+                Email = "",
+                Roles = new(),
+            };
         }
 
         public async Task<ServiceResult> Register(string userName, string email, string password)
@@ -109,6 +128,7 @@ namespace EShop.Infrastructure.Services
             {
                 UserName = userName,
                 Email = email,
+                AvatarUrl = "",
             };
 
             var identityResult = await _userManager.CreateAsync(userEntity, password);

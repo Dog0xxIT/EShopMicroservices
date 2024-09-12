@@ -7,9 +7,9 @@
         <div>
             <p class="text-gray-700 text-sm">
                 Showing
-                <span class="font-medium">@PageIndex</span>
+                <span class="font-medium">@_firstItemOnPageIndex</span>
                 to
-                <span class="font-medium">@TotalItemOfCurrentPage</span>
+                <span class="font-medium">@_lastItemOnPageIndex</span>
                 of
                 <span class="font-medium">@TotalItem</span>
                 results
@@ -18,39 +18,48 @@
 
         <div>
             <nav class="-space-x-px isolate inline-flex rounded-md shadow-sm" aria-label="Pagination">
-                <a @onclick="async () => await PageChangedEventCallback.InvokeAsync(PageIndex-1)" href="#" class="@(PageIndex > 1 ? "" : "disabled:opacity-50") px-2 py-2 text-gray-400 ring-gray-300 relative inline-flex items-center rounded-l-md ring-1 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-                    <span class="sr-only">Previous</span>
-                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-
-                @for (var pageIndex = PageIndex; pageIndex <= PageIndex + 10; pageIndex++)
+                @if (CurrentPage > 1)
                 {
-                    if (pageIndex == PageIndex)
+                    <a href="#" @onclick="async () => await OnChangedCurrentPage.InvokeAsync(CurrentPage - 1)"
+                       class="px-2 py-2 text-gray-400 ring-gray-300 relative inline-flex items-center rounded-l-md ring-1 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                        <span class="sr-only">Previous</span>
+                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                }
+
+                @for (var pageIndex = _startPageIndex; pageIndex <= _endPageIndex; pageIndex++)
+                {
+                    if (pageIndex == CurrentPage)
                     {
-                        <a href="#" aria-current="page" class="bg-indigo-600 px-4 py-2 text-white relative z-10 inline-flex items-center text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">@pageIndex</a>
+                        <a @onclick="async () => await OnChangedCurrentPage.InvokeAsync(CurrentPage)"
+                           href="#" aria-current="page" class="bg-indigo-600 px-4 py-2 text-white relative z-10 inline-flex items-center text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">@pageIndex</a>
                     }
                     else
                     {
-                        <a @onclick="async () => await PageChangedEventCallback.InvokeAsync(pageIndex)" href="#" class="px-4 py-2 text-gray-900 ring-gray-300 relative inline-flex items-center text-sm font-semibold ring-1 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0">@pageIndex</a>
-                    }
-
-                    if (pageIndex == PageIndex + 10)
-                    {
-                        <a @onclick="async () => await PageChangedEventCallback.InvokeAsync(pageIndex)" href="#" class="px-4 py-2 text-gray-900 ring-gray-300 relative inline-flex items-center text-sm font-semibold ring-1 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0">...</a>
-                        break;
+                        var index = pageIndex;
+                        <a @onclick="async () => await OnChangedCurrentPage.InvokeAsync(index)"
+                           href="#" class="px-4 py-2 text-gray-900 ring-gray-300 relative inline-flex items-center text-sm font-semibold ring-1 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0">@pageIndex</a>
                     }
                 }
 
-                <a href="#"
-                   @onclick="async () => await PageChangedEventCallback.InvokeAsync(PageIndex+1)"
-                   class="@(PageIndex < TotalPage ? "" : "disabled:opacity-50") px-2 py-2 text-gray-400 ring-gray-300 relative inline-flex items-center rounded-r-md ring-1 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-                    <span class="sr-only">Next</span>
-                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                    </svg>
-                </a>
+                @if (TotalPage > ButtonCount)
+                {
+                    <a @onclick="async () => await OnChangedCurrentPage.InvokeAsync(_endPageIndex + 1)"
+                       href="#" class="px-4 py-2 text-gray-900 ring-gray-300 relative inline-flex items-center text-sm font-semibold ring-1 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0">...</a>
+                }
+
+                @if (CurrentPage < TotalPage)
+                {
+                    <a href="#" @onclick="async () => await OnChangedCurrentPage.InvokeAsync(CurrentPage + 1)"
+                       class=" px-2 py-2 text-gray-400 ring-gray-300 relative inline-flex items-center rounded-r-md ring-1 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                        <span class="sr-only">Next</span>
+                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                }
             </nav>
         </div>
     </div>
@@ -58,10 +67,7 @@
 
 @code {
     [Parameter]
-    public int PageIndex { get; set; }
-
-    [Parameter]
-    public EventCallback<int> PageIndexEventChanged { get; set; }
+    public int CurrentPage { get; set; }
 
     [Parameter, EditorRequired]
     public int TotalPage { get; set; }
@@ -69,9 +75,49 @@
     [Parameter, EditorRequired]
     public int TotalItem { get; set; }
 
-    [Parameter, EditorRequired]
-    public int TotalItemOfCurrentPage { get; set; }
+    [Parameter]
+    public int ButtonCount { get; set; } = 10;
 
     [Parameter, EditorRequired]
-    public EventCallback<int> PageChangedEventCallback { get; set; }
+    public EventCallback<int> OnChangedCurrentPage { get; set; }
+
+    private int _firstItemOnPageIndex;
+
+    private int _lastItemOnPageIndex;
+
+    private int _startPageIndex;
+
+    private int _endPageIndex;
+
+    protected override void OnInitialized()
+    {
+        // Calc buttonCount
+        if (TotalPage != 0)
+        {
+            var buttonCount = TotalItem / TotalPage;
+            ButtonCount = (ButtonCount < buttonCount) ? buttonCount : ButtonCount;
+        }
+    }
+
+    protected override void OnParametersSet()
+    {
+        _firstItemOnPageIndex = (CurrentPage - 1) * ButtonCount + 1;
+
+        if (CurrentPage < TotalPage)
+        {
+            _lastItemOnPageIndex = CurrentPage * ButtonCount;
+        }
+        else if (CurrentPage == TotalPage)
+        {
+            if (TotalPage != 0)
+            {
+                _lastItemOnPageIndex = (CurrentPage - 1) * ButtonCount + (TotalItem % TotalPage);
+            }
+        }
+
+        var startPageIndexTemp = CurrentPage - (ButtonCount / 2);
+        _startPageIndex = (startPageIndexTemp <= 0) ? 1 : startPageIndexTemp;
+        var endPageIndexTemp = _startPageIndex + ButtonCount - 1;
+        _endPageIndex = (endPageIndexTemp > TotalPage) ? TotalPage : endPageIndexTemp;
+    }
 }

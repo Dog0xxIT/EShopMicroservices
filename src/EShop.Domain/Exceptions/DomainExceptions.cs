@@ -1,9 +1,26 @@
 ﻿namespace EShop.Domain.Exceptions;
 
-public static class DomainExceptions
+public class DomainException : Exception
 {
-    public static Exception CardExpiry => new Exception("Card expiry");
-    public static Exception ExistingPayment => new Exception("Existing payment");
-    public static Exception InvalidDiscount => new Exception("Invalid Discount");
-    public static Exception InvalidUnits => new Exception("Invalid Units");
+    public static Exception CardExpiry => new("Card expiry");
+    public static Exception ExistingPayment => new("Existing payment");
+    public static Exception InvalidDiscount => new("Invalid Discount");
+    public static Exception InvalidUnits => new("Invalid Units");
+
+    public DomainException()
+    {
+
+    }
+
+    public DomainException(string message)
+        : base(message)
+    {
+
+    }
+
+    public DomainException(string message, Exception innerException)
+        : base(message, innerException)
+    {
+
+    }
 }
