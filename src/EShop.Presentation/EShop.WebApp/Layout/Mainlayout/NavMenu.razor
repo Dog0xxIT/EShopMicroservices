@@ -1,4 +1,10 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
+﻿@using EShop.WebApp.Services.IdentityService
+@using EShop.WebApp.States
+@using Microsoft.AspNetCore.Components.Authorization
+
+@inject IIdentityService IdentityService
+@inject NavigationManager NavManager
+@inject JwtAuthenticationStateProvider JwtAuthenticationState
 
 <nav class="bg-white antialiased dark:bg-gray-800">
     <div class="px-4 py-4 mx-auto max-w-screen-xl 2xl:px-0">
@@ -134,7 +140,7 @@
                             </ul>
 
                             <div class="p-2 text-gray-900 text-sm font-medium dark:text-white">
-                                <a href="/sign-in" title="" class="gap-2 px-3 py-2 inline-flex w-full items-center rounded-md text-sm hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <a @onclick="@SignOutHandler" title="" class="gap-2 px-3 py-2 inline-flex w-full items-center rounded-md text-sm hover:bg-gray-100 dark:hover:bg-gray-600">
                                     Sign Out
                                 </a>
                             </div>
@@ -199,4 +205,10 @@
 {
     private bool _showDropdownAccount;
     private bool _showDropdownMyCart;
+
+    private async Task SignOutHandler()
+    {
+        await JwtAuthenticationState.LogoutAsync();
+        NavManager.NavigateTo("/sign-in");
+    }
 }

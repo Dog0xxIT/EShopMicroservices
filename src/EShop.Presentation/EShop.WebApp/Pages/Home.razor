@@ -1,5 +1,6 @@
 ﻿@page "/"
 
+@using EShop.Shared.RequestModels.Catalog
 @using EShop.Shared.RequestModels.Common
 @using EShop.Shared.ResponseModels.Catalog
 @using EShop.Shared.ResponseModels.Common
@@ -9,7 +10,6 @@
 @using EShop.WebApp.Components.Product
 @using EShop.WebApp.Components.Common
 
-@inject ICoreHttpClient CoreHttpClient
 @inject ICatalogService CatalogService
 
 <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-12">
@@ -113,13 +113,7 @@
         <div class="mb-4 gap-4 grid sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
             @foreach (var product in _productPaginationResponse.Data)
             {
-                <ProductCart ProductId="@product.Id"
-                             ProductName="@product.Name"
-                             Price="@product.Price"
-                             Discount="@product.Discount"
-                             CountStar="@product.AvgStarPoint"
-                             RatingCount="@product.TotalRating"
-                             ImageUrl="@product.PictureLink" />
+                <ProductCart ProductData="product" />
             }
         </div>
 
@@ -173,7 +167,7 @@
             };
         _categoryList = new();
 
-        await GetAllCategories();
+        await GetTopCategories(12);
         await GetAllProduct();
     }
 
@@ -193,9 +187,9 @@
         }
     }
 
-    private async Task GetAllCategories()
+    private async Task GetTopCategories(int number)
     {
-        var resultObject = await CatalogService.GetAllCategories();
+        var resultObject = await CatalogService.GetTopCategories(number);
 
         if (resultObject.ResultCode.Equals(ResultCode.Success))
         {
@@ -205,7 +199,15 @@
 
     private async Task GetProductsByCategoryId(int categoryId)
     {
-        var resultObject = await CatalogService.GetProductsByCategoryId(categoryId, _paginationRequest);
+        var req = new GetProductsByAdvanceFilterRequest
+            {
+                PageIndex = _paginationRequest.PageIndex,
+                PageSize = _paginationRequest.PageSize,
+                CategoryIdList = [categoryId],
+                BrandIdList = []
+            };
+
+        var resultObject = await CatalogService.GetProductsByAdvanceFilter(req);
 
         if (resultObject.ResultCode.Equals(ResultCode.Success))
         {

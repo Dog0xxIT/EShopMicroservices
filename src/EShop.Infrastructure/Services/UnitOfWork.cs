@@ -7,7 +7,9 @@ namespace EShop.Infrastructure.Services
     public class UnitOfWork : IUnitOfWork
     {
         private readonly EShopDbContext _context;
+        public IAddressRepository AddressRepository { get; private set; }
         public IBasketItemRepository BasketItemRepository { get; private set; }
+        public IBasketRepository BasketRepository { get; private set; }
         public IBrandRepository BrandRepository { get; private set; }
         public ICategoryRepository CategoryRepository { get; private set; }
         public IOrderItemRepository OrderItemRepository { get; private set; }
@@ -20,7 +22,9 @@ namespace EShop.Infrastructure.Services
         public UnitOfWork(EShopDbContext context)
         {
             _context = context;
+            AddressRepository = new AddressRepository(context);
             BasketItemRepository = new BasketItemRepository(context);
+            BasketRepository = new BasketRepository(context);
             BrandRepository = new BrandRepository(context);
             CategoryRepository = new CategoryRepository(context);
             OrderItemRepository = new OrderItemRepository(context);

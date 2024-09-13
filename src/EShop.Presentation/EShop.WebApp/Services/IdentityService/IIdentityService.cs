@@ -13,6 +13,7 @@ public interface IIdentityService
     Task<ResultObject<TypedResult>> ManageInfo(ManageInfoRequest request);
     Task<ResultObject<TypedResult>> Register(RegisterRequest request);
     Task<ResultObject<TypedResult>> SignIn(SignInRequest request);
+    Task<ResultObject<TypedResult>> SignOut();
     Task<ResultObject<TypedResult>> RefreshToken(RefreshTokenRequest request);
     Task<ResultObject<TypedResult>> ResendConfirmEmail(ResendConfirmEmailRequest request);
     Task<ResultObject<TypedResult>> ForgotPassword(ForgotPasswordRequest request);

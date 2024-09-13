@@ -48,6 +48,13 @@ namespace EShop.WebApp.Services.IdentityService
                 reqObj: request);
         }
 
+        public async Task<ResultObject<TypedResult>> SignOut()
+        {
+            return await _coreHttpClient.GetAsync<TypedResult>(
+                clientName: UrlsConfig.ClientName,
+                uri: UrlsConfig.Identity.SignOut);
+        }
+
         public async Task<ResultObject<TypedResult>> RefreshToken(RefreshTokenRequest request)
         {
             return await _coreHttpClient.PostAsync<TypedResult>(

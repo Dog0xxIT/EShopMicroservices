@@ -1,7 +1,6 @@
 using EShop.WebApp;
 using EShop.WebApp.Core;
 using EShop.WebApp.Core.CoreHttpClient;
-using EShop.WebApp.Services.AuthenticationService;
 using EShop.WebApp.Services.CatalogService;
 using EShop.WebApp.Services.IdentityService;
 using EShop.WebApp.States;
@@ -21,6 +20,7 @@ builder.Services.AddHttpClient(UrlsConfig.ClientName, httpClient =>
 });
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, JwtAuthenticationStateProvider>();
+builder.Services.AddScoped<JwtAuthenticationStateProvider>();
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<ICoreHttpClient, CoreHttpClient>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();

@@ -20,8 +20,13 @@
 
         public double Discount { get; set; }
 
-        public string OtherAttributes { get; set; }
+        public int TotalBuyers { get; set; }
 
+        public int ReviewsCount { get; set; }
+
+        public double Star { get; set; }
+
+        public string OtherAttributes { get; set; }
 
         public Category Category { get; set; }
 

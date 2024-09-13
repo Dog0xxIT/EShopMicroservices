@@ -1,15 +1,11 @@
-﻿using EShop.WebApp.Components.Common;
-using Microsoft.AspNetCore.Components.Authorization;
+﻿using Microsoft.AspNetCore.Components.Authorization;
 using System.Security.Claims;
-using EShop.WebApp.Core.CoreHttpClient;
-using EShop.WebApp.Services.IdentityService;
-using EShop.Shared.ResponseModels.Common;
-using EShop.Shared.ResponseModels;
-using System;
 using System.Net.Http.Json;
+using EShop.Shared.ResponseModels.Common;
 using EShop.Shared.ResponseModels.Identity;
 using EShop.WebApp.Core;
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
+using EShop.WebApp.Core.CoreHttpClient;
 
 namespace EShop.WebApp.States;
 
@@ -83,7 +79,31 @@ public class JwtAuthenticationStateProvider : AuthenticationStateProvider
 
     public async Task LogoutAsync()
     {
-        NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+        var httpClient = _clientFactory.CreateClient(UrlsConfig.ClientName);
+
+        try
+        {
+            var request = new HttpRequestMessage();
+            request.Method = HttpMethod.Get;
+            request.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
+            //request.Headers.Add("X-Requested-With", ["XMLHttpRequest"]);
+            request.RequestUri = new Uri("https://localhost:7093/Identity/SignOut");
+
+            var client = await httpClient.SendAsync(request);
+
+            if (client.IsSuccessStatusCode)
+            {
+                var resultData = await client.Content.ReadFromJsonAsync<TypedResult>();
+                if (resultData?.Status == 200)
+                {
+                    NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            
+        }
     }
 
     public async Task<bool> CheckAuthenticatedAsync()

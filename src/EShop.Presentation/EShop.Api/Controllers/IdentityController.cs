@@ -3,7 +3,9 @@ using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Identity;
 using EShop.Shared.ResponseModels.Common;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using Org.BouncyCastle.Ocsp;
 
 namespace EShop.Api.Controllers
@@ -36,7 +38,6 @@ namespace EShop.Api.Controllers
             return Problem(resultService.Errors.First());
         }
 
-
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> ManageInfo()
@@ -44,6 +45,14 @@ namespace EShop.Api.Controllers
             var jwtToken = HttpContext.Request.Cookies["jwt"]!;
             var resultService = await _identityService.ManageInfo(jwtToken);
             return Ok(resultService);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> SignOut()
+        {
+            this.HttpContext.Response.Cookies.Delete("jwt");
+            return Ok(TypedResult.Succeeded);
         }
 
         #endregion

@@ -8,23 +8,25 @@ namespace EShop.Shared.ResponseModels.Catalog
 {
     public class GetProductByIdResponse
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string? Summary { get; set; }
+        public string Summary { get; set; }
         public List<string>? DescriptionSections { get; set; }
         public double Price { get; set; }
-        public string? PictureFileName { get; set; }
-        public int AvailableStock { get; set; }
-        public int CountReview { get; set; }
-        public int AvgStarPoint { get; set; }
+        public string ImageUrl { get; set; }
+        public double Discount { get; set; }
+        public int ReviewsCount { get; set; }
+        public double Star { get; set; }
         public _Brand Brand { get; set; }
         public _Category Category { get; set; }
+        public int TotalBuyers { get; set; }
+        public string Sku { get; set; }
 
         public class _Brand
         {
             public int BrandId { get; set; }
             public string BrandName { get; set; }
-            public string Thumbnail { get; set; }
+            public string ThumbnailUrl { get; set; }
             public string Code { get; set; }
         }
 
@@ -32,7 +34,7 @@ namespace EShop.Shared.ResponseModels.Catalog
         {
             public int CategoryId { get; set; }
             public string CategoryName { get; set; }
-            public string Thumbnail { get; set; }
+            public string ThumbnailUrl { get; set; }
             public string Code { get; set; }
         }
     }

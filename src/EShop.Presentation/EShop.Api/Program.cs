@@ -33,7 +33,7 @@ builder.Services.AddTransient<ICloudinaryService, CloudinaryService>();
 // Add services to the container.
 builder.Services.
     AddDbContext<EShopDbContext>(options =>
-    options.UseSqlServer(connectionString), contextLifetime: ServiceLifetime.Singleton);
+    options.UseSqlServer(connectionString), contextLifetime: ServiceLifetime.Transient);
 
 
 builder.Services
@@ -46,7 +46,7 @@ builder.Services
 
 
 builder.Services
-    .AddScoped<IUnitOfWork, UnitOfWork>();
+    .AddTransient<IUnitOfWork, UnitOfWork>();
 
 builder.Services
     .AddAuthentication(options =>

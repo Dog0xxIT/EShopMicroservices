@@ -1,15 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Azure;
-using EShop.Application.Constants;
-using EShop.Application.Entities;
 using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Catalog;
 using EShop.Shared.RequestModels.Common;
-using EShop.Shared.ResponseModels;
 using EShop.Shared.ResponseModels.Catalog;
 using EShop.Shared.ResponseModels.Common;
 using Mapster;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Api.Controllers
@@ -35,7 +30,7 @@ namespace EShop.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllProducts([FromQuery] PaginationRequest paginationReq)
         {
-            var response = await _catalogService.GetAllProducts(paginationReq.PageSize, paginationReq.PageIndex);
+            var response = await _catalogService.GetAllProducts(paginationReq);
 
             return Ok(response);
         }
@@ -52,15 +47,8 @@ namespace EShop.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllBrands([FromQuery] PaginationRequest paginationReq)
         {
-            var brands = await _catalogService.GetAllBrands();
-
-            var response = new PaginationResponse<GetListBrandsResponse>
-            {
-                PageIndex = paginationReq.PageIndex,
-                PageSize = paginationReq.PageSize,
-                Total = brands.Count(),
-                Data = brands
-            };
+            var response = await _catalogService.GetAllBrands(paginationReq);
+         
             return Ok(response);
         }
 
@@ -71,33 +59,31 @@ namespace EShop.Api.Controllers
             return Ok(categories);
         }
 
-        //[HttpGet("{productId}")]
-        //public async Task<IActionResult> GetAllImagesOfProduct([FromRoute] int productId)
-        //{
-        //    try
-        //    {
-        //        await _cloudinaryService.GetAllImagesByProductId(productId);
-        //        return Ok();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Problem(ex.Message);
-        //    }
-        //}
+        [HttpGet]
+        public async Task<IActionResult> GetTopCategories(int number = 10)
+        {
+            var categories = await _catalogService.GetTopCategories(number);
+            return Ok(categories);
+        }
 
-        //[HttpGet]
-        //public IActionResult SearchWithSemanticRelevance([FromQuery][Required] string text, [FromQuery] PaginationRequest paginationReq)
-        //{
-        //    return Ok();
-        //}
+        [HttpGet]
+        public async Task<IActionResult> SearchWithSemanticRelevance(
+            [FromQuery][Required] string text,
+            [FromQuery] PaginationRequest paginationReq)
+        {
+            var response = await _catalogService.SearchWithSemanticRelevance(text, paginationReq);
+
+            return Ok(response);
+        }
 
         #endregion
 
         #region Post method
         [HttpPost]
-        public async Task<IActionResult> GetProductsByAdvanceFilter([FromForm] GetProductsByAdvanceFilterRequest getProductsByAdvanceFilterRequest, [FromQuery] PaginationRequest paginationReq)
+        public async Task<IActionResult> GetProductsByAdvanceFilter(
+            [FromBody] GetProductsByAdvanceFilterRequest getProductsByAdvanceFilterRequest)
         {
-            var response = await _catalogService.GetProductsByAdvanceFilter(getProductsByAdvanceFilterRequest, paginationReq.PageSize, paginationReq.PageIndex);
+            var response = await _catalogService.GetProductsByAdvanceFilter(getProductsByAdvanceFilterRequest);
 
             return Ok(response);
         }
@@ -105,22 +91,12 @@ namespace EShop.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadProductImage(UploadProductImageRequest req)
         {
-
-            var product = await _unitOfWork.ProductRepository.GetById(req.ProductId);
-            if (product is null)
-            {
-                return Problem("Not found product");
-            }
-
-            var uri = await _cloudinaryService.UploadProductImage(req.ProductId, req.FormFile.FileName, req.FormFile.OpenReadStream());
-            product.ImageUrl = uri.AbsoluteUri;
-            var serviceResult = await _catalogService.UpdateImageUrlProduct(product.Id, uri.AbsoluteUri);
+            var serviceResult = await _catalogService.UpdateImageProduct(req);
             if (serviceResult.Succeeded)
             {
                 return Ok(TypedResult.Succeeded);
             }
             return Problem(serviceResult.Errors.First());
-
         }
 
         [HttpPost]

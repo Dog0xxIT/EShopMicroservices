@@ -73,7 +73,7 @@ namespace EShop.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "Id", "Code", "Created", "Description", "Icon", "IsDeleted", "LastModified", "Name" },
+                columns: new[] { "Id", "Code", "Created", "Description", "ThumbnailUrl", "IsDeleted", "LastModified", "Name" },
                 values: new object[,]
                 {
                     { 1, "COMP", 1725959934.4939716, "", "<svg class=\"me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n          <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 15v5m-3 0h6M4 11h16M5 15h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1Z\"></path>\r\n        </svg>", false, 0.0, "Computers & Office" },

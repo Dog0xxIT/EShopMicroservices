@@ -1,18 +1,19 @@
-﻿@using EShop.WebApp.Components.Common
+﻿@using EShop.Shared.ResponseModels.Catalog
+@using EShop.WebApp.Components.Common
 
 <div class="border-gray-200 bg-white p-6 flex flex-col justify-around rounded-lg border shadow-sm dark:border-gray-700 dark:bg-gray-800">
     <div class="h-56 w-full">
-        <a href="@($"/detail/{ProductId}")">
+        <a href="@($"/detail/{ProductData.Id}")">
             <img class="mx-auto h-full dark:hidden"
-                 src="@ImageUrl" alt="" />
+                 src="@ProductData.ImageUrl" alt="" />
             <img class="mx-auto hidden h-full dark:block"
-                 src="@ImageUrl" alt="" />
+                 src="@ProductData.ImageUrl" alt="" />
         </a>
     </div>
     <div class="pt-6">
         <div class="mb-4 gap-4 flex items-center justify-between">
             <span class="me-2 bg-blue-100 px-2.5 py-0.5 text-blue-800 rounded text-xs font-medium dark:bg-blue-900 dark:text-blue-300">
-                Up to @(Discount.ToString("F2"))% off
+                Up to @(ProductData.Discount.ToString("F2"))% off
             </span>
 
             <div class="gap-1 flex items-center justify-end">
@@ -51,17 +52,17 @@
             </div>
         </div>
 
-        <a href="@($"/detail/{ProductId}")" class="text-gray-900 text-lg font-semibold leading-tight hover:underline dark:text-white">
-            @ProductName
+        <a href="@($"/detail/{ProductData.Id}")" class="text-gray-900 text-lg font-semibold leading-tight hover:underline dark:text-white">
+            @ProductData.Name
         </a>
 
         <div class="mt-2 gap-2 flex items-center">
             <div class="flex items-center">
-                <Rating Max="5" ValueStar="Convert.ToInt32(CountStar)"></Rating>
+                <Rating Max="5" ValueStar="Convert.ToInt32(ProductData.Star)"></Rating>
             </div>
 
-            <p class="text-gray-900 text-sm font-medium dark:text-white">@CountStar</p>
-            <p class="text-gray-500 text-sm font-medium dark:text-gray-400">(@RatingCount)</p>
+            <p class="text-gray-900 text-sm font-medium dark:text-white">@ProductData.Star</p>
+            <p class="text-gray-500 text-sm font-medium dark:text-gray-400">(@ProductData.ReviewsCount)</p>
         </div>
 
         <ul class="mt-2 gap-4 flex items-center">
@@ -85,7 +86,7 @@
         </ul>
 
         <div class="mt-4 gap-4 flex items-center justify-between">
-            <p class="text-gray-900 text-2xl font-extrabold leading-tight dark:text-white">$@Price</p>
+            <p class="text-gray-900 text-2xl font-extrabold leading-tight dark:text-white">$@ProductData.Price</p>
 
             <button type="button" class="bg-blue-700 px-5 py-2.5 text-white inline-flex items-center rounded-lg text-sm font-medium hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <svg class="-ms-2 me-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -100,23 +101,5 @@
 @code
 {
     [Parameter, EditorRequired]
-    public int ProductId { get; set; }
-
-    [Parameter, EditorRequired]
-    public string ProductName { get; set; }
-
-    [Parameter, EditorRequired]
-    public double CountStar { get; set; }
-
-    [Parameter, EditorRequired]
-    public int RatingCount { get; set; }
-
-    [Parameter, EditorRequired]
-    public double Price { get; set; }
-
-    [Parameter, EditorRequired]
-    public string ImageUrl { get; set; }
-
-    [Parameter, EditorRequired]
-    public double Discount { get; set; }
+    public GetListProductResponse ProductData { get; set; }
 }

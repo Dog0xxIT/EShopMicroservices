@@ -10,6 +10,7 @@
             public const string ManageInfo = "/Identity/ManageInfo";
             public const string Register = "/Identity/Register";
             public const string SignIn = "/Identity/SignIn";
+            public const string SignOut = "/Identity/SignOut";
             public const string RefreshToken = "/Identity/RefreshToken";
             public const string ResendConfirmEmail = "/Identity/ResendConfirmEmail";
             public const string ForgotPassword = "/Identity/ForgotPassword";
@@ -20,12 +21,11 @@
         public static class Catalog
         {
             public const string GetAllProducts = "/Catalog/GetAllProducts";
-            public const string GetProductsByBrandId = "/Catalog/GetProductsByBrandId";
-            public const string GetProductsByCategoryId = "/Catalog/GetProductsByCategoryId";
-            public const string GetProductsByBrandAndCategoryId = "/Catalog/GetProductsByBrandAndCategoryId";
+            public const string GetProductsByAdvanceFilter = "/Catalog/GetProductsByAdvanceFilter";
             public const string GetProductById = "/Catalog/GetProductById";
             public const string GetAllBrands = "/Catalog/GetAllBrands";
             public const string GetAllCategories = "/Catalog/GetAllCategories";
+            public const string GetTopCategories = "/Catalog/GetTopCategories";
             public const string GetAllImagesOfProduct = "/Catalog/GetAllImagesOfProduct";
             public const string SearchWithSemanticRelevance = "/Catalog/SearchWithSemanticRelevance";
             public const string UploadProductImage = "/Catalog/UploadProductImage";

@@ -13,5 +13,6 @@ namespace EShop.Shared.ResponseModels.Catalog
         public string Code { get; set; }
         public string Description { get; set; }
         public string Thumnai { get; set; }
+        public int ProductCount { get; set; }
     }
 }

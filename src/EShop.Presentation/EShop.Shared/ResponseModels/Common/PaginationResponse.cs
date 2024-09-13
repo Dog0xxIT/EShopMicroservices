@@ -10,6 +10,7 @@ namespace EShop.Shared.ResponseModels.Common
     {
         public int PageSize { get; set; }
         public int PageIndex { get; set; }
+        public int ItemsPerPage { get; set; }
         public int Total { get; set; }
         public IEnumerable<T> Data { get; set; }
     }

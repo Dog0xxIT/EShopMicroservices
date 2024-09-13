@@ -25,31 +25,14 @@ namespace EShop.WebApp.Services.CatalogService
                   queryObj: paginationRequest);
         }
 
-        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByBrandId(int brandId)
+        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByAdvanceFilter(GetProductsByAdvanceFilterRequest request)
         {
-            return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
+            return await _coreHttpClient.PostAsync<PaginationResponse<GetListProductResponse>>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Catalog.GetProductsByBrandId,
-                queryObj: new { brandId });
+                uri: UrlsConfig.Catalog.GetProductsByAdvanceFilter,
+                reqObj: request);
         }
 
-        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByCategoryId(
-            int categoryId, PaginationRequest paginationRequest)
-        {
-            return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
-                clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Catalog.GetProductsByCategoryId + $"/{categoryId}",
-                queryObj: paginationRequest);
-        }
-
-        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByBrandAndCategoryId(
-            int brandId, int categoryId)
-        {
-            return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
-                clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Catalog.GetProductsByBrandAndCategoryId,
-                queryObj: new { brandId, categoryId });
-        }
 
         public async Task<ResultObject<GetProductByIdResponse>> GetProductById(int productId)
         {
@@ -58,11 +41,12 @@ namespace EShop.WebApp.Services.CatalogService
                 uri: UrlsConfig.Catalog.GetProductById + $"/{productId}");
         }
 
-        public async Task<ResultObject<IEnumerable<GetAllBrandsResponse>>> GetAllBrands()
+        public async Task<ResultObject<PaginationResponse<GetListBrandsResponse>>> GetAllBrands(PaginationRequest paginationRequest)
         {
-            return await _coreHttpClient.GetAsync<IEnumerable<GetAllBrandsResponse>>(
+            return await _coreHttpClient.GetAsync<PaginationResponse<GetListBrandsResponse>>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Catalog.GetAllBrands);
+                uri: UrlsConfig.Catalog.GetAllBrands,
+                queryObj: paginationRequest);
         }
 
         public async Task<ResultObject<IEnumerable<GetAllCategoriesResponse>>> GetAllCategories()
@@ -72,11 +56,12 @@ namespace EShop.WebApp.Services.CatalogService
                 uri: UrlsConfig.Catalog.GetAllCategories);
         }
 
-        public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetAllImagesOfProduct(int productId)
+        public async Task<ResultObject<IEnumerable<GetAllCategoriesResponse>>> GetTopCategories(int number)
         {
-            return await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
+            return await _coreHttpClient.GetAsync<IEnumerable<GetAllCategoriesResponse>>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Catalog.GetAllImagesOfProduct);
+                uri: UrlsConfig.Catalog.GetTopCategories,
+                queryObj: new {number = 12});
         }
 
         public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> SearchWithSemanticRelevance(

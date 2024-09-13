@@ -496,7 +496,7 @@ namespace EShop.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_BasketItems_ProductId",
                 table: "BasketItems",
-                column: "ProductId");
+                column: "Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Baskets_UserId",
@@ -511,7 +511,7 @@ namespace EShop.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_ProductId",
                 table: "OrderItems",
-                column: "ProductId");
+                column: "Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_AddressId",
@@ -546,7 +546,7 @@ namespace EShop.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Ratings_ProductId",
                 table: "Ratings",
-                column: "ProductId");
+                column: "Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ratings_UserId",
