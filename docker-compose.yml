@@ -1,0 +1,49 @@
+services:
+    frontend:
+        image: mcr.microsoft.com/dotnet/sdk:8.0
+        ports:
+            - '443:8043'
+        networks:
+            - front-tier
+            - back-tier
+        configs:
+            - httpd-config
+        secrets:
+            - server-certificate
+        command:
+            - dotnet restore
+            - dotnet publish -c Release -o out
+            - ls bin/Release/net8.0/publish
+
+    backend:
+        image: mcr.microsoft.com/dotnet/sdk:8.0
+        volumes:
+            - db-data:/etc/data
+        networks:
+            - back-tier
+
+    database:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        volumes:
+            - db-data:/etc/data
+        networks:
+            - back-tier
+
+volumes:
+    db-data:
+        driver: flocker
+        driver_opts:
+            size: '10GiB'
+
+configs:
+    httpd-config:
+        external: true
+
+secrets:
+    server-certificate:
+        external: true
+
+networks:
+    # The presence of these objects is sufficient to define them
+    front-tier: {}
+    back-tier: {}

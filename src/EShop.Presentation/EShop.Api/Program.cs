@@ -26,6 +26,7 @@ builder.Services.AddSingleton(jwtConfig);
 builder.Services.AddSingleton(smtpConfig);
 
 builder.Services.AddTransient<IIdentityService, IdentityService>();
+builder.Services.AddTransient<IBasketService, BasketService>();
 builder.Services.AddTransient<ICatalogService, CatalogService>();
 builder.Services.AddTransient<IEmailSenderService, EmailSenderService>();
 builder.Services.AddTransient<ICloudinaryService, CloudinaryService>();
@@ -139,9 +140,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
+app.UseHttpLogging();
 //app.MapIdentityApi<User>();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseHttpLogging();
 app.MapControllers();
 app.Run();

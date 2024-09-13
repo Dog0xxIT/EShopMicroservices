@@ -18,21 +18,22 @@ public class CatalogService : ICatalogService
     private readonly ILogger<CatalogService> _logger;
     private readonly ICloudinaryService _cloudinaryService;
 
-    public CatalogService(IUnitOfWork unitOfWork, ILogger<CatalogService> logger)
+    public CatalogService(IUnitOfWork unitOfWork, ILogger<CatalogService> logger, ICloudinaryService cloudinaryService)
     {
         _unitOfWork = unitOfWork;
         _logger = logger;
+        _cloudinaryService = cloudinaryService;
     }
 
-    public async Task<PaginationResponse<GetListProductResponse>> GetAllProducts(PaginationRequest paginationRequest)
+    public async Task<PaginationResponse<GetListProductResponse>> GetAllProducts(PaginationRequest paginationReq)
     {
         var totalProducts = await _unitOfWork.ProductRepository.Count();
 
         var products = await _unitOfWork.ProductRepository
             .Get(orderBy: queryable => (IOrderedQueryable<Product>)queryable
                 .OrderBy(p => p.Id)
-                .Skip(paginationRequest.PageIndex)
-                .Take(paginationRequest.PageSize));
+                .Skip(paginationReq.PageIndex)
+                .Take(paginationReq.PageSize));
 
         var productsDto = products.Select(product =>
             new GetListProductResponse
@@ -55,8 +56,8 @@ public class CatalogService : ICatalogService
         {
             Total = totalProducts,
             Data = productsDto,
-            PageIndex = paginationRequest.PageIndex,
-            PageSize = paginationRequest.PageSize,
+            PageIndex = paginationReq.PageIndex,
+            PageSize = paginationReq.PageSize,
             ItemsPerPage = productsDto.Count()
         };
     }
@@ -138,15 +139,15 @@ public class CatalogService : ICatalogService
         };
     }
 
-    public async Task<PaginationResponse<GetListBrandsResponse>> GetAllBrands(PaginationRequest paginationRequest)
+    public async Task<PaginationResponse<GetListBrandsResponse>> GetAllBrands(PaginationRequest paginationReq)
     {
         var totalBrands = await _unitOfWork.BrandRepository.Count();
 
         var brands = await _unitOfWork.BrandRepository
             .Get(orderBy: queryable => (IOrderedQueryable<Brand>)queryable
                 .OrderBy(p => p.Id)
-                .Skip(paginationRequest.PageIndex)
-                .Take(paginationRequest.PageSize));
+                .Skip(paginationReq.PageIndex)
+                .Take(paginationReq.PageSize));
 
         var brandsDto = new Collection<GetListBrandsResponse>();
 
@@ -170,8 +171,8 @@ public class CatalogService : ICatalogService
         {
             Total = totalBrands,
             Data = brandsDto,
-            PageIndex = paginationRequest.PageIndex,
-            PageSize = paginationRequest.PageSize,
+            PageIndex = paginationReq.PageIndex,
+            PageSize = paginationReq.PageSize,
             ItemsPerPage = brandsDto.Count()
         };
     }
@@ -215,16 +216,9 @@ public class CatalogService : ICatalogService
         };
     }
 
-    public async Task<ServiceResult> CreateProduct(CreateProductDto createProductDto)
+    public async Task<ServiceResult> CreateProduct(CreateProductRequest req)
     {
-        var productEntity = new Product
-        {
-            Name = createProductDto.Name,
-            BrandId = createProductDto.BrandId,
-            CategoryId = createProductDto.CategoryId,
-            Description = createProductDto.Description,
-            Price = createProductDto.Price,
-        };
+        var productEntity = req.Adapt<Product>();
 
         try
         {
@@ -238,12 +232,14 @@ public class CatalogService : ICatalogService
         }
     }
 
-    public async Task<ServiceResult> CreateBrand(string name, string code)
+    public async Task<ServiceResult> CreateBrand(CreateBrandRequest req)
     {
         var brandEntity = new Brand
         {
-            Name = name,
-            Code = code
+            Description = req.Description,
+            AvatarUrl = req.AvatarUrl,
+            Name = req.Name,
+            Code = $"{req.Name.Trim().ToUpper()}-{Guid.NewGuid():N}"
         };
 
         try
@@ -258,20 +254,26 @@ public class CatalogService : ICatalogService
         }
     }
 
-    public async Task<ServiceResult> UpdateProduct(UpdateProductDto updateProductDto)
+    public async Task<ServiceResult> UpdateProduct(UpdateProductRequest req)
     {
-        var productEntity = await _unitOfWork.ProductRepository.GetById(updateProductDto.Id);
+        var productEntity = await _unitOfWork.ProductRepository.GetById(req.Id);
 
         if (productEntity is null)
         {
             return ServiceResult.Failed("Not exists product");
         }
 
-        productEntity.Name = updateProductDto.Name;
-        productEntity.BrandId = updateProductDto.BrandId;
-        productEntity.CategoryId = updateProductDto.CategoryId;
-        productEntity.Description = updateProductDto.Description;
-        productEntity.Price = updateProductDto.Price;
+        productEntity.Name = req.Name;
+        productEntity.Price = req.Price;
+        productEntity.CategoryId = req.CategoryId;
+        productEntity.BrandId = req.BrandId;
+        productEntity.Sku = req.Sku;
+        productEntity.Description = req.Description;
+        productEntity.Summary = req.Summary;
+        productEntity.Discount = req.Discount;
+        productEntity.OtherAttributes = req.OtherAttributes;
+        productEntity.ImageUrl = req.ImageUrl;
+
         productEntity.SetTimeLastModified();
 
         try
@@ -286,19 +288,18 @@ public class CatalogService : ICatalogService
         }
     }
 
-    public async Task<ServiceResult> UpdateImageProduct(UploadProductImageRequest uploadProductImageRequest)
+    public async Task<ServiceResult> UpdateImageProduct(UploadProductImageRequest uploadProductImageReq)
     {
-        var productEntity = await _unitOfWork.ProductRepository.GetById(uploadProductImageRequest.ProductId);
+        var productEntity = await _unitOfWork.ProductRepository.GetById(uploadProductImageReq.ProductId);
 
         if (productEntity is null)
         {
             return ServiceResult.Failed("Not exists product");
         }
 
-        var uri = await _cloudinaryService.UploadProductImage(
-             uploadProductImageRequest.ProductId,
-             uploadProductImageRequest.FormFile.FileName,
-             uploadProductImageRequest.FormFile.OpenReadStream());
+        var uri = await _cloudinaryService.UploadImage(
+             uploadProductImageReq.FormFile.FileName,
+             uploadProductImageReq.FormFile.OpenReadStream());
 
         productEntity.ImageUrl = uri.AbsoluteUri;
         productEntity.SetTimeLastModified();
@@ -315,17 +316,19 @@ public class CatalogService : ICatalogService
         }
     }
 
-    public async Task<ServiceResult> UpdateBrand(int brandId, string name, string code)
+    public async Task<ServiceResult> UpdateBrand(UpdateBrandRequest req)
     {
-        var brandEntity = await _unitOfWork.BrandRepository.GetById(brandId);
+        var brandEntity = await _unitOfWork.BrandRepository.GetById(req.Id);
 
         if (brandEntity is null)
         {
             return ServiceResult.Failed("Not exists brand");
         }
 
-        brandEntity.Name = name;
-        brandEntity.Code = code;
+        brandEntity.Description = req.Description;
+        brandEntity.AvatarUrl = req.AvatarUrl;
+        brandEntity.Name = req.Name;
+        brandEntity.Code = $"{req.Name.Trim().ToUpper()}-{Guid.NewGuid():N}";
         brandEntity.SetTimeLastModified();
 
         try
@@ -341,23 +344,23 @@ public class CatalogService : ICatalogService
     }
 
     public async Task<PaginationResponse<GetListProductResponse>> GetProductsByAdvanceFilter(
-        GetProductsByAdvanceFilterRequest advanceFilterRequest)
+        GetProductsByAdvanceFilterRequest advanceFilterReq)
     {
         var totalProducts = await _unitOfWork.ProductRepository.Count();
 
         Expression<Func<Product, bool>> filter = p =>
-            p.Price >= advanceFilterRequest.MinPrice &&
-            p.Price <= advanceFilterRequest.MaxPrice &&
-            (!advanceFilterRequest.CategoryIdList.Any() || advanceFilterRequest.CategoryIdList.Contains(p.CategoryId)) &&
-            (!advanceFilterRequest.BrandIdList.Any() || advanceFilterRequest.BrandIdList.Contains(p.BrandId));
+            p.Price >= advanceFilterReq.MinPrice &&
+            p.Price <= advanceFilterReq.MaxPrice &&
+            (!advanceFilterReq.CategoryIdList.Any() || advanceFilterReq.CategoryIdList.Contains(p.CategoryId)) &&
+            (!advanceFilterReq.BrandIdList.Any() || advanceFilterReq.BrandIdList.Contains(p.BrandId));
 
         var products = await _unitOfWork.ProductRepository
             .Get(
                 filter: filter,
                 orderBy: queryable => (IOrderedQueryable<Product>)queryable
                     .OrderBy(p => p.Id)
-                    .Skip(advanceFilterRequest.PageIndex)
-                    .Take(advanceFilterRequest.PageSize));
+                    .Skip(advanceFilterReq.PageIndex)
+                    .Take(advanceFilterReq.PageSize));
 
         var productsDto = products.Select(product =>
             new GetListProductResponse
@@ -380,8 +383,8 @@ public class CatalogService : ICatalogService
         {
             Total = totalProducts,
             Data = productsDto,
-            PageIndex = advanceFilterRequest.PageIndex,
-            PageSize = advanceFilterRequest.PageSize,
+            PageIndex = advanceFilterReq.PageIndex,
+            PageSize = advanceFilterReq.PageSize,
             ItemsPerPage = productsDto.Count()
         };
     }

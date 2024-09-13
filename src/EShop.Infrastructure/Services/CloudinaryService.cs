@@ -20,24 +20,16 @@ namespace EShop.Infrastructure.Services
             _cloudinary.Api.Secure = true;
         }
 
-        public async Task<Uri> UploadProductImage(int productId, string fileName, Stream stream)
+        public async Task<Uri> UploadImage(string fileName, Stream stream)
         {
-            var uploadParams = new ImageUploadParams()
+            var uploadParams = new ImageUploadParams
             {
                 File = new FileDescription(fileName, stream),
-                Folder = $"EShop/Products/{productId}"
+                Folder = "EShop"
             };
             var result = await _cloudinary.UploadAsync(uploadParams);
             _logger.LogInformation(result.JsonObj.ToString());
             return result.SecureUrl;
-        }
-
-        public async Task<IEnumerable<string>> GetAllImagesByProductId(int productId)
-        {
-            var assetFolderResult = await _cloudinary.ListResourceByAssetFolderAsync($"EShop/Products/{productId}", true, true, true);
-            _logger.LogInformation(assetFolderResult.JsonObj.ToString());
-
-            return new List<string>();
         }
 
         public async Task<ServiceResult> DeleteImage(int productId)

@@ -56,6 +56,7 @@ namespace EShop.Api.Controllers
         public async Task<IActionResult> GetAllCategories()
         {
             var categories = await _catalogService.GetAllCategories();
+
             return Ok(categories);
         }
 
@@ -102,9 +103,7 @@ namespace EShop.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductRequest req)
         {
-            var createProductDto = req.Adapt<CreateProductDto>();
-
-            var serviceResult = await _catalogService.CreateProduct(createProductDto);
+            var serviceResult = await _catalogService.CreateProduct(req);
 
             if (serviceResult.Succeeded)
             {
@@ -116,7 +115,7 @@ namespace EShop.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBrand(CreateBrandRequest req)
         {
-            var serviceResult = await _catalogService.CreateBrand(req.Name, req.Code);
+            var serviceResult = await _catalogService.CreateBrand(req);
 
             if (serviceResult.Succeeded)
             {
@@ -132,9 +131,7 @@ namespace EShop.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateProduct(UpdateProductRequest req)
         {
-            var updateProductDto = req.Adapt<UpdateProductDto>();
-
-            var serviceResult = await _catalogService.UpdateProduct(updateProductDto);
+            var serviceResult = await _catalogService.UpdateProduct(req);
 
             if (serviceResult.Succeeded)
             {
@@ -146,7 +143,7 @@ namespace EShop.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateBrand(UpdateBrandRequest req)
         {
-            var serviceResult = await _catalogService.UpdateBrand(req.Id, req.Name, req.Code);
+            var serviceResult = await _catalogService.UpdateBrand(req);
 
             if (serviceResult.Succeeded)
             {

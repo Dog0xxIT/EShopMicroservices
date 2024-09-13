@@ -16,7 +16,6 @@ namespace EShop.Shared.RequestModels.Catalog
         public string Name { get; set; }
 
         [Required]
-        [Range(0.001, double.MaxValue)]
         public double Price { get; set; }
 
         [Required]
@@ -26,14 +25,16 @@ namespace EShop.Shared.RequestModels.Catalog
         public int BrandId { get; set; }
 
         [Required]
-        public int AvailableStock { get; set; }
-
-        [Required]
-        public int RestockThreshold { get; set; }
-
-        [Required]
-        public int MaxStockThreshold { get; set; }
+        public string Sku { get; set; }
 
         public string Description { get; set; }
+
+        public string Summary { get; set; }
+
+        public double Discount { get; set; }
+
+        public string OtherAttributes { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

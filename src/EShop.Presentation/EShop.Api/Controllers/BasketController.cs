@@ -1,7 +1,7 @@
-﻿using EShop.Application.Dto.Basket;
-using EShop.Application.Services.Interfaces;
+﻿using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Basket;
 using EShop.Shared.RequestModels.Common;
+using EShop.Shared.ResponseModels.Basket;
 using EShop.Shared.ResponseModels.Common;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,23 +23,29 @@ namespace EShop.Api.Controllers
         #region Get method
 
         [HttpGet("{customerId}")]
-        public async Task<IActionResult> GetBasketByCustomerId([FromQuery] int customerId, [FromQuery] PaginationRequest paginationReq)
+        public async Task<IActionResult> GetBasketByCustomerId(
+            [FromRoute] int customerId, 
+            [FromQuery] PaginationRequest paginationReq)
         {
-            var basketItems = await _basketService.GetBasketByCustomerId(customerId, paginationReq.PageSize, paginationReq.PageIndex);
+            var response = await _basketService.GetBasketByCustomerId(customerId, paginationReq);
 
-            var response = new PaginationResponse<BasketItemResponse>
-            {
-                PageIndex = paginationReq.PageIndex,
-                PageSize = paginationReq.PageSize,
-                Total = basketItems.Count(),
-                Data = basketItems
-            };
             return Ok(response);
         }
 
         #endregion
 
         #region Post method
+
+        [HttpPost]
+        public async Task<IActionResult> AddToBasket(AddToBasketRequest req)
+        {
+            var serviceResult = await _basketService.AddToBasket(req);
+            if (serviceResult.Succeeded)
+            {
+                return Ok(TypedResult.Succeeded);
+            }
+            return Problem(serviceResult.Errors.First());
+        }
 
         [HttpPatch]
         public async Task<IActionResult> UpdateQty(UpdateQtyRequest req)
