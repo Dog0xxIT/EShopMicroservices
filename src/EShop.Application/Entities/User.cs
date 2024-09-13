@@ -6,11 +6,11 @@ namespace EShop.Application.Entities
     {
         public string AvatarUrl { get; set; }
 
-        public ICollection<Order> Orders { get; }
+        public List<Order> Orders { get; set; }
 
-        public ICollection<Payment> Payments { get; }
+        public List<Payment> Payments { get; set; }
 
-        public ICollection<Address> Addresses { get; }
+        public List<Address> Addresses { get; set; }
 
     }
 }

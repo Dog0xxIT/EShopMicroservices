@@ -1,10 +1,11 @@
-﻿<div class="border-gray-200 bg-white p-4 rounded-lg border shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+﻿@using EShop.Shared.ResponseModels.Basket
+<div class="border-gray-200 bg-white p-4 rounded-lg border shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
     <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
         <a href="#" class="shrink-0 md:order-1">
-            <img class="h-20 w-20 dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg"
+            <img class="h-20 w-20 dark:hidden" src="@BasketItemData.PictureUrl"
                  alt="imac image" />
             <img class="h-20 w-20 hidden dark:block"
-                 src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg" alt="imac image" />
+                 src="@BasketItemData.PictureUrl" alt="imac image" />
         </a>
 
         <label for="counter-input" class="sr-only">Choose quantity:</label>
@@ -20,7 +21,7 @@
                 </button>
                 <input type="text" id="counter-input" data-input-counter
                        class="w-10 bg-transparent text-gray-900 shrink-0 border-0 text-center text-sm font-medium focus:outline-none focus:ring-0 dark:text-white"
-                       placeholder="" value="2" required />
+                       placeholder="" value="@BasketItemData.Quantity" required />
                 <button type="button" id="increment-button" data-input-counter-increment="counter-input"
                         class="h-5 w-5 border-gray-300 bg-gray-100 inline-flex shrink-0 items-center justify-center rounded-md border hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                     <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white" aria-hidden="true"
@@ -31,15 +32,13 @@
                 </button>
             </div>
             <div class="text-end md:order-4 md:w-32">
-                <p class="text-gray-900 text-base font-bold dark:text-white">$1,499</p>
+                <p class="text-gray-900 text-base font-bold dark:text-white">$@BasketItemData.UnitPrice.ToString("F3")</p>
             </div>
         </div>
 
         <div class="min-w-0 space-y-4 w-full flex-1 md:order-2 md:max-w-md">
             <a href="#" class="text-gray-900 text-base font-medium hover:underline dark:text-white">
-                PC system All in One
-                APPLE iMac (2023) mqrq3ro/a, Apple M3, 24" Retina 4.5K, 8GB, SSD 256GB, 10-core GPU, Keyboard layout
-                INT
+                @BasketItemData.ProductName
             </a>
 
             <div class="gap-4 flex items-center">
@@ -66,3 +65,9 @@
         </div>
     </div>
 </div>
+
+@code
+{
+    [Parameter, EditorRequired]
+    public GetBasketByCustomerIdResponse BasketItemData { get; set; }
+}

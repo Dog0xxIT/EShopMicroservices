@@ -10,9 +10,8 @@ namespace EShop.Application.Entities
     {
         public int UserId { get; set; }
 
-        public double Total { get; set; }
-
-
         public User User { get; set; }
+
+        public List<BasketItem> Items { get; set; }
     }
 }

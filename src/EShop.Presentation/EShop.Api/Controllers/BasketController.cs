@@ -50,7 +50,7 @@ namespace EShop.Api.Controllers
         [HttpPatch]
         public async Task<IActionResult> UpdateQty(UpdateQtyRequest req)
         {
-            var serviceResult = await _basketService.UpdateQty(req.BasketId, req.Qty);
+            var serviceResult = await _basketService.UpdateQty(req);
             if (serviceResult.Succeeded)
             {
                 return Ok(TypedResult.Succeeded);
@@ -63,9 +63,9 @@ namespace EShop.Api.Controllers
         #region Delete method
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(int basketId)
+        public async Task<IActionResult> Delete(int basketItemId)
         {
-            var serviceResult = await _basketService.Delete(basketId);
+            var serviceResult = await _basketService.Delete(basketItemId);
             if (serviceResult.Succeeded)
             {
                 return Ok(TypedResult.Succeeded);

@@ -9,7 +9,7 @@ namespace EShop.Shared.RequestModels.Basket
 {
     public sealed class UpdateQtyRequest
     {
-        public int BasketId { get; set; }
+        public int BasketItemId { get; set; }
 
         [Range(0, Int32.MaxValue)]
         public int Qty { get; set; }

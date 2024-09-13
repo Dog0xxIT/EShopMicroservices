@@ -10,7 +10,7 @@ namespace EShop.Application.Services.Interfaces;
 public interface IBasketService
 {
     Task<PaginationResponse<GetBasketByCustomerIdResponse>> GetBasketByCustomerId(int customerId, PaginationRequest paginationRequest);
-    Task<ServiceResult> UpdateQty(int basketId,  int quantity);
-    Task<ServiceResult> Delete(int basketId);
+    Task<ServiceResult> UpdateQty(UpdateQtyRequest req);
+    Task<ServiceResult> Delete(int basketItemId);
     Task<ServiceResult> AddToBasket(AddToBasketRequest req);
 }

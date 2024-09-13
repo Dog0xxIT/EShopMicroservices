@@ -1,14 +1,10 @@
 ﻿using EShop.Application.Entities;
 using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Common;
-using Mapster;
 using Microsoft.Extensions.Logging;
-using System.Linq;
 using EShop.Shared.RequestModels.Basket;
 using EShop.Shared.ResponseModels.Basket;
 using EShop.Shared.ResponseModels.Common;
-using EShop.Shared.ResponseModels.Catalog;
-using Microsoft.AspNetCore.Identity;
 
 namespace EShop.Application.Services.ApplicationService;
 
@@ -16,13 +12,11 @@ public class BasketService : IBasketService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly ILogger<BasketService> _logger;
-    private readonly UserManager<User> _userManager;
 
-    public BasketService(IUnitOfWork unitOfWork, ILogger<BasketService> logger, UserManager<User> userManager)
+    public BasketService(IUnitOfWork unitOfWork, ILogger<BasketService> logger)
     {
         _unitOfWork = unitOfWork;
         _logger = logger;
-        _userManager = userManager;
     }
 
     public async Task<PaginationResponse<GetBasketByCustomerIdResponse>> GetBasketByCustomerId(int customerId, PaginationRequest paginationRequest)
@@ -36,67 +30,89 @@ public class BasketService : IBasketService
             ItemsPerPage = 0
         };
 
-        var basketItems = await _unitOfWork.BasketItemRepository
+        var baskets = await _unitOfWork.BasketRepository
             .Get(
-                orderBy: queryable => (IOrderedQueryable<BasketItem>)queryable
-                    .OrderBy(bi => bi.Id)
+                orderBy: queryable => (IOrderedQueryable<Basket>)queryable
+                    .OrderBy(b => b.Id)
                     .Skip(paginationRequest.PageIndex)
                     .Take(paginationRequest.PageSize),
-                filter: bi => bi.Basket.UserId == customerId,
-                includeProperties: new List<string> { nameof(BasketItem.Basket), nameof(BasketItem.Product) });
+                filter: b => b.UserId == customerId,
+                includeProperties: new List<string> { nameof(Basket.Items), nameof(Basket.User) });
 
-        var user = await _userManager.FindByIdAsync(customerId.ToString());
-        if (user is null)
+        var basketOfCustomer = baskets.FirstOrDefault();
+        if (basketOfCustomer is null)
         {
             return response;
         }
 
-        var baskItemsDto = basketItems.Select(bi => new GetBasketByCustomerIdResponse
+        var baskItemsDto = new List<GetBasketByCustomerIdResponse>();
+        foreach (var basketItem in basketOfCustomer.Items)
         {
-            ProductId = bi.ProductId,
-            CustomerId = user?.Id ?? 0,
-            CustomerName = user?.UserName ?? "",
-            Id = bi.Id,
-            ProductName = bi.Product.Name,
-            PictureUrl = bi.Product.ImageUrl,
-            Quantity = bi.Quantity,
-            UnitPrice = bi.UnitPrice
-        }).ToList();
+            var product = await _unitOfWork.ProductRepository.GetById(basketItem.ProductId);
 
+            baskItemsDto.Add(new GetBasketByCustomerIdResponse
+            {
+                ProductId = basketItem.ProductId,
+                CustomerId = basketOfCustomer.User?.Id ?? 0,
+                CustomerName = basketOfCustomer.User?.UserName ?? "",
+                Id = basketItem.Id,
+                ProductName = product?.Name ?? "",
+                PictureUrl = product?.ImageUrl ?? "",
+                Quantity = basketItem.Quantity,
+                UnitPrice = basketItem.UnitPrice
+            });
+        }
         response.ItemsPerPage = baskItemsDto.Count();
         response.Data = baskItemsDto;
         return response;
     }
 
-    public async Task<ServiceResult> UpdateQty(int basketId, int quantity)
+    public async Task<ServiceResult> UpdateQty(UpdateQtyRequest req)
     {
-        var basketEntity = await _unitOfWork.BasketItemRepository.GetById(basketId);
+        var basketEntity = await _unitOfWork.BasketItemRepository.GetById(req.BasketItemId);
 
         if (basketEntity is null)
         {
             return ServiceResult.Failed("Not exists basket");
         }
 
-        basketEntity.Quantity = quantity;
-        basketEntity.SetTimeLastModified();
+        if (req.Qty == 0)
+        {
+            try
+            {
+                await _unitOfWork.BasketItemRepository.Delete(req.BasketItemId);
+                await _unitOfWork.Commit();
+                return ServiceResult.Success;
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Failed(ex.Message);
+            }
+        }
+        else
+        {
+            basketEntity.Quantity = req.Qty;
+            basketEntity.SetTimeLastModified();
+            try
+            {
+                _unitOfWork.BasketItemRepository.Update(basketEntity);
+                await _unitOfWork.Commit();
+                return ServiceResult.Success;
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Failed(ex.Message);
+            }
+        }
 
-        try
-        {
-            _unitOfWork.BasketItemRepository.Update(basketEntity);
-            await _unitOfWork.Commit();
-            return ServiceResult.Success;
-        }
-        catch (Exception ex)
-        {
-            return ServiceResult.Failed(ex.Message);
-        }
+
     }
 
-    public async Task<ServiceResult> Delete(int basketId)
+    public async Task<ServiceResult> Delete(int basketItemId)
     {
         try
         {
-            await _unitOfWork.BasketItemRepository.Delete(basketId);
+            await _unitOfWork.BasketItemRepository.Delete(basketItemId);
             await _unitOfWork.Commit();
             return ServiceResult.Success;
         }
@@ -108,10 +124,62 @@ public class BasketService : IBasketService
 
     public async Task<ServiceResult> AddToBasket(AddToBasketRequest req)
     {
-        var basket = await _unitOfWork.BasketRepository.Get(filter: b => b.UserId == req.CustomerId);
-        if (!basket.Any())
+        var product = await _unitOfWork.ProductRepository.GetById(req.ProductId);
+        if (product is null)
         {
+            return ServiceResult.Failed("Not found product");
+        }
 
+        var newBasketItem = new BasketItem
+        {
+            ProductId = req.ProductId,
+            Quantity = req.Quantity,
+            UnitPrice = product.Price,
+        };
+
+        var baskets = await _unitOfWork.BasketRepository.Get(
+            filter: b => b.UserId == req.CustomerId,
+            includeProperties: new List<string> { nameof(Basket.Items) });
+
+        if (!baskets.Any())
+        {
+            var newBasket = new Basket
+            {
+                UserId = req.CustomerId,
+                Items = new() { newBasketItem }
+            };
+            try
+            {
+                await _unitOfWork.BasketRepository.Create(newBasket);
+                await _unitOfWork.Commit();
+                return ServiceResult.Success;
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Failed(ex.Message);
+            }
+
+        }
+        else
+        {
+            var basketOfCustomer = baskets.First();
+            var existsBasketItem = basketOfCustomer.Items.Any(i => i.ProductId == req.ProductId);
+            if (existsBasketItem)
+            {
+                return ServiceResult.Failed("Product exists in basket");
+            }
+
+            basketOfCustomer.Items.Add(newBasketItem);
+            try
+            {
+                _unitOfWork.BasketRepository.Update(basketOfCustomer);
+                await _unitOfWork.Commit();
+                return ServiceResult.Success;
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Failed(ex.Message);
+            }
         }
     }
 }

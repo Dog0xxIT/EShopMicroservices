@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\BasketService\" />
     <Folder Include="Services\OrderService\" />
   </ItemGroup>
 

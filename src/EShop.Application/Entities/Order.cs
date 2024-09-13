@@ -22,7 +22,7 @@ namespace EShop.Application.Entities
 
         public Payment Payment { get; set; }
 
-        public ICollection<OrderItem> OrderItems { get; }
+        public List<OrderItem> OrderItems { get; set; }
 
     }
 }
