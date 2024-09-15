@@ -1,9 +1,7 @@
 ﻿using EShop.Shared.RequestModels.Identity;
-using EShop.Shared.ResponseModels;
-using EShop.WebApp.Core;
-using EShop.WebApp.Core.CoreHttpClient;
 using EShop.Shared.ResponseModels.Common;
-using EShop.Shared.ResponseModels.Identity;
+using EShop.WebApp.Core;
+using EShop.WebApp.Core.Core;
 
 namespace EShop.WebApp.Services.IdentityService
 {

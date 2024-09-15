@@ -1,12 +1,11 @@
 ﻿using EShop.Shared.RequestModels.Catalog;
 using EShop.Shared.RequestModels.Common;
-using EShop.Shared.ResponseModels;
 using EShop.Shared.ResponseModels.Catalog;
 using EShop.Shared.ResponseModels.Common;
-using EShop.WebApp.Core;
-using EShop.WebApp.Core.CoreHttpClient;
+using EShop.WebApp.Core.Core;
+using EShop.WebApp.Services.CatalogService;
 
-namespace EShop.WebApp.Services.CatalogService
+namespace EShop.WebApp.Core.Services.CatalogService
 {
     public class CatalogService : ICatalogService
     {

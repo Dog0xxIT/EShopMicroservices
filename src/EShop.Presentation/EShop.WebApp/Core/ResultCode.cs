@@ -1,4 +1,4 @@
-﻿namespace EShop.WebApp.Core.CoreHttpClient
+﻿namespace EShop.WebApp.Core
 {
     public static class ResultCode
     {

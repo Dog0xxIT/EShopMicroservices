@@ -1,10 +1,10 @@
 ﻿@using EShop.WebApp.Services.IdentityService
-@using EShop.WebApp.States
+@using EShop.WebApp.States.AuthState
 @using Microsoft.AspNetCore.Components.Authorization
 
 @inject IIdentityService IdentityService
 @inject NavigationManager NavManager
-@inject JwtAuthenticationStateProvider JwtAuthenticationState
+@inject IAccountManagement AccountManagement
 
 <nav class="bg-white antialiased dark:bg-gray-800">
     <div class="px-4 py-4 mx-auto max-w-screen-xl 2xl:px-0">
@@ -49,50 +49,20 @@
 
             <div class="flex items-center lg:space-x-2">
 
-                <button @onclick="() => _showDropdownMyCart = !_showDropdownMyCart"
-                        id="myCartDropdownButton1"
-                        data-dropdown-toggle="myCartDropdown1" type="button" class="p-2 text-gray-900 inline-flex items-center justify-center rounded-lg text-sm font-medium leading-none hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                    <span class="sr-only">
-                        Cart
-                    </span>
-                    <svg class="w-5 h-5 lg:me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
-                    </svg>
-                    <span class="hidden sm:flex">My Cart</span>
-                    <svg class="w-4 h-4 text-gray-900 ms-1 hidden dark:text-white sm:flex" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7" />
-                    </svg>
-                </button>
-
-                <div id="myCartDropdown1" class="@(_showDropdownMyCart? "":"hidden") space-y-4 bg-white p-4 z-10 mx-auto max-w-sm overflow-hidden rounded-lg antialiased shadow-lg dark:bg-gray-800" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(1005.6px, 68px, 0px);">
-                    <div class="grid grid-cols-2">
-                        <div>
-                            <a href="#" class="text-gray-900 truncate text-sm font-semibold leading-none hover:underline dark:text-white">Apple iPhone 15</a>
-                            <p class="mt-0.5 text-gray-500 truncate text-sm font-normal dark:text-gray-400">$599</p>
-                        </div>
-
-                        <div class="gap-6 flex items-center justify-end">
-                            <p class="text-gray-500 text-sm font-normal leading-none dark:text-gray-400">Qty: 1</p>
-
-                            <button data-tooltip-target="tooltipRemoveItem1a" type="button" class="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
-                                <span class="sr-only"> Remove </span>
-                                <svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <div id="tooltipRemoveItem1a" role="tooltip" class="tooltip bg-gray-900 px-3 py-2 text-white invisible absolute z-10 inline-block rounded-lg text-sm font-medium opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700">
-                                Remove item
-                                <div class="tooltip-arrow" data-popper-arrow></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="/checkout" title="" class="mb-2 me-2 bg-blue-700 px-5 py-2.5 text-white inline-flex w-full items-center justify-center rounded-lg text-sm font-medium hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" role="button"> Proceed to Checkout </a>
-                </div>
-
 
                 <AuthorizeView>
                     <Authorized>
+                        <a href="/cart"
+                           type="button" class="p-2 text-gray-900 inline-flex items-center justify-center rounded-lg text-sm font-medium leading-none hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            <span class="sr-only">
+                                Cart
+                            </span>
+                            <svg class="w-5 h-5 lg:me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+                            </svg>
+                            <span class="hidden sm:flex">My Cart</span>
+                        </a>
+
                         <button @onclick="() => _showDropdownAccount = !_showDropdownAccount"
                                 id="userDropdownButton1" data-dropdown-toggle="userDropdown1" type="button" class="p-2 text-gray-900 inline-flex items-center justify-center rounded-lg text-sm font-medium leading-none hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                             <svg class="w-5 h-5 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -104,7 +74,7 @@
                             </svg>
                         </button>
 
-                        <div id="userDropdown1" class="@(_showDropdownAccount? "": "hidden") w-56 divide-gray-100 bg-white absolute absolute z-10 divide-y overflow-hidden overflow-y-auto rounded-lg antialiased shadow dark:divide-gray-600 dark:bg-gray-700"
+                        <div id="userDropdown1" class="@(_showDropdownAccount ? "" : "hidden") w-56 divide-gray-100 bg-white absolute absolute z-10 divide-y overflow-hidden overflow-y-auto rounded-lg antialiased shadow dark:divide-gray-600 dark:bg-gray-700"
                              style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(1156.8px, 68px, 0px);">
                             <ul class="p-2 text-gray-900 text-start text-sm font-medium dark:text-white">
                                 <li>
@@ -148,7 +118,7 @@
                     </Authorized>
                     <NotAuthorized>
                         <a href="/register"
-                           id="userDropdownButton1" data-dropdown-toggle="userDropdown1" type="button" class="p-2 text-gray-900 inline-flex items-center justify-center rounded-lg text-sm font-medium leading-none hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                           type="button" class="p-2 text-gray-900 inline-flex items-center justify-center rounded-lg text-sm font-medium leading-none hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                             <svg class="w-5 h-5 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                             </svg>
@@ -156,7 +126,7 @@
                         </a>
 
                         <a href="/sign-in"
-                           id="userDropdownButton1" data-dropdown-toggle="userDropdown1" type="button" class="p-2 text-gray-900 inline-flex items-center justify-center rounded-lg text-sm font-medium leading-none hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                           type="button" class="p-2 text-gray-900 inline-flex items-center justify-center rounded-lg text-sm font-medium leading-none hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                             <svg class="w-5 h-5 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                             </svg>
@@ -206,9 +176,12 @@
     private bool _showDropdownAccount;
     private bool _showDropdownMyCart;
 
+    protected override async Task OnInitializedAsync()
+    {
+    }
+
     private async Task SignOutHandler()
     {
-        await JwtAuthenticationState.LogoutAsync();
-        NavManager.NavigateTo("/sign-in");
+        await AccountManagement.SignOut();
     }
 }

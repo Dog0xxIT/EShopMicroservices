@@ -1,13 +1,11 @@
-﻿using System.Net.Http;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Text;
 using System.Web;
 using EShop.Shared.ResponseModels;
 using EShop.Shared.ResponseModels.Common;
 using Newtonsoft.Json;
-using ResultObject = EShop.Shared.ResponseModels.ResultObject;
 
-namespace EShop.WebApp.Core.CoreHttpClient;
+namespace EShop.WebApp.Core.Core;
 
 public class CoreHttpClient : ICoreHttpClient
 {

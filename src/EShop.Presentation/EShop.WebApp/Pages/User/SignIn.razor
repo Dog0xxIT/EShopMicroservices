@@ -1,17 +1,18 @@
 ﻿@page "/sign-in"
 
-@layout EmptyLayout
-
 @using EShop.Shared.RequestModels.Identity
-@using EShop.WebApp.Core.CoreHttpClient
-@using EShop.WebApp.Models.Common
 @using EShop.WebApp.Models.Enums
+@using EShop.WebApp.Models.Common
 @using EShop.WebApp.Services.IdentityService
 @using EShop.WebApp.States
+@using EShop.WebApp.States.AuthState
+
+@layout EmptyLayout
 
 @inject IIdentityService IdentityService
 @inject AlertState AlertState
 @inject NavigationManager NavigationManager
+@inject IAccountManagement AccountManagement
 
 <div class="px-6 py-12 flex min-h-full flex-col justify-center lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -60,7 +61,7 @@
             Not a member?
             <a href="/register" class="text-indigo-600 font-semibold leading-6 hover:text-indigo-500">Register</a>
         </p>
-        
+
         <p class="mt-10 text-gray-500 text-center text-sm">
             <a href="/" class="text-indigo-600 font-semibold leading-6 hover:text-indigo-500">Back to home page</a>
         </p>
@@ -74,21 +75,22 @@
     protected override void OnInitialized()
     {
         _signInRequest = new();
+
     }
 
     private async Task ValidSubmit()
     {
-        var resultObject = await IdentityService.SignIn(_signInRequest);
+        var resultObject = await AccountManagement.SignIn(_signInRequest);
         if (resultObject.ResultCode.Equals(ResultCode.Success))
         {
             NavigationManager.NavigateTo("/");
             return;
         }
         AlertState.AddMessage(new AlertItem
-        {
-            Message = resultObject.Messages,
-            Title = "Error",
-            Type = AlertType.Danger
-        });
+            {
+                Message = resultObject.Messages,
+                Title = "Error",
+                Type = AlertType.Danger
+            });
     }
 }

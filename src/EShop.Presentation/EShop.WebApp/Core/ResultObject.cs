@@ -1,4 +1,4 @@
-﻿namespace EShop.Shared.ResponseModels
+﻿namespace EShop.WebApp.Core
 {
     public class ResultObject<T>
     {

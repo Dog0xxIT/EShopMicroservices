@@ -1,19 +1,20 @@
-﻿using Microsoft.AspNetCore.Components.Authorization;
+﻿using System.Net.Http.Json;
 using System.Security.Claims;
-using System.Net.Http.Json;
+using EShop.Shared.RequestModels.Identity;
 using EShop.Shared.ResponseModels.Common;
 using EShop.Shared.ResponseModels.Identity;
 using EShop.WebApp.Core;
+using EShop.WebApp.Services.IdentityService;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
-using EShop.WebApp.Core.CoreHttpClient;
 
-namespace EShop.WebApp.States;
+namespace EShop.WebApp.States.AuthState;
 
-public class JwtAuthenticationStateProvider : AuthenticationStateProvider
+public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IAccountManagement
 {
 
     private readonly IHttpClientFactory _clientFactory;
-
+    private readonly IIdentityService _identityService;
 
     /// <summary>
     /// Authentication state.
@@ -25,9 +26,10 @@ public class JwtAuthenticationStateProvider : AuthenticationStateProvider
     /// </summary>
     private readonly ClaimsPrincipal _unauthenticated = new(new ClaimsIdentity());
 
-    public JwtAuthenticationStateProvider(IHttpClientFactory clientFactory)
+    public CookieAuthenticationStateProvider(IHttpClientFactory clientFactory, IIdentityService identityService)
     {
         _clientFactory = clientFactory;
+        _identityService = identityService;
     }
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
@@ -43,7 +45,7 @@ public class JwtAuthenticationStateProvider : AuthenticationStateProvider
             var request = new HttpRequestMessage();
             request.Method = HttpMethod.Get;
             request.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
-            //request.Headers.Add("X-Requested-With", ["XMLHttpRequest"]);
+            request.Headers.Add("X-Requested-With", ["XMLHttpRequest"]);
             request.RequestUri = new Uri("https://localhost:7093/Identity/ManageInfo");
 
             var client = await httpClient.SendAsync(request);
@@ -63,7 +65,7 @@ public class JwtAuthenticationStateProvider : AuthenticationStateProvider
                         claims.Add(new Claim(ClaimTypes.Role, role));
                     }
 
-                    var id = new ClaimsIdentity(claims, nameof(JwtAuthenticationStateProvider));
+                    var id = new ClaimsIdentity(claims, nameof(CookieAuthenticationStateProvider));
                     user = new ClaimsPrincipal(id);
                     _authenticated = true;
                 }
@@ -77,38 +79,23 @@ public class JwtAuthenticationStateProvider : AuthenticationStateProvider
         return new AuthenticationState(user);
     }
 
-    public async Task LogoutAsync()
+    public async Task<ResultObject<TypedResult>> SignIn(SignInRequest req)
     {
-        var httpClient = _clientFactory.CreateClient(UrlsConfig.ClientName);
-
-        try
+        var resultObject = await _identityService.SignIn(req);
+        if (resultObject.ResultCode.Equals(ResultCode.Success))
         {
-            var request = new HttpRequestMessage();
-            request.Method = HttpMethod.Get;
-            request.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
-            //request.Headers.Add("X-Requested-With", ["XMLHttpRequest"]);
-            request.RequestUri = new Uri("https://localhost:7093/Identity/SignOut");
-
-            var client = await httpClient.SendAsync(request);
-
-            if (client.IsSuccessStatusCode)
-            {
-                var resultData = await client.Content.ReadFromJsonAsync<TypedResult>();
-                if (resultData?.Status == 200)
-                {
-                    NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
-                }
-            }
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
         }
-        catch (Exception ex)
-        {
-            
-        }
+        return resultObject;
     }
 
-    public async Task<bool> CheckAuthenticatedAsync()
+    public async Task<ResultObject<TypedResult>> SignOut()
     {
-        await GetAuthenticationStateAsync();
-        return _authenticated;
+        var resultObject = await _identityService.SignOut();
+        if (resultObject.ResultCode.Equals(ResultCode.Success))
+        {
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+        }
+        return resultObject;
     }
 }

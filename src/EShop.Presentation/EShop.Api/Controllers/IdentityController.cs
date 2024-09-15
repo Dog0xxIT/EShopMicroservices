@@ -1,12 +1,8 @@
-﻿
-using EShop.Application.Services.Interfaces;
+﻿using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Identity;
 using EShop.Shared.ResponseModels.Common;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
-using Org.BouncyCastle.Ocsp;
 
 namespace EShop.Api.Controllers
 {
@@ -96,9 +92,9 @@ namespace EShop.Api.Controllers
                 var cookieOptions = new CookieOptions()
                 {
                     HttpOnly = true, // XSS
-                    Secure = true,
+                    Secure = true, // Https
                     Expires = DateTime.UtcNow.AddDays(1), // Expiration
-                    SameSite = SameSiteMode.None // CSRF
+                    SameSite = SameSiteMode.Strict, // CSRF
                 };
 
                 this.HttpContext.Response.Cookies.Append("jwt", token, cookieOptions);

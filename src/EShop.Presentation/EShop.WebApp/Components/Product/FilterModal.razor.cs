@@ -1,7 +1,7 @@
 ﻿using EShop.Shared.RequestModels.Common;
 using EShop.Shared.ResponseModels.Catalog;
 using EShop.Shared.ResponseModels.Common;
-using EShop.WebApp.Core.CoreHttpClient;
+using EShop.WebApp.Core;
 using Microsoft.AspNetCore.Components;
 
 namespace EShop.WebApp.Components.Product;

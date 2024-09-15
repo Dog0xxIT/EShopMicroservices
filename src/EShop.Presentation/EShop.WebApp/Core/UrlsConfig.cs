@@ -26,7 +26,6 @@
             public const string GetAllBrands = "/Catalog/GetAllBrands";
             public const string GetAllCategories = "/Catalog/GetAllCategories";
             public const string GetTopCategories = "/Catalog/GetTopCategories";
-            public const string GetAllImagesOfProduct = "/Catalog/GetAllImagesOfProduct";
             public const string SearchWithSemanticRelevance = "/Catalog/SearchWithSemanticRelevance";
             public const string UploadProductImage = "/Catalog/UploadProductImage";
             public const string CreateProduct = "/Catalog/CreateProduct";
@@ -49,6 +48,7 @@
         {
             public const string GetBasketByCustomerId = "/Basket/GetBasketByCustomerId";
             public const string UpdateQty = "/Basket/UpdateQty";
+            public const string AddToBasket = "/Basket/AddToBasket";
             public const string Delete = "/Basket/Delete";
         }
     }

@@ -1,44 +1,43 @@
 ﻿using EShop.WebApp.Models.Common;
 
-namespace EShop.WebApp.States;
-
-using System.Timers;
-
-public class AlertState
+namespace EShop.WebApp.States
 {
-    public Queue<AlertItem> QueueAlerts { get; private set; }
-
-    public event Action AlertChanged;
-
-    public AlertState()
+    public class AlertState
     {
-        QueueAlerts = new();
-    }
+        public Queue<AlertItem> QueueAlerts { get; private set; }
 
-    public void AddMessage(AlertItem alert)
-    {
-        QueueAlerts.Enqueue(alert);
-        AlertChanged?.Invoke();
+        public event Action AlertChanged;
 
-        var timer = new Timer
+        public AlertState()
         {
-            Interval = 5000,
-            AutoReset = true,
-            Enabled = true,
-        };
+            QueueAlerts = new();
+        }
 
-        timer.Elapsed += (sender, args) =>
+        public void AddMessage(AlertItem alert)
         {
-            if (QueueAlerts.Any())
+            QueueAlerts.Enqueue(alert);
+            AlertChanged?.Invoke();
+
+            var timer = new System.Timers.Timer
             {
-                QueueAlerts.Dequeue();
-                AlertChanged?.Invoke();
-            }
-            else
+                Interval = 5000,
+                AutoReset = true,
+                Enabled = true,
+            };
+
+            timer.Elapsed += (sender, args) =>
             {
-                timer.Stop();
-                timer.Dispose();
-            }
-        };
+                if (QueueAlerts.Any())
+                {
+                    QueueAlerts.Dequeue();
+                    AlertChanged?.Invoke();
+                }
+                else
+                {
+                    timer.Stop();
+                    timer.Dispose();
+                }
+            };
+        }
     }
 }

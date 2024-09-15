@@ -5,7 +5,6 @@ using EShop.Application.Services.ApplicationService;
 using EShop.Application.Services.Interfaces;
 using EShop.Infrastructure;
 using EShop.Infrastructure.Services;
-using EShop.Shared.ResponseModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Identity;
@@ -30,6 +29,7 @@ builder.Services.AddTransient<IBasketService, BasketService>();
 builder.Services.AddTransient<ICatalogService, CatalogService>();
 builder.Services.AddTransient<IEmailSenderService, EmailSenderService>();
 builder.Services.AddTransient<ICloudinaryService, CloudinaryService>();
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 // Add services to the container.
 builder.Services.
@@ -44,10 +44,6 @@ builder.Services
     }) // Error AuthenticationScheme
     .AddApiEndpoints()
     .AddEntityFrameworkStores<EShopDbContext>();
-
-
-builder.Services
-    .AddTransient<IUnitOfWork, UnitOfWork>();
 
 builder.Services
     .AddAuthentication(options =>
@@ -76,13 +72,13 @@ builder.Services
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
+    options.AddPolicy("AllowSpecificOrigin", policy =>
     {
         policy
-            .WithOrigins("https://localhost:7093", "https://localhost:7258")
+            .WithOrigins("https://localhost:7258")
             .AllowAnyMethod()
             .AllowAnyHeader()
-            .AllowCredentials();
+            .AllowCredentials(); // Allow to send cookies
     });
 });
 
@@ -139,7 +135,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowAll");
+app.UseCors("AllowSpecificOrigin");
 app.UseHttpLogging();
 //app.MapIdentityApi<User>();
 app.UseAuthentication();

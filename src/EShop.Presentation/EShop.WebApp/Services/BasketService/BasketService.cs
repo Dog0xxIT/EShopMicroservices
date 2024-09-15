@@ -1,9 +1,8 @@
 ﻿using EShop.Shared.RequestModels.Common;
-using EShop.Shared.ResponseModels;
 using EShop.Shared.ResponseModels.Basket;
 using EShop.Shared.ResponseModels.Common;
 using EShop.WebApp.Core;
-using EShop.WebApp.Core.CoreHttpClient;
+using EShop.WebApp.Core.Core;
 
 namespace EShop.WebApp.Services.BasketService;
 
