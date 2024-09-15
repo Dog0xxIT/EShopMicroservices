@@ -7,16 +7,16 @@
 @using EShop.WebApp.Services.CatalogService
 @using EShop.WebApp.Components.Common
 @using EShop.WebApp.Components.Product
-@using EShop.WebApp.Models.Common
 
 @inject ICatalogService CatalogService
+
+<HeroSection></HeroSection>
 
 <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-12">
     <div class="px-4 mx-auto max-w-screen-xl 2xl:px-0">
         <!-- Heading & Filters -->
-        <div class="mb-4 space-y-4 items-end justify-between sm:flex sm:space-y-0 md:mb-8">
+        @* <div class="mb-4 space-y-4 items-end justify-between sm:flex sm:space-y-0 md:mb-8">
             <div>
-                <Breadcrumb Items="@_breadcrumbItems"></Breadcrumb>
                 <h2 class="mt-3 text-gray-900 text-xl font-semibold dark:text-white sm:text-2xl">Electronics</h2>
             </div>
             <div class="space-x-4 flex items-center">
@@ -93,9 +93,22 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> *@
 
         <div class="mb-4">
+            <div class="px-4 mx-auto max-w-screen-xl 2xl:px-0">
+                <div class="mb-4 gap-4 flex items-center justify-between md:mb-8">
+                    <h2 class="text-gray-900 text-xl font-semibold dark:text-white sm:text-2xl">Shop by category</h2>
+
+                    <a href="#" title="" class="text-primary-700 flex items-center text-base font-medium hover:underline dark:text-primary-500">
+                        See more categories
+                        <svg class="ms-1 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
             <div class="gap-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 @foreach (var category in _categoryList)
                 {
@@ -105,8 +118,6 @@
                     </a>
                 }
             </div>
-
-
         </div>
 
         <div class="mb-4 gap-4 grid sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
@@ -130,7 +141,6 @@
 
 @code
 {
-    private List<BreadcrumbItem> _breadcrumbItems;
     private PaginationRequest _paginationRequest;
     private PaginationResponse<GetListProductResponse> _productPaginationResponse;
     private List<GetAllCategoriesResponse> _categoryList;
@@ -140,25 +150,10 @@
 
     protected override async Task OnInitializedAsync()
     {
-        _breadcrumbItems = new List<BreadcrumbItem>
+        _paginationRequest = new()
         {
-            new()
-            {
-                Text = "Home",
-                Url = "/",
-            },
-            new()
-            {
-                Text = "Products",
-                Url = "/",
-            },
-            new()
-            {
-                Text = "Electronics",
-                Url = "/",
-            },
+            PageIndex = 0, PageSize = 12
         };
-        _paginationRequest = new() { PageIndex = 0, PageSize = 12 };
 
         _productPaginationResponse = new()
             {
@@ -166,7 +161,7 @@
             };
         _categoryList = new();
 
-        await GetTopCategories(12);
+        await GetTopCategories(16);
         await GetAllProduct();
     }
 

@@ -4,7 +4,6 @@
 @using EShop.WebApp.Components.Product
 @using EShop.WebApp.Services.CatalogService
 @using EShop.WebApp.Components.Common
-@using EShop.WebApp.Services.CatalogService
 
 @inject ICatalogService CatalogService
 
@@ -39,164 +38,152 @@
                     </div>
                 </div>
 
-                <div class="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">
-                    <a href="#" title=""
-                       class="py-2.5 px-5 text-gray-900 bg-white border-gray-200 flex items-center justify-center rounded-lg border text-sm font-medium hover:bg-gray-100 hover:text-primary-700 focus:outline-none focus:z-10 focus:ring-4 focus:ring-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:focus:ring-gray-700 dark:hover:text-white dark:hover:bg-gray-700"
-                       role="button">
-                        <svg class="w-5 h-5 -ms-2 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                             height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" />
-                        </svg>
-                        Add to favorites
-                    </a>
+                <!-- Options -->
+                <div class="mt-4 lg:row-span-3 lg:mt-0">
+                    <h2 class="sr-only">Product information</h2>
 
-                    <a href="#" title=""
-                       class="text-white mt-4 bg-blue-700 px-5 py-2.5 flex items-center justify-center rounded-lg text-sm font-medium hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 focus:outline-none dark:bg-primary-600 sm:mt-0 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                       role="button">
-                        <svg class="w-5 h-5 -ms-2 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                             height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
-                        </svg>
+                    <p class="my-6 text-gray-500 dark:text-gray-400">
+                        Category: @_productInfo.Category.CategoryName
+                    </p>
 
-                        Add to cart
-                    </a>
+                    <p class="text-gray-500 dark:text-gray-400">
+                        Brand: @_productInfo.Brand.BrandName
+                    </p>
+
+                    <form class="mt-10">
+                        <!-- Colors -->
+                        <div>
+                            <h3 class="text-gray-900 text-sm font-medium">Color</h3>
+
+                            <fieldset aria-label="Choose a color" class="mt-4">
+                                <div class="space-x-3 flex items-center">
+                                    <!-- Active and Checked: "ring ring-offset-1" -->
+                                    <label aria-label="White" class="-m-0.5 p-0.5 ring-gray-400 relative flex cursor-pointer items-center justify-center rounded-full focus:outline-none">
+                                        <input type="radio" name="color-choice" value="White" class="sr-only">
+                                        <span aria-hidden="true" class="h-8 w-8 border-black bg-white rounded-full border border-opacity-10"></span>
+                                    </label>
+                                    <!-- Active and Checked: "ring ring-offset-1" -->
+                                    <label aria-label="Gray" class="-m-0.5 p-0.5 ring-gray-400 relative flex cursor-pointer items-center justify-center rounded-full focus:outline-none">
+                                        <input type="radio" name="color-choice" value="Gray" class="sr-only">
+                                        <span aria-hidden="true" class="h-8 w-8 border-black bg-gray-200 rounded-full border border-opacity-10"></span>
+                                    </label>
+                                    <!-- Active and Checked: "ring ring-offset-1" -->
+                                    <label aria-label="Black" class="-m-0.5 p-0.5 ring-gray-900 relative flex cursor-pointer items-center justify-center rounded-full focus:outline-none">
+                                        <input type="radio" name="color-choice" value="Black" class="sr-only">
+                                        <span aria-hidden="true" class="h-8 w-8 border-black bg-gray-900 rounded-full border border-opacity-10"></span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <!-- Sizes -->
+                        <div class="mt-10">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-gray-900 text-sm font-medium">Size</h3>
+                                <a href="#" class="text-indigo-600 text-sm font-medium hover:text-indigo-500">Size guide</a>
+                            </div>
+
+                            <fieldset aria-label="Choose a size" class="mt-4">
+                                <div class="gap-4 grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-4">
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-gray-50 px-4 py-3 text-gray-200 group relative flex cursor-not-allowed items-center justify-center rounded-md border text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="XXS" disabled class="sr-only">
+                                        <span>XXS</span>
+                                        <span aria-hidden="true" class="-inset-px border-gray-200 pointer-events-none absolute rounded-md border-2">
+                                            <svg class="inset-0 text-gray-200 absolute h-full w-full stroke-2" viewBox="0 0 100 100" preserveAspectRatio="none" stroke="currentColor">
+                                                <line x1="0" y1="100" x2="100" y2="0" vector-effect="non-scaling-stroke" />
+                                            </svg>
+                                        </span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="XS" class="sr-only">
+                                        <span>XS</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="S" class="sr-only">
+                                        <span>S</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="M" class="sr-only">
+                                        <span>M</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="L" class="sr-only">
+                                        <span>L</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="XL" class="sr-only">
+                                        <span>XL</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="2XL" class="sr-only">
+                                        <span>2XL</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="3XL" class="sr-only">
+                                        <span>3XL</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <button type="submit" class="mt-10 border-transparent bg-indigo-600 px-8 py-3 text-white flex w-full items-center justify-center rounded-md border text-base font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"> Add to cart</button>
+                    </form>
                 </div>
 
                 <hr class="my-6 border-gray-200 dark:border-gray-800 md:my-8" />
 
-                <p class="mb-6 text-gray-500 dark:text-gray-400">
-                    Category: @_productInfo.Category.CategoryName
-                </p>
 
-                <p class="text-gray-500 dark:text-gray-400">
-                    Brand: @_productInfo.Brand.BrandName
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
-    <div class="px-4 mx-auto max-w-screen-xl 2xl:px-0">
-        <div class="mx-auto max-w-5xl">
-            <h2 class="text-gray-900 text-xl font-semibold dark:text-white sm:text-2xl">Product description</h2>
-            <div class="my-8 xl:mb-16 xl:mt-12">
-                <img class="w-full dark:hidden"
-                     src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-showcase.svg" alt="" />
-                <img class="hidden w-full dark:block"
-                     src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-showcase-dark.svg" alt="" />
-            </div>
-            <div class="space-y-6 mx-auto max-w-2xl">
-                <p class="text-gray-500 text-base font-normal dark:text-gray-400">
-                    The iMac "M1" 8-Core CPU/8-Core GPU/4
-                    USB-C Shaped Ports (2021) model features a 5-nm Apple M1 processor with 8 cores (4 performance cores
-                    and 4 efficiency cores), an 8-core GPU, a 16-core Neural Engine, 8 GB of onboard RAM, and a 1 TB
-                    onboard SSD.
-                </p>
-
-                <p class="text-gray-500 text-base font-normal dark:text-gray-400">
-                    This all is housed in a wafer thin aluminum case with flat edges that includes a 23.5" 4480x2520,
-                    218 PPI, LED-backlit, "True Tone" widescreen "Retina 4.5K" display mounted on a svelte aluminum
-                    stand. This specific model is offered in the a two-tone Blue color. It also has an integrated 1080p
-                    FaceTime HD camera, a "studio-quality three-mic array" and a "high-fidelity six-speaker system" that
-                    supports Spatial Audio with Dolby Atmos.
-                </p>
-
-                <p class="text-gray-900 text-base font-semibold dark:text-white">Key Features and Benefits:</p>
-                <ul class="space-y-4 pl-4 text-gray-500 list-outside list-disc text-base font-normal dark:text-gray-400">
-                    <li>
-                        <span class="text-gray-900 font-semibold dark:text-white">
-                            Brilliant 4.5K Retina display:
-                        </span>
-                        see the big picture and all the detailsSee it all in sharp, glorious detail on the immersive
-                        24-inch 4.5K Retina display. The P3 wide color gamut brings what you're watching to life in over
-                        a billion colors. Images shine with a brilliant 500 nits of brightness. Industry-leading
-                        anti-reflective coating delivers greater comfort and readability. And True Tone technology
-                        automatically adjusts the color temperature of your display to the ambient light of your
-                        environment, for a more natural viewing experience. So whether you're editing photos, working on
-                        presentations, or watching your favorite shows and movies, everything looks incredible on iMac.
-                    </li>
-                    <li>
-                        <span class="text-gray-900 font-semibold dark:text-white"> 1080p FaceTime HD camera: </span>
-                        ready for your close-upIt's the best camera system ever in a Mac. Double the resolution for
-                        higher-quality video calls. A larger sensor that captures more light. And the advanced image
-                        signal processor (ISP) of M1 greatly improves image quality. So from collaborating with
-                        coworkers to catching up with friends and family, you'll always look your best.
-                    </li>
-
-                    <li>
-                        <span class="text-gray-900 font-semibold dark:text-white">
-                            Studio-quality mics for high-quality
-                            conversations:
-                        </span>
-                        whether you're on a video call with a friend, cutting a track, or recording a podcast, the
-                        microphones on iMac make sure you come through loud, crisp, and clear. The studio-quality
-                        three-mic array is designed to reduce feedback, so conversations flow more naturally and you
-                        interrupt each other less. And beamforming technology helps the mics ignore background noise.
-                        Which means everyone hears you - not what's going on around you.
-                    </li>
-
-                    <li>
-                        <span class="text-gray-900 font-semibold dark:text-white">
-                            Six-speaker sound system: audio that
-                            really fills a room:
-                        </span>
-                        the sound system on iMac brings incredible, room-filling audio to any space. Two pairs of
-                        force-canceling woofers create rich, deep bass without unwanted vibrations. And each pair is
-                        balanced with a high-performance tweeter. The result is a massive, detailed soundstage that
-                        takes your movies, music, and more to the next level.
-                    </li>
-
-                    <li>
-                        <span class="text-gray-900 font-semibold dark:text-white">
-                            M1 chip: with great power comes great
-                            capability:
-                        </span>
-                        M1 is the most powerful chip Apple has ever made. macOS Big Sur is an advanced desktop operating
-                        system. Combined, they take iMac to entirely new levels of performance, efficiency, and
-                        security. iMac wakes from sleep almost instantly, apps launch in a flash, and the whole system
-                        feels fluid, smooth, and snappy. With up to 85 percent faster CPU performance and up to two
-                        times faster graphics performance than standard 21.5-inch iMac models, you can use apps like
-                        Xcode and Affinity Photo to compile code in a fraction of the time or edit photos in real time.
-                        And it runs cool and quiet even while tackling these intense workloads. That's the power of
-                        hardware, software, and silicon - all designed together.
-                    </li>
-                </ul>
-            </div>
-            <div class="my-6 md:my-12">
-                <iframe class="h-[260px] w-full rounded-lg md:h-[540px]" src="https://www.youtube.com/embed/KaLxCiilHns"
-                        title="Flowbite Crash Course in 20 mins | Introduction to UI components using Tailwind CSS"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <div class="mb-6 space-y-6 mx-auto max-w-3xl md:mb-12">
-                <p class="text-gray-500 text-base font-normal dark:text-gray-400">
-                    Connectivity includes two Thunderbolt
-                    / USB 4 ports and two USB 3 ports (all with a USB-C connector), a 3.5 mm headphone jack conveniently
-                    mounted on the left edge of the display, Wi-Fi 6 (802.11ax), and Bluetooth 5.0.
-                </p>
-
-                <p class="text-gray-500 text-base font-normal dark:text-gray-400">
-                    A-Grade/CR: iMacs are in 9/10 Cosmetic
-                    Condition and are 100% Fully Functional. iMacs will be shipped in generic packaging and will contain
-                    generic accessories. 90 Days Seller Warranty Included. iMacs may show signs of wear like scratches,
-                    scuffs and minor dents.
-                </p>
-            </div>
-            <div class="text-center">
-                <a href="#"
-                   class="mb-2 mr-2 border-gray-200 bg-white px-5 py-2.5 text-gray-900 rounded-lg border text-sm font-medium hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">
-                    Show
-                    more...
-                </a>
             </div>
         </div>
     </div>
 </section>
 
-<ProductReview />
+<ProductDescriptionSection></ProductDescriptionSection>
+
+<ProductReviewSection />
 
 @code {
     [Parameter]

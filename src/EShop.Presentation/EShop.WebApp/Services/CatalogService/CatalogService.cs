@@ -60,7 +60,7 @@ namespace EShop.WebApp.Core.Services.CatalogService
             return await _coreHttpClient.GetAsync<IEnumerable<GetAllCategoriesResponse>>(
                 clientName: UrlsConfig.ClientName,
                 uri: UrlsConfig.Catalog.GetTopCategories,
-                queryObj: new {number = 12});
+                queryObj: new { number });
         }
 
         public async Task<ResultObject<PaginationResponse<GetListProductResponse>>> SearchWithSemanticRelevance(
