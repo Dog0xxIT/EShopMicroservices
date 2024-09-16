@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace EShop.Shared.ResponseModels.Common
 {
-    public sealed class PaginationResponse<T>
+    public sealed class PaginationResponse<T> where T : class
     {
-        public int PageSize { get; set; }
-        public int PageIndex { get; set; }
-        public int ItemsPerPage { get; set; }
-        public int Total { get; set; }
-        public IEnumerable<T> Data { get; set; }
+        public IEnumerable<T> Data { get; set; } = Enumerable.Empty<T>();
+        public Pagination Meta { get; set; } = new();
     }
 }

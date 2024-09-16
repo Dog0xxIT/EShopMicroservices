@@ -32,8 +32,8 @@ public partial class FilterModal
     {
         var req = new PaginationRequest
         {
-            PageIndex = 0,
-            PageSize = 40
+            Page = 0,
+            Limit = 40
         };
         var resultObject = await CatalogService.GetAllBrands(req);
 

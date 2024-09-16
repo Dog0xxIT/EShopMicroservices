@@ -21,21 +21,14 @@ public class BasketService : IBasketService
 
     public async Task<PaginationResponse<GetBasketByCustomerIdResponse>> GetBasketByCustomerId(int customerId, PaginationRequest paginationRequest)
     {
-        var response = new PaginationResponse<GetBasketByCustomerIdResponse>
-        {
-            Total = 0,
-            Data = [],
-            PageIndex = paginationRequest.PageIndex,
-            PageSize = paginationRequest.PageSize,
-            ItemsPerPage = 0
-        };
+        var response = new PaginationResponse<GetBasketByCustomerIdResponse>();
 
         var baskets = await _unitOfWork.BasketRepository
             .Get(
                 orderBy: queryable => (IOrderedQueryable<Basket>)queryable
                     .OrderBy(b => b.Id)
-                    .Skip(paginationRequest.PageIndex)
-                    .Take(paginationRequest.PageSize),
+                    .Skip(paginationRequest.Page)
+                    .Take(paginationRequest.Limit),
                 filter: b => b.UserId == customerId,
                 includeProperties: new List<string> { nameof(Basket.Items), nameof(Basket.User) });
 
@@ -62,7 +55,7 @@ public class BasketService : IBasketService
                 UnitPrice = basketItem.UnitPrice
             });
         }
-        response.ItemsPerPage = baskItemsDto.Count();
+        response.Meta.PerPage = baskItemsDto.Count();
         response.Data = baskItemsDto;
         return response;
     }

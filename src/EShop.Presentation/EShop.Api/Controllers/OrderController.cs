@@ -47,14 +47,14 @@ namespace EShop.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateRequest req)
         {
-            return Ok(TypedResult.Succeeded);
+            return Ok(ResponseObject.Succeeded);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateDraft(CreateDraftRequest req)
         {
             //var orderDraft = new Order(req.BuyerId);
-            return Ok(TypedResult.Succeeded);
+            return Ok(ResponseObject.Succeeded);
         }
 
         #endregion
@@ -76,7 +76,7 @@ namespace EShop.Api.Controllers
             {
                 _unitOfWork.OrderRepository.Update(order);
                 var result = await _unitOfWork.Commit();
-                return Ok(TypedResult.Succeeded);
+                return Ok(ResponseObject.Succeeded);
             }
             catch (Exception ex)
             {
@@ -99,7 +99,7 @@ namespace EShop.Api.Controllers
             {
                 _unitOfWork.OrderRepository.Update(order);
                 var result = await _unitOfWork.Commit();
-                return Ok(TypedResult.Succeeded);
+                return Ok(ResponseObject.Succeeded);
             }
             catch (Exception ex)
             {

@@ -19,8 +19,8 @@ public partial class ProductList
     {
         _paginationRequest = new()
         {
-            PageIndex = 0,
-            PageSize = 1000
+            Page = 0,
+            Limit = 10
         };
 
         _productPaginationResponse = new()
@@ -63,8 +63,8 @@ public partial class ProductList
     {
         var req = new GetProductsByAdvanceFilterRequest
         {
-            PageIndex = _paginationRequest.PageIndex,
-            PageSize = _paginationRequest.PageSize,
+            Page = _paginationRequest.Page,
+            Limit = _paginationRequest.Limit,
             CategoryIdList = [categoryId],
             BrandIdList = []
         };
@@ -80,7 +80,7 @@ public partial class ProductList
     private async Task OnChangedCurrentPage(int newPageIndex)
     {
         _currentPage = newPageIndex;
-        _paginationRequest.PageIndex = _currentPage - 1;
+        _paginationRequest.Page = _currentPage - 1;
         await GetAllProduct();
         StateHasChanged();
     }

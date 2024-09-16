@@ -7,7 +7,6 @@ using EShop.Shared.ResponseModels.Catalog;
 using System.Linq.Expressions;
 using EShop.Shared.ResponseModels.Common;
 using EShop.Shared.RequestModels.Common;
-using Microsoft.VisualBasic;
 using System.Collections.ObjectModel;
 
 namespace EShop.Application.Services.ApplicationService;
@@ -32,8 +31,8 @@ public class CatalogService : ICatalogService
         var products = await _unitOfWork.ProductRepository
             .Get(orderBy: queryable => (IOrderedQueryable<Product>)queryable
                 .OrderBy(p => p.Id)
-                .Skip(paginationReq.PageIndex)
-                .Take(paginationReq.PageSize));
+                .Skip(paginationReq.Page)
+                .Take(paginationReq.Limit));
 
         var productsDto = products.Select(product =>
             new GetListProductResponse
@@ -54,11 +53,7 @@ public class CatalogService : ICatalogService
 
         return new PaginationResponse<GetListProductResponse>
         {
-            Total = totalProducts,
             Data = productsDto,
-            PageIndex = paginationReq.PageIndex,
-            PageSize = paginationReq.PageSize,
-            ItemsPerPage = productsDto.Count()
         };
     }
     public async Task<IEnumerable<GetAllCategoriesResponse>> GetTopCategories(int number = 10)
@@ -146,8 +141,8 @@ public class CatalogService : ICatalogService
         var brands = await _unitOfWork.BrandRepository
             .Get(orderBy: queryable => (IOrderedQueryable<Brand>)queryable
                 .OrderBy(p => p.Id)
-                .Skip(paginationReq.PageIndex)
-                .Take(paginationReq.PageSize));
+                .Skip(paginationReq.Page)
+                .Take(paginationReq.Limit));
 
         var brandsDto = new Collection<GetListBrandsResponse>();
 
@@ -169,11 +164,7 @@ public class CatalogService : ICatalogService
 
         return new PaginationResponse<GetListBrandsResponse>
         {
-            Total = totalBrands,
             Data = brandsDto,
-            PageIndex = paginationReq.PageIndex,
-            PageSize = paginationReq.PageSize,
-            ItemsPerPage = brandsDto.Count()
         };
     }
 
@@ -185,8 +176,8 @@ public class CatalogService : ICatalogService
             .Get(
                 orderBy: queryable => (IOrderedQueryable<Product>)queryable
                     .OrderBy(p => p.Id)
-                    .Skip(paginationRequest.PageIndex)
-                    .Take(paginationRequest.PageSize),
+                    .Skip(paginationRequest.Page)
+                    .Take(paginationRequest.Limit),
                 filter: p => p.Name.Contains(searchText));
 
         var productsDto = products.Select(product =>
@@ -208,11 +199,7 @@ public class CatalogService : ICatalogService
 
         return new PaginationResponse<GetListProductResponse>
         {
-            Total = totalProducts,
             Data = productsDto,
-            PageIndex = paginationRequest.PageIndex,
-            PageSize = paginationRequest.PageSize,
-            ItemsPerPage = productsDto.Count()
         };
     }
 
@@ -359,8 +346,8 @@ public class CatalogService : ICatalogService
                 filter: filter,
                 orderBy: queryable => (IOrderedQueryable<Product>)queryable
                     .OrderBy(p => p.Id)
-                    .Skip(advanceFilterReq.PageIndex)
-                    .Take(advanceFilterReq.PageSize));
+                    .Skip(advanceFilterReq.Page)
+                    .Take(advanceFilterReq.Limit));
 
         var productsDto = products.Select(product =>
             new GetListProductResponse
@@ -381,11 +368,7 @@ public class CatalogService : ICatalogService
 
         return new PaginationResponse<GetListProductResponse>
         {
-            Total = totalProducts,
             Data = productsDto,
-            PageIndex = advanceFilterReq.PageIndex,
-            PageSize = advanceFilterReq.PageSize,
-            ItemsPerPage = productsDto.Count()
         };
     }
 }

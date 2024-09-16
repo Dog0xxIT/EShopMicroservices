@@ -95,7 +95,7 @@ namespace EShop.Api.Controllers
             var serviceResult = await _catalogService.UpdateImageProduct(req);
             if (serviceResult.Succeeded)
             {
-                return Ok(TypedResult.Succeeded);
+                return Ok(ResponseObject.Succeeded);
             }
             return Problem(serviceResult.Errors.First());
         }
@@ -107,7 +107,7 @@ namespace EShop.Api.Controllers
 
             if (serviceResult.Succeeded)
             {
-                return Ok(TypedResult.Succeeded);
+                return Ok(ResponseObject.Succeeded);
             }
             return Problem(serviceResult.Errors.First());
         }
@@ -119,7 +119,7 @@ namespace EShop.Api.Controllers
 
             if (serviceResult.Succeeded)
             {
-                return Ok(TypedResult.Succeeded);
+                return Ok(ResponseObject.Succeeded);
             }
             return Problem(serviceResult.Errors.First());
         }

@@ -32,6 +32,8 @@
 
         public Brand Brand { get; set; }
 
+        public List<ProductVariant> ProductVariant { get; set; }
+
         //[JsonIgnore]
         //public Vector Embedding { get; set; }
     }

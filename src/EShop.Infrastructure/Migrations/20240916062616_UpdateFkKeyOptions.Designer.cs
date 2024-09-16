@@ -4,6 +4,7 @@ using EShop.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EShop.Infrastructure.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    partial class EShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240916062616_UpdateFkKeyOptions")]
+    partial class UpdateFkKeyOptions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,7 +188,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 1,
                             AvatarUrl = "",
                             Code = "APPLE",
-                            Created = 1726468210.7875125,
+                            Created = 1726467976.4974549,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -196,7 +199,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 2,
                             AvatarUrl = "",
                             Code = "SAMSUNG",
-                            Created = 1726468210.7875128,
+                            Created = 1726467976.4974551,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -207,7 +210,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 3,
                             AvatarUrl = "",
                             Code = "MICROSOFT",
-                            Created = 1726468210.787513,
+                            Created = 1726467976.4974554,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -218,7 +221,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 4,
                             AvatarUrl = "",
                             Code = "GOOGLE",
-                            Created = 1726468210.7875133,
+                            Created = 1726467976.4974556,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -229,7 +232,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 5,
                             AvatarUrl = "",
                             Code = "AMAZON",
-                            Created = 1726468210.7875133,
+                            Created = 1726467976.4974556,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -240,7 +243,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 6,
                             AvatarUrl = "",
                             Code = "FACEBOOK",
-                            Created = 1726468210.7875133,
+                            Created = 1726467976.4974558,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -251,7 +254,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 7,
                             AvatarUrl = "",
                             Code = "INTEL",
-                            Created = 1726468210.7875135,
+                            Created = 1726467976.4974561,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -262,7 +265,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 8,
                             AvatarUrl = "",
                             Code = "IBM",
-                            Created = 1726468210.7875135,
+                            Created = 1726467976.4974561,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -273,7 +276,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 9,
                             AvatarUrl = "",
                             Code = "SONY",
-                            Created = 1726468210.7875135,
+                            Created = 1726467976.4974561,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -284,7 +287,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 10,
                             AvatarUrl = "",
                             Code = "DELL",
-                            Created = 1726468210.7875137,
+                            Created = 1726467976.4974563,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -295,7 +298,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 11,
                             AvatarUrl = "",
                             Code = "HP",
-                            Created = 1726468210.787514,
+                            Created = 1726467976.4974563,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -306,7 +309,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 12,
                             AvatarUrl = "",
                             Code = "LG",
-                            Created = 1726468210.787514,
+                            Created = 1726467976.4974563,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -317,7 +320,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 13,
                             AvatarUrl = "",
                             Code = "HUAWEI",
-                            Created = 1726468210.787514,
+                            Created = 1726467976.4974563,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -328,7 +331,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 14,
                             AvatarUrl = "",
                             Code = "CISCO",
-                            Created = 1726468210.7875142,
+                            Created = 1726467976.4974566,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -339,7 +342,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 15,
                             AvatarUrl = "",
                             Code = "ORACLE",
-                            Created = 1726468210.7875144,
+                            Created = 1726467976.4974568,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -350,7 +353,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 16,
                             AvatarUrl = "",
                             Code = "NVIDIA",
-                            Created = 1726468210.7875144,
+                            Created = 1726467976.4974568,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -361,7 +364,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 17,
                             AvatarUrl = "",
                             Code = "AMD",
-                            Created = 1726468210.7875144,
+                            Created = 1726467976.4974568,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -372,7 +375,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 18,
                             AvatarUrl = "",
                             Code = "LENOVO",
-                            Created = 1726468210.7875147,
+                            Created = 1726467976.497457,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -383,7 +386,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 19,
                             AvatarUrl = "",
                             Code = "ASUS",
-                            Created = 1726468210.7875147,
+                            Created = 1726467976.4974573,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -394,7 +397,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 20,
                             AvatarUrl = "",
                             Code = "ACER",
-                            Created = 1726468210.7875147,
+                            Created = 1726467976.4974573,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -405,7 +408,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 21,
                             AvatarUrl = "",
                             Code = "NIKE",
-                            Created = 1726468210.7875147,
+                            Created = 1726467976.4974573,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -416,7 +419,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 22,
                             AvatarUrl = "",
                             Code = "ADIDAS",
-                            Created = 1726468210.7875149,
+                            Created = 1726467976.4974575,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -427,7 +430,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 23,
                             AvatarUrl = "",
                             Code = "PUMA",
-                            Created = 1726468210.7875152,
+                            Created = 1726467976.4974575,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -438,7 +441,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 24,
                             AvatarUrl = "",
                             Code = "UA",
-                            Created = 1726468210.7875152,
+                            Created = 1726467976.4974575,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -449,7 +452,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 25,
                             AvatarUrl = "",
                             Code = "REEBOK",
-                            Created = 1726468210.7875152,
+                            Created = 1726467976.4974575,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -460,7 +463,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 26,
                             AvatarUrl = "",
                             Code = "NB",
-                            Created = 1726468210.7875154,
+                            Created = 1726467976.4974577,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -471,7 +474,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 27,
                             AvatarUrl = "",
                             Code = "ASICS",
-                            Created = 1726468210.7875156,
+                            Created = 1726467976.497458,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -482,7 +485,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 28,
                             AvatarUrl = "",
                             Code = "CONV",
-                            Created = 1726468210.7875156,
+                            Created = 1726467976.497458,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -493,7 +496,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 29,
                             AvatarUrl = "",
                             Code = "VANS",
-                            Created = 1726468210.7875156,
+                            Created = 1726467976.497458,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -504,7 +507,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 30,
                             AvatarUrl = "",
                             Code = "SKETCH",
-                            Created = 1726468210.7875159,
+                            Created = 1726467976.4974582,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -515,7 +518,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 31,
                             AvatarUrl = "",
                             Code = "FILA",
-                            Created = 1726468210.7875161,
+                            Created = 1726467976.4974585,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -526,7 +529,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 32,
                             AvatarUrl = "",
                             Code = "HM",
-                            Created = 1726468210.7875161,
+                            Created = 1726467976.4974585,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -537,7 +540,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 33,
                             AvatarUrl = "",
                             Code = "ZARA",
-                            Created = 1726468210.7875161,
+                            Created = 1726467976.4974585,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -548,7 +551,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 34,
                             AvatarUrl = "",
                             Code = "UNIQLO",
-                            Created = 1726468210.7875161,
+                            Created = 1726467976.4974587,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -559,7 +562,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 35,
                             AvatarUrl = "",
                             Code = "GUCCI",
-                            Created = 1726468210.7875164,
+                            Created = 1726467976.4974587,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -570,7 +573,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 36,
                             AvatarUrl = "",
                             Code = "LV",
-                            Created = 1726468210.7875164,
+                            Created = 1726467976.4974587,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -581,7 +584,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 37,
                             AvatarUrl = "",
                             Code = "PRADA",
-                            Created = 1726468210.7875164,
+                            Created = 1726467976.4974587,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -592,7 +595,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 38,
                             AvatarUrl = "",
                             Code = "CHANEL",
-                            Created = 1726468210.7875166,
+                            Created = 1726467976.4974589,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -603,7 +606,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 39,
                             AvatarUrl = "",
                             Code = "HERMES",
-                            Created = 1726468210.7875168,
+                            Created = 1726467976.4974592,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -614,7 +617,7 @@ namespace EShop.Infrastructure.Migrations
                             Id = 40,
                             AvatarUrl = "",
                             Code = "BURBERRY",
-                            Created = 1726468210.7875168,
+                            Created = 1726467976.4974592,
                             Description = "",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -664,7 +667,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 1,
                             Code = "BEADING & JEWELRY MAKING",
-                            Created = 1726468210.7818663,
+                            Created = 1726467976.4914751,
                             Description = "Description for category Beading & Jewelry Making",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -675,7 +678,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 2,
                             Code = "FABRIC DECORATING",
-                            Created = 1726468210.7818964,
+                            Created = 1726467976.4915044,
                             Description = "Description for category Fabric Decorating",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -686,7 +689,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 3,
                             Code = "KNITTING & CROCHET SUPPLIES",
-                            Created = 1726468210.7819235,
+                            Created = 1726467976.4915304,
                             Description = "Description for category Knitting & Crochet Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -697,7 +700,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 4,
                             Code = "PRINTMAKING SUPPLIES",
-                            Created = 1726468210.7819493,
+                            Created = 1726467976.4915547,
                             Description = "Description for category Printmaking Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -708,7 +711,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 5,
                             Code = "SCRAPBOOKING & STAMPING SUPPLIES",
-                            Created = 1726468210.7819705,
+                            Created = 1726467976.4915769,
                             Description = "Description for category Scrapbooking & Stamping Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -719,7 +722,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 6,
                             Code = "SEWING PRODUCTS",
-                            Created = 1726468210.7819908,
+                            Created = 1726467976.4915974,
                             Description = "Description for category Sewing Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -730,7 +733,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 7,
                             Code = "CRAFT & HOBBY FABRIC",
-                            Created = 1726468210.7820151,
+                            Created = 1726467976.4916213,
                             Description = "Description for category Craft & Hobby Fabric",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -741,7 +744,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 8,
                             Code = "NEEDLEWORK SUPPLIES",
-                            Created = 1726468210.7820363,
+                            Created = 1726467976.4916413,
                             Description = "Description for category Needlework Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -752,7 +755,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 9,
                             Code = "ARTS, CRAFTS & SEWING STORAGE",
-                            Created = 1726468210.7820587,
+                            Created = 1726467976.4916625,
                             Description = "Description for category Arts, Crafts & Sewing Storage",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -763,7 +766,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 10,
                             Code = "PAINTING, DRAWING & ART SUPPLIES",
-                            Created = 1726468210.7820816,
+                            Created = 1726467976.4916885,
                             Description = "Description for category Painting, Drawing & Art Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -774,7 +777,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 11,
                             Code = "CRAFT SUPPLIES & MATERIALS",
-                            Created = 1726468210.7821033,
+                            Created = 1726467976.4917088,
                             Description = "Description for category Craft Supplies & Materials",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -785,7 +788,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 12,
                             Code = "GIFT WRAPPING SUPPLIES",
-                            Created = 1726468210.782125,
+                            Created = 1726467976.49173,
                             Description = "Description for category Gift Wrapping Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -796,7 +799,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 13,
                             Code = "PARTY DECORATIONS",
-                            Created = 1726468210.7821453,
+                            Created = 1726467976.4917526,
                             Description = "Description for category Party Decorations",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -807,7 +810,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 14,
                             Code = "AUTOMOTIVE PAINT & PAINT SUPPLIES",
-                            Created = 1726468210.7821681,
+                            Created = 1726467976.4917746,
                             Description = "Description for category Automotive Paint & Paint Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -818,7 +821,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 15,
                             Code = "HEAVY DUTY & COMMERCIAL VEHICLE EQUIPMENT",
-                            Created = 1726468210.7821896,
+                            Created = 1726467976.4918022,
                             Description = "Description for category Heavy Duty & Commercial Vehicle Equipment",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -829,7 +832,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 16,
                             Code = "AUTOMOTIVE TIRES & WHEELS",
-                            Created = 1726468210.782217,
+                            Created = 1726467976.4918237,
                             Description = "Description for category Automotive Tires & Wheels",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -840,7 +843,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 17,
                             Code = "AUTOMOTIVE TOOLS & EQUIPMENT",
-                            Created = 1726468210.782238,
+                            Created = 1726467976.4918463,
                             Description = "Description for category Automotive Tools & Equipment",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -851,7 +854,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 18,
                             Code = "AUTOMOTIVE PERFORMANCE PARTS & ACCESSORIES",
-                            Created = 1726468210.7822597,
+                            Created = 1726467976.4918697,
                             Description = "Description for category Automotive Performance Parts & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -862,7 +865,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 19,
                             Code = "CAR CARE",
-                            Created = 1726468210.7822828,
+                            Created = 1726467976.4918904,
                             Description = "Description for category Car Care",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -873,7 +876,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 20,
                             Code = "OILS & FLUIDS",
-                            Created = 1726468210.7823031,
+                            Created = 1726467976.4919107,
                             Description = "Description for category Oils & Fluids",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -884,7 +887,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 21,
                             Code = "AUTOMOTIVE REPLACEMENT PARTS",
-                            Created = 1726468210.7823248,
+                            Created = 1726467976.4919317,
                             Description = "Description for category Automotive Replacement Parts",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -895,7 +898,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 22,
                             Code = "LIGHTS, BULBS & INDICATORS",
-                            Created = 1726468210.7823448,
+                            Created = 1726467976.4919543,
                             Description = "Description for category Lights, Bulbs & Indicators",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -906,7 +909,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 23,
                             Code = "AUTOMOTIVE INTERIOR ACCESSORIES",
-                            Created = 1726468210.7823689,
+                            Created = 1726467976.4919772,
                             Description = "Description for category Automotive Interior Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -917,7 +920,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 24,
                             Code = "AUTOMOTIVE EXTERIOR ACCESSORIES",
-                            Created = 1726468210.7823892,
+                            Created = 1726467976.4919972,
                             Description = "Description for category Automotive Exterior Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -928,7 +931,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 25,
                             Code = "AUTOMOTIVE ENTHUSIAST MERCHANDISE",
-                            Created = 1726468210.7824163,
+                            Created = 1726467976.4920204,
                             Description = "Description for category Automotive Enthusiast Merchandise",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -939,7 +942,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 26,
                             Code = "CAR ELECTRONICS & ACCESSORIES",
-                            Created = 1726468210.7824471,
+                            Created = 1726467976.4920404,
                             Description = "Description for category Car Electronics & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -950,7 +953,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 27,
                             Code = "RV PARTS & ACCESSORIES",
-                            Created = 1726468210.7824669,
+                            Created = 1726467976.4920695,
                             Description = "Description for category RV Parts & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -961,7 +964,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 28,
                             Code = "MOTORCYCLE & POWERSPORTS",
-                            Created = 1726468210.7824907,
+                            Created = 1726467976.492095,
                             Description = "Description for category Motorcycle & Powersports",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -972,7 +975,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 29,
                             Code = "BABY DIAPERING PRODUCTS",
-                            Created = 1726468210.7825112,
+                            Created = 1726467976.4921167,
                             Description = "Description for category Baby Diapering Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -983,7 +986,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 30,
                             Code = "BABY & TODDLER FEEDING SUPPLIES",
-                            Created = 1726468210.7825336,
+                            Created = 1726467976.4921396,
                             Description = "Description for category Baby & Toddler Feeding Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -994,7 +997,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 31,
                             Code = "PREGNANCY & MATERNITY PRODUCTS",
-                            Created = 1726468210.7825568,
+                            Created = 1726467976.4921637,
                             Description = "Description for category Pregnancy & Maternity Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1005,7 +1008,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 32,
                             Code = "CHILD SAFETY CAR SEATS & ACCESSORIES",
-                            Created = 1726468210.7825778,
+                            Created = 1726467976.4921856,
                             Description = "Description for category Child Safety Car Seats & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1016,7 +1019,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 33,
                             Code = "BABY SAFETY PRODUCTS",
-                            Created = 1726468210.7826011,
+                            Created = 1726467976.4922085,
                             Description = "Description for category Baby Safety Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1027,7 +1030,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 34,
                             Code = "TOILET TRAINING PRODUCTS",
-                            Created = 1726468210.782625,
+                            Created = 1726467976.4922321,
                             Description = "Description for category Toilet Training Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1038,7 +1041,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 35,
                             Code = "BABY CARE PRODUCTS",
-                            Created = 1726468210.7826471,
+                            Created = 1726467976.4922559,
                             Description = "Description for category Baby Care Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1049,7 +1052,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 36,
                             Code = "BABY TRAVEL GEAR",
-                            Created = 1726468210.7826693,
+                            Created = 1726467976.4922884,
                             Description = "Description for category Baby Travel Gear",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1060,7 +1063,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 37,
                             Code = "BABY ACTIVITY & ENTERTAINMENT PRODUCTS",
-                            Created = 1726468210.78269,
+                            Created = 1726467976.4923215,
                             Description = "Description for category Baby Activity & Entertainment Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1071,7 +1074,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 38,
                             Code = "BABY GIFTS",
-                            Created = 1726468210.7827103,
+                            Created = 1726467976.4923503,
                             Description = "Description for category Baby Gifts",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1082,7 +1085,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 39,
                             Code = "BABY STATIONERY",
-                            Created = 1726468210.7827339,
+                            Created = 1726467976.4923739,
                             Description = "Description for category Baby Stationery",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1093,7 +1096,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 40,
                             Code = "NURSERY FURNITURE, BEDDING & DÉCOR",
-                            Created = 1726468210.7827537,
+                            Created = 1726467976.4924088,
                             Description = "Description for category Nursery Furniture, Bedding & Décor",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1104,7 +1107,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 41,
                             Code = "BABY",
-                            Created = 1726468210.7827773,
+                            Created = 1726467976.4924316,
                             Description = "Description for category Baby",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1115,7 +1118,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 42,
                             Code = "BABY BOYS' CLOTHING & SHOES",
-                            Created = 1726468210.7827997,
+                            Created = 1726467976.4924519,
                             Description = "Description for category Baby Boys' Clothing & Shoes",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1126,7 +1129,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 43,
                             Code = "BABY STROLLERS & ACCESSORIES",
-                            Created = 1726468210.7828214,
+                            Created = 1726467976.4924729,
                             Description = "Description for category Baby Strollers & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1137,7 +1140,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 44,
                             Code = "BEAUTY & PERSONAL CARE",
-                            Created = 1726468210.7828417,
+                            Created = 1726467976.4924958,
                             Description = "Description for category Beauty & Personal Care",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1148,7 +1151,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 45,
                             Code = "PERFUMES & FRAGRANCES",
-                            Created = 1726468210.7828641,
+                            Created = 1726467976.4925203,
                             Description = "Description for category Perfumes & Fragrances",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1159,7 +1162,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 46,
                             Code = "HAIR CARE PRODUCTS",
-                            Created = 1726468210.7828853,
+                            Created = 1726467976.492542,
                             Description = "Description for category Hair Care Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1170,7 +1173,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 47,
                             Code = "MAKEUP",
-                            Created = 1726468210.7829049,
+                            Created = 1726467976.4925616,
                             Description = "Description for category Makeup",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1181,7 +1184,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 48,
                             Code = "SKIN CARE PRODUCTS",
-                            Created = 1726468210.7829299,
+                            Created = 1726467976.4925852,
                             Description = "Description for category Skin Care Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1192,7 +1195,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 49,
                             Code = "BEAUTY TOOLS & ACCESSORIES",
-                            Created = 1726468210.7829535,
+                            Created = 1726467976.4926059,
                             Description = "Description for category Beauty Tools & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1203,7 +1206,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 50,
                             Code = "FOOT, HAND & NAIL CARE PRODUCTS",
-                            Created = 1726468210.7829745,
+                            Created = 1726467976.4926264,
                             Description = "Description for category Foot, Hand & Nail Care Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1214,7 +1217,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 51,
                             Code = "PERSONAL CARE PRODUCTS",
-                            Created = 1726468210.7829957,
+                            Created = 1726467976.4926505,
                             Description = "Description for category Personal Care Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1225,7 +1228,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 52,
                             Code = "SHAVING & HAIR REMOVAL PRODUCTS",
-                            Created = 1726468210.7830172,
+                            Created = 1726467976.4926724,
                             Description = "Description for category Shaving & Hair Removal Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1236,7 +1239,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 53,
                             Code = "COMPUTER SERVERS",
-                            Created = 1726468210.7830389,
+                            Created = 1726467976.4926932,
                             Description = "Description for category Computer Servers",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1247,7 +1250,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 54,
                             Code = "DATA STORAGE",
-                            Created = 1726468210.7830589,
+                            Created = 1726467976.4927168,
                             Description = "Description for category Data Storage",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1258,7 +1261,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 55,
                             Code = "COMPUTER MONITORS",
-                            Created = 1726468210.7830789,
+                            Created = 1726467976.4927373,
                             Description = "Description for category Computer Monitors",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1269,7 +1272,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 56,
                             Code = "COMPUTERS & TABLETS",
-                            Created = 1726468210.7831018,
+                            Created = 1726467976.492758,
                             Description = "Description for category Computers & Tablets",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1280,7 +1283,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 57,
                             Code = "TABLET REPLACEMENT PARTS",
-                            Created = 1726468210.7831211,
+                            Created = 1726467976.4927788,
                             Description = "Description for category Tablet Replacement Parts",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1291,7 +1294,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 58,
                             Code = "COMPUTER NETWORKING",
-                            Created = 1726468210.7831428,
+                            Created = 1726467976.4928033,
                             Description = "Description for category Computer Networking",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1302,7 +1305,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 59,
                             Code = "COMPUTER COMPONENTS",
-                            Created = 1726468210.7831628,
+                            Created = 1726467976.4928277,
                             Description = "Description for category Computer Components",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1313,7 +1316,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 60,
                             Code = "TABLET ACCESSORIES",
-                            Created = 1726468210.783186,
+                            Created = 1726467976.4928496,
                             Description = "Description for category Tablet Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1324,7 +1327,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 61,
                             Code = "LAPTOP ACCESSORIES",
-                            Created = 1726468210.7832065,
+                            Created = 1726467976.4928722,
                             Description = "Description for category Laptop Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1335,7 +1338,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 62,
                             Code = "COMPUTER EXTERNAL COMPONENTS",
-                            Created = 1726468210.7832255,
+                            Created = 1726467976.4928937,
                             Description = "Description for category Computer External Components",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1346,7 +1349,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 63,
                             Code = "WEARABLE TECHNOLOGY",
-                            Created = 1726468210.7832499,
+                            Created = 1726467976.4929135,
                             Description = "Description for category Wearable Technology",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1357,7 +1360,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 64,
                             Code = "TELEVISIONS & VIDEO PRODUCTS",
-                            Created = 1726468210.7832737,
+                            Created = 1726467976.4929402,
                             Description = "Description for category Televisions & Video Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1368,7 +1371,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 65,
                             Code = "GPS & NAVIGATION",
-                            Created = 1726468210.7832949,
+                            Created = 1726467976.4929683,
                             Description = "Description for category GPS & Navigation",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1379,7 +1382,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 66,
                             Code = "HEADPHONES & EARBUDS",
-                            Created = 1726468210.7833152,
+                            Created = 1726467976.4929934,
                             Description = "Description for category Headphones & Earbuds",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1390,7 +1393,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 67,
                             Code = "OFFICE ELECTRONICS",
-                            Created = 1726468210.7833381,
+                            Created = 1726467976.4930148,
                             Description = "Description for category Office Electronics",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1401,7 +1404,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 68,
                             Code = "PORTABLE AUDIO & VIDEO",
-                            Created = 1726468210.78336,
+                            Created = 1726467976.4930367,
                             Description = "Description for category Portable Audio & Video",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1412,7 +1415,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 69,
                             Code = "EBOOK READERS & ACCESSORIES",
-                            Created = 1726468210.7833805,
+                            Created = 1726467976.493057,
                             Description = "Description for category eBook Readers & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1423,7 +1426,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 70,
                             Code = "CELL PHONES & ACCESSORIES",
-                            Created = 1726468210.7834029,
+                            Created = 1726467976.493084,
                             Description = "Description for category Cell Phones & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1434,7 +1437,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 71,
                             Code = "ACCESSORIES & SUPPLIES",
-                            Created = 1726468210.7834241,
+                            Created = 1726467976.4931149,
                             Description = "Description for category Accessories & Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1445,7 +1448,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 72,
                             Code = "VIDEO PROJECTORS",
-                            Created = 1726468210.7834439,
+                            Created = 1726467976.4931371,
                             Description = "Description for category Video Projectors",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1456,7 +1459,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 73,
                             Code = "VEHICLE ELECTRONICS",
-                            Created = 1726468210.7834661,
+                            Created = 1726467976.4931681,
                             Description = "Description for category Vehicle Electronics",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1467,7 +1470,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 74,
                             Code = "CAMERA & PHOTO",
-                            Created = 1726468210.7834885,
+                            Created = 1726467976.4931953,
                             Description = "Description for category Camera & Photo",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1478,7 +1481,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 75,
                             Code = "SECURITY & SURVEILLANCE EQUIPMENT",
-                            Created = 1726468210.7835088,
+                            Created = 1726467976.4932151,
                             Description = "Description for category Security & Surveillance Equipment",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1489,7 +1492,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 76,
                             Code = "COMPUTERS",
-                            Created = 1726468210.7835295,
+                            Created = 1726467976.4932432,
                             Description = "Description for category Computers",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1500,7 +1503,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 77,
                             Code = "HOME AUDIO & THEATER PRODUCTS",
-                            Created = 1726468210.78355,
+                            Created = 1726467976.4932709,
                             Description = "Description for category Home Audio & Theater Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1511,7 +1514,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 78,
                             Code = "VIDEO GAME CONSOLES & ACCESSORIES",
-                            Created = 1726468210.7835739,
+                            Created = 1726467976.4932981,
                             Description = "Description for category Video Game Consoles & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1522,7 +1525,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 79,
                             Code = "BOYS' CLOTHING",
-                            Created = 1726468210.7835948,
+                            Created = 1726467976.4933188,
                             Description = "Description for category Boys' Clothing",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1533,7 +1536,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 80,
                             Code = "BOYS' ACCESSORIES",
-                            Created = 1726468210.7836154,
+                            Created = 1726467976.4933479,
                             Description = "Description for category Boys' Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1544,7 +1547,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 81,
                             Code = "BOYS' JEWELRY",
-                            Created = 1726468210.783639,
+                            Created = 1726467976.4933715,
                             Description = "Description for category Boys' Jewelry",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1555,7 +1558,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 82,
                             Code = "BOYS' WATCHES",
-                            Created = 1726468210.7836585,
+                            Created = 1726467976.4933913,
                             Description = "Description for category Boys' Watches",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1566,7 +1569,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 83,
                             Code = "BOYS' SHOES",
-                            Created = 1726468210.7836812,
+                            Created = 1726467976.4934132,
                             Description = "Description for category Boys' Shoes",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1577,7 +1580,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 84,
                             Code = "GIRLS' CLOTHING",
-                            Created = 1726468210.7837019,
+                            Created = 1726467976.4934332,
                             Description = "Description for category Girls' Clothing",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1588,7 +1591,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 85,
                             Code = "GIRLS' ACCESSORIES",
-                            Created = 1726468210.7837243,
+                            Created = 1726467976.4934564,
                             Description = "Description for category Girls' Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1599,7 +1602,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 86,
                             Code = "GIRLS' JEWELRY",
-                            Created = 1726468210.7838142,
+                            Created = 1726467976.4934764,
                             Description = "Description for category Girls' Jewelry",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1610,7 +1613,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 87,
                             Code = "GIRLS' WATCHES",
-                            Created = 1726468210.7838383,
+                            Created = 1726467976.4934959,
                             Description = "Description for category Girls' Watches",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1621,7 +1624,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 88,
                             Code = "GIRLS' SHOES",
-                            Created = 1726468210.7838609,
+                            Created = 1726467976.4935172,
                             Description = "Description for category Girls' Shoes",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1632,7 +1635,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 89,
                             Code = "GIRLS' SCHOOL UNIFORMS",
-                            Created = 1726468210.7838836,
+                            Created = 1726467976.49354,
                             Description = "Description for category Girls' School Uniforms",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1643,7 +1646,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 90,
                             Code = "TRAVEL DUFFEL BAGS",
-                            Created = 1726468210.7839046,
+                            Created = 1726467976.4935603,
                             Description = "Description for category Travel Duffel Bags",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1654,7 +1657,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 91,
                             Code = "MESSENGER BAGS",
-                            Created = 1726468210.7839296,
+                            Created = 1726467976.4935827,
                             Description = "Description for category Messenger Bags",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1665,7 +1668,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 92,
                             Code = "TRAVEL TOTE BAGS",
-                            Created = 1726468210.7839525,
+                            Created = 1726467976.4936073,
                             Description = "Description for category Travel Tote Bags",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1676,7 +1679,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 93,
                             Code = "GARMENT BAGS",
-                            Created = 1726468210.7839749,
+                            Created = 1726467976.4936273,
                             Description = "Description for category Garment Bags",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1687,7 +1690,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 94,
                             Code = "LUGGAGE SETS",
-                            Created = 1726468210.7839952,
+                            Created = 1726467976.4936481,
                             Description = "Description for category Luggage Sets",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1698,7 +1701,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 95,
                             Code = "SUITCASES",
-                            Created = 1726468210.7840157,
+                            Created = 1726467976.4936724,
                             Description = "Description for category Suitcases",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1709,7 +1712,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 96,
                             Code = "TRAVEL ACCESSORIES",
-                            Created = 1726468210.7840388,
+                            Created = 1726467976.4936979,
                             Description = "Description for category Travel Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1720,7 +1723,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 97,
                             Code = "RAIN UMBRELLAS",
-                            Created = 1726468210.7840583,
+                            Created = 1726467976.4937224,
                             Description = "Description for category Rain Umbrellas",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1731,7 +1734,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 98,
                             Code = "BACKPACKS",
-                            Created = 1726468210.7840805,
+                            Created = 1726467976.493742,
                             Description = "Description for category Backpacks",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1742,7 +1745,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 99,
                             Code = "LUGGAGE",
-                            Created = 1726468210.7841003,
+                            Created = 1726467976.4937658,
                             Description = "Description for category Luggage",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1753,7 +1756,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 100,
                             Code = "LAPTOP BAGS",
-                            Created = 1726468210.7841203,
+                            Created = 1726467976.4937887,
                             Description = "Description for category Laptop Bags",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1764,7 +1767,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 101,
                             Code = "MEN'S CLOTHING",
-                            Created = 1726468210.7841434,
+                            Created = 1726467976.4938092,
                             Description = "Description for category Men's Clothing",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1775,7 +1778,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 102,
                             Code = "MEN'S ACCESSORIES",
-                            Created = 1726468210.7841649,
+                            Created = 1726467976.49383,
                             Description = "Description for category Men's Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1786,7 +1789,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 103,
                             Code = "MEN'S WATCHES",
-                            Created = 1726468210.7841899,
+                            Created = 1726467976.49385,
                             Description = "Description for category Men's Watches",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1797,7 +1800,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 104,
                             Code = "MEN'S SHOES",
-                            Created = 1726468210.7842107,
+                            Created = 1726467976.4938743,
                             Description = "Description for category Men's Shoes",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1808,7 +1811,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 105,
                             Code = "WOMEN'S CLOTHING",
-                            Created = 1726468210.7842319,
+                            Created = 1726467976.4938941,
                             Description = "Description for category Women's Clothing",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1819,7 +1822,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 106,
                             Code = "WOMEN'S HANDBAGS",
-                            Created = 1726468210.7842517,
+                            Created = 1726467976.4939179,
                             Description = "Description for category Women's Handbags",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1830,7 +1833,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 107,
                             Code = "WOMEN'S ACCESSORIES",
-                            Created = 1726468210.7842741,
+                            Created = 1726467976.4939396,
                             Description = "Description for category Women's Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1841,7 +1844,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 108,
                             Code = "WOMEN'S WATCHES",
-                            Created = 1726468210.7842951,
+                            Created = 1726467976.4939682,
                             Description = "Description for category Women's Watches",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1852,7 +1855,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 109,
                             Code = "WOMEN'S SHOES",
-                            Created = 1726468210.7843151,
+                            Created = 1726467976.4939952,
                             Description = "Description for category Women's Shoes",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1863,7 +1866,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 110,
                             Code = "WOMEN'S JEWELRY",
-                            Created = 1726468210.7843363,
+                            Created = 1726467976.4940183,
                             Description = "Description for category Women's Jewelry",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1874,7 +1877,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 111,
                             Code = "KIDS' FURNITURE",
-                            Created = 1726468210.784359,
+                            Created = 1726467976.4940453,
                             Description = "Description for category Kids' Furniture",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1885,7 +1888,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 112,
                             Code = "GIFT CARDS",
-                            Created = 1726468210.7843804,
+                            Created = 1726467976.4940655,
                             Description = "Description for category Gift Cards",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1896,7 +1899,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 113,
                             Code = "ORAL CARE PRODUCTS",
-                            Created = 1726468210.7844012,
+                            Created = 1726467976.4940872,
                             Description = "Description for category Oral Care Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1907,7 +1910,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 114,
                             Code = "VISION PRODUCTS",
-                            Created = 1726468210.7844217,
+                            Created = 1726467976.4941075,
                             Description = "Description for category Vision Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1918,7 +1921,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 115,
                             Code = "WELLNESS & RELAXATION PRODUCTS",
-                            Created = 1726468210.7844453,
+                            Created = 1726467976.4941316,
                             Description = "Description for category Wellness & Relaxation Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1929,7 +1932,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 116,
                             Code = "BABY & CHILD CARE PRODUCTS",
-                            Created = 1726468210.7844656,
+                            Created = 1726467976.4941528,
                             Description = "Description for category Baby & Child Care Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1940,7 +1943,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 117,
                             Code = "HOUSEHOLD SUPPLIES",
-                            Created = 1726468210.784487,
+                            Created = 1726467976.4941728,
                             Description = "Description for category Household Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1951,7 +1954,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 118,
                             Code = "HEALTH CARE PRODUCTS",
-                            Created = 1726468210.7845097,
+                            Created = 1726467976.4941957,
                             Description = "Description for category Health Care Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1962,7 +1965,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 119,
                             Code = "DIET & SPORTS NUTRITION",
-                            Created = 1726468210.7845311,
+                            Created = 1726467976.4942183,
                             Description = "Description for category Diet & Sports Nutrition",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1973,7 +1976,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 120,
                             Code = "HOME USE MEDICAL SUPPLIES & EQUIPMENT",
-                            Created = 1726468210.7845523,
+                            Created = 1726467976.4942391,
                             Description = "Description for category Home Use Medical Supplies & Equipment",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1984,7 +1987,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 121,
                             Code = "SEXUAL WELLNESS PRODUCTS",
-                            Created = 1726468210.7845736,
+                            Created = 1726467976.4942625,
                             Description = "Description for category Sexual Wellness Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -1995,7 +1998,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 122,
                             Code = "HEALTH & HOUSEHOLD",
-                            Created = 1726468210.7845967,
+                            Created = 1726467976.4942815,
                             Description = "Description for category Health & Household",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2006,7 +2009,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 123,
                             Code = "SPORTS NUTRITION PRODUCTS",
-                            Created = 1726468210.7846181,
+                            Created = 1726467976.4943037,
                             Description = "Description for category Sports Nutrition Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2017,7 +2020,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 124,
                             Code = "STATIONERY & GIFT WRAPPING SUPPLIES",
-                            Created = 1726468210.7846386,
+                            Created = 1726467976.4943273,
                             Description = "Description for category Stationery & Gift Wrapping Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2028,7 +2031,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 125,
                             Code = "COMMERCIAL DOOR PRODUCTS",
-                            Created = 1726468210.7846618,
+                            Created = 1726467976.4943485,
                             Description = "Description for category Commercial Door Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2039,7 +2042,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 126,
                             Code = "POWER TRANSMISSION PRODUCTS",
-                            Created = 1726468210.7846823,
+                            Created = 1726467976.4943721,
                             Description = "Description for category Power Transmission Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2050,7 +2053,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 127,
                             Code = "INDUSTRIAL MATERIALS",
-                            Created = 1726468210.7847023,
+                            Created = 1726467976.4944708,
                             Description = "Description for category Industrial Materials",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2061,7 +2064,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 128,
                             Code = "INDUSTRIAL HARDWARE",
-                            Created = 1726468210.7847257,
+                            Created = 1726467976.4945383,
                             Description = "Description for category Industrial Hardware",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2072,7 +2075,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 129,
                             Code = "ABRASIVE & FINISHING PRODUCTS",
-                            Created = 1726468210.7847455,
+                            Created = 1726467976.4945848,
                             Description = "Description for category Abrasive & Finishing Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2083,7 +2086,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 130,
                             Code = "INDUSTRIAL ADHESIVES, SEALANTS & LUBRICANTS",
-                            Created = 1726468210.7847707,
+                            Created = 1726467976.4946148,
                             Description = "Description for category Industrial Adhesives, Sealants & Lubricants",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2094,7 +2097,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 131,
                             Code = "MATERIAL HANDLING PRODUCTS",
-                            Created = 1726468210.7847912,
+                            Created = 1726467976.4946363,
                             Description = "Description for category Material Handling Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2105,7 +2108,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 132,
                             Code = "TEST, MEASURE & INSPECT",
-                            Created = 1726468210.7848127,
+                            Created = 1726467976.494658,
                             Description = "Description for category Test, Measure & Inspect",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2116,7 +2119,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 133,
                             Code = "INDUSTRIAL POWER & HAND TOOLS",
-                            Created = 1726468210.7848349,
+                            Created = 1726467976.4946845,
                             Description = "Description for category Industrial Power & Hand Tools",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2127,7 +2130,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 134,
                             Code = "HYDRAULICS, PNEUMATICS & PLUMBING",
-                            Created = 1726468210.7848561,
+                            Created = 1726467976.4947052,
                             Description = "Description for category Hydraulics, Pneumatics & Plumbing",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2138,7 +2141,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 135,
                             Code = "FILTRATION",
-                            Created = 1726468210.7848773,
+                            Created = 1726467976.4947269,
                             Description = "Description for category Filtration",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2149,7 +2152,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 136,
                             Code = "ELECTRONIC COMPONENTS",
-                            Created = 1726468210.7849019,
+                            Created = 1726467976.4947555,
                             Description = "Description for category Electronic Components",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2160,7 +2163,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 137,
                             Code = "LAB & SCIENTIFIC PRODUCTS",
-                            Created = 1726468210.7849276,
+                            Created = 1726467976.4947789,
                             Description = "Description for category Lab & Scientific Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2171,7 +2174,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 138,
                             Code = "JANITORIAL & SANITATION SUPPLIES",
-                            Created = 1726468210.7849483,
+                            Created = 1726467976.4947982,
                             Description = "Description for category Janitorial & Sanitation Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2182,7 +2185,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 139,
                             Code = "OCCUPATIONAL HEALTH & SAFETY PRODUCTS",
-                            Created = 1726468210.7849717,
+                            Created = 1726467976.4948227,
                             Description = "Description for category Occupational Health & Safety Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2193,7 +2196,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 140,
                             Code = "CUTTING TOOLS",
-                            Created = 1726468210.7849927,
+                            Created = 1726467976.4948428,
                             Description = "Description for category Cutting Tools",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2204,7 +2207,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 141,
                             Code = "FASTENERS",
-                            Created = 1726468210.7850127,
+                            Created = 1726467976.494864,
                             Description = "Description for category Fasteners",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2215,7 +2218,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 142,
                             Code = "SCIENCE EDUCATION SUPPLIES",
-                            Created = 1726468210.7850323,
+                            Created = 1726467976.4948852,
                             Description = "Description for category Science Education Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2226,7 +2229,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 143,
                             Code = "FOOD SERVICE EQUIPMENT & SUPPLIES",
-                            Created = 1726468210.7850564,
+                            Created = 1726467976.4949093,
                             Description = "Description for category Food Service Equipment & Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2237,7 +2240,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 144,
                             Code = "ADDITIVE MANUFACTURING PRODUCTS",
-                            Created = 1726468210.7850771,
+                            Created = 1726467976.4949305,
                             Description = "Description for category Additive Manufacturing Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2248,7 +2251,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 145,
                             Code = "PROFESSIONAL MEDICAL SUPPLIES",
-                            Created = 1726468210.7851007,
+                            Created = 1726467976.4949517,
                             Description = "Description for category Professional Medical Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2259,7 +2262,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 146,
                             Code = "PROFESSIONAL DENTAL SUPPLIES",
-                            Created = 1726468210.7851207,
+                            Created = 1726467976.4949751,
                             Description = "Description for category Professional Dental Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2270,7 +2273,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 147,
                             Code = "PACKAGING & SHIPPING SUPPLIES",
-                            Created = 1726468210.7851465,
+                            Created = 1726467976.4949956,
                             Description = "Description for category Packaging & Shipping Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2281,7 +2284,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 148,
                             Code = "RETAIL STORE FIXTURES & EQUIPMENT",
-                            Created = 1726468210.7851701,
+                            Created = 1726467976.4950197,
                             Description = "Description for category Retail Store Fixtures & Equipment",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2292,7 +2295,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 149,
                             Code = "INDUSTRIAL & SCIENTIFIC",
-                            Created = 1726468210.7851896,
+                            Created = 1726467976.4950402,
                             Description = "Description for category Industrial & Scientific",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2303,7 +2306,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 150,
                             Code = "BATH PRODUCTS",
-                            Created = 1726468210.7852099,
+                            Created = 1726467976.4950593,
                             Description = "Description for category Bath Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2314,7 +2317,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 151,
                             Code = "BEDDING",
-                            Created = 1726468210.7852335,
+                            Created = 1726467976.4950807,
                             Description = "Description for category Bedding",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2325,7 +2328,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 152,
                             Code = "HOME DÉCOR PRODUCTS",
-                            Created = 1726468210.7852774,
+                            Created = 1726467976.4951475,
                             Description = "Description for category Home Décor Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2336,7 +2339,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 153,
                             Code = "FURNITURE",
-                            Created = 1726468210.7853067,
+                            Created = 1726467976.495172,
                             Description = "Description for category Furniture",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2347,7 +2350,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 154,
                             Code = "HOUSEHOLD CLEANING SUPPLIES",
-                            Created = 1726468210.7853355,
+                            Created = 1726467976.4951923,
                             Description = "Description for category Household Cleaning Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2358,7 +2361,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 155,
                             Code = "SEASONAL DÉCOR",
-                            Created = 1726468210.7853556,
+                            Created = 1726467976.4952159,
                             Description = "Description for category Seasonal Décor",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2369,7 +2372,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 156,
                             Code = "HOME LIGHTING & CEILING FANS",
-                            Created = 1726468210.785378,
+                            Created = 1726467976.4952378,
                             Description = "Description for category Home Lighting & Ceiling Fans",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2380,7 +2383,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 157,
                             Code = "KITCHEN & DINING",
-                            Created = 1726468210.785398,
+                            Created = 1726467976.4952641,
                             Description = "Description for category Kitchen & Dining",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2391,7 +2394,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 158,
                             Code = "HEATING, COOLING & AIR QUALITY",
-                            Created = 1726468210.7854342,
+                            Created = 1726467976.4953015,
                             Description = "Description for category Heating, Cooling & Air Quality",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2402,7 +2405,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 159,
                             Code = "KIDS' HOME STORE",
-                            Created = 1726468210.7854564,
+                            Created = 1726467976.4953227,
                             Description = "Description for category Kids' Home Store",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2413,7 +2416,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 160,
                             Code = "HOME STORAGE & ORGANIZATION",
-                            Created = 1726468210.7854776,
+                            Created = 1726467976.4953451,
                             Description = "Description for category Home Storage & Organization",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2424,7 +2427,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 161,
                             Code = "WALL ART",
-                            Created = 1726468210.7854989,
+                            Created = 1726467976.4953859,
                             Description = "Description for category Wall Art",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2435,7 +2438,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 162,
                             Code = "VACUUM CLEANERS & FLOOR CARE",
-                            Created = 1726468210.785522,
+                            Created = 1726467976.4954104,
                             Description = "Description for category Vacuum Cleaners & Floor Care",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2446,7 +2449,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 163,
                             Code = "IRONING PRODUCTS",
-                            Created = 1726468210.785542,
+                            Created = 1726467976.4954338,
                             Description = "Description for category Ironing Products",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2457,7 +2460,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 164,
                             Code = "PARTY SUPPLIES",
-                            Created = 1726468210.7855623,
+                            Created = 1726467976.4954538,
                             Description = "Description for category Party Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2468,7 +2471,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 165,
                             Code = "PET BIRD SUPPLIES",
-                            Created = 1726468210.7855847,
+                            Created = 1726467976.4954765,
                             Description = "Description for category Pet Bird Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2479,7 +2482,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 166,
                             Code = "CAT SUPPLIES",
-                            Created = 1726468210.7856059,
+                            Created = 1726467976.495496,
                             Description = "Description for category Cat Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2490,7 +2493,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 167,
                             Code = "DOG SUPPLIES",
-                            Created = 1726468210.7856259,
+                            Created = 1726467976.4955149,
                             Description = "Description for category Dog Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2501,7 +2504,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 168,
                             Code = "FISH & AQUATIC PETS",
-                            Created = 1726468210.7856472,
+                            Created = 1726467976.4955361,
                             Description = "Description for category Fish & Aquatic Pets",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2512,7 +2515,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 169,
                             Code = "HORSE SUPPLIES",
-                            Created = 1726468210.7856696,
+                            Created = 1726467976.495558,
                             Description = "Description for category Horse Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2523,7 +2526,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 170,
                             Code = "REPTILES & AMPHIBIAN SUPPLIES",
-                            Created = 1726468210.7856908,
+                            Created = 1726467976.4955795,
                             Description = "Description for category Reptiles & Amphibian Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2534,7 +2537,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 171,
                             Code = "SMALL ANIMAL SUPPLIES",
-                            Created = 1726468210.785712,
+                            Created = 1726467976.4956017,
                             Description = "Description for category Small Animal Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2545,7 +2548,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 172,
                             Code = "SMART HOME: NEW SMART DEVICES",
-                            Created = 1726468210.7857339,
+                            Created = 1726467976.4956248,
                             Description = "Description for category Smart Home: New Smart Devices",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2556,7 +2559,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 173,
                             Code = "SMART HOME: VOICE ASSISTANTS AND HUBS",
-                            Created = 1726468210.7857561,
+                            Created = 1726467976.4956453,
                             Description = "Description for category Smart Home: Voice Assistants and Hubs",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2567,7 +2570,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 174,
                             Code = "SMART HOME: SMART LOCKS AND ENTRY",
-                            Created = 1726468210.7857783,
+                            Created = 1726467976.4956789,
                             Description = "Description for category Smart Home: Smart Locks and Entry",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2578,7 +2581,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 175,
                             Code = "SMART HOME: HOME ENTERTAINMENT",
-                            Created = 1726468210.7858071,
+                            Created = 1726467976.4957156,
                             Description = "Description for category Smart Home: Home Entertainment",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2589,7 +2592,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 176,
                             Code = "SMART HOME: WIFI AND NETWORKING",
-                            Created = 1726468210.7858276,
+                            Created = 1726467976.4957376,
                             Description = "Description for category Smart Home: WiFi and Networking",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2600,7 +2603,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 177,
                             Code = "SMART HOME: SECURITY CAMERAS AND SYSTEMS",
-                            Created = 1726468210.7858503,
+                            Created = 1726467976.4957643,
                             Description = "Description for category Smart Home: Security Cameras and Systems",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2611,7 +2614,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 178,
                             Code = "SMART HOME: LIGHTING",
-                            Created = 1726468210.785871,
+                            Created = 1726467976.4957852,
                             Description = "Description for category Smart Home: Lighting",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2622,7 +2625,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 179,
                             Code = "SMART HOME: PLUGS AND OUTLETS",
-                            Created = 1726468210.7858934,
+                            Created = 1726467976.4958065,
                             Description = "Description for category Smart Home: Plugs and Outlets",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2633,7 +2636,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 180,
                             Code = "SMART HOME: VACUUMS AND MOPS",
-                            Created = 1726468210.785918,
+                            Created = 1726467976.4958291,
                             Description = "Description for category Smart Home: Vacuums and Mops",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2644,7 +2647,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 181,
                             Code = "SMART HOME THERMOSTATS - COMPATIBILITY CHECKER",
-                            Created = 1726468210.7859395,
+                            Created = 1726467976.4958522,
                             Description = "Description for category Smart Home Thermostats - Compatibility Checker",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2655,7 +2658,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 182,
                             Code = "SMART HOME: LAWN AND GARDEN",
-                            Created = 1726468210.7859628,
+                            Created = 1726467976.495873,
                             Description = "Description for category Smart Home: Lawn and Garden",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2666,7 +2669,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 183,
                             Code = "SMART HOME: OTHER SOLUTIONS",
-                            Created = 1726468210.7859831,
+                            Created = 1726467976.4958966,
                             Description = "Description for category Smart Home: Other Solutions",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2677,7 +2680,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 184,
                             Code = "SMART HOME - HEATING & COOLING",
-                            Created = 1726468210.7860067,
+                            Created = 1726467976.4959168,
                             Description = "Description for category Smart Home - Heating & Cooling",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2688,7 +2691,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 185,
                             Code = "SPORTS & FITNESS",
-                            Created = 1726468210.7860267,
+                            Created = 1726467976.4959359,
                             Description = "Description for category Sports & Fitness",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2699,7 +2702,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 186,
                             Code = "OUTDOOR RECREATION",
-                            Created = 1726468210.7860465,
+                            Created = 1726467976.49596,
                             Description = "Description for category Outdoor Recreation",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2710,7 +2713,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 187,
                             Code = "SPORTS & OUTDOORS",
-                            Created = 1726468210.7860689,
+                            Created = 1726467976.4959812,
                             Description = "Description for category Sports & Outdoors",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2721,7 +2724,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 188,
                             Code = "HOME APPLIANCES",
-                            Created = 1726468210.7860949,
+                            Created = 1726467976.4960017,
                             Description = "Description for category Home Appliances",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2732,7 +2735,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 189,
                             Code = "PUMPS & PLUMBING EQUIPMENT",
-                            Created = 1726468210.7861154,
+                            Created = 1726467976.4960215,
                             Description = "Description for category Pumps & Plumbing Equipment",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2743,7 +2746,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 190,
                             Code = "PAINT, WALL TREATMENTS & SUPPLIES",
-                            Created = 1726468210.7861404,
+                            Created = 1726467976.4960456,
                             Description = "Description for category Paint, Wall Treatments & Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2754,7 +2757,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 191,
                             Code = "SAFETY & SECURITY",
-                            Created = 1726468210.7861636,
+                            Created = 1726467976.4960661,
                             Description = "Description for category Safety & Security",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2765,7 +2768,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 192,
                             Code = "LIGHT BULBS",
-                            Created = 1726468210.7861831,
+                            Created = 1726467976.4960866,
                             Description = "Description for category Light Bulbs",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2776,7 +2779,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 193,
                             Code = "POWER TOOLS & HAND TOOLS",
-                            Created = 1726468210.7862058,
+                            Created = 1726467976.49611,
                             Description = "Description for category Power Tools & Hand Tools",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2787,7 +2790,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 194,
                             Code = "KITCHEN & BATH FIXTURES",
-                            Created = 1726468210.786226,
+                            Created = 1726467976.4961295,
                             Description = "Description for category Kitchen & Bath Fixtures",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2798,7 +2801,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 195,
                             Code = "LIGHTING & CEILING FANS",
-                            Created = 1726468210.7862494,
+                            Created = 1726467976.4961512,
                             Description = "Description for category Lighting & Ceiling Fans",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2809,7 +2812,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 196,
                             Code = "ELECTRICAL EQUIPMENT",
-                            Created = 1726468210.7862697,
+                            Created = 1726467976.4961734,
                             Description = "Description for category Electrical Equipment",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2820,7 +2823,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 197,
                             Code = "HARDWARE",
-                            Created = 1726468210.7862892,
+                            Created = 1726467976.4961946,
                             Description = "Description for category Hardware",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2831,7 +2834,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 198,
                             Code = "BUILDING SUPPLIES",
-                            Created = 1726468210.7863126,
+                            Created = 1726467976.4962149,
                             Description = "Description for category Building Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2842,7 +2845,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 199,
                             Code = "MEASURING & LAYOUT",
-                            Created = 1726468210.7863331,
+                            Created = 1726467976.4962335,
                             Description = "Description for category Measuring & Layout",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2853,7 +2856,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 200,
                             Code = "WELDING & SOLDERING",
-                            Created = 1726468210.7863545,
+                            Created = 1726467976.4962578,
                             Description = "Description for category Welding & Soldering",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2864,7 +2867,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 201,
                             Code = "TOOLS & HOME IMPROVEMENT",
-                            Created = 1726468210.7863748,
+                            Created = 1726467976.496279,
                             Description = "Description for category Tools & Home Improvement",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2875,7 +2878,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 202,
                             Code = "KIDS' PARTY SUPPLIES",
-                            Created = 1726468210.7864015,
+                            Created = 1726467976.4962997,
                             Description = "Description for category Kids' Party Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2886,7 +2889,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 203,
                             Code = "TOY FIGURES & PLAYSETS",
-                            Created = 1726468210.786422,
+                            Created = 1726467976.4963226,
                             Description = "Description for category Toy Figures & Playsets",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2897,7 +2900,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 204,
                             Code = "NOVELTY TOYS & AMUSEMENTS",
-                            Created = 1726468210.7864497,
+                            Created = 1726467976.4963431,
                             Description = "Description for category Novelty Toys & Amusements",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2908,7 +2911,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 205,
                             Code = "ARTS & CRAFTS SUPPLIES",
-                            Created = 1726468210.7864699,
+                            Created = 1726467976.4963717,
                             Description = "Description for category Arts & Crafts Supplies",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2919,7 +2922,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 206,
                             Code = "BUILDING TOYS",
-                            Created = 1726468210.7864926,
+                            Created = 1726467976.4963937,
                             Description = "Description for category Building Toys",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2930,7 +2933,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 207,
                             Code = "DOLLS & ACCESSORIES",
-                            Created = 1726468210.7865129,
+                            Created = 1726467976.4964137,
                             Description = "Description for category Dolls & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2941,7 +2944,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 208,
                             Code = "KIDS' ELECTRONICS",
-                            Created = 1726468210.7865322,
+                            Created = 1726467976.4964352,
                             Description = "Description for category Kids' Electronics",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2952,7 +2955,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 209,
                             Code = "GAMES & ACCESSORIES",
-                            Created = 1726468210.7865541,
+                            Created = 1726467976.4964571,
                             Description = "Description for category Games & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2963,7 +2966,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 210,
                             Code = "LEARNING & EDUCATION TOYS",
-                            Created = 1726468210.7865772,
+                            Created = 1726467976.4964793,
                             Description = "Description for category Learning & Education Toys",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2974,7 +2977,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 211,
                             Code = "KIDS' DRESS UP & PRETEND PLAY",
-                            Created = 1726468210.7865987,
+                            Created = 1726467976.4964995,
                             Description = "Description for category Kids' Dress Up & Pretend Play",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2985,7 +2988,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 212,
                             Code = "PUPPETS & PUPPET THEATERS",
-                            Created = 1726468210.7866187,
+                            Created = 1726467976.4965229,
                             Description = "Description for category Puppets & Puppet Theaters",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -2996,7 +2999,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 213,
                             Code = "PUZZLES",
-                            Created = 1726468210.7866409,
+                            Created = 1726467976.4965427,
                             Description = "Description for category Puzzles",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3007,7 +3010,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 214,
                             Code = "SPORTS & OUTDOOR PLAY TOYS",
-                            Created = 1726468210.7866619,
+                            Created = 1726467976.4965639,
                             Description = "Description for category Sports & Outdoor Play Toys",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3018,7 +3021,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 215,
                             Code = "STUFFED ANIMALS & PLUSH TOYS",
-                            Created = 1726468210.7866819,
+                            Created = 1726467976.4965868,
                             Description = "Description for category Stuffed Animals & Plush Toys",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3029,7 +3032,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 216,
                             Code = "BABY & TODDLER TOYS",
-                            Created = 1726468210.7867117,
+                            Created = 1726467976.4966075,
                             Description = "Description for category Baby & Toddler Toys",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3040,7 +3043,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 217,
                             Code = "TRICYCLES, SCOOTERS & WAGONS",
-                            Created = 1726468210.7867327,
+                            Created = 1726467976.4966307,
                             Description = "Description for category Tricycles, Scooters & Wagons",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3051,7 +3054,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 218,
                             Code = "FINGER TOYS",
-                            Created = 1726468210.7867546,
+                            Created = 1726467976.4966512,
                             Description = "Description for category Finger Toys",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3062,7 +3065,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 219,
                             Code = "TOY VEHICLE PLAYSETS",
-                            Created = 1726468210.7867751,
+                            Created = 1726467976.496675,
                             Description = "Description for category Toy Vehicle Playsets",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3073,7 +3076,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 220,
                             Code = "KIDS' PLAY TRAINS & TRAMS",
-                            Created = 1726468210.7867951,
+                            Created = 1726467976.496696,
                             Description = "Description for category Kids' Play Trains & Trams",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3084,7 +3087,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 221,
                             Code = "KIDS' PLAY TRUCKS",
-                            Created = 1726468210.7868187,
+                            Created = 1726467976.4967165,
                             Description = "Description for category Kids' Play Trucks",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3095,7 +3098,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 222,
                             Code = "KIDS' PLAY CARS & RACE CARS",
-                            Created = 1726468210.7868392,
+                            Created = 1726467976.4967401,
                             Description = "Description for category Kids' Play Cars & Race Cars",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3106,7 +3109,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 223,
                             Code = "KIDS' PLAY BOATS",
-                            Created = 1726468210.7868612,
+                            Created = 1726467976.4967592,
                             Description = "Description for category Kids' Play Boats",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3117,7 +3120,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 224,
                             Code = "KIDS' PLAY BUSES",
-                            Created = 1726468210.7868817,
+                            Created = 1726467976.4967821,
                             Description = "Description for category Kids' Play Buses",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3128,7 +3131,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 225,
                             Code = "KIDS' PLAY TRACTORS",
-                            Created = 1726468210.786906,
+                            Created = 1726467976.4968033,
                             Description = "Description for category Kids' Play Tractors",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3139,7 +3142,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 226,
                             Code = "SLOT CARS, RACE TRACKS & ACCESSORIES",
-                            Created = 1726468210.786948,
+                            Created = 1726467976.4968455,
                             Description = "Description for category Slot Cars, Race Tracks & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3150,7 +3153,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 227,
                             Code = "SONY PSP GAMES, CONSOLES & ACCESSORIES",
-                            Created = 1726468210.7869711,
+                            Created = 1726467976.4968667,
                             Description = "Description for category Sony PSP Games, Consoles & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3161,7 +3164,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 228,
                             Code = "NINTENDO DS GAMES, CONSOLES & ACCESSORIES",
-                            Created = 1726468210.7869933,
+                            Created = 1726467976.4968903,
                             Description = "Description for category Nintendo DS Games, Consoles & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3172,7 +3175,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 229,
                             Code = "PLAYSTATION 3 GAMES, CONSOLES & ACCESSORIES",
-                            Created = 1726468210.7870135,
+                            Created = 1726467976.4969103,
                             Description = "Description for category PlayStation 3 Games, Consoles & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3183,7 +3186,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 230,
                             Code = "WII GAMES, CONSOLES & ACCESSORIES",
-                            Created = 1726468210.7870376,
+                            Created = 1726467976.4969347,
                             Description = "Description for category Wii Games, Consoles & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3194,7 +3197,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 231,
                             Code = "XBOX 360 GAMES, CONSOLES & ACCESSORIES",
-                            Created = 1726468210.7870581,
+                            Created = 1726467976.4969552,
                             Description = "Description for category Xbox 360 Games, Consoles & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3205,7 +3208,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 232,
                             Code = "MAC GAMES & ACCESSORIES",
-                            Created = 1726468210.7870815,
+                            Created = 1726467976.4969788,
                             Description = "Description for category Mac Games & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3216,7 +3219,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 233,
                             Code = "NINTENDO 3DS & 2DS CONSOLES, GAMES & ACCESSORIES",
-                            Created = 1726468210.787102,
+                            Created = 1726467976.4969995,
                             Description = "Description for category Nintendo 3DS & 2DS Consoles, Games & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3227,7 +3230,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 234,
                             Code = "LEGACY SYSTEMS",
-                            Created = 1726468210.7871213,
+                            Created = 1726467976.49702,
                             Description = "Description for category Legacy Systems",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3238,7 +3241,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 235,
                             Code = "PLAYSTATION VITA GAMES, CONSOLES & ACCESSORIES",
-                            Created = 1726468210.7871485,
+                            Created = 1726467976.4970446,
                             Description = "Description for category PlayStation Vita Games, Consoles & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3249,7 +3252,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 236,
                             Code = "WII U GAMES, CONSOLES & ACCESSORIES",
-                            Created = 1726468210.7871716,
+                            Created = 1726467976.4970648,
                             Description = "Description for category Wii U Games, Consoles & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3260,7 +3263,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 237,
                             Code = "PLAYSTATION 4 GAMES, CONSOLES & ACCESSORIES",
-                            Created = 1726468210.7871947,
+                            Created = 1726467976.4970908,
                             Description = "Description for category PlayStation 4 Games, Consoles & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3271,7 +3274,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 238,
                             Code = "XBOX ONE GAMES, CONSOLES & ACCESSORIES",
-                            Created = 1726468210.7872159,
+                            Created = 1726467976.4971137,
                             Description = "Description for category Xbox One Games, Consoles & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3282,7 +3285,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 239,
                             Code = "VIDEO GAMES",
-                            Created = 1726468210.7872384,
+                            Created = 1726467976.4971385,
                             Description = "Description for category Video Games",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3293,7 +3296,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 240,
                             Code = "ONLINE VIDEO GAME SERVICES",
-                            Created = 1726468210.7872591,
+                            Created = 1726467976.4971585,
                             Description = "Description for category Online Video Game Services",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3304,7 +3307,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 241,
                             Code = "VIRTUAL REALITY HARDWARE & ACCESSORIES",
-                            Created = 1726468210.7872803,
+                            Created = 1726467976.4971805,
                             Description = "Description for category Virtual Reality Hardware & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3315,7 +3318,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 242,
                             Code = "NINTENDO SWITCH CONSOLES, GAMES & ACCESSORIES",
-                            Created = 1726468210.7873025,
+                            Created = 1726467976.4972043,
                             Description = "Description for category Nintendo Switch Consoles, Games & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3326,7 +3329,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 243,
                             Code = "PLAYSTATION 5 CONSOLES, GAMES & ACCESSORIES",
-                            Created = 1726468210.7873249,
+                            Created = 1726467976.4972289,
                             Description = "Description for category PlayStation 5 Consoles, Games & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3337,7 +3340,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 244,
                             Code = "XBOX SERIES X & S CONSOLES, GAMES & ACCESSORIES",
-                            Created = 1726468210.787348,
+                            Created = 1726467976.4972515,
                             Description = "Description for category Xbox Series X & S Consoles, Games & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3348,7 +3351,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 245,
                             Code = "PC GAMES & ACCESSORIES",
-                            Created = 1726468210.7873697,
+                            Created = 1726467976.4972751,
                             Description = "Description for category PC Games & Accessories",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3359,7 +3362,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 246,
                             Code = "BABY GIRLS' CLOTHING & SHOES",
-                            Created = 1726468210.7873924,
+                            Created = 1726467976.4972975,
                             Description = "Description for category Baby Girls' Clothing & Shoes",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3370,7 +3373,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 247,
                             Code = "BOYS' SCHOOL UNIFORMS",
-                            Created = 1726468210.7874131,
+                            Created = 1726467976.4973185,
                             Description = "Description for category Boys' School Uniforms",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3381,7 +3384,7 @@ namespace EShop.Infrastructure.Migrations
                         {
                             Id = 248,
                             Code = "TOYS & GAMES",
-                            Created = 1726468210.7874348,
+                            Created = 1726467976.4973412,
                             Description = "Description for category Toys & Games",
                             IsDeleted = false,
                             LastModified = 0.0,
@@ -3841,6 +3844,8 @@ namespace EShop.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OptionTypeId");
+
                     b.HasIndex("OptionValueId");
 
                     b.HasIndex("ProductVariantId");
@@ -3881,35 +3886,35 @@ namespace EShop.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "54aaad63-0ebf-43ec-85f0-6a74607a61ed",
+                            ConcurrencyStamp = "671654be-f3b6-4d55-869e-7d45a3d5cc75",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "7e1bcef4-e8a9-4121-83de-eba0b67dcd02",
+                            ConcurrencyStamp = "d87663c4-23a3-46bd-ac03-00b1ffeb354e",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "f321207e-f82d-45ce-b939-47fa835cfda9",
+                            ConcurrencyStamp = "1df545b2-75ef-4b71-be7a-18e3cb326ca3",
                             Name = "SalesManager",
                             NormalizedName = "SALESMANAGER"
                         },
                         new
                         {
                             Id = 4,
-                            ConcurrencyStamp = "818b299b-7e4e-4398-8db8-9e20d5fe11de",
+                            ConcurrencyStamp = "e0400d0c-2608-40ff-b81f-1cffee129665",
                             Name = "StoreManager",
                             NormalizedName = "STOREMANAGER"
                         },
                         new
                         {
                             Id = 5,
-                            ConcurrencyStamp = "de2d37f0-c857-4967-b342-9fd4d7639642",
+                            ConcurrencyStamp = "c50ae13a-d898-4ef0-be01-525d4a9b7593",
                             Name = "SystemAdministrator",
                             NormalizedName = "SYSTEMADMINISTRATOR"
                         });
@@ -4160,6 +4165,12 @@ namespace EShop.Infrastructure.Migrations
 
             modelBuilder.Entity("EShop.Application.Entities.VariantOption", b =>
                 {
+                    b.HasOne("EShop.Application.Entities.OptionType", "OptionType")
+                        .WithMany()
+                        .HasForeignKey("OptionTypeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("EShop.Application.Entities.OptionValue", "OptionValue")
                         .WithMany()
                         .HasForeignKey("OptionValueId")
@@ -4171,6 +4182,8 @@ namespace EShop.Infrastructure.Migrations
                         .HasForeignKey("ProductVariantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("OptionType");
 
                     b.Navigation("OptionValue");
 

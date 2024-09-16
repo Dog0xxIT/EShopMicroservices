@@ -1,17 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace EShop.Shared.ResponseModels.Common
 {
-    public class TypedResult
+    public sealed class ResponseObject
     {
-        public int Status { get; private set; } = 200;
+        public const string Message = "Success";
 
-        public static TypedResult Succeeded => new();
+        public static ResponseObject Succeeded => new();
     }
 }
-

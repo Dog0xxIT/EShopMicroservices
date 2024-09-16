@@ -10,8 +10,8 @@ namespace EShop.Shared.RequestModels.Common
     public class PaginationRequest
     {
         [Range(1, 1000)]
-        public int PageSize { get; set; } = 10;
+        public int Limit { get; set; } = 50;
 
-        public int PageIndex { get; set; } = 0;
+        public int Page { get; set; } = 0;
     }
 }

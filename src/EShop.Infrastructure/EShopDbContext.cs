@@ -26,10 +26,14 @@ namespace EShop.Infrastructure
         public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<OptionValue> OptionValues { get; set; }
+        public DbSet<OptionType> OptionTypes { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductVariant> ProductVariants { get; set; }
+        public DbSet<VariantOption> VariantOptions { get; set; }
         public DbSet<Rating> Ratings { get; set; }
 
         public EShopDbContext(DbContextOptions<EShopDbContext> options) : base(options)
