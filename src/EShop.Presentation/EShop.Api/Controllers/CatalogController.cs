@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EShop.Application.Services.ApplicationService;
 using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Catalog;
 using EShop.Shared.RequestModels.Common;
-using EShop.Shared.ResponseModels.Catalog;
 using EShop.Shared.ResponseModels.Common;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EShop.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("catalog/")]
     public class CatalogController : Controller
     {
         private readonly ICatalogService _catalogService;
@@ -27,80 +26,78 @@ namespace EShop.Api.Controllers
         }
 
         #region Get method
-        [HttpGet]
-        public async Task<IActionResult> GetAllProducts([FromQuery] PaginationRequest paginationReq)
+        [HttpGet("products")]
+        public async Task<IActionResult> GetAllProducts([FromQuery] GetAllProductRequest getAllProductRequest)
         {
-            var response = await _catalogService.GetAllProducts(paginationReq);
+            var response = await _catalogService.GetAllProducts(getAllProductRequest);
+
+            return Ok(response);
+        }
+
+        [HttpGet("products/{productId}/options")]
+        public async Task<IActionResult> GetAllProductVariantOptions(
+            [FromRoute] int productId,
+            [FromQuery] GetAllProductRequest getAllProductRequest)
+        {
+            var response = await _catalogService.GetAllProducts(getAllProductRequest);
+
+            return Ok(response);
+        }
+
+        [HttpGet("products/{productId}/variants")]
+        public async Task<IActionResult> GetAllProductVariants(
+            [FromRoute] int productId,
+            [FromQuery] GetAllProductRequest getAllProductRequest)
+        {
+            var response = await _catalogService.GetAllProducts(getAllProductRequest);
+
+            return Ok(response);
+        }
+
+        [HttpGet("products/variantOptions")]
+        public async Task<IActionResult> GetAllProductVariantsOption(
+            [FromQuery] GetAllProductRequest getAllProductRequest)
+        {
+            var response = await _catalogService.GetAllProducts(getAllProductRequest);
 
             return Ok(response);
         }
 
 
-        [HttpGet("{productId}")]
-        public async Task<IActionResult> GetProductById([FromRoute] int productId)
+        [HttpGet("products/{id}")]
+        public async Task<IActionResult> GetProductById([FromRoute] int id)
         {
-            var product = await _catalogService.GetProductById(productId);
+            var product = await _catalogService.GetProductById(id);
 
             return Ok(product);
         }
 
-        [HttpGet]
+        [HttpGet("brands")]
         public async Task<IActionResult> GetAllBrands([FromQuery] PaginationRequest paginationReq)
         {
             var response = await _catalogService.GetAllBrands(paginationReq);
-         
-            return Ok(response);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetAllCategories()
-        {
-            var categories = await _catalogService.GetAllCategories();
-
-            return Ok(categories);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetTopCategories(int number = 10)
-        {
-            var categories = await _catalogService.GetTopCategories(number);
-            return Ok(categories);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> SearchWithSemanticRelevance(
-            [FromQuery][Required] string text,
-            [FromQuery] PaginationRequest paginationReq)
-        {
-            var response = await _catalogService.SearchWithSemanticRelevance(text, paginationReq);
 
             return Ok(response);
         }
 
+        [HttpGet("categories")]
+        public async Task<IActionResult> GetAllCategories([FromQuery] PaginationRequest paginationReq)
+        {
+            var categories = await _catalogService.GetAllCategories(paginationReq);
+
+            return Ok(categories);
+        }
+
+        [HttpGet("categories/{topNumber}")]
+        public async Task<IActionResult> GetTopCategories([FromRoute] int topNumber = 10)
+        {
+            var categories = await _catalogService.GetTopCategories(topNumber);
+            return Ok(categories);
+        }
         #endregion
 
         #region Post method
-        [HttpPost]
-        public async Task<IActionResult> GetProductsByAdvanceFilter(
-            [FromBody] GetProductsByAdvanceFilterRequest getProductsByAdvanceFilterRequest)
-        {
-            var response = await _catalogService.GetProductsByAdvanceFilter(getProductsByAdvanceFilterRequest);
-
-            return Ok(response);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> UploadProductImage(UploadProductImageRequest req)
-        {
-            var serviceResult = await _catalogService.UpdateImageProduct(req);
-            if (serviceResult.Succeeded)
-            {
-                return Ok(ResponseObject.Succeeded);
-            }
-            return Problem(serviceResult.Errors.First());
-        }
-
-        [HttpPost]
+        [HttpPost("products")]
         public async Task<IActionResult> CreateProduct(CreateProductRequest req)
         {
             var serviceResult = await _catalogService.CreateProduct(req);
@@ -112,7 +109,36 @@ namespace EShop.Api.Controllers
             return Problem(serviceResult.Errors.First());
         }
 
-        [HttpPost]
+        [HttpPost("products/{productId}/options")]
+        public async Task<IActionResult> CreateProductVariantOption(
+            [FromRoute] int productId,
+            [FromBody] CreateProductRequest req)
+        {
+            var serviceResult = await _catalogService.CreateProduct(req);
+
+            if (serviceResult.Succeeded)
+            {
+                return Ok(ResponseObject.Succeeded);
+            }
+            return Problem(serviceResult.Errors.First());
+        }
+
+
+        [HttpPost("products/{productId}/variants")]
+        public async Task<IActionResult> CreateProductVariant(
+            [FromRoute] int productId,
+            [FromBody] CreateProductRequest req)
+        {
+            var serviceResult = await _catalogService.CreateProduct(req);
+
+            if (serviceResult.Succeeded)
+            {
+                return Ok(ResponseObject.Succeeded);
+            }
+            return Problem(serviceResult.Errors.First());
+        }
+
+        [HttpPost("brands")]
         public async Task<IActionResult> CreateBrand(CreateBrandRequest req)
         {
             var serviceResult = await _catalogService.CreateBrand(req);
@@ -128,8 +154,10 @@ namespace EShop.Api.Controllers
 
         #region Put method
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateProduct(UpdateProductRequest req)
+        [HttpPut("products/{id}")]
+        public async Task<IActionResult> UpdateProduct(
+            [FromRoute] int id,
+            [FromBody] UpdateProductRequest req)
         {
             var serviceResult = await _catalogService.UpdateProduct(req);
 
@@ -140,8 +168,10 @@ namespace EShop.Api.Controllers
             return Problem(serviceResult.Errors.First());
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateBrand(UpdateBrandRequest req)
+        [HttpPut("brands/{id}")]
+        public async Task<IActionResult> UpdateBrand(
+            [FromRoute] int id,
+            [FromBody] UpdateBrandRequest req)
         {
             var serviceResult = await _catalogService.UpdateBrand(req);
 
@@ -155,7 +185,29 @@ namespace EShop.Api.Controllers
         #endregion
 
         #region Delete method
+        [HttpDelete("products/{id}")]
+        public async Task<IActionResult> DeleteProduct([FromRoute] int id)
+        {
+            //var serviceResult = await _catalogService.UpdateBrand(req);
+            var serviceResult = ServiceResult.Success;
+            if (serviceResult.Succeeded)
+            {
+                return Ok();
+            }
+            return Problem(serviceResult.Errors.First());
+        }
 
+        [HttpDelete("brands/{id}")]
+        public async Task<IActionResult> DeleteBrand([FromRoute] int id)
+        {
+            //var serviceResult = await _catalogService.UpdateBrand(req);
+            var serviceResult = ServiceResult.Success;
+            if (serviceResult.Succeeded)
+            {
+                return Ok();
+            }
+            return Problem(serviceResult.Errors.First());
+        }
         #endregion
     }
 }

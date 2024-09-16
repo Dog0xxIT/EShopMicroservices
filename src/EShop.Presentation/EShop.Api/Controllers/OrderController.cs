@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EShop.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("orders/")]
     public class OrderController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -23,8 +23,8 @@ namespace EShop.Api.Controllers
 
         #region Get method
 
-        [HttpGet("{buyerId}")]
-        public async Task<IActionResult> GetAllByBuyerId(int buyerId)
+        [HttpGet]
+        public async Task<IActionResult> GetAllByBuyerId([FromQuery] int buyerId)
         {
             var orders = await _unitOfWork.OrderRepository
                 .Get(
@@ -34,7 +34,7 @@ namespace EShop.Api.Controllers
             return Ok(orders);
         }
 
-        [HttpGet]
+        [HttpGet("/cartTypes")]
         public async Task<IActionResult> CartTypes(int id)
         {
             return null;
@@ -50,7 +50,7 @@ namespace EShop.Api.Controllers
             return Ok(ResponseObject.Succeeded);
         }
 
-        [HttpPost]
+        [HttpPost("draft")]
         public async Task<IActionResult> CreateDraft(CreateDraftRequest req)
         {
             //var orderDraft = new Order(req.BuyerId);
@@ -61,10 +61,10 @@ namespace EShop.Api.Controllers
 
         #region Patch method
 
-        [HttpPatch]
-        public async Task<IActionResult> Cancel(int orderId)
+        [HttpPatch("cancel/{id}")]
+        public async Task<IActionResult> Cancel([FromRoute] int id)
         {
-            var order = await _unitOfWork.OrderRepository.GetById(orderId);
+            var order = await _unitOfWork.OrderRepository.GetById(id);
             if (order is null)
             {
                 return NotFound();
@@ -84,10 +84,10 @@ namespace EShop.Api.Controllers
             }
         }
 
-        [HttpPatch]
-        public async Task<IActionResult> Ship(int orderId)
+        [HttpPatch("ship/{id}")]
+        public async Task<IActionResult> Ship([FromRoute] int id)
         {
-            var order = await _unitOfWork.OrderRepository.GetById(orderId);
+            var order = await _unitOfWork.OrderRepository.GetById(id);
             if (order is null)
             {
                 return NotFound();

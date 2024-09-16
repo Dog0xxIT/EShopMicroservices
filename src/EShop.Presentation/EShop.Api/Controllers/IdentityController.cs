@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EShop.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("/")]
     public class IdentityController : ControllerBase
     {
         private readonly IIdentityService _identityService;
@@ -22,7 +22,7 @@ namespace EShop.Api.Controllers
         }
 
         #region Get method
-        [HttpGet]
+        [HttpGet("confirmEmail")]
         public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailRequest req)
         {
             var resultService = await _identityService.ConfirmEmail(req.Email, req.Code);
@@ -34,7 +34,7 @@ namespace EShop.Api.Controllers
             return Problem(resultService.Errors.First());
         }
 
-        [HttpGet]
+        [HttpGet("manageInfo")]
         [Authorize]
         public async Task<IActionResult> ManageInfo()
         {
@@ -43,7 +43,7 @@ namespace EShop.Api.Controllers
             return Ok(resultService);
         }
 
-        [HttpGet]
+        [HttpGet("logout")]
         [Authorize]
         public async Task<IActionResult> SignOut()
         {
@@ -55,7 +55,7 @@ namespace EShop.Api.Controllers
 
         #region Post method
 
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterRequest req)
         {
             var resultService = await _identityService.Register(req.Email, req.Email, req.Password);
@@ -81,7 +81,7 @@ namespace EShop.Api.Controllers
             return Ok(ResponseObject.Succeeded);
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<IActionResult> SignIn(SignInRequest req)
         {
             var resultService = await _identityService.SignIn(req.Email, req.Password, false);
@@ -118,7 +118,7 @@ namespace EShop.Api.Controllers
         //    return Ok();
         //}
 
-        [HttpPost]
+        [HttpPost("resendConfirmEmail")]
         public async Task<IActionResult> ResendConfirmEmail(ResendConfirmEmailRequest req)
         {
             var existUser = await _identityService.CheckExistUserByEmailAsync(req.Email);
@@ -137,7 +137,7 @@ namespace EShop.Api.Controllers
             return Problem("Not found user");
         }
 
-        [HttpPost]
+        [HttpPost("forgotPassword")]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordRequest req)
         {
             var resultService = await _identityService.ForgotPassword(req.Email);
@@ -149,7 +149,7 @@ namespace EShop.Api.Controllers
             return Problem(resultService.Errors.First());
         }
 
-        [HttpPost]
+        [HttpPost("resetPassword")]
         public async Task<IActionResult> ResetPassword(ResetPasswordRequest req)
         {
             var resultService = await _identityService.ResetPassword(req.Email, req.ResetCode, req.NewPassword);

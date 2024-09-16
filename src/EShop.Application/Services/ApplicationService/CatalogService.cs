@@ -8,6 +8,9 @@ using System.Linq.Expressions;
 using EShop.Shared.ResponseModels.Common;
 using EShop.Shared.RequestModels.Common;
 using System.Collections.ObjectModel;
+using System.Xml;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace EShop.Application.Services.ApplicationService;
 
@@ -24,15 +27,52 @@ public class CatalogService : ICatalogService
         _cloudinaryService = cloudinaryService;
     }
 
-    public async Task<PaginationResponse<GetListProductResponse>> GetAllProducts(PaginationRequest paginationReq)
+    public async Task<PaginationResponse<GetListProductResponse>> GetAllProducts(GetAllProductRequest req)
     {
-        var totalProducts = await _unitOfWork.ProductRepository.Count();
+        var response = new PaginationResponse<GetListProductResponse>();
+
+        if (req.Min > req.Max)
+        {
+            return response;
+        }
+
+        Expression<Func<Product, bool>> filter = product =>
+           (req.Min == null || product.Price >= req.Min) &&
+           (req.Max == null || product.Price <= req.Max) &&
+           (req.BrandId == null || req.BrandId == product.BrandId) &&
+           (string.IsNullOrEmpty(req.Keyword)
+                || (product.Name.Contains(req.Keyword) || product.Description.Contains(req.Keyword)
+                                                       || product.Sku.Contains(req.Keyword))) &&
+           (string.IsNullOrEmpty(req.Sku)
+                || product.Sku.Equals(req.Sku)) &&
+           (req.Categories == null
+                || req.Categories.Any()
+                || req.Categories.Contains(product.CategoryId));
+
+        Func<IQueryable<Product>, IOrderedQueryable<Product>> orderingFunc =
+            queryable => (IOrderedQueryable<Product>)queryable
+                .OrderBy(product => product.Id)
+                .Skip(req.Page)
+                .Take(req.Limit);
 
         var products = await _unitOfWork.ProductRepository
-            .Get(orderBy: queryable => (IOrderedQueryable<Product>)queryable
-                .OrderBy(p => p.Id)
-                .Skip(paginationReq.Page)
-                .Take(paginationReq.Limit));
+            .Get(orderBy: orderingFunc, filter: filter);
+
+        var sortByList = new Dictionary<string, string>
+        {
+            ["id"] = nameof(Product.Id),
+            ["price"] = nameof(Product.Price),
+            ["date_modified"] = nameof(Product.LastModified),
+        };
+
+        if (sortByList[req.SortBy] == nameof(Product.Price))
+        {
+            products = req.SortDescending ? products.OrderBy(product => product.Price) : products.OrderByDescending(product => product.Price);
+        }
+        else if (sortByList[req.SortBy] == nameof(Product.LastModified))
+        {
+            products = req.SortDescending ? products.OrderBy(product => product.LastModified) : products.OrderByDescending(product => product.LastModified);
+        }
 
         var productsDto = products.Select(product =>
             new GetListProductResponse
@@ -51,11 +91,23 @@ public class CatalogService : ICatalogService
                 Summary = product.Summary,
             }).ToList();
 
+        var totalProducts = await _unitOfWork.ProductRepository.Count();
+        var totalPage = req.Limit != 1 ? (totalProducts / req.Limit) : 0;
+
         return new PaginationResponse<GetListProductResponse>
         {
             Data = productsDto,
+            Meta = new Pagination
+            {
+                Count = productsDto.Count(),
+                CurrentPage = req.Page,
+                Total = totalProducts,
+                TotalPages = totalPage,
+                PerPage = req.Limit
+            }
         };
     }
+
     public async Task<IEnumerable<GetAllCategoriesResponse>> GetTopCategories(int number = 10)
     {
         var categories = await _unitOfWork.CategoryRepository
@@ -77,18 +129,33 @@ public class CatalogService : ICatalogService
 
         var topCategory = categories.Where(c => topCategoryIds.Contains(c.Id));
 
-        var categoriesDto = topCategory.Adapt<IEnumerable<GetAllCategoriesResponse>>();
+        var categoriesDto = topCategory.Adapt<List<GetAllCategoriesResponse>>();
+
         return categoriesDto;
     }
 
-    public async Task<IEnumerable<GetAllCategoriesResponse>> GetAllCategories()
+    public async Task<PaginationResponse<GetAllCategoriesResponse>> GetAllCategories(PaginationRequest paginationReq)
     {
         var categories = await _unitOfWork.CategoryRepository
             .Get();
 
-        var categoriesDto = categories.Adapt<IEnumerable<GetAllCategoriesResponse>>();
+        var categoriesDto = categories.Adapt<List<GetAllCategoriesResponse>>();
 
-        return categoriesDto;
+        var totalProducts = await _unitOfWork.ProductRepository.Count();
+        var totalPage = paginationReq.Limit != 1 ? (totalProducts / paginationReq.Limit) : 0;
+
+        return new PaginationResponse<GetAllCategoriesResponse>
+        {
+            Data = categoriesDto,
+            Meta = new Pagination
+            {
+                Count = categoriesDto.Count(),
+                CurrentPage = paginationReq.Page,
+                Total = totalProducts,
+                TotalPages = totalPage,
+                PerPage = paginationReq.Limit
+            }
+        };
     }
 
     public async Task<GetProductByIdResponse?> GetProductById(int productId)
@@ -168,16 +235,14 @@ public class CatalogService : ICatalogService
         };
     }
 
-    public async Task<PaginationResponse<GetListProductResponse>> SearchWithSemanticRelevance(string searchText, PaginationRequest paginationRequest)
+    public async Task<PaginationResponse<GetListProductResponse>> SearchWithSemanticRelevance(string searchText, PaginationRequest paginationReq)
     {
-        var totalProducts = await _unitOfWork.ProductRepository.Count();
-
         var products = await _unitOfWork.ProductRepository
             .Get(
                 orderBy: queryable => (IOrderedQueryable<Product>)queryable
                     .OrderBy(p => p.Id)
-                    .Skip(paginationRequest.Page)
-                    .Take(paginationRequest.Limit),
+                    .Skip(paginationReq.Page)
+                    .Take(paginationReq.Limit),
                 filter: p => p.Name.Contains(searchText));
 
         var productsDto = products.Select(product =>
@@ -195,11 +260,22 @@ public class CatalogService : ICatalogService
                 TotalBuyers = product.TotalBuyers,
                 Sku = product.Sku,
                 Summary = product.Summary,
-            });
+            }).ToList();
+
+        var totalProducts = await _unitOfWork.ProductRepository.Count();
+        var totalPage = paginationReq.Limit != 1 ? (totalProducts / paginationReq.Limit) : 0;
 
         return new PaginationResponse<GetListProductResponse>
         {
             Data = productsDto,
+            Meta = new Pagination
+            {
+                Count = productsDto.Count(),
+                CurrentPage = paginationReq.Page,
+                Total = totalProducts,
+                TotalPages = totalPage,
+                PerPage = paginationReq.Limit
+            }
         };
     }
 
@@ -303,6 +379,32 @@ public class CatalogService : ICatalogService
         }
     }
 
+    public async Task<ServiceResult> DeleteImageProduct(int productId)
+    {
+        var productEntity = await _unitOfWork.ProductRepository.GetById(productId);
+
+        if (productEntity is null)
+        {
+            return ServiceResult.Failed("Not exists product");
+        }
+
+        var uri = await _cloudinaryService.DeleteImage(productId);
+
+        productEntity.ImageUrl = string.Empty;
+        productEntity.SetTimeLastModified();
+
+        try
+        {
+            _unitOfWork.ProductRepository.Update(productEntity);
+            await _unitOfWork.Commit();
+            return ServiceResult.Success;
+        }
+        catch (Exception ex)
+        {
+            return ServiceResult.Failed(ex.Message);
+        }
+    }
+
     public async Task<ServiceResult> UpdateBrand(UpdateBrandRequest req)
     {
         var brandEntity = await _unitOfWork.BrandRepository.GetById(req.Id);
@@ -333,8 +435,6 @@ public class CatalogService : ICatalogService
     public async Task<PaginationResponse<GetListProductResponse>> GetProductsByAdvanceFilter(
         GetProductsByAdvanceFilterRequest advanceFilterReq)
     {
-        var totalProducts = await _unitOfWork.ProductRepository.Count();
-
         Expression<Func<Product, bool>> filter = p =>
             p.Price >= advanceFilterReq.MinPrice &&
             p.Price <= advanceFilterReq.MaxPrice &&
@@ -364,11 +464,22 @@ public class CatalogService : ICatalogService
                 TotalBuyers = product.TotalBuyers,
                 Sku = product.Sku,
                 Summary = product.Summary,
-            });
+            }).ToList();
+
+        var totalProducts = await _unitOfWork.ProductRepository.Count();
+        var totalPage = advanceFilterReq.Limit != 1 ? (totalProducts / advanceFilterReq.Limit) : 0;
 
         return new PaginationResponse<GetListProductResponse>
         {
             Data = productsDto,
+            Meta = new Pagination
+            {
+                Count = productsDto.Count(),
+                CurrentPage = advanceFilterReq.Page,
+                Total = totalProducts,
+                TotalPages = totalPage,
+                PerPage = advanceFilterReq.Limit
+            }
         };
     }
 }

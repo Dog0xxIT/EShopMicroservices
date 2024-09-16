@@ -13,5 +13,7 @@ namespace EShop.Shared.RequestModels.Common
         public int Limit { get; set; } = 50;
 
         public int Page { get; set; } = 0;
+
+        public bool SortDescending { get; set; }
     }
 }

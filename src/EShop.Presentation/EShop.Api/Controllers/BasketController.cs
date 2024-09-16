@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EShop.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("baskets/")]
     public class BasketController : Controller
     {
         private readonly IBasketService _basketService;
@@ -24,7 +24,7 @@ namespace EShop.Api.Controllers
 
         [HttpGet("{customerId}")]
         public async Task<IActionResult> GetBasketByCustomerId(
-            [FromRoute] int customerId, 
+            [FromRoute] int customerId,
             [FromQuery] PaginationRequest paginationReq)
         {
             var response = await _basketService.GetBasketByCustomerId(customerId, paginationReq);
@@ -47,7 +47,7 @@ namespace EShop.Api.Controllers
             return Problem(serviceResult.Errors.First());
         }
 
-        [HttpPatch]
+        [HttpPatch("updateQty")]
         public async Task<IActionResult> UpdateQty(UpdateQtyRequest req)
         {
             var serviceResult = await _basketService.UpdateQty(req);
@@ -62,10 +62,10 @@ namespace EShop.Api.Controllers
 
         #region Delete method
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(int basketItemId)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var serviceResult = await _basketService.Delete(basketItemId);
+            var serviceResult = await _basketService.Delete(id);
             if (serviceResult.Succeeded)
             {
                 return Ok(ResponseObject.Succeeded);
