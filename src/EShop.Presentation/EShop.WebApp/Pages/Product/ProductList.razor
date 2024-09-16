@@ -455,10 +455,10 @@
                         </div>
 
                         <div class="w-full text-center">
-                            <Pagination TotalItem="_productPaginationResponse.Total"
-                                        TotalPage="@_totalPage"
+                            <Pagination TotalItem="_productPaginationResponse.Meta.Count"
+                                        TotalPage="@_productPaginationResponse.Meta.TotalPages"
                                         ButtonCount="10"
-                                        CurrentPage="@_currentPage"
+                                        CurrentPage="@_productPaginationResponse.Meta.CurrentPage"
                                         OnChangedCurrentPage="OnChangedCurrentPage"></Pagination>
                         </div>
                     </div>

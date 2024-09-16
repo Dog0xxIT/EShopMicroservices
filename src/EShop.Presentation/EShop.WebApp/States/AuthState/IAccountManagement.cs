@@ -6,8 +6,8 @@ namespace EShop.WebApp.States.AuthState
 {
     public interface IAccountManagement
     {
-        public Task<ResultObject<TypedResult>> SignIn(SignInRequest req);
+        public Task<ResultObject<ResponseObject>> SignIn(SignInRequest req);
 
-        public Task<ResultObject<TypedResult>> SignOut();
+        public Task<ResultObject<ResponseObject>> SignOut();
     }
 }

@@ -37,17 +37,18 @@ public class CatalogService : ICatalogService
         }
 
         Expression<Func<Product, bool>> filter = product =>
-           (req.Min == null || product.Price >= req.Min) &&
-           (req.Max == null || product.Price <= req.Max) &&
-           (req.BrandId == null || req.BrandId == product.BrandId) &&
-           (string.IsNullOrEmpty(req.Keyword)
-                || (product.Name.Contains(req.Keyword) || product.Description.Contains(req.Keyword)
-                                                       || product.Sku.Contains(req.Keyword))) &&
-           (string.IsNullOrEmpty(req.Sku)
-                || product.Sku.Equals(req.Sku)) &&
-           (req.Categories == null
-                || req.Categories.Any()
-                || req.Categories.Contains(product.CategoryId));
+            (req.Min == null || product.Price >= req.Min) &&
+            (req.Max == null || product.Price <= req.Max) &&
+            (req.BrandId == null || req.BrandId == product.BrandId) &&
+            (string.IsNullOrEmpty(req.Keyword)
+             || (product.Name.Contains(req.Keyword) || product.Description.Contains(req.Keyword)
+                                                    || product.Sku.Contains(req.Keyword))) &&
+            (string.IsNullOrEmpty(req.Sku)
+             || product.Sku.Equals(req.Sku)) &&
+            (req.Category == null || product.CategoryId >= req.Category);
+        //(req.Categories == null
+        //     || req.Categories.Any()
+        //     || req.Categories.Contains(product.CategoryId));
 
         Func<IQueryable<Product>, IOrderedQueryable<Product>> orderingFunc =
             queryable => (IOrderedQueryable<Product>)queryable

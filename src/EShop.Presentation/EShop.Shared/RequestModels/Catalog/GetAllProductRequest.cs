@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using EShop.Shared.RequestModels.Common;
 
@@ -24,7 +25,9 @@ namespace EShop.Shared.RequestModels.Catalog
 
         public string? Name { get; set; }
 
-        public List<int>? Categories { get; set; }
+        //public List<int>? Categories { get; set; }
+
+        public int? Category { get; set; }
 
         [RegularExpression("^(id|price|date_modified)$",
             ErrorMessage = "Sort direction. Acceptable values are: id, price, date_modified.")]

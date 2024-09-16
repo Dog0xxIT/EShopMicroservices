@@ -1,7 +1,6 @@
 using EShop.WebApp;
 using EShop.WebApp.Core;
 using EShop.WebApp.Core.Core;
-using EShop.WebApp.Core.Services.CatalogService;
 using EShop.WebApp.Services.BasketService;
 using EShop.WebApp.Services.CatalogService;
 using EShop.WebApp.Services.IdentityService;

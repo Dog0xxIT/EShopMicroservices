@@ -6,14 +6,14 @@ namespace EShop.WebApp.Services.IdentityService;
 
 public interface IIdentityService
 {
-    Task<ResultObject<TypedResult>> ConfirmEmail(ConfirmEmailRequest request);
-    Task<ResultObject<TypedResult>> ManageInfo(ManageInfoRequest request);
-    Task<ResultObject<TypedResult>> Register(RegisterRequest request);
-    Task<ResultObject<TypedResult>> SignIn(SignInRequest request);
-    Task<ResultObject<TypedResult>> SignOut();
-    Task<ResultObject<TypedResult>> RefreshToken(RefreshTokenRequest request);
-    Task<ResultObject<TypedResult>> ResendConfirmEmail(ResendConfirmEmailRequest request);
-    Task<ResultObject<TypedResult>> ForgotPassword(ForgotPasswordRequest request);
-    Task<ResultObject<TypedResult>> ResetPassword(ResetPasswordRequest request);
-    Task<ResultObject<TypedResult>> Manage2Fa(Manage2FaRequest request);
+    Task<ResultObject<ResponseObject>> ConfirmEmail(ConfirmEmailRequest request);
+    Task<ResultObject<ResponseObject>> ManageInfo(ManageInfoRequest request);
+    Task<ResultObject<ResponseObject>> Register(RegisterRequest request);
+    Task<ResultObject<ResponseObject>> SignIn(SignInRequest request);
+    Task<ResultObject<ResponseObject>> SignOut();
+    Task<ResultObject<ResponseObject>> RefreshToken(RefreshTokenRequest request);
+    Task<ResultObject<ResponseObject>> ResendConfirmEmail(ResendConfirmEmailRequest request);
+    Task<ResultObject<ResponseObject>> ForgotPassword(ForgotPasswordRequest request);
+    Task<ResultObject<ResponseObject>> ResetPassword(ResetPasswordRequest request);
+    Task<ResultObject<ResponseObject>> Manage2Fa(Manage2FaRequest request);
 }

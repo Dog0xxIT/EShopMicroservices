@@ -8,10 +8,9 @@ namespace EShop.WebApp.Services.CatalogService;
 
 public interface ICatalogService
 {
-    Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetAllProducts(PaginationRequest paginationRequest);
-    Task<ResultObject<PaginationResponse<GetListProductResponse>>> GetProductsByAdvanceFilter(GetProductsByAdvanceFilterRequest request);
+    Task<PaginationResponse<GetListProductResponse>> GetAllProducts(PaginationRequest paginationRequest);
     Task<ResultObject<GetProductByIdResponse>> GetProductById(int productId);
-    Task<ResultObject<PaginationResponse<GetListBrandsResponse>>> GetAllBrands(PaginationRequest paginationRequest);
-    Task<ResultObject<IEnumerable<GetAllCategoriesResponse>>> GetAllCategories();
-    Task<ResultObject<IEnumerable<GetAllCategoriesResponse>>> GetTopCategories(int number);
+    Task<IEnumerable<GetAllCategoriesResponse>> GetTopCategories(int number);
+    Task<PaginationResponse<GetListBrandsResponse>> GetAllBrands(PaginationRequest paginationRequest);
+    Task<PaginationResponse<GetAllCategoriesResponse>> GetAllCategories(PaginationRequest paginationRequest);
 }

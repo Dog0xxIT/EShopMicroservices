@@ -35,23 +35,21 @@ public partial class FilterModal
             Page = 0,
             Limit = 40
         };
-        var resultObject = await CatalogService.GetAllBrands(req);
+        var response = await CatalogService.GetAllBrands(req);
 
-        if (resultObject.ResultCode.Equals(ResultCode.Success))
-        {
-            _groupBrandByFirstChar = resultObject.Data.Data
-                .GroupBy(
-                    brand => brand.Name.ToUpper()[0],
-                    brand => brand)
-                .OrderBy(g => g.Key)
-                .ToList();
-            ;
-        }
+        _groupBrandByFirstChar = response.Data
+            .GroupBy(
+                brand => brand.Name.ToUpper()[0],
+                brand => brand)
+            .OrderBy(g => g.Key)
+            .ToList();
+        ;
     }
-
     public enum TabActive
     {
         Brand,
         AdvancedFilters
     }
 }
+
+

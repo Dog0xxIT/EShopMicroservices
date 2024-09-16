@@ -9,12 +9,12 @@ namespace EShop.Shared.ResponseModels.Common
     public sealed class Pagination
     {
         /// <summary>
-        /// Total topNumber of items in the result set.
+        /// Total number of items in the result set.
         /// </summary>
         public int Total { get; set; }
 
         /// <summary>
-        /// Total topNumber of items in the collection response.
+        /// Total number of items in the collection response.
         /// </summary>
         public int Count { get; set; }
 
@@ -32,7 +32,7 @@ namespace EShop.Shared.ResponseModels.Common
         public int CurrentPage { get; set; }
 
         /// <summary>
-        /// The total topNumber of pages in the collection.
+        /// The total number of pages in the collection.
         /// </summary>
         public int TotalPages { get; set; }
 

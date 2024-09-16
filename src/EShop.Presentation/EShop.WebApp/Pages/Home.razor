@@ -31,10 +31,10 @@
             <div class="gap-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 @foreach (var category in _categoryList)
                 {
-                    <a @onclick="async () => await GetProductsByCategoryId(category.Id)" href="#" class="border-gray-200 bg-white px-4 py-2 flex items-center rounded-lg border hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            <a @onclick="async () => await GetProductsByCategoryId(category.Id)" href="#" class="border-gray-200 bg-white px-4 py-2 flex items-center rounded-lg border hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                         @((MarkupString)category.Icon)
-                        <span class="text-gray-900 text-sm font-medium dark:text-white">@category.Name</span>
-                    </a>
+                                <span class="text-gray-900 text-sm font-medium dark:text-white">@category.Name</span>
+                            </a>
                 }
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="mb-4 gap-4 grid sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
             @foreach (var product in _productPaginationResponse.Data)
             {
-                <ProductCart ProductData="product" />
+                        <ProductCart ProductData="product" />
             }
         </div>
 
@@ -59,7 +59,7 @@
 
 @code
 {
-    private PaginationRequest _paginationRequest;
+    private GetAllProductRequest _getAllProductRequest;
     private PaginationResponse<GetListProductResponse> _productPaginationResponse;
     private List<GetAllCategoriesResponse> _categoryList;
     private bool _visibleFilterModal;
@@ -68,71 +68,36 @@
 
     protected override async Task OnInitializedAsync()
     {
-        _paginationRequest = new()
+        _getAllProductRequest = new()
             {
                 Page = 0,
-                Limit = 12
+                Limit = 12,
             };
 
-        _productPaginationResponse = new()
-            {
-                Data = new List<GetListProductResponse>()
-            };
+        _productPaginationResponse = new();
         _categoryList = new();
-
         await GetTopCategories(16);
-        await GetAllProduct();
-    }
-
-    private async Task GetAllProduct()
-    {
-        var resultObject = await CatalogService.GetAllProducts(_paginationRequest);
-
-        if (resultObject.ResultCode.Equals(ResultCode.Success))
-        {
-            _productPaginationResponse = resultObject.Data;
-            if (_productPaginationResponse.PageSize != 0)
-            {
-                _totalPage = _productPaginationResponse.Total / _productPaginationResponse.PageSize;
-            }
-
-            _currentPage = _productPaginationResponse.PageIndex + 1;
-        }
-    }
-
-    private async Task GetTopCategories(int number)
-    {
-        var resultObject = await CatalogService.GetTopCategories(number);
-
-        if (resultObject.ResultCode.Equals(ResultCode.Success))
-        {
-            _categoryList = resultObject.Data.ToList();
-        }
+        _productPaginationResponse = await CatalogService.GetAllProducts(_getAllProductRequest);
     }
 
     private async Task GetProductsByCategoryId(int categoryId)
     {
-        var req = new GetProductsByAdvanceFilterRequest
-            {
-                Page = _paginationRequest.Page,
-                Limit = _paginationRequest.Limit,
-                CategoryIdList = [categoryId],
-                BrandIdList = []
-            };
+        _getAllProductRequest.Category = categoryId;
 
-        var resultObject = await CatalogService.GetProductsByAdvanceFilter(req);
+        _productPaginationResponse = await CatalogService.GetAllProducts(_getAllProductRequest);
+    }
 
-        if (resultObject.ResultCode.Equals(ResultCode.Success))
-        {
-            _productPaginationResponse = resultObject.Data;
-        }
+    private async Task GetTopCategories(int number)
+    {
+        var response = await CatalogService.GetTopCategories(number);
+        _categoryList = response.ToList();
     }
 
     private async Task OnChangedCurrentPage(int newPageIndex)
     {
         _currentPage = newPageIndex;
-        _paginationRequest.Page = _currentPage - 1;
-        await GetAllProduct();
+        _getAllProductRequest.Page = _currentPage - 1;
+        _productPaginationResponse = await CatalogService.GetAllProducts(_getAllProductRequest);
         StateHasChanged();
     }
 }

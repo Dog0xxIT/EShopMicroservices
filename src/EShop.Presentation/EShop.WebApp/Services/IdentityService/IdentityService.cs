@@ -14,82 +14,82 @@ namespace EShop.WebApp.Services.IdentityService
             _coreHttpClient = coreHttpClient;
         }
 
-        public async Task<ResultObject<TypedResult>> ConfirmEmail(ConfirmEmailRequest request)
+        public async Task<ResultObject<ResponseObject>> ConfirmEmail(ConfirmEmailRequest request)
         {
-            return await _coreHttpClient.PostAsync<TypedResult>(
+            return await _coreHttpClient.PostAsync<ResponseObject>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Identity.ConfirmEmail,
+                uri: "/confirmEmail",
                 reqObj: request);
         }
 
-        public async Task<ResultObject<TypedResult>> ManageInfo(ManageInfoRequest request)
+        public async Task<ResultObject<ResponseObject>> ManageInfo(ManageInfoRequest request)
         {
-            return await _coreHttpClient.PostAsync<TypedResult>(
+            return await _coreHttpClient.PostAsync<ResponseObject>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Identity.ManageInfo,
+                uri: "/manageInfo",
                 reqObj: request);
         }
 
-        public async Task<ResultObject<TypedResult>> Register(RegisterRequest request)
+        public async Task<ResultObject<ResponseObject>> Register(RegisterRequest request)
         {
-            return await _coreHttpClient.PostAsync<TypedResult>(
+            return await _coreHttpClient.PostAsync<ResponseObject>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Identity.Register,
+                uri: "/register",
                 reqObj: request);
         }
 
-        public async Task<ResultObject<TypedResult>> SignIn(SignInRequest request)
+        public async Task<ResultObject<ResponseObject>> SignIn(SignInRequest request)
         {
-            return await _coreHttpClient.PostAsync<TypedResult>(
+            return await _coreHttpClient.PostAsync<ResponseObject>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Identity.SignIn,
+                uri: "/login",
                 reqObj: request);
         }
 
-        public async Task<ResultObject<TypedResult>> SignOut()
+        public async Task<ResultObject<ResponseObject>> SignOut()
         {
-            return await _coreHttpClient.GetAsync<TypedResult>(
+            return await _coreHttpClient.GetAsync<ResponseObject>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Identity.SignOut);
+                uri: "/logout");
         }
 
-        public async Task<ResultObject<TypedResult>> RefreshToken(RefreshTokenRequest request)
+        public async Task<ResultObject<ResponseObject>> RefreshToken(RefreshTokenRequest request)
         {
-            return await _coreHttpClient.PostAsync<TypedResult>(
+            return await _coreHttpClient.PostAsync<ResponseObject>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Identity.SignIn,
+                uri: "/refreshToken",
                 reqObj: request);
         }
 
-        public async Task<ResultObject<TypedResult>> ResendConfirmEmail(ResendConfirmEmailRequest request)
+        public async Task<ResultObject<ResponseObject>> ResendConfirmEmail(ResendConfirmEmailRequest request)
         {
-            return await _coreHttpClient.PostAsync<TypedResult>(
+            return await _coreHttpClient.PostAsync<ResponseObject>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Identity.SignIn,
+                uri: "/resendConfirmEmail",
                 reqObj: request);
         }
 
-        public async Task<ResultObject<TypedResult>> ForgotPassword(ForgotPasswordRequest request)
+        public async Task<ResultObject<ResponseObject>> ForgotPassword(ForgotPasswordRequest request)
         {
-            return await _coreHttpClient.PostAsync<TypedResult>(
+            return await _coreHttpClient.PostAsync<ResponseObject>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Identity.ForgotPassword,
+                uri: "/forgotPassword",
                 reqObj: request);
         }
 
-        public async Task<ResultObject<TypedResult>> ResetPassword(ResetPasswordRequest request)
+        public async Task<ResultObject<ResponseObject>> ResetPassword(ResetPasswordRequest request)
         {
-            return await _coreHttpClient.PostAsync<TypedResult>(
+            return await _coreHttpClient.PostAsync<ResponseObject>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Identity.SignIn,
+                uri: "/resetPassword",
                 reqObj: request);
         }
 
-        public async Task<ResultObject<TypedResult>> Manage2Fa(Manage2FaRequest request)
+        public async Task<ResultObject<ResponseObject>> Manage2Fa(Manage2FaRequest request)
         {
-            return await _coreHttpClient.PostAsync<TypedResult>(
+            return await _coreHttpClient.PostAsync<ResponseObject>(
                 clientName: UrlsConfig.ClientName,
-                uri: UrlsConfig.Identity.SignIn,
+                uri: "/resetManage2Fa",
                 reqObj: request);
         }
     }
