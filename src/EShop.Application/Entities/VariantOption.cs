@@ -13,9 +13,13 @@ namespace EShop.Application.Entities
         public int OptionTypeId { get; set; }
         public int OptionValueId { get; set; }
 
+        [DeleteBehavior(DeleteBehavior.NoAction)]
         public ProductVariant ProductVariant { get; set; }
 
         [DeleteBehavior(DeleteBehavior.NoAction)]
         public OptionValue OptionValue { get; set; }
+
+        [DeleteBehavior(DeleteBehavior.NoAction)]
+        public OptionType OptionType { get; set; }
     }
 }

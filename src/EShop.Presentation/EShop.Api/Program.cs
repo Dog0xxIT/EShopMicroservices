@@ -115,6 +115,23 @@ builder.Services.AddSwaggerGen(options =>
 
     options.AddSecurityDefinition("Bearer", securityScheme);
     options.AddSecurityRequirement(securityRequirement);
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "EShop API",
+        Description = "An ASP.NET Core Web API for managing EShop items",
+        TermsOfService = new Uri("https://example.com/terms"),
+        Contact = new OpenApiContact
+        {
+            Name = "Example Contact",
+            Url = new Uri("https://example.com/contact")
+        },
+        License = new OpenApiLicense
+        {
+            Name = "Example License",
+            Url = new Uri("https://example.com/license")
+        }
+    });
 });
 
 builder.Services.AddHttpLogging(logging =>

@@ -11,6 +11,5 @@ namespace EShop.Application.Entities
         public List<Payment> Payments { get; set; }
 
         public List<Address> Addresses { get; set; }
-
     }
 }

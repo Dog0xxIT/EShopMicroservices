@@ -11,16 +11,17 @@ namespace EShop.Shared.ResponseModels.Catalog
         public int Id { get; set; }
         public string Name { get; set; }
         public string Summary { get; set; }
-        public List<string>? DescriptionSections { get; set; }
+        public List<string> DescriptionSections { get; set; } = new();
         public double Price { get; set; }
         public string ImageUrl { get; set; }
         public double Discount { get; set; }
         public int ReviewsCount { get; set; }
         public double Star { get; set; }
-        public _Brand Brand { get; set; }
-        public _Category Category { get; set; }
+        public _Brand Brand { get; set; } = new();
+        public _Category Category { get; set; } = new();
         public int TotalBuyers { get; set; }
         public string Sku { get; set; }
+        public List<Variant> Variants { get; set; } = new();
 
         public class _Brand
         {
@@ -36,6 +37,16 @@ namespace EShop.Shared.ResponseModels.Catalog
             public string CategoryName { get; set; }
             public string ThumbnailUrl { get; set; }
             public string Code { get; set; }
+        }
+
+        public class Variant
+        {
+            public int ProductId { get; set; }
+            public int Sku { get; set; }
+            public int OptionTypeId { get; set; }
+            public string OptionType { get; set; }
+            public string OptionValue { get; set; }
+            public string ImageUrl { get; set; }
         }
     }
 }

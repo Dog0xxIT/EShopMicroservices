@@ -10,7 +10,6 @@ public interface ICatalogService
 {
     Task<PaginationResponse<GetListProductResponse>> GetAllProducts(GetAllProductRequest req);
     Task<PaginationResponse<GetAllCategoriesResponse>> GetAllCategories(PaginationRequest paginationReq);
-    Task<IEnumerable<GetAllCategoriesResponse>> GetTopCategories(int number = 10);
     Task<GetProductByIdResponse?> GetProductById(int productId);
     Task<PaginationResponse<GetListBrandsResponse>> GetAllBrands(PaginationRequest paginationReq);
     Task<ServiceResult> CreateProduct(CreateProductRequest req);
@@ -19,4 +18,7 @@ public interface ICatalogService
     Task<ServiceResult> UpdateImageProduct(UploadProductImageRequest uploadProductImageReq);
     Task<ServiceResult> DeleteImageProduct(int productId);
     Task<ServiceResult> UpdateBrand(UpdateBrandRequest req);
+    Task<bool> CheckExistBrand(int brandId);
+    Task<bool> CheckExistProduct(int productId);
+    Task<bool> CheckExistCategory(int categoryId);
 }

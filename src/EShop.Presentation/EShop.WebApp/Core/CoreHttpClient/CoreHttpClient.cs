@@ -5,7 +5,7 @@ using EShop.Shared.ResponseModels;
 using EShop.Shared.ResponseModels.Common;
 using Newtonsoft.Json;
 
-namespace EShop.WebApp.Core.Core;
+namespace EShop.WebApp.Core.CoreHttpClient;
 
 public class CoreHttpClient : ICoreHttpClient
 {
@@ -25,7 +25,11 @@ public class CoreHttpClient : ICoreHttpClient
             var dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(JsonConvert.SerializeObject(queryObj));
             if (dictionary != null)
             {
-                var queryString = string.Join("&", dictionary.Select(x => $"{x.Key}={HttpUtility.UrlEncode(x.Value)}"));
+                //Remove null or empty params or WhiteSpace
+                var dictionaryList = dictionary
+                    .Where(x => !string.IsNullOrEmpty(x.Value) || !string.IsNullOrWhiteSpace(x.Value));
+
+                var queryString = string.Join("&", dictionaryList.Select(x => $"{x.Key}={HttpUtility.UrlEncode(x.Value)}"));
                 uri += $"?{queryString}";
             }
         }
@@ -35,7 +39,6 @@ public class CoreHttpClient : ICoreHttpClient
         try
         {
             var client = await httpClient.GetAsync(uri);
-
             if (client.IsSuccessStatusCode)
             {
                 var resultData = await client.Content.ReadFromJsonAsync<T>();

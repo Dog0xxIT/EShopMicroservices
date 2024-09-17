@@ -13,4 +13,5 @@ public interface IBasketService
     Task<ServiceResult> UpdateQty(UpdateQtyRequest req);
     Task<ServiceResult> Delete(int basketItemId);
     Task<ServiceResult> AddToBasket(AddToBasketRequest req);
+    Task<bool> CheckExistBasket(int basketId);
 }

@@ -3,12 +3,10 @@
 @using EShop.Shared.RequestModels.Catalog
 @using EShop.Shared.RequestModels.Common
 @using EShop.Shared.ResponseModels.Catalog
-@using EShop.Shared.ResponseModels.Common
-@using EShop.WebApp.Services.CatalogService
-@using EShop.WebApp.Components.Common
 @using EShop.WebApp.Components.Product
 
 @inject ICatalogService CatalogService
+@inject NavigationManager NavManager
 
 <HeroSection></HeroSection>
 
@@ -31,73 +29,26 @@
             <div class="gap-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 @foreach (var category in _categoryList)
                 {
-                            <a @onclick="async () => await GetProductsByCategoryId(category.Id)" href="#" class="border-gray-200 bg-white px-4 py-2 flex items-center rounded-lg border hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <a @onclick="async () => await GetProductsByCategoryId(category.Id)" href="#" class="border-gray-200 bg-white px-4 py-2 flex items-center rounded-lg border hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                         @((MarkupString)category.Icon)
-                                <span class="text-gray-900 text-sm font-medium dark:text-white">@category.Name</span>
-                            </a>
+                        <span class="text-gray-900 text-sm font-medium dark:text-white">@category.Name</span>
+                    </a>
                 }
             </div>
         </div>
 
         <div class="mb-4 gap-4 grid sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
-            @foreach (var product in _productPaginationResponse.Data)
+            @foreach (var product in _productList)
             {
-                        <ProductCart ProductData="product" />
+                <ProductCart ProductData="product" />
             }
         </div>
 
         <div class="w-full text-center">
-            <button type="button"
+            <button @onclick=@(() => NavManager.NavigateTo("/products"))
                     class="border-gray-200 bg-white px-5 py-2.5 text-gray-900 rounded-lg border text-sm font-medium hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">
                 Show more
             </button>
         </div>
     </div>
-    <!-- Filter modal -->
-    <FilterModal @bind-Visible="@_visibleFilterModal" />
 </section>
-
-@code
-{
-    private GetAllProductRequest _getAllProductRequest;
-    private PaginationResponse<GetListProductResponse> _productPaginationResponse;
-    private List<GetAllCategoriesResponse> _categoryList;
-    private bool _visibleFilterModal;
-    private int _totalPage;
-    private int _currentPage;
-
-    protected override async Task OnInitializedAsync()
-    {
-        _getAllProductRequest = new()
-            {
-                Page = 0,
-                Limit = 12,
-            };
-
-        _productPaginationResponse = new();
-        _categoryList = new();
-        await GetTopCategories(16);
-        _productPaginationResponse = await CatalogService.GetAllProducts(_getAllProductRequest);
-    }
-
-    private async Task GetProductsByCategoryId(int categoryId)
-    {
-        _getAllProductRequest.Category = categoryId;
-
-        _productPaginationResponse = await CatalogService.GetAllProducts(_getAllProductRequest);
-    }
-
-    private async Task GetTopCategories(int number)
-    {
-        var response = await CatalogService.GetTopCategories(number);
-        _categoryList = response.ToList();
-    }
-
-    private async Task OnChangedCurrentPage(int newPageIndex)
-    {
-        _currentPage = newPageIndex;
-        _getAllProductRequest.Page = _currentPage - 1;
-        _productPaginationResponse = await CatalogService.GetAllProducts(_getAllProductRequest);
-        StateHasChanged();
-    }
-}

@@ -3,11 +3,12 @@ using EShop.Shared.RequestModels.Identity;
 using EShop.Shared.ResponseModels.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace EShop.Api.Controllers
 {
     [ApiController]
-    [Route("/")]
+    [Route("")]
     public class IdentityController : ControllerBase
     {
         private readonly IIdentityService _identityService;
@@ -67,8 +68,7 @@ namespace EShop.Api.Controllers
 
             var token = await _identityService.GenerateEmailConfirmationToken(req.Email);
             var domainName = HttpContext.Request.Host.Value;
-            var actionUri = Url.Action(
-                nameof(ConfirmEmail),
+            var actionUri = Url.Action(nameof(ConfirmEmail),
                 new ConfirmEmailRequest { Email = req.Email, Code = token });
             var confirmationLink = $"https://{domainName}{actionUri}";
             var resultEmailService = await _emailSenderService.SendConfirmationLinkAsync(req.Email, req.Email, confirmationLink);
@@ -96,27 +96,28 @@ namespace EShop.Api.Controllers
                     Expires = DateTime.UtcNow.AddDays(1), // Expiration
                     SameSite = SameSiteMode.Strict, // CSRF
                 };
-
                 this.HttpContext.Response.Cookies.Append("jwt", token, cookieOptions);
                 return Ok(ResponseObject.Succeeded);
             }
             return Problem(resultService.Errors.First());
         }
 
-        //[Authorize]
-        //[HttpPost]
-        //public IActionResult RefreshToken(RefreshTokenRequest req)
-        //{
-        //    var token = _identityService.RefreshToken(req.RefreshToken);
-        //    var cookieOptions = new CookieOptions()
-        //    {
-        //        HttpOnly = true, // XSS
-        //        Secure = true,
-        //        Expires = DateTime.UtcNow.AddDays(1), // Expiration
-        //        SameSite = SameSiteMode.Strict // CSRF
-        //    };
-        //    return Ok();
-        //}
+        [Authorize]
+        [HttpPost("refreshToken")]
+        public async Task<IActionResult> RefreshToken()
+        {
+            var oldToken = HttpContext.Request.Cookies["jwt"]!;
+            var newToken = await _identityService.RefreshToken(oldToken);
+            var cookieOptions = new CookieOptions()
+            {
+                HttpOnly = true, // XSS
+                Secure = true, // Https
+                Expires = DateTime.UtcNow.AddDays(1), // Expiration
+                SameSite = SameSiteMode.Strict, // CSRF
+            };
+            this.HttpContext.Response.Cookies.Append("jwt", newToken, cookieOptions);
+            return Ok(ResponseObject.Succeeded);
+        }
 
         [HttpPost("resendConfirmEmail")]
         public async Task<IActionResult> ResendConfirmEmail(ResendConfirmEmailRequest req)

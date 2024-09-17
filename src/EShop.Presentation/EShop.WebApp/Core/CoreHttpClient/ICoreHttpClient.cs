@@ -1,6 +1,4 @@
-﻿using EShop.Shared.ResponseModels;
-
-namespace EShop.WebApp.Core.Core;
+﻿namespace EShop.WebApp.Core.CoreHttpClient;
 
 public interface ICoreHttpClient
 {

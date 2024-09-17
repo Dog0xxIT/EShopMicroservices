@@ -9,7 +9,7 @@ namespace EShop.Shared.ResponseModels.Common
 {
     public sealed class ResponseObject
     {
-        public const string Message = "Success";
+        public string Message { get; set; } = "Success";
 
         public static ResponseObject Succeeded => new();
     }

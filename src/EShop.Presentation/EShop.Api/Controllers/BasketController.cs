@@ -1,14 +1,13 @@
 ﻿using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Basket;
 using EShop.Shared.RequestModels.Common;
-using EShop.Shared.ResponseModels.Basket;
 using EShop.Shared.ResponseModels.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Api.Controllers
 {
     [ApiController]
-    [Route("baskets/")]
+    [Route("baskets")]
     public class BasketController : Controller
     {
         private readonly IBasketService _basketService;

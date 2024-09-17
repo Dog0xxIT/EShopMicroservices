@@ -2,53 +2,56 @@
 using EShop.Shared.RequestModels.Common;
 using EShop.Shared.ResponseModels.Catalog;
 using EShop.Shared.ResponseModels.Common;
-using EShop.WebApp.Core;
 
 namespace EShop.WebApp.Pages.Product;
 
 public partial class ProductList
 {
-    private GetAllProductRequest _getAllProductRequest;
-    private PaginationResponse<GetListProductResponse> _productPaginationResponse;
+    private GetAllProductRequest _getAllProductReq;
+    private PaginationResponse<GetListProductResponse> _productPaginationRes;
     private List<GetAllCategoriesResponse> _categoryList;
-    private bool _visibleFilterModal;
-    private int _totalPage;
-    private int _currentPage;
+    private List<GetAllBrandsResponse> _brandList;
 
     protected override async Task OnInitializedAsync()
     {
-        _getAllProductRequest = new()
+        _getAllProductReq = new()
         {
-            Page = 0,
-            Limit = 33
+            Limit = 12
         };
-
-        _productPaginationResponse = new()
-        {
-            Data = new List<GetListProductResponse>()
-        };
+        _productPaginationRes = new();
         _categoryList = new();
-
-        await GetTopCategories(16);
-        _productPaginationResponse = await CatalogService.GetAllProducts(_getAllProductRequest);
+        _brandList = new();
+        _productPaginationRes = await CatalogService.GetAllProducts(_getAllProductReq);
+        await GetAllCategories();
+        await GetAllBrands();
     }
 
-    private async Task GetTopCategories(int number)
+    private async Task GetAllCategories()
     {
-        var response = await CatalogService.GetTopCategories(number);
-        _categoryList = response.ToList();
+        var req = new PaginationRequest
+        {
+            Limit = 12
+        };
+        var response = await CatalogService.GetAllCategories(req);
+
+        _categoryList = response.Data.ToList();
     }
 
-    private async Task GetProductsByCategoryId(int categoryId)
+    private async Task GetAllBrands()
     {
-        _getAllProductRequest.Category = categoryId;
+        var req = new PaginationRequest
+        {
+            Limit = 12
+        };
+        var response = await CatalogService.GetAllBrands(req);
+
+        _brandList = response.Data.ToList();
     }
 
     private async Task OnChangedCurrentPage(int newPageIndex)
     {
-        _currentPage = newPageIndex;
-        _getAllProductRequest.Page = _currentPage - 1;
-        _productPaginationResponse = await CatalogService.GetAllProducts(_getAllProductRequest);
+        _getAllProductReq.Page = newPageIndex;
+        _productPaginationRes = await CatalogService.GetAllProducts(_getAllProductReq);
         StateHasChanged();
     }
 }

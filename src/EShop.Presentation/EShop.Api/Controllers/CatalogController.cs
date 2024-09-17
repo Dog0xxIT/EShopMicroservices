@@ -3,13 +3,12 @@ using EShop.Application.Services.Interfaces;
 using EShop.Shared.RequestModels.Catalog;
 using EShop.Shared.RequestModels.Common;
 using EShop.Shared.ResponseModels.Common;
-using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Api.Controllers
 {
     [ApiController]
-    [Route("catalog/")]
+    [Route("catalog")]
     public class CatalogController : Controller
     {
         private readonly ICatalogService _catalogService;
@@ -34,41 +33,14 @@ namespace EShop.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet("products/{productId}/options")]
-        public async Task<IActionResult> GetAllProductVariantOptions(
-            [FromRoute] int productId,
-            [FromQuery] GetAllProductRequest getAllProductRequest)
-        {
-            var response = await _catalogService.GetAllProducts(getAllProductRequest);
-
-            return Ok(response);
-        }
-
-        [HttpGet("products/{productId}/variants")]
-        public async Task<IActionResult> GetAllProductVariants(
-            [FromRoute] int productId,
-            [FromQuery] GetAllProductRequest getAllProductRequest)
-        {
-            var response = await _catalogService.GetAllProducts(getAllProductRequest);
-
-            return Ok(response);
-        }
-
-        [HttpGet("products/variantOptions")]
-        public async Task<IActionResult> GetAllProductVariantsOption(
-            [FromQuery] GetAllProductRequest getAllProductRequest)
-        {
-            var response = await _catalogService.GetAllProducts(getAllProductRequest);
-
-            return Ok(response);
-        }
-
-
         [HttpGet("products/{id}")]
         public async Task<IActionResult> GetProductById([FromRoute] int id)
         {
             var product = await _catalogService.GetProductById(id);
-
+            if (product is null)
+            {
+                return Problem("Not exist product");
+            }
             return Ok(product);
         }
 
@@ -87,47 +59,11 @@ namespace EShop.Api.Controllers
 
             return Ok(categories);
         }
-
-        [HttpGet("categories/{topNumber}")]
-        public async Task<IActionResult> GetTopCategories([FromRoute] int topNumber = 10)
-        {
-            var categories = await _catalogService.GetTopCategories(topNumber);
-            return Ok(categories);
-        }
         #endregion
 
         #region Post method
         [HttpPost("products")]
         public async Task<IActionResult> CreateProduct(CreateProductRequest req)
-        {
-            var serviceResult = await _catalogService.CreateProduct(req);
-
-            if (serviceResult.Succeeded)
-            {
-                return Ok(ResponseObject.Succeeded);
-            }
-            return Problem(serviceResult.Errors.First());
-        }
-
-        [HttpPost("products/{productId}/options")]
-        public async Task<IActionResult> CreateProductVariantOption(
-            [FromRoute] int productId,
-            [FromBody] CreateProductRequest req)
-        {
-            var serviceResult = await _catalogService.CreateProduct(req);
-
-            if (serviceResult.Succeeded)
-            {
-                return Ok(ResponseObject.Succeeded);
-            }
-            return Problem(serviceResult.Errors.First());
-        }
-
-
-        [HttpPost("products/{productId}/variants")]
-        public async Task<IActionResult> CreateProductVariant(
-            [FromRoute] int productId,
-            [FromBody] CreateProductRequest req)
         {
             var serviceResult = await _catalogService.CreateProduct(req);
 
@@ -152,13 +88,19 @@ namespace EShop.Api.Controllers
 
         #endregion
 
-        #region Put method
+        #region Patch method
 
-        [HttpPut("products/{id}")]
+        [HttpPatch("products/{id}")]
         public async Task<IActionResult> UpdateProduct(
             [FromRoute] int id,
             [FromBody] UpdateProductRequest req)
         {
+            var isExist = await _catalogService.CheckExistProduct(id);
+            if (!isExist)
+            {
+                return Problem("Not exist product");
+            }
+
             var serviceResult = await _catalogService.UpdateProduct(req);
 
             if (serviceResult.Succeeded)
@@ -168,7 +110,7 @@ namespace EShop.Api.Controllers
             return Problem(serviceResult.Errors.First());
         }
 
-        [HttpPut("brands/{id}")]
+        [HttpPatch("brands/{id}")]
         public async Task<IActionResult> UpdateBrand(
             [FromRoute] int id,
             [FromBody] UpdateBrandRequest req)

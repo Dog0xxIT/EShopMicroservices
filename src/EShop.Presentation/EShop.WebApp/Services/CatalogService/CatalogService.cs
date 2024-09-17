@@ -1,8 +1,10 @@
-﻿using EShop.Shared.RequestModels.Common;
+﻿using EShop.Shared.RequestModels.Catalog;
+using EShop.Shared.RequestModels.Common;
 using EShop.Shared.ResponseModels.Catalog;
 using EShop.Shared.ResponseModels.Common;
+using EShop.WebApp;
 using EShop.WebApp.Core;
-using EShop.WebApp.Core.Core;
+using EShop.WebApp.Core.CoreHttpClient;
 
 namespace EShop.WebApp.Services.CatalogService
 {
@@ -15,12 +17,12 @@ namespace EShop.WebApp.Services.CatalogService
             _coreHttpClient = coreHttpClient;
         }
 
-        public async Task<PaginationResponse<GetListProductResponse>> GetAllProducts(PaginationRequest paginationRequest)
+        public async Task<PaginationResponse<GetListProductResponse>> GetAllProducts(GetAllProductRequest req)
         {
             var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
                  clientName: UrlsConfig.ClientName,
                  uri: "/catalog/products",
-                 queryObj: paginationRequest);
+                 queryObj: req);
 
             return resultObject.Data;
         }
@@ -33,9 +35,9 @@ namespace EShop.WebApp.Services.CatalogService
                 uri: $"/catalog/products/{productId}");
         }
 
-        public async Task<PaginationResponse<GetListBrandsResponse>> GetAllBrands(PaginationRequest paginationRequest)
+        public async Task<PaginationResponse<GetAllBrandsResponse>> GetAllBrands(PaginationRequest paginationRequest)
         {
-            var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetListBrandsResponse>>(
+            var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetAllBrandsResponse>>(
                 clientName: UrlsConfig.ClientName,
                 uri: "/catalog/brands",
                 queryObj: paginationRequest);

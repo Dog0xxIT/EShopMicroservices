@@ -175,4 +175,10 @@ public class BasketService : IBasketService
             }
         }
     }
+
+    public async Task<bool> CheckExistBasket(int basketId)
+    {
+        var basket = await _unitOfWork.BasketRepository.GetById(basketId);
+        return basket != null;
+    }
 }

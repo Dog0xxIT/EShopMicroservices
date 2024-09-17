@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EShop.Api.Controllers
 {
     [ApiController]
-    [Route("orders/")]
+    [Route("orders")]
     public class OrderController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

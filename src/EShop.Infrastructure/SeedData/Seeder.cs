@@ -158,7 +158,7 @@ namespace EShop.Infrastructure.SeedData
                         Price = double.Parse(values[6]),
                         ImageUrl = values[3],
                         CategoryId = int.Parse(values[7]),
-                        BrandId = (id % 40) + 1,
+                        Brands = (id % 40) + 1,
                         Summary = $"Summary for product {values[1]}",
                         OtherAttributes = "",
                         Sku = $"{values[1]}",
@@ -173,6 +173,51 @@ namespace EShop.Infrastructure.SeedData
             modelBuilder.Entity<Product>().HasData(products);
             products.Clear();
              */
+            #endregion
+
+            #region Options
+            modelBuilder.Entity<OptionValue>().HasData(
+                // Size (OptionTypeId = 1)
+                new OptionValue { Id = 1, Value = "S", OptionTypeId = 1 },
+                new OptionValue { Id = 2, Value = "M", OptionTypeId = 1 },
+                new OptionValue { Id = 3, Value = "L", OptionTypeId = 1 },
+                new OptionValue { Id = 4, Value = "XL", OptionTypeId = 1 },
+
+                // Color (OptionTypeId = 2)
+                new OptionValue { Id = 5, Value = "Red", OptionTypeId = 2 },
+                new OptionValue { Id = 6, Value = "Blue", OptionTypeId = 2 },
+                new OptionValue { Id = 7, Value = "Green", OptionTypeId = 2 },
+                new OptionValue { Id = 8, Value = "Black", OptionTypeId = 2 },
+
+                // Material (OptionTypeId = 3)
+                new OptionValue { Id = 9, Value = "Cotton", OptionTypeId = 3 },
+                new OptionValue { Id = 10, Value = "Polyester", OptionTypeId = 3 },
+                new OptionValue { Id = 11, Value = "Leather", OptionTypeId = 3 },
+
+                // Capacity (OptionTypeId = 4)
+                new OptionValue { Id = 12, Value = "64GB", OptionTypeId = 4 },
+                new OptionValue { Id = 13, Value = "128GB", OptionTypeId = 4 },
+                new OptionValue { Id = 14, Value = "256GB", OptionTypeId = 4 },
+
+                // Dimension (OptionTypeId = 5)
+                new OptionValue { Id = 15, Value = "40x60 cm", OptionTypeId = 5 },
+                new OptionValue { Id = 16, Value = "50x70 cm", OptionTypeId = 5 },
+                new OptionValue { Id = 17, Value = "60x80 cm", OptionTypeId = 5 },
+
+                // Weight (OptionTypeId = 6)
+                new OptionValue { Id = 18, Value = "500g", OptionTypeId = 6 },
+                new OptionValue { Id = 19, Value = "1kg", OptionTypeId = 6 },
+                new OptionValue { Id = 20, Value = "2kg", OptionTypeId = 6 }
+            );
+
+            modelBuilder.Entity<OptionType>().HasData(
+                new OptionType { Id = 1, Name = "Size", Description = "" , OptionValues = new() },
+                new OptionType { Id = 2, Name = "Color", Description = "", OptionValues = new() },
+                new OptionType { Id = 3, Name = "Material", Description = "", OptionValues = new() },
+                new OptionType { Id = 4, Name = "Capacity", Description = "", OptionValues = new() },
+                new OptionType { Id = 5, Name = "Dimension", Description = "" , OptionValues = new() },
+                new OptionType { Id = 6, Name = "Weight", Description = "", OptionValues = new() }
+             );
             #endregion
         }
 

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using EShop.Shared.RequestModels.Common;
 
 namespace EShop.Shared.RequestModels.Catalog
@@ -17,7 +16,8 @@ namespace EShop.Shared.RequestModels.Catalog
         [Range(0.001, double.MaxValue)]
         public double? Max { get; set; }
 
-        public int? BrandId { get; set; }
+        [RegularExpression(@"^(\d+)(\,\d+)*$", ErrorMessage = "A comma-separated list of brand IDs")]
+        public string? Brands { get; set; }
 
         public string? Keyword { get; set; }
 
@@ -25,12 +25,14 @@ namespace EShop.Shared.RequestModels.Catalog
 
         public string? Name { get; set; }
 
-        //public List<int>? Categories { get; set; }
+        public string? Color { get; set; }
 
-        public int? Category { get; set; }
+        public int? RatingStar { get; set; }
 
-        [RegularExpression("^(id|price|date_modified)$",
-            ErrorMessage = "Sort direction. Acceptable values are: id, price, date_modified.")]
+        [RegularExpression(@"^(\d+)(\,\d+)*$", ErrorMessage = "A comma-separated list of category IDs")]
+        public string? Categories { get; set; }
+
+        [RegularExpression(@"^(id|price|date_modified)$", ErrorMessage = "Sort direction. Acceptable values are: id, price, date_modified.")]
         public string SortBy { get; set; } = "id";
     }
 }

@@ -3,6 +3,7 @@ using System.Security.Claims;
 using EShop.Shared.RequestModels.Identity;
 using EShop.Shared.ResponseModels.Common;
 using EShop.Shared.ResponseModels.Identity;
+using EShop.WebApp;
 using EShop.WebApp.Core;
 using EShop.WebApp.Services.IdentityService;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -46,7 +47,7 @@ public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IA
             request.Method = HttpMethod.Get;
             request.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
             request.Headers.Add("X-Requested-With", ["XMLHttpRequest"]);
-            request.RequestUri = new Uri("https://localhost:7093/Identity/ManageInfo");
+            request.RequestUri = new Uri("https://localhost:7093/manageInfo");
 
             var client = await httpClient.SendAsync(request);
 

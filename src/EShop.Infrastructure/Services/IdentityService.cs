@@ -10,6 +10,7 @@ using EShop.Shared.ResponseModels.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 
 namespace EShop.Infrastructure.Services
 {
@@ -74,9 +75,16 @@ namespace EShop.Infrastructure.Services
             return userEntity != null;
         }
 
-        public Task<string> RefreshToken(string oldToken)
+        public async Task<string> RefreshToken(string oldToken)
         {
-            throw new NotImplementedException();
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(oldToken);
+            if (jwtSecurityToken != null)
+            {
+                var email = jwtSecurityToken.Claims.FirstOrDefault(claim => claim.Type == "email")?.Value;
+                return await GenerateJwtToken(email ?? string.Empty);
+            }
+            return string.Empty;
         }
 
         public async Task<ServiceResult> ConfirmEmail(string email, string code)
