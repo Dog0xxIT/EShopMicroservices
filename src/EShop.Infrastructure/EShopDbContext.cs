@@ -26,7 +26,6 @@ namespace EShop.Infrastructure
         public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<OptionValue> OptionValues { get; set; }
         public DbSet<OptionType> OptionTypes { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }

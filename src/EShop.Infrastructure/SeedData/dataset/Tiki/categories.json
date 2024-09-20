@@ -1,0 +1,5791 @@
+[
+	{
+		"Id": 2601,
+		"Name": "Sữa cho bé dưới 24 tháng ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2553,
+		"Name": "Tã quần",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2549,
+		"Name": "Đồ Chơi - Mẹ & Bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2602,
+		"Name": "Sữa cho bé trên 24 tháng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10418,
+		"Name": "Dinh dưỡng cho người lớn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2600,
+		"Name": "Sữa bột cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68633,
+		"Name": "Miếng lót dành cho người lớn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68460,
+		"Name": "Sữa bột chức năng cho người lớn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10419,
+		"Name": "Sữa công thức pha sẵn cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2,
+		"Name": "Root",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68634,
+		"Name": "Tã dán cho người lớn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2555,
+		"Name": "Khăn giấy ướt cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2552,
+		"Name": "Tã dán",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10477,
+		"Name": "Gối cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10510,
+		"Name": "Thú bông",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2606,
+		"Name": "Bột ăn dặm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10420,
+		"Name": "Bình sữa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68635,
+		"Name": "Tã quần cho người lớn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3787,
+		"Name": "Xếp khối",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10505,
+		"Name": "Ghế đi xe máy cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8465,
+		"Name": "Bảo vệ an toàn điện",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2569,
+		"Name": "Sữa tắm cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68461,
+		"Name": "Sữa nước chức năng cho người lớn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10417,
+		"Name": "Tã bỉm dành cho người lớn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2582,
+		"Name": "Nước rửa bình sữa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10452,
+		"Name": "Nước hoa cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10500,
+		"Name": "Địu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10429,
+		"Name": "Máy hâm sữa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6570,
+		"Name": "Bánh ăn dặm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1343,
+		"Name": "CHƯƠNG TRÌNH KHUYẾN MẠI KHÁC",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1948,
+		"Name": "Lắp ghép, Xếp hình",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10445,
+		"Name": "Cờ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10543,
+		"Name": "Thảm nằm chơi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10538,
+		"Name": "Trò chơi trí tuệ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10509,
+		"Name": "Búp bê",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2572,
+		"Name": "Kem chống hăm cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10506,
+		"Name": "Xe điều khiển và phụ kiện",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10497,
+		"Name": "Xe đẩy du lịch cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10564,
+		"Name": "Dung dịch tắm thảo dược",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68464,
+		"Name": "Bộ boardgame",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10541,
+		"Name": "Lều trong nhà",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68484,
+		"Name": "Đồ chơi giấy thủ công",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10463,
+		"Name": "Nước rơ lưỡi và dụng cụ rơ lưỡi cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2558,
+		"Name": "Núm ti",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68449,
+		"Name": "Các sản phẩm dinh dưỡng cho bé khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10238,
+		"Name": "Bộ sản phẩm vệ sinh nhà cửa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1686,
+		"Name": "Giày - Dép nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49648,
+		"Name": "Phụ kiện giày nam khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10384,
+		"Name": "Dép nam quai ngang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 914,
+		"Name": "Thời Trang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49620,
+		"Name": "Giày thể thao nam cổ thấp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49634,
+		"Name": "Giày sandals nam quai ngang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68161,
+		"Name": "Khử mùi giày",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49632,
+		"Name": "Giày tây nam không dây",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49636,
+		"Name": "Giày sandals nam quai chéo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49638,
+		"Name": "Dép nam đi trong nhà",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49646,
+		"Name": "Miếng lót giày nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49630,
+		"Name": "Giày tây nam có dây",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49626,
+		"Name": "Giày lười da nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49642,
+		"Name": "Giày boots nam cổ thấp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49640,
+		"Name": "Giày boots nam cổ cao",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10383,
+		"Name": "Dép nam xỏ ngón",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1837,
+		"Name": "Chuột Văn Phòng Có Dây",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28484,
+		"Name": "Miếng Dán Màn Hình Điện Thoại",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1838,
+		"Name": "Chuột Văn Phòng Không Dây",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28458,
+		"Name": "Dây Cáp Sạc Đa Năng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1831,
+		"Name": "Bàn Di Chuột - Miếng Lót Chuột",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4428,
+		"Name": "Tai Nghe Có Dây Nhét Tai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5006,
+		"Name": "Dây Cáp Sạc iPhone, iPad",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4593,
+		"Name": "Hub Chuyển Đổi USB Type-C",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1815,
+		"Name": "Thiết Bị Số - Phụ Kiện Số",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20222,
+		"Name": "Dây Đeo và Phụ Kiện Trang Trí",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 12908,
+		"Name": "Adapter Sạc - Củ Sạc Thường",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1804,
+		"Name": "Tai Nghe Có Dây",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67156,
+		"Name": "Cáp đồng hồ thông minh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20244,
+		"Name": "Hộp Đựng - Túi Đựng Phụ Kiện",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2657,
+		"Name": "Đồng Hồ Thông Minh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3804,
+		"Name": "Cáp HDMI - Displayport",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1819,
+		"Name": "Phụ Kiện Di Động Khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28454,
+		"Name": "Pin Sạc Dự Phòng Di Động",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5531,
+		"Name": "Tai Nghe Bluetooth Nhét Tai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28574,
+		"Name": "Bao Da - Ốp Lưng Điện Thoại iPhone",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1811,
+		"Name": "Tai Nghe Bluetooth",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 12294,
+		"Name": "Dây Cáp Sạc USB Type-C",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1805,
+		"Name": "Loa Nghe Nhạc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28686,
+		"Name": "Miếng Phủ Bàn Phím Laptop",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1820,
+		"Name": "Thẻ Nhớ Điện Thoại",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8400,
+		"Name": "Tai Nghe True Wireless",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28576,
+		"Name": "Bao Da - Ốp Lưng Điện Thoại Samsung",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4429,
+		"Name": "Tai Nghe Bluetooth Chụp Tai Over-Ear",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2324,
+		"Name": "Loa Bluetooth",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28460,
+		"Name": "Bộ Adapter Sạc Kèm Cáp Sạc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2971,
+		"Name": "Tai Nghe Chơi Game",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28428,
+		"Name": "Dây Đeo Thay Thế, Phụ Trợ - Phụ Kiện Khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28426,
+		"Name": "Miếng dán màn hình thiết bị đeo thông minh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28616,
+		"Name": "Bút Cảm Ứng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20182,
+		"Name": "Bộ Chuyển Đổi Không Dây",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67178,
+		"Name": "Bộ chuyển đổi HDMI - VGA",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1832,
+		"Name": "Đế Tản Nhiệt Laptop",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28452,
+		"Name": "SIM Data - SIM 3G / 4G",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 26652,
+		"Name": "Micro Karaoke - sân khấu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68145,
+		"Name": "Chất thông cống",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8239,
+		"Name": "Nước giặt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68156,
+		"Name": "Sản phẩm tẩy quần áo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68157,
+		"Name": "Vệ sinh lồng giặt, Sản phẩm vệ sinh máy giặt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68139,
+		"Name": "Diệt côn trùng dạng xịt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4407,
+		"Name": "Khăn giấy khô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68137,
+		"Name": "Diệt côn trùng dạng nước và tinh dầu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4398,
+		"Name": "Nước lau sàn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68151,
+		"Name": "Sáp thơm, Gel thơm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4384,
+		"Name": "Bách Hóa Online",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4399,
+		"Name": "Vệ sinh nhà bếp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8295,
+		"Name": "Khử mùi, sáp thơm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68138,
+		"Name": "Diệt côn trùng dạng sáp và viên nén",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68149,
+		"Name": "Sản phẩm dành cho máy rửa chén",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4395,
+		"Name": "Nước rửa chén",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4403,
+		"Name": "Nước xả vải",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4441,
+		"Name": "Diệt côn trùng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68152,
+		"Name": "Xịt phòng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10231,
+		"Name": "Bộ sản phẩm chăm sóc quần áo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68150,
+		"Name": "Viên rửa chén",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4386,
+		"Name": "Vệ sinh nhà cửa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4409,
+		"Name": "Giấy vệ sinh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4401,
+		"Name": "Dụng cụ vệ sinh nhà tắm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68155,
+		"Name": "Chất tẩy nhà tắm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 15078,
+		"Name": "Chăm sóc nhà cửa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4402,
+		"Name": "Bột giặt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68133,
+		"Name": "Diệt côn trùng dạng nhang đốt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4388,
+		"Name": "Giấy vệ sinh và giấy ăn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4405,
+		"Name": "Sản phẩm chăm sóc áo quần khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4406,
+		"Name": "Khăn ăn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68132,
+		"Name": "Diệt côn trùng dạng bột",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4387,
+		"Name": "Giặt giũ & Chăm sóc quần áo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10237,
+		"Name": "Sản phẩm tẩy đa năng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68158,
+		"Name": "Viên giặt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68142,
+		"Name": "Khăn giấy bếp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1795,
+		"Name": "Điện thoại Smartphone",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1789,
+		"Name": "Điện Thoại - Máy Tính Bảng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1794,
+		"Name": "Máy tính bảng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28856,
+		"Name": "Máy đọc sách",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8061,
+		"Name": "Điện thoại bàn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1796,
+		"Name": "Điện thoại phổ thông",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49652,
+		"Name": "Ví nam ngang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5337,
+		"Name": "Túi xách công sở nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49654,
+		"Name": "Ví nam đứng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 958,
+		"Name": "Túi đeo chéo nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 61515,
+		"Name": "Product Line Root",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 959,
+		"Name": "Ví nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 27616,
+		"Name": "Túi thời trang nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49650,
+		"Name": "Túi bao tử, túi đeo bụng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 69482,
+		"Name": "Key điện tử",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11312,
+		"Name": "Voucher - Dịch vụ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 53694,
+		"Name": "Bảo hiểm ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5255,
+		"Name": "Áo thun",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5279,
+		"Name": "Nón cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8484,
+		"Name": "Quần short bé trai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5284,
+		"Name": "Đồ ngủ bé trai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5190,
+		"Name": "Thời trang bé trai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4608,
+		"Name": "Balo In Hình",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5281,
+		"Name": "Phụ kiện cho bé khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5188,
+		"Name": "Thời trang sơ sinh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4609,
+		"Name": "Balo Cao Cấp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68136,
+		"Name": "Vớ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8520,
+		"Name": "Quần vớ bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8491,
+		"Name": "Nơ, Cà vạt, Thắt lưng, Vớ, Bao tay ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8490,
+		"Name": "Dép bé trai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5189,
+		"Name": "Thời trang bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5256,
+		"Name": "Áo khoác bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8481,
+		"Name": "Dép bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5277,
+		"Name": "Mắt kính trẻ em",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8493,
+		"Name": "Dù, áo mưa cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5261,
+		"Name": "Áo bé trai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8486,
+		"Name": "Giày thể thao bé trai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5257,
+		"Name": "Quần, Váy bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5258,
+		"Name": "Đầm bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5259,
+		"Name": "Đồ bơi bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5192,
+		"Name": "Phụ kiện cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5276,
+		"Name": "Giày, dép cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5275,
+		"Name": "Đồ bơi bé trai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8476,
+		"Name": "Giày thể thao bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5262,
+		"Name": "Áo khoác bé trai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8477,
+		"Name": "Giày lười & Xăng đan bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5252,
+		"Name": "Quần áo sơ sinh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8485,
+		"Name": "Đồ lót bé trai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8480,
+		"Name": "Giày búp bê bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8487,
+		"Name": "Giày lười & Xăng đan bé trai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4606,
+		"Name": "Ba lô, Túi xách & Cặp cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5943,
+		"Name": "Đồ lót & Đồ ngủ bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10550,
+		"Name": "Giày tập đi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5280,
+		"Name": "Phụ kiện tóc cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8496,
+		"Name": "Đồ bầu công sở",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8478,
+		"Name": "Giày bốt bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5260,
+		"Name": "Đồ bộ bé gái",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8495,
+		"Name": "Đồ bầu mặc nhà",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5274,
+		"Name": "Quần dài & Quần jeans bé trai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8492,
+		"Name": "Trang sức cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5278,
+		"Name": "Đồng hồ cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5616,
+		"Name": "Phụ kiện bơi cho bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10548,
+		"Name": "Áo sơ mi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11603,
+		"Name": "Thời Trang Cho Mẹ Và Bé",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68732,
+		"Name": "Củ, quả",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54304,
+		"Name": "Rau xanh, rau tươi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 44798,
+		"Name": "Thịt Heo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54278,
+		"Name": "Thịt heo, lợn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 44826,
+		"Name": "Trái Cây Nội Địa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54348,
+		"Name": "Rau củ quả đông lạnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54280,
+		"Name": "Thịt bò, bê",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68705,
+		"Name": "Bánh mì",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54294,
+		"Name": "Cá, hải sản đông lạnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 44828,
+		"Name": "Trái Cây Nhập Khẩu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68727,
+		"Name": "Thịt gà",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 44796,
+		"Name": "Thịt Bò",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54286,
+		"Name": "Các loại thịt khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 44792,
+		"Name": "NGON",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54386,
+		"Name": "Gạo, nếp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68734,
+		"Name": "Hành, tỏi, ớt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68753,
+		"Name": "Há cảo, sủi cảo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68756,
+		"Name": "Pizza",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 44832,
+		"Name": "Thực phẩm chế biến sẵn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 69139,
+		"Name": "Dầu đậu nành",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54454,
+		"Name": "Bánh quy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68746,
+		"Name": "Bánh đông lạnh (Bánh bao, bánh mì,..)",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 69076,
+		"Name": "Cà phê hòa tan",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54396,
+		"Name": "Sản phẩm khô khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68702,
+		"Name": "Tôm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 44810,
+		"Name": "Hải Sản Đông Lạnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68707,
+		"Name": "Đậu hũ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 69033,
+		"Name": "Thực phẩm chế biến sẵn khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54284,
+		"Name": "Thịt đông lạnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68758,
+		"Name": "Gà viên",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54506,
+		"Name": "Nước giặt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 69143,
+		"Name": "Dầu olive",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 69121,
+		"Name": "Nước có vị",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54338,
+		"Name": "Các Sản Phẩm Từ Sữa Khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68695,
+		"Name": "Cá khô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68730,
+		"Name": "Trứng gà",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54464,
+		"Name": "Giỏ quà, bánh theo mùa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68766,
+		"Name": "Xúc xích",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 69042,
+		"Name": "Thực phẩm bổ dưỡng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 69077,
+		"Name": "Cà phê rang xay",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68754,
+		"Name": "Cá, tôm, bò viên",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 54434,
+		"Name": "Đồ chay đông lạnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6000,
+		"Name": "Balo và Vali",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8391,
+		"Name": "Phụ kiện du lịch khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 7566,
+		"Name": "Túi trống",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 27618,
+		"Name": "Phụ kiện vali khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6522,
+		"Name": "Balo thời trang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6521,
+		"Name": "Balo laptop",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 27620,
+		"Name": "Túi Bọc Bảo Vệ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6523,
+		"Name": "Balo du lịch, phượt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6524,
+		"Name": "Cặp đựng laptop",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6525,
+		"Name": "Túi chống sốc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8389,
+		"Name": "Ổ khóa vali",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 27610,
+		"Name": "Balo dây rút",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49656,
+		"Name": "Vali nhựa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67134,
+		"Name": "Balo chống nước",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24342,
+		"Name": "Tấm che nắng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45592,
+		"Name": "Nước rửa kính",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45472,
+		"Name": "Bạt trùm xe máy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 52230,
+		"Name": "Bơm xe ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6052,
+		"Name": "Phụ tùng ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8594,
+		"Name": "Ô Tô - Xe Máy - Xe Đạp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11878,
+		"Name": "Xe tay ga",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 46208,
+		"Name": "Phụ gia chăm sóc khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 52180,
+		"Name": "Phụ kiện thay thế",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 52240,
+		"Name": "Xịt vệ sinh, khử mùi nội thất khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45516,
+		"Name": "Chất tẩy rửa vệ sinh động cơ xe máy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24358,
+		"Name": "Nước hoa, sáp thơm ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6045,
+		"Name": "Phụ kiện ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45528,
+		"Name": "Đèn xe đạp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67274,
+		"Name": "Lọc nhiên liệu ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67289,
+		"Name": "Mũ bảo hiểm xe đạp người lớn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6069,
+		"Name": "Phụ kiện xe máy khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45556,
+		"Name": "Phụ kiện nội thất khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24354,
+		"Name": "Gối, đệm, ghế ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45530,
+		"Name": "Bơm xe đạp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6061,
+		"Name": "Phụ kiện xe máy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45560,
+		"Name": "Bạt phủ ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 52226,
+		"Name": "Gương ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24352,
+		"Name": "Gạt mưa ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 37598,
+		"Name": "Phiếu mua xe máy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11882,
+		"Name": "Xe số",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45500,
+		"Name": "Nhớt động cơ xe máy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67299,
+		"Name": "Nước rửa xe",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45576,
+		"Name": "Phụ tùng thay thế khác cho ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45562,
+		"Name": "Chắn mưa, chắn bùn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 52242,
+		"Name": "Dụng cụ vệ sinh xe",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45538,
+		"Name": "Phụ tùng - Phụ kiện xe đạp khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 46206,
+		"Name": "Đánh bóng, xoá xước sơn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45602,
+		"Name": "Vệ sinh lốp, thân vỏ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 52236,
+		"Name": "Máy lọc không khí ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45534,
+		"Name": "Săm - Vỏ xe đạp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45536,
+		"Name": "Bộ dụng cụ sửa chữa xe đạp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45568,
+		"Name": "Phụ kiện ngoại thất khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11902,
+		"Name": "Xe đạp trẻ em",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11908,
+		"Name": "Mũ bảo hiểm xe máy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 46190,
+		"Name": "Mũ 1/2",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 46188,
+		"Name": "Mũ 3/4",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45590,
+		"Name": "Nước làm mát",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67290,
+		"Name": "Mũ bảo hiểm xe đạp trẻ em",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45510,
+		"Name": "Phụ gia xe máy, mô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67275,
+		"Name": "Lọc gió ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45594,
+		"Name": "Chất tẩy rửa vệ sinh động cơ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 52212,
+		"Name": "Giá đỡ - Chân đế điện thoại",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24372,
+		"Name": "Xe đạp địa hình",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6062,
+		"Name": "Dầu nhớt ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67280,
+		"Name": "Đèn chiếu sáng ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45518,
+		"Name": "Bảo dưỡng - Đánh bóng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45546,
+		"Name": "Phụ kiện nội thất ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24364,
+		"Name": "Thảm sàn, để chân ô tô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 45508,
+		"Name": "Dầu bôi trơn xe máy khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 52234,
+		"Name": "Dụng cụ, thiết bị sửa ô tô khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68322,
+		"Name": "Kem đánh răng ngừa sâu răng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5865,
+		"Name": "Bông tẩy trang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5891,
+		"Name": "Miếng dán mụn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1583,
+		"Name": "Sữa rửa mặt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11695,
+		"Name": "Serum dưỡng ẩm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1520,
+		"Name": "Làm Đẹp - Sức Khỏe",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11667,
+		"Name": "Serum dưỡng trắng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1630,
+		"Name": "Bao cao su",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68295,
+		"Name": "Dầu gội sạch gàu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68587,
+		"Name": "Khử mùi cho nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68588,
+		"Name": "Khử mùi cho nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3422,
+		"Name": "Kem chống nắng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68300,
+		"Name": "Đầu bàn chải điện sóng âm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68293,
+		"Name": "Dầu gội bóng mượt, phục hồi hư tổn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8225,
+		"Name": "Đèn xông",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68294,
+		"Name": "Dầu gội ngừa gãy rụng, kích thích mọc tóc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2348,
+		"Name": "Muối tắm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68327,
+		"Name": "Máy tăm nước cầm tay",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8602,
+		"Name": "Tinh dầu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8198,
+		"Name": "Gương trang điểm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68200,
+		"Name": "Máy massage cầm tay",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11639,
+		"Name": "Máy rửa mặt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11566,
+		"Name": "Băng vệ sinh ban ngày có cánh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68196,
+		"Name": "Dụng cụ massage khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11605,
+		"Name": "Dung dịch tẩy trang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11879,
+		"Name": "Sinh lý nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8170,
+		"Name": "Cân sức khỏe",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68197,
+		"Name": "Gối massage",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11873,
+		"Name": "Tăng cường hệ miễn dịch",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8168,
+		"Name": "Máy đo huyết áp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1598,
+		"Name": "Sữa tắm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2340,
+		"Name": "Massage toàn thân",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68199,
+		"Name": "Massage cổ, vai, gáy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8305,
+		"Name": "Khẩu trang y tế",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68166,
+		"Name": "Dung dịch vệ sinh nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8212,
+		"Name": "Tắm và dụng cụ tắm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11745,
+		"Name": "Khử mùi cho cả nam, nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68308,
+		"Name": "Bàn chải điện sóng âm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68301,
+		"Name": "Bàn chải thường",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11697,
+		"Name": "Kem dưỡng ẩm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68291,
+		"Name": "Dưỡng mượt tóc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 56036,
+		"Name": "Collagen",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1627,
+		"Name": "Nước súc miệng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68214,
+		"Name": "Nhiệt kế hồng ngoại",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1613,
+		"Name": "Dầu Gội",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1609,
+		"Name": "Son thỏi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5872,
+		"Name": "Xịt khoáng ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11897,
+		"Name": "Phân giải mỡ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68213,
+		"Name": "Nhiệt kế điện tử",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49718,
+		"Name": "Vớ cổ cao nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 968,
+		"Name": "Thắt lưng, dây nịt nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49704,
+		"Name": "Nón lưỡi trai nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5339,
+		"Name": "Dây thắt lưng - Dây nịt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11843,
+		"Name": "Phụ kiện kính",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49716,
+		"Name": "Vớ cổ ngắn nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49688,
+		"Name": "Phụ kiện tóc khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5343,
+		"Name": "Tất, vớ nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8342,
+		"Name": "Găng tay nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49672,
+		"Name": "Vớ ngắn nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 975,
+		"Name": "Phụ kiện thời trang nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8384,
+		"Name": "Gọng kính nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49678,
+		"Name": "Cột tóc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49692,
+		"Name": "Thắt lưng nữ bản nhỏ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5394,
+		"Name": "Kính mát nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49676,
+		"Name": "Khẩu trang nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5402,
+		"Name": "Khăn choàng - Khăn tay nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8341,
+		"Name": "Nón nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 15118,
+		"Name": "Cài Áo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8370,
+		"Name": "Mắt kính",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49686,
+		"Name": "Dụng cụ uốn tóc và tạo kiểu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49680,
+		"Name": "Cài tóc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1925,
+		"Name": "Máy tính bỏ túi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1882,
+		"Name": "Điện Gia Dụng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1931,
+		"Name": "Bình đun siêu tốc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5313,
+		"Name": "Nồi đa năng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23808,
+		"Name": "Bếp điện từ đơn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1994,
+		"Name": "Bàn ủi hơi nước",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2039,
+		"Name": "Hút bụi cầm tay",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24040,
+		"Name": "Máy pha cà phê gia đình",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2108,
+		"Name": "Máy đánh trứng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2334,
+		"Name": "Máy sấy tóc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1895,
+		"Name": "Nồi lẩu điện",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1919,
+		"Name": "Nồi cơm nắp gài",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2110,
+		"Name": "Máy xay thịt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2006,
+		"Name": "Quạt bàn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24062,
+		"Name": "Máy xay sinh tố gia đình",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2008,
+		"Name": "Quạt sạc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1918,
+		"Name": "Nồi cơm điện tử",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23814,
+		"Name": "Bếp hồng ngoại đơn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1942,
+		"Name": "Siêu sắc thuốc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2025,
+		"Name": "Máy làm sữa đậu nành",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2850,
+		"Name": "Máy xay cầm tay",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23822,
+		"Name": "Máy hút chân không",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11941,
+		"Name": "Máy ép, duỗi tóc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2111,
+		"Name": "Máy xay cắt đa năng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24076,
+		"Name": "Quạt mini",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 55946,
+		"Name": "Thiết bị chăm sóc cá nhân",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2042,
+		"Name": "Lò nướng bánh mì sandwich",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1634,
+		"Name": "Dụng cụ cắt tóc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1989,
+		"Name": "Máy cạo râu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 13224,
+		"Name": "Phụ kiện máy hút bụi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 55947,
+		"Name": "Máy tỉa lông mũi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1995,
+		"Name": "Bàn ủi khô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2036,
+		"Name": "Lò vi sóng cơ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8084,
+		"Name": "Quạt Đứng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8123,
+		"Name": "Nồi chiên",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2004,
+		"Name": "Quạt hơi nước, phun sương",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 55948,
+		"Name": "Tông đơ, máy cắt tóc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 26494,
+		"Name": "Đầu lọc nước tại vòi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2002,
+		"Name": "Quạt lửng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2026,
+		"Name": "Máy làm sữa chua",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2044,
+		"Name": "Vỉ nướng điện",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8728,
+		"Name": "Đồ dùng nhà bếp khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49722,
+		"Name": "Dây đồng hồ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 15320,
+		"Name": "Bông tai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8371,
+		"Name": "Đồng hồ và Trang sức",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 15318,
+		"Name": "Vòng tay",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8513,
+		"Name": "Đồng hồ thể thao nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49728,
+		"Name": "Pin đồng hồ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5384,
+		"Name": "Đồng hồ dây da",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8511,
+		"Name": "Đồng hồ thời trang, casual nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1778,
+		"Name": "Đồng hồ nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49724,
+		"Name": "Hộp đựng đồng hồ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 15250,
+		"Name": "Dây chuyền",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49726,
+		"Name": "Dụng cụ sửa đồng hồ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 15236,
+		"Name": "Nhẫn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4221,
+		"Name": "Điện Tử - Điện Lạnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 7083,
+		"Name": "Điều khiển từ xa Tivi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28886,
+		"Name": "Phụ kiện, linh kiện máy lạnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 7084,
+		"Name": "Giá treo Tivi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67241,
+		"Name": "Máy giặt cửa ngang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6280,
+		"Name": "Tivi 4K",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 12900,
+		"Name": "Tivi cao cấp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28890,
+		"Name": "Phụ kiện, linh kiện máy giặt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 7074,
+		"Name": "Android TV Box, Smart Box",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 26642,
+		"Name": "Anten Tivi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67190,
+		"Name": "Tủ lạnh nhiều cửa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3865,
+		"Name": "Máy lạnh - Máy điều hòa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28892,
+		"Name": "Phụ kiện, linh kiện điện lạnh khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67194,
+		"Name": "Tủ lạnh mini",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2328,
+		"Name": "Tủ lạnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4239,
+		"Name": "Smart Tivi - Android Tivi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67236,
+		"Name": "Máy lạnh treo tường",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67201,
+		"Name": "Tủ đông",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 26638,
+		"Name": "Cáp Tivi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3862,
+		"Name": "Máy giặt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28888,
+		"Name": "Phụ kiện, linh kiện máy nước nóng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67240,
+		"Name": "Máy giặt cửa trên",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3863,
+		"Name": "Máy sấy quần áo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8950,
+		"Name": "Tivi QLED",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67227,
+		"Name": "Máy nước nóng trực tiếp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67220,
+		"Name": "Máy rửa chén để bàn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3866,
+		"Name": "Máy nước nóng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3864,
+		"Name": "Máy rửa chén",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67229,
+		"Name": "Máy nước nóng gián tiếp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67215,
+		"Name": "Máy sấy bơm nhiệt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4236,
+		"Name": "Tivi thường (LED)",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67235,
+		"Name": "Máy lạnh tủ đứng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49422,
+		"Name": "Quần ôm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 27598,
+		"Name": "Áo len - Áo khoác nỉ nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 931,
+		"Name": "Thời trang nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49412,
+		"Name": "Áo nâng ngực",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1716,
+		"Name": "Quần legging - tregging nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49426,
+		"Name": "Quần lót không đường may",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67188,
+		"Name": "Áo thun nữ ngắn tay không cổ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49428,
+		"Name": "Đầm ngủ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67202,
+		"Name": "Bộ đồ đôi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67226,
+		"Name": "Áo hoodies nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10388,
+		"Name": "Áo hai dây - Áo ba lỗ nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67150,
+		"Name": "Thời trang nữ trung niên khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67184,
+		"Name": "Áo sơ mi nữ tay dài trơn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 27578,
+		"Name": "Đồ bơi hai mảnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67187,
+		"Name": "Áo thun nữ ngắn tay có cổ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 27574,
+		"Name": "Đồ ngủ cosplay, gợi cảm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 27584,
+		"Name": "Đầm suông",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 27582,
+		"Name": "Đầm Dáng Xòe",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49424,
+		"Name": "Quần lọt khe",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 938,
+		"Name": "Quần tây nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1701,
+		"Name": "Quần jean nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49352,
+		"Name": "Áo khoác jeans nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67185,
+		"Name": "Áo thun nữ dài tay có cổ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67170,
+		"Name": "Áo dài truyền thống",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49418,
+		"Name": "Áo không đệm - Bralette",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49360,
+		"Name": "Áo khoác bomber jackets",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49430,
+		"Name": "Bộ quần áo ngủ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67148,
+		"Name": "Bộ trang phục truyền thống nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49354,
+		"Name": "Áo khoác chống nắng nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8345,
+		"Name": "Đồ lót tạo dáng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67203,
+		"Name": "Áo khoác đôi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49362,
+		"Name": "Áo liền quần",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49346,
+		"Name": "Quần ống rộng nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 939,
+		"Name": "Quần shorts nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49434,
+		"Name": "Đồ bộ ngắn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 934,
+		"Name": "Áo sơ mi nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67172,
+		"Name": "Áo crop-top tay ngắn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 27594,
+		"Name": "Áo cardigan nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67173,
+		"Name": "Áo kiểu nữ khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5406,
+		"Name": "Chân váy ngắn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1828,
+		"Name": "USB",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28944,
+		"Name": "Drums và Toner Cho Máy In Laser",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28906,
+		"Name": "Keo - Pad Tản Nhiệt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28894,
+		"Name": "Bộ Chuyển Đổi - Transceivers",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1846,
+		"Name": "Laptop - Máy Vi Tính - Linh kiện",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2458,
+		"Name": "Macbook",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4294,
+		"Name": "USB Wifi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28840,
+		"Name": "Ổ Cứng SSD Di Động",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4345,
+		"Name": "Bộ Phát Wifi Di Động 3G/4G - Mifi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4343,
+		"Name": "Bộ Kích Sóng Wifi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6255,
+		"Name": "Phần Mềm Máy Tính",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4642,
+		"Name": "Phụ Kiện Thiết Bị Mạng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2146,
+		"Name": "Ổ Cứng SSD",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28908,
+		"Name": "Ổ Đĩa Quang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28920,
+		"Name": "Adapter Sạc Laptop",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28924,
+		"Name": "Pin Thay Thế Laptop",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4051,
+		"Name": "Ổ Cứng HDD",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28932,
+		"Name": "Màn Hình Phổ Thông",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 12298,
+		"Name": "RAM Desktop",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4293,
+		"Name": "Router Wifi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11956,
+		"Name": "Mainboard - Board Mạch Chủ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28930,
+		"Name": "Màn Hình Đồ Họa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28838,
+		"Name": "Đĩa Trắng - Băng Cuộn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5172,
+		"Name": "Máy Tính Để Bàn Lắp Ráp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 12672,
+		"Name": "Màn Hình Gaming",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67635,
+		"Name": "Kính bơi người lớn chống tia UV",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67766,
+		"Name": "Chuyển hóa chất béo thành năng lượng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1975,
+		"Name": "Thể Thao - Dã Ngoại",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3894,
+		"Name": "Bản Đồ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 44464,
+		"Name": "Quần áo bơi chuyên dụng nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67743,
+		"Name": "Vợt pickleball",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23898,
+		"Name": "Vợt cầu lông",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24276,
+		"Name": "Bật lửa Zippo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24152,
+		"Name": "Dây nhảy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24122,
+		"Name": "Thảm yoga",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67787,
+		"Name": "Gel năng lượng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24138,
+		"Name": "Xà đơn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24318,
+		"Name": "Phụ kiện thể thao khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67487,
+		"Name": "Ghế xếp dã ngoại",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24292,
+		"Name": "Đồ dùng dã ngoại khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3242,
+		"Name": "Đèn pin đội đầu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24150,
+		"Name": "Dụng cụ tập eo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24198,
+		"Name": "Quần dài tập Gym và Boxing Nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67670,
+		"Name": "Quần short tập Gym và Boxing Nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67435,
+		"Name": "Băng trán, Băng chặn mồ hôi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24326,
+		"Name": "Phụ kiện bơi lội",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67639,
+		"Name": "Nón bơi người lớn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67657,
+		"Name": "Trang phục tập Gym và Boxing Nam khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24154,
+		"Name": "Tạ đôi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67719,
+		"Name": "Áo khoác Gym và Boxing Nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 39752,
+		"Name": "Vớ thể thao",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67668,
+		"Name": "Áo thun có tay tập Gym và Boxing Nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24170,
+		"Name": "Dụng cụ tập thể thao khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24166,
+		"Name": "Dụng cụ tập cơ tay",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23900,
+		"Name": "Quả cầu lông",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24144,
+		"Name": "Con lăn tập bụng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67642,
+		"Name": "Phao bơi trẻ em",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23890,
+		"Name": "Vợt bóng bàn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24178,
+		"Name": "Giày đá banh nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23936,
+		"Name": "Phụ kiện bóng đá",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24132,
+		"Name": "Xe đạp tập",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24096,
+		"Name": "Banh Golf",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23926,
+		"Name": "Banh bóng chuyền trong nhà",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67452,
+		"Name": "Cầu đá",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24190,
+		"Name": "Giày đánh golf nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24180,
+		"Name": "Giày cầu lông nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67603,
+		"Name": "Giày chạy đường trường nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67775,
+		"Name": "Whey Blend",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 12218,
+		"Name": "Băng cổ tay",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23916,
+		"Name": "Gậy bóng chày",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67690,
+		"Name": "Đồng phục thi đấu đá banh nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24168,
+		"Name": "Dụng cụ hít đất",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24164,
+		"Name": "Dây đàn hồi tập gym",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67431,
+		"Name": "Lưới cầu lông",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24330,
+		"Name": "Kính lặn ống thở, mặt nạ lặn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24130,
+		"Name": "Máy chạy bộ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24298,
+		"Name": "Lưỡi - Mồi - Phao",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23906,
+		"Name": "Vợt tennis",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67483,
+		"Name": "Dây kháng lực Pilates",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67770,
+		"Name": "Thực phẩm tăng cân nhanh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24300,
+		"Name": "Dây câu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67429,
+		"Name": "Phụ kiện cầu lông khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23970,
+		"Name": "Võ phục Judo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24304,
+		"Name": "Dụng cụ câu cá khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67436,
+		"Name": "Cuốn cán vợt tennis",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10808,
+		"Name": "Bánh năng lượng, thanh năng lượng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24286,
+		"Name": "Túi khô chống nước và phụ kiện chống nước",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23980,
+		"Name": "Trụ đấm, trụ bóng phản xạ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67636,
+		"Name": "Kính bơi người lớn thường",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 24188,
+		"Name": "Giày trekking nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49504,
+		"Name": "Quần short thun nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67326,
+		"Name": "Quần lót kiểu brief nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 10378,
+		"Name": "Áo thun nam ba lỗ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 915,
+		"Name": "Thời trang nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67324,
+		"Name": "Quần lót boxer nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49458,
+		"Name": "Áo khoác gió",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5333,
+		"Name": "Áo thun nam ngắn tay có cổ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49538,
+		"Name": "Áo bơi - đi biển nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49500,
+		"Name": "Quần kaki nam dài",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49496,
+		"Name": "Quần jeans nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49444,
+		"Name": "Áo sơ mi nam cổ tàu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4555,
+		"Name": "Đồ mặc nhà nam - Bộ ngắn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1685,
+		"Name": "Áo thun nam ngắn tay không cổ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5409,
+		"Name": "Quần jogger nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49498,
+		"Name": "Quần short kaki nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49506,
+		"Name": "Quần thun nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49446,
+		"Name": "Áo sơ mi nam tay dài trơn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49448,
+		"Name": "Áo sơ mi nam tay dài họa tiết",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 922,
+		"Name": "Quần tây nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67325,
+		"Name": "Quần lót dây nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67327,
+		"Name": "Quần lót nam khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49452,
+		"Name": "Áo sơ mi nam tay ngắn họa tiết",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67252,
+		"Name": "Quần dài nam trung niên",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2269,
+		"Name": "Đồ mặc nhà nam - Bộ dài",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4556,
+		"Name": "Quần lót nam",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1883,
+		"Name": "Nhà Cửa - Đời Sống",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2153,
+		"Name": "Pin tiểu, pin sạc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1936,
+		"Name": "Bình giữ nhiệt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67547,
+		"Name": "Hộp inox đựng thực phẩm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 53186,
+		"Name": "Phụ kiện phòng ngủ khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23406,
+		"Name": "Ô - Dù",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6812,
+		"Name": "Bộ lau nhà",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1984,
+		"Name": "Chảo chiên",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23282,
+		"Name": "Bình đựng nước",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2021,
+		"Name": "Ổ cắm & công tắc điện",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67550,
+		"Name": "Hộp thủy tinh đựng thực phẩm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67528,
+		"Name": "Chiếu mây",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23248,
+		"Name": "Khăn tắm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6305,
+		"Name": "Kệ nhà bếp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 53074,
+		"Name": "Dụng cụ sửa chữa nhà cửa khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23648,
+		"Name": "Quầy bar",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67545,
+		"Name": "Bộ hộp đựng thực phẩm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67917,
+		"Name": "Cây lau",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2514,
+		"Name": "Phụ kiện nhà bếp khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67837,
+		"Name": "Ly giữ nhiệt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4380,
+		"Name": "Bàn ghế học sinh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23052,
+		"Name": "Bảo vệ nhà cửa khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23404,
+		"Name": "Áo mưa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2513,
+		"Name": "Dụng cụ xay, giã",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23416,
+		"Name": "Phân bón",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23186,
+		"Name": "Dụng cụ mồi lửa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23006,
+		"Name": "Vợt muỗi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67956,
+		"Name": "Miếng dán đa năng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5995,
+		"Name": "Áo mưa, ô dù và phụ kiện đi mưa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2237,
+		"Name": "Găng tay vệ sinh nhà tắm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 27150,
+		"Name": "Ống hút",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23010,
+		"Name": "Dụng cụ diệt côn trùng khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2225,
+		"Name": "Hộp đựng thực phẩm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23432,
+		"Name": "Ngoại thất sân vườn khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68032,
+		"Name": "Túi hút chân không thực phẩm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23040,
+		"Name": "Giỏ đựng quần áo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2238,
+		"Name": "Dụng cụ vệ sinh khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68057,
+		"Name": "Chảo xào",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68035,
+		"Name": "Bộ hộp cơm giữ nhiệt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67924,
+		"Name": "Móc treo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3877,
+		"Name": "Thảm chùi chân",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23634,
+		"Name": "Nội thất phòng ngủ khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67840,
+		"Name": "Ly, cốc nước",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67927,
+		"Name": "Thau, chậu",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 3515,
+		"Name": "Cân nhà bếp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67313,
+		"Name": "Đèn ngủ để bàn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23412,
+		"Name": "Phụ kiện đi mưa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23294,
+		"Name": "Ly trà",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23112,
+		"Name": "Vật phẩm phong thủy khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23024,
+		"Name": "Miếng rửa chén, chà nồi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2154,
+		"Name": "Ổ khóa cửa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23102,
+		"Name": "Linh vật phong thủy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23030,
+		"Name": "Thùng rác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67520,
+		"Name": "Khăn trải bàn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23588,
+		"Name": "Kệ & Tủ phòng khách",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5454,
+		"Name": "Dụng  cụ làm bánh khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23134,
+		"Name": "Màng bọc thực phẩm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23266,
+		"Name": "Vòi sen tắm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6948,
+		"Name": "Hũ, lọ đựng gia vị",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2018,
+		"Name": "Đèn pin",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1978,
+		"Name": "Máy khoan, mũi khoan",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23026,
+		"Name": "Túi đựng rác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2016,
+		"Name": "Đèn bàn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23242,
+		"Name": "Đèn cảm ứng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23078,
+		"Name": "Hương, nhang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23250,
+		"Name": "Khăn mặt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4381,
+		"Name": "Bàn ghế làm việc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67548,
+		"Name": "Hộp nhựa đựng thực phẩm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 53190,
+		"Name": "Ổ cắm, ổn áp, biến áp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68408,
+		"Name": "Keo dán đa năng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23832,
+		"Name": "Miếng lau/Bông lau thay thế",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68070,
+		"Name": "Vòi rửa chén bát",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23366,
+		"Name": "Ruột gối",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2020,
+		"Name": "Đèn diệt côn trùng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23370,
+		"Name": "Vỏ gối",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23702,
+		"Name": "Sơn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 23604,
+		"Name": "Tủ quần áo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1801,
+		"Name": "Máy Ảnh - Máy Quay Phim",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5121,
+		"Name": "Camera IP",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2681,
+		"Name": "Thẻ Nhớ SD",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 7912,
+		"Name": "Phụ Kiện Camera Giám Sát",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28766,
+		"Name": "Túi Hút Ẩm Cho Máy Ảnh, Máy Quay",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28780,
+		"Name": "Dây Đeo Máy Ảnh, Máy Quay, Ống Nhòm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8048,
+		"Name": "Máy Bay Camera - Drone",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28760,
+		"Name": "Gimbal",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67122,
+		"Name": "Pin máy ảnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20268,
+		"Name": "Ống Nhòm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67123,
+		"Name": "Tripod",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5124,
+		"Name": "Đầu Ghi Hình Camera",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28816,
+		"Name": "Đèn Chiếu Sáng Studio",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1841,
+		"Name": "Kính Lọc - Filter",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28832,
+		"Name": "Hệ Thống Camera Giám Sát",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28784,
+		"Name": "Túi và Hộp Đựng Máy Ảnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20260,
+		"Name": "Dụng Cụ Vệ Sinh Máy Ảnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1843,
+		"Name": "Hộp Đựng - Tủ Chống Ẩm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28828,
+		"Name": "Phụ Kiện Máy Quay Khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2662,
+		"Name": "Pin - Sạc Máy Ảnh, Máy Quay",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 28798,
+		"Name": "Kính Hiển Vi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 2658,
+		"Name": "Máy Ảnh Mirrorless",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 4079,
+		"Name": "Camera Hành Trình Ô Tô, Xe Máy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1808,
+		"Name": "Máy Ảnh Compact - Máy Ảnh Du Lịch",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49580,
+		"Name": "Dép đi trong nhà",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49594,
+		"Name": "Phụ kiện giày nữ khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49552,
+		"Name": "Giày thể thao cổ thấp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1703,
+		"Name": "Giày - Dép nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1192,
+		"Name": "Giày búp bê",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49590,
+		"Name": "Miếng lót giày",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49578,
+		"Name": "Dép quai ngang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49574,
+		"Name": "Giày boots nữ gót nhọn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49566,
+		"Name": "Giày búp bê mũi tròn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49576,
+		"Name": "Dép xỏ ngón",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49546,
+		"Name": "Giày bít mũi quai ngang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49556,
+		"Name": "Giày sandals đế bằng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 1008,
+		"Name": "Giày Đế xuồng nữ ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49544,
+		"Name": "Giày cao gót quai sau",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68164,
+		"Name": "Khử mùi giày",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49592,
+		"Name": "Dụng cụ chăm sóc & làm sạch giày",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49548,
+		"Name": "Giày cao gót hở mũi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49542,
+		"Name": "Giày cao gót nhọn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49588,
+		"Name": "Giày lười mũi nhọn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49564,
+		"Name": "Giày búp bê mũi nhọn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49584,
+		"Name": "Giày lười hở gót",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49570,
+		"Name": "Giày boots nữ cổ ngắn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21358,
+		"Name": "Các môn thể thao chơi vợt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20922,
+		"Name": "Sản phẩm chăm sóc cá nhân khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20924,
+		"Name": "Thiết bị chăm sóc răng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20890,
+		"Name": "Thiết bị gia đình khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21494,
+		"Name": "Phụ kiện",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21510,
+		"Name": "Phụ kiện Tivi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20858,
+		"Name": "Nồi điện",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20854,
+		"Name": "Thiết bị nhà bếp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21474,
+		"Name": "Đồng hồ nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21176,
+		"Name": "Đồ chơi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21390,
+		"Name": "Dây sạc, Dây cáp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21370,
+		"Name": "Phụ kiện thể thao, dã ngoại",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21410,
+		"Name": "Máy nghe nhạc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21352,
+		"Name": "Phụ kiện xe đạp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21350,
+		"Name": "Phụ kiện xe máy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21492,
+		"Name": "Túi xách & Balo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21506,
+		"Name": "Micro",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21388,
+		"Name": "Adapter - Củ sạc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21418,
+		"Name": "Tai nghe",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21336,
+		"Name": "Bút - Viết",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20886,
+		"Name": "Quạt điện",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21424,
+		"Name": "Đồng hồ thông minh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20836,
+		"Name": "Đồ dùng nhà bếp khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21280,
+		"Name": "Ngoài trời & sân vườn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21084,
+		"Name": "Linh kiện máy tính",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 20866,
+		"Name": "Bàn ủi, bàn là",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21372,
+		"Name": "Thể thao dưới nước",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 21162,
+		"Name": "Phụ kiện máy ảnh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49598,
+		"Name": "Túi đeo chéo dạo phố",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 976,
+		"Name": "Túi thời trang nữ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49604,
+		"Name": "Ví ngắn",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49608,
+		"Name": "Túi tote có khóa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49596,
+		"Name": "Túi đeo chéo công sở",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49600,
+		"Name": "Túi xách to bản",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49616,
+		"Name": "Dây, quai đeo túi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49602,
+		"Name": "Túi xách vừa và nhỏ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49606,
+		"Name": "Ví dài",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49618,
+		"Name": "Phụ kiện cài túi",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49610,
+		"Name": "Túi tote không khóa",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 49614,
+		"Name": "Clutch da",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68622,
+		"Name": "Cà phê hòa tan",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67073,
+		"Name": "Sữa hương vị",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68625,
+		"Name": "Hạt cà phê rang",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68623,
+		"Name": "Cà phê rang xay",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67070,
+		"Name": "Sữa hạt",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8286,
+		"Name": "Dầu đậu nành",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5461,
+		"Name": "Thức ăn cho mèo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68558,
+		"Name": "Mì ăn liền",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67042,
+		"Name": "Bánh gạo",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68616,
+		"Name": "Trà chức năng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67508,
+		"Name": "Sữa bột",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8292,
+		"Name": "Gạo, nếp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 53554,
+		"Name": "Các loại gia vị khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8275,
+		"Name": "Bánh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68670,
+		"Name": "Bột pha nước các loại",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68620,
+		"Name": "Trà túi lọc",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68601,
+		"Name": "Rượu vang khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67078,
+		"Name": "Gạo nếp",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68600,
+		"Name": "Rượu vang đỏ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 53546,
+		"Name": "Nước mắm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 53612,
+		"Name": "Nước đóng chai",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67103,
+		"Name": "Trái cây rau củ sấy",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68560,
+		"Name": "Súp ăn liền",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67076,
+		"Name": "Gạo hữu cơ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 66997,
+		"Name": "Cát vệ sinh",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68521,
+		"Name": "Hạt nêm",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8327,
+		"Name": "Bể cá",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 53528,
+		"Name": "Các Loại Đồ Ăn Vặt Khác",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 67069,
+		"Name": "Các loại hạt sấy khô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68626,
+		"Name": "Viên nén cà phê",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68525,
+		"Name": "Muối hồng Himalaya",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11660,
+		"Name": "Thực phẩm hữu cơ",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 11251,
+		"Name": "Thực phẩm bảo vệ sức khỏe",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68567,
+		"Name": "Mì, nui",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 6548,
+		"Name": "Các loại đậu sấy khô",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5450,
+		"Name": "Hạt giống",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 5478,
+		"Name": "Ngũ cốc, bột",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 68678,
+		"Name": "Siro các loại",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	},
+	{
+		"Id": 8240,
+		"Name": "Thực phẩm bổ dưỡng",
+		"Code": "",
+		"ThumbnailUrl": "",
+		"Description": ""
+	}
+]

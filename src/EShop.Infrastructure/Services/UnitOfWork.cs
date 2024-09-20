@@ -13,7 +13,6 @@ namespace EShop.Infrastructure.Services
         public IBrandRepository BrandRepository { get; private set; }
         public ICategoryRepository CategoryRepository { get; private set; }
         public IOptionTypeRepository OptionTypeRepository { get; private set; }
-        public IOptionValueRepository OptionValueRepository { get; private set; }
         public IOrderItemRepository OrderItemRepository { get; private set; }
         public IOrderRepository OrderRepository { get; private set; }
         public IPaymentRepository PaymentRepository { get; private set; }
@@ -32,7 +31,6 @@ namespace EShop.Infrastructure.Services
             BrandRepository = new BrandRepository(context);
             CategoryRepository = new CategoryRepository(context);
             OptionTypeRepository = new OptionTypeRepository(context);
-            OptionValueRepository = new OptionValueRepository(context);
             OrderItemRepository = new OrderItemRepository(context);
             OrderRepository = new OrderRepository(context);
             PaymentRepository = new PaymentRepository(context);
