@@ -9,8 +9,6 @@ namespace EShop.Application.Entities
     public class OptionType : Entity
     {
         public string Name { get; set; }
-        public string Description { get; set; }
-
-        public List<int> OptionValues { get; set; }
+        public string Code { get; set; }
     }
 }

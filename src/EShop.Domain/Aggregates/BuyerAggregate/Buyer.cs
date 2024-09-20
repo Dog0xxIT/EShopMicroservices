@@ -18,7 +18,7 @@
         {
             BuyerId = buyerId;
             BuyerName = buyerName ?? throw new ArgumentNullException(nameof(buyerName));
-            _paymentMethods = paymentMethods;
+            _paymentMethods = paymentMethods ?? throw new ArgumentNullException(nameof(paymentMethods));
         }
 
         public PaymentMethod AddPaymentMethod(

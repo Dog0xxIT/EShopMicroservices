@@ -38,7 +38,7 @@ namespace EShop.Application.Services.ApplicationService
                     filter: o => o.BuyerId == buyerId);
 
             var orderEntityDomainList = orders
-                .Select(o => o.MapToOrderEntityDomain())
+                .Select(o => o.MapToEntityDomain())
                 .Adapt<IEnumerable<OrderDto>>();
             return orderEntityDomainList;
         }
@@ -47,7 +47,7 @@ namespace EShop.Application.Services.ApplicationService
         {
             var order = await _unitOfWork.OrderRepository.GetById(orderId);
 
-            return order?.MapToOrderEntityDomain().Adapt<OrderDto>();
+            return order?.MapToEntityDomain().Adapt<OrderDto>();
         }
 
         public async Task<ServiceResult> CreateOrder(CreateOrderDto createOrderDto)
@@ -75,9 +75,9 @@ namespace EShop.Application.Services.ApplicationService
                     orderStatus: OrderStatus.Draft,
                     orderItems: orderItemsDomain);
 
-                var orderEntityApplication = orderDomain.MapToOrderEntityApplication();
+                //var orderEntityApplication = orderDomain.ConvertToEntityApplication();
 
-                await _unitOfWork.OrderRepository.Create(orderEntityApplication);
+                //await _unitOfWork.OrderRepository.Create(orderEntityApplication);
                 await _unitOfWork.Commit();
                 return ServiceResult.Success;
             }
@@ -112,9 +112,9 @@ namespace EShop.Application.Services.ApplicationService
                     orderStatus: OrderStatus.Draft,
                     orderItems: orderItemsDomain);
 
-                var orderEntityApplication = orderDomain.MapToOrderEntityApplication();
+                //var orderEntityApplication = orderDomain.ConvertToEntityApplication();
 
-                await _unitOfWork.OrderRepository.Create(orderEntityApplication);
+                //await _unitOfWork.OrderRepository.Create(orderEntityApplication);
                 await _unitOfWork.Commit();
                 return ServiceResult.Success;
             }
@@ -134,9 +134,9 @@ namespace EShop.Application.Services.ApplicationService
 
             try
             {
-                var orderEntityDomain = orderEntityApplication.MapToOrderEntityDomain();
+                var orderEntityDomain = orderEntityApplication.MapToEntityDomain();
                 orderEntityDomain.SetCancelledStatus();
-                _unitOfWork.OrderRepository.Update(orderEntityDomain.MapToOrderEntityApplication());
+                //_unitOfWork.OrderRepository.Update(orderEntityDomain.ConvertToEntityApplication());
                 await _unitOfWork.Commit();
                 return ServiceResult.Success;
             }
@@ -156,9 +156,9 @@ namespace EShop.Application.Services.ApplicationService
 
             try
             {
-                var orderEntityDomain = orderEntityApplication.MapToOrderEntityDomain();
+                var orderEntityDomain = orderEntityApplication.MapToEntityDomain();
                 orderEntityDomain.SetShippedStatus();
-                _unitOfWork.OrderRepository.Update(orderEntityDomain.MapToOrderEntityApplication());
+                //_unitOfWork.OrderRepository.Update(orderEntityDomain.ConvertToEntityApplication());
                 await _unitOfWork.Commit();
                 return ServiceResult.Success;
             }

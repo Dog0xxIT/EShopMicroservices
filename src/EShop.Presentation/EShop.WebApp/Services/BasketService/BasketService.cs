@@ -1,4 +1,5 @@
-﻿using EShop.Shared.RequestModels.Common;
+﻿using EShop.Shared.RequestModels.Basket;
+using EShop.Shared.RequestModels.Common;
 using EShop.Shared.ResponseModels.Basket;
 using EShop.Shared.ResponseModels.Common;
 using EShop.WebApp;
@@ -21,7 +22,15 @@ public class BasketService : IBasketService
     {
         return await _coreHttpClient.GetAsync<PaginationResponse<GetBasketByCustomerIdResponse>>(
             clientName: UrlsConfig.ClientName,
-            uri: UrlsConfig.Basket.GetBasketByCustomerId + $"/{customerId}",
+            uri: $"/baskets/{customerId}",
             queryObj: paginationRequest);
+    }
+
+    public async Task<ResultObject<ResponseObject>> AddToBasket(AddToBasketRequest request)
+    {
+        return await _coreHttpClient.PostAsync<ResponseObject>(
+            clientName: UrlsConfig.ClientName,
+            uri: $"/baskets",
+            reqObj: request);
     }
 }

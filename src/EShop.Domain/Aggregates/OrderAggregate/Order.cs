@@ -26,8 +26,6 @@
 
         public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
-        public double Total() => _orderItems.Sum(o => o.TotalPrice);
-
         public Order(
             int orderId, DateTime orderDate, int buyerId,
             int paymentId, Address address, OrderStatus orderStatus,

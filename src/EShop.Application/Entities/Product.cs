@@ -8,7 +8,7 @@
 
         public string Description { get; set; }
 
-        public string Summary { get; set; }
+        public string ShortDescription { get; set; }
 
         public double Price { get; set; }
 
@@ -25,8 +25,6 @@
         public int ReviewsCount { get; set; }
 
         public double Star { get; set; }
-
-        public string OtherAttributes { get; set; }
 
         public Category Category { get; set; }
 

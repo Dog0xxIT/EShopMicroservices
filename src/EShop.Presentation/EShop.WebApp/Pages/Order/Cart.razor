@@ -172,7 +172,7 @@
 
     private async Task GetBasketByCustomerId()
     {
-        var resultObject = await BasketService.GetBasketByCustomerId(3, new PaginationRequest());
+        var resultObject = await BasketService.GetBasketByCustomerId(1, new PaginationRequest());
         if (resultObject.ResultCode.Equals(ResultCode.Success))
         {
             basketItemList = resultObject.Data.Data.ToList();

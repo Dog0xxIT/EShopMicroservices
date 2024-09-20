@@ -13,7 +13,7 @@ namespace EShop.Application.Entities
 
         public int BuyerId { get; set; }
 
-        public int? PaymentId { get; set; }
+        public int PaymentId { get; set; }
 
         [DeleteBehavior(DeleteBehavior.NoAction)]
         public User Buyer { get; set; } = new();

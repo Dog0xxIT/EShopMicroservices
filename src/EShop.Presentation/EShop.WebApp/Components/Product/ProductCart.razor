@@ -1,4 +1,11 @@
-﻿@using EShop.Shared.ResponseModels.Catalog
+﻿@using EShop.Shared.RequestModels.Basket
+@using EShop.Shared.ResponseModels.Catalog
+@using EShop.WebApp.Models.Common
+@using EShop.WebApp.Models.Enums
+@using EShop.WebApp.States
+
+@inject IBasketService BasketService
+@inject AlertState AlertState
 
 <div class="border-gray-200 bg-white p-6 flex flex-col justify-around rounded-lg border shadow-sm dark:border-gray-700 dark:bg-gray-800">
     <div class="h-56 w-full">
@@ -87,7 +94,7 @@
         <div class="mt-4 gap-4 flex items-center justify-between">
             <p class="text-gray-900 text-2xl font-extrabold leading-tight dark:text-white">$@ProductData.Price</p>
 
-            <button type="button" class="bg-blue-700 px-5 py-2.5 text-white inline-flex items-center rounded-lg text-sm font-medium hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <button type="button" @onclick="@AddToCartButtonClick" class="bg-blue-700 px-5 py-2.5 text-white inline-flex items-center rounded-lg text-sm font-medium hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <svg class="-ms-2 me-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6"></path>
                 </svg>
@@ -101,4 +108,31 @@
 {
     [Parameter, EditorRequired]
     public GetListProductResponse ProductData { get; set; }
+
+    private async Task AddToCartButtonClick()
+    {
+        var req = new AddToBasketRequest
+            {
+                CustomerId = 1,
+                ProductId = ProductData.Id,
+                Quantity = 1,
+            };
+        var resultObject = await BasketService.AddToBasket(req);
+        if (resultObject.ResultCode.Equals(ResultCode.Success))
+        {
+            AlertState.AddMessage(new AlertItem
+                {
+                    Message = resultObject.Messages,
+                    Title = "Success",
+                    Type = AlertType.Success
+                });
+            return;
+        }
+        AlertState.AddMessage(new AlertItem
+            {
+                Message = resultObject.Messages,
+                Title = "Error",
+                Type = AlertType.Danger
+            });
+    }
 }

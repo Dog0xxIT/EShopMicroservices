@@ -2,10 +2,12 @@
 using EShop.Shared.RequestModels.Basket;
 using EShop.Shared.RequestModels.Common;
 using EShop.Shared.ResponseModels.Common;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("baskets")]
     public class BasketController : Controller

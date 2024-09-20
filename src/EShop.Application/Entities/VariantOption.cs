@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace EShop.Application.Entities
 {
@@ -11,13 +11,10 @@ namespace EShop.Application.Entities
     {
         public int ProductVariantId { get; set; }
         public int OptionTypeId { get; set; }
-        public int OptionValueId { get; set; }
+        public string OptionValue { get; set; }
 
         [DeleteBehavior(DeleteBehavior.NoAction)]
         public ProductVariant ProductVariant { get; set; }
-
-        [DeleteBehavior(DeleteBehavior.NoAction)]
-        public OptionValue OptionValue { get; set; }
 
         [DeleteBehavior(DeleteBehavior.NoAction)]
         public OptionType OptionType { get; set; }

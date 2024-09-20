@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using EShop.Shared.ResponseModels.Common;
 using EShop.Shared.RequestModels.Common;
 using System.Collections.ObjectModel;
+using static EShop.Shared.ResponseModels.Catalog.GetProductByIdResponse;
 
 namespace EShop.Application.Services.ApplicationService;
 
@@ -103,7 +104,7 @@ public class CatalogService : ICatalogService
                 Star = product.Star,
                 TotalBuyers = product.TotalBuyers,
                 Sku = product.Sku,
-                Summary = product.Summary,
+                Summary = product.ShortDescription,
             }).ToList();
 
         var totalProducts = await _unitOfWork.ProductRepository.Count();
@@ -169,12 +170,36 @@ public class CatalogService : ICatalogService
         var products = await _unitOfWork.ProductRepository
             .Get(
                 filter: p => p.Id == productId,
-                includeProperties: [nameof(Product.Brand), nameof(Product.Category)]);
+                includeProperties: [
+                    nameof(Product.Brand),
+                    nameof(Product.Category),
+                    nameof(Product.ProductVariant)]);
 
         var product = products.FirstOrDefault();
         if (product is null)
         {
             return null;
+        }
+
+        var variantsResponse = new List<Variant>();
+
+        foreach (var productVariant in product.ProductVariant)
+        {
+            var variantOptions = await _unitOfWork.VariantOptionRepository
+                .Get(
+                    filter: v => v.ProductVariantId == productVariant.Id,
+                    includeProperties: [nameof(VariantOption.OptionType)]);
+
+            var temp = variantOptions.Select(v => new Variant
+            {
+                OptionType = v.OptionType.Name,
+                OptionTypeId = v.OptionTypeId,
+                OptionValue = v.OptionValue,
+                ProductId = productVariant.ProductId,
+                ProductVariantId = productVariant.Id,
+                Sku = productVariant.Sku,
+            });
+            variantsResponse.AddRange(temp);
         }
 
         return new GetProductByIdResponse
@@ -189,22 +214,22 @@ public class CatalogService : ICatalogService
             Star = product.Star,
             TotalBuyers = product.TotalBuyers,
             Sku = product.Sku,
-            Summary = product.Summary,
+            ShortDescription = product.ShortDescription,
             Brand = new()
             {
                 BrandId = product.BrandId,
-                BrandName = product.Brand.Name,
-                ThumbnailUrl = product.Brand.AvatarUrl,
+                BrandName = product.Brand?.Name,
+                ThumbnailUrl = product.Brand?.AvatarUrl,
                 Code = product.Brand.Code,
             },
             Category = new()
             {
                 CategoryId = product.CategoryId,
-                CategoryName = product.Category.Name,
-                ThumbnailUrl = product.Category.ThumbnailUrl,
-                Code = product.Category.Code,
+                CategoryName = product.Category?.Name,
+                ThumbnailUrl = product.Category?.ThumbnailUrl,
+                Code = product.Category?.Code,
             },
-            Variants = new()
+            Variants = variantsResponse,
         };
     }
 
@@ -317,9 +342,8 @@ public class CatalogService : ICatalogService
         productEntity.BrandId = req.BrandId;
         productEntity.Sku = req.Sku;
         productEntity.Description = req.Description;
-        productEntity.Summary = req.Summary;
+        productEntity.ShortDescription = req.Summary;
         productEntity.Discount = req.Discount;
-        productEntity.OtherAttributes = req.OtherAttributes;
         productEntity.ImageUrl = req.ImageUrl;
 
         productEntity.SetTimeLastModified();

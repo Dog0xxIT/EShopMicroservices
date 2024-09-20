@@ -19,18 +19,14 @@ public class BasketService : IBasketService
         _logger = logger;
     }
 
-    public async Task<PaginationResponse<GetBasketByCustomerIdResponse>> GetBasketByCustomerId(int customerId, PaginationRequest paginationRequest)
+    public async Task<PaginationResponse<GetBasketByCustomerIdResponse>> GetBasketByCustomerId(int customerId, PaginationRequest paginationReq)
     {
         var response = new PaginationResponse<GetBasketByCustomerIdResponse>();
 
         var baskets = await _unitOfWork.BasketRepository
             .Get(
-                orderBy: queryable => (IOrderedQueryable<Basket>)queryable
-                    .OrderBy(b => b.Id)
-                    .Skip(paginationRequest.Page)
-                    .Take(paginationRequest.Limit),
                 filter: b => b.UserId == customerId,
-                includeProperties: new List<string> { nameof(Basket.Items), nameof(Basket.User) });
+                includeProperties: [nameof(Basket.User)]);
 
         var basketOfCustomer = baskets.FirstOrDefault();
         if (basketOfCustomer is null)
@@ -38,8 +34,18 @@ public class BasketService : IBasketService
             return response;
         }
 
+        var basketItems = await _unitOfWork.BasketItemRepository
+            .Get(
+                orderBy: queryable => (IOrderedQueryable<BasketItem>)queryable
+                    .OrderByDescending(b => b.Id)
+                    .Skip((paginationReq.Page - 1) * paginationReq.Limit)
+                    .Take(paginationReq.Limit),
+                filter: b => b.BasketId == basketOfCustomer.Id,
+                includeProperties: [nameof(BasketItem.Product)]);
+
         var baskItemsDto = new List<GetBasketByCustomerIdResponse>();
-        foreach (var basketItem in basketOfCustomer.Items)
+
+        foreach (var basketItem in basketItems)
         {
             var product = await _unitOfWork.ProductRepository.GetById(basketItem.ProductId);
 
@@ -55,8 +61,16 @@ public class BasketService : IBasketService
                 UnitPrice = basketItem.UnitPrice
             });
         }
-        response.Meta.PerPage = baskItemsDto.Count();
+
+        var totalBasketItems = await _unitOfWork.BasketItemRepository.Count();
+        var totalPages = paginationReq.Limit != 1 ? (totalBasketItems / paginationReq.Limit) + 1 : 0;
+
         response.Data = baskItemsDto;
+        response.Meta.CurrentPage = paginationReq.Page;
+        response.Meta.PerPage = paginationReq.Limit;
+        response.Meta.Count = baskItemsDto.Count;
+        response.Meta.Total = totalBasketItems;
+        response.Meta.TotalPages = totalPages;
         return response;
     }
 

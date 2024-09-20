@@ -1,11 +1,15 @@
 ﻿@page "/products/{ProductId:int}"
 
+@using EShop.Shared.RequestModels.Basket
 @using EShop.Shared.ResponseModels.Catalog
-@using EShop.WebApp.Components.Common
 @using EShop.WebApp.Components.Product
-@using EShop.WebApp.Services.CatalogService
+@using EShop.WebApp.Models.Common
+@using EShop.WebApp.Models.Enums
+@using EShop.WebApp.States
 
 @inject ICatalogService CatalogService
+@inject IBasketService BasketService
+@inject AlertState AlertState
 
 <section class="py-8 bg-white antialiased dark:bg-gray-900 md:py-16">
     <div class="px-4 mx-auto max-w-screen-xl 2xl:px-0">
@@ -169,7 +173,7 @@
                             </fieldset>
                         </div>
 
-                        <button type="submit" class="mt-10 border-transparent bg-indigo-600 px-8 py-3 text-white flex w-full items-center justify-center rounded-md border text-base font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"> Add to cart</button>
+                        <button @onclick="@AddToCartButtonClick" type="submit" class="mt-10 border-transparent bg-indigo-600 px-8 py-3 text-white flex w-full items-center justify-center rounded-md border text-base font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"> Add to cart</button>
                     </form>
                 </div>
 
@@ -200,6 +204,33 @@
             };
         var resultObject = await CatalogService.GetProductById(ProductId);
         _productInfo = resultObject.Data;
+    }
+
+    private async Task AddToCartButtonClick()
+    {
+        var req = new AddToBasketRequest
+            {
+                CustomerId = 1,
+                ProductId = ProductId,
+                Quantity = 1,
+            };
+        var resultObject = await BasketService.AddToBasket(req);
+        if (resultObject.ResultCode.Equals(ResultCode.Success))
+        {
+            AlertState.AddMessage(new AlertItem
+                {
+                    Message = resultObject.Messages,
+                    Title = "Success",
+                    Type = AlertType.Success
+                });
+            return;
+        }
+        AlertState.AddMessage(new AlertItem
+            {
+                Message = resultObject.Messages,
+                Title = "Error",
+                Type = AlertType.Danger
+            });
     }
 }
 

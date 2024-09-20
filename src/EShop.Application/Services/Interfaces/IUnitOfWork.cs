@@ -10,7 +10,6 @@ namespace EShop.Application.Services.Interfaces
         public IBrandRepository BrandRepository { get;  }
         public ICategoryRepository CategoryRepository { get;  }
         public IOptionTypeRepository OptionTypeRepository { get; }
-        public IOptionValueRepository OptionValueRepository { get; }
         public IOrderItemRepository OrderItemRepository { get;  }
         public IOrderRepository OrderRepository { get;  }
         public IPaymentRepository PaymentRepository { get;  }

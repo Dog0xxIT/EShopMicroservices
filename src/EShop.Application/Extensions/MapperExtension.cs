@@ -10,15 +10,18 @@ using OrderEntityApplication = EShop.Application.Entities.Order;
 using OrderItemEntityApplication = EShop.Application.Entities.OrderItem;
 using OrderEntityDomain = EShop.Domain.Aggregates.OrderAggregate.Order;
 using OrderItemEntityDomain = EShop.Domain.Aggregates.OrderAggregate.OrderItem;
-using EShop.Application.Services.Interfaces;
+using Address = EShop.Domain.Aggregates.OrderAggregate.Address;
 
 namespace EShop.Application.Extensions
 {
     public static class MapperExtension
     {
-        public static Buyer MapToOrderBuyerEntityDomain(this User rootEntity)
+        #region Map To Entity Domain
+
+        public static Buyer MapToEntityDomain(this User rootEntity)
         {
-            var paymentMethodEntityDomain = rootEntity.Payments?.Select(MapToPaymentMethodEntityDomain).ToList();
+            var paymentMethodEntityDomain = rootEntity.Payments
+                ?.Select(MapToEntityDomain).ToList();
 
             return new Buyer(
                 rootEntity.Id,
@@ -26,7 +29,7 @@ namespace EShop.Application.Extensions
                 paymentMethodEntityDomain);
         }
 
-        public static PaymentMethod MapToPaymentMethodEntityDomain(this Payment rootEntity)
+        public static PaymentMethod MapToEntityDomain(this Payment rootEntity)
         {
             return new PaymentMethod(
                 rootEntity.Id, rootEntity.Alias, rootEntity.CardNumber,
@@ -34,40 +37,28 @@ namespace EShop.Application.Extensions
                 (int)rootEntity.CardType);
         }
 
-        public static OrderEntityDomain MapToOrderEntityDomain(this OrderEntityApplication rootEntity)
+        public static OrderEntityDomain MapToEntityDomain(this OrderEntityApplication rootEntity)
         {
-            //var address = new Address(
-            //    rootEntity.Street, rootEntity.City, rootEntity.State,
-            //    rootEntity.Country, rootEntity.ZipCode);
+            var addressEntityApplication = rootEntity.Address;
 
-            var orderItems = rootEntity.OrderItems?.Select(MapToOrderItemEntityDomain).ToList();
+            var address = new Address(
+                addressEntityApplication.AddressLine1 ?? addressEntityApplication.AddressLine2,
+                addressEntityApplication.City,
+                addressEntityApplication.State,
+                addressEntityApplication.Country,
+                addressEntityApplication.ZipCode);
+
+            var orderItems = rootEntity.OrderItems
+                ?.Select(MapToEntityDomain).ToList();
 
             var orderEntityDomain = new OrderEntityDomain(
                 rootEntity.Id, DateTime.UtcNow, rootEntity.BuyerId,
-                rootEntity.PaymentId ?? 0, null, (OrderStatus)rootEntity.OrderStatus, orderItems);
+                rootEntity.PaymentId, address, (OrderStatus)rootEntity.OrderStatus, orderItems);
 
             return orderEntityDomain;
         }
 
-        public static OrderEntityApplication MapToOrderEntityApplication(this OrderEntityDomain rootEntity)
-        {
-            return new OrderEntityApplication
-            {
-                Id = rootEntity.OrderId,
-                BuyerId = rootEntity.BuyerId,
-                PaymentId = rootEntity.PaymentId,
-                OrderStatus = (Enums.OrderStatus)rootEntity.OrderStatus,
-                //Description = rootEntity.Description,
-                //City = rootEntity.Address.City,
-                //Country = rootEntity.Address.Country,
-                //State = rootEntity.Address.State,
-                //Street = rootEntity.Address.Street,
-                //ZipCode = rootEntity.Address.ZipCode,
-                //OrderItems = rootEntity.OrderItems.Select(MapToOrderItemEntityApplication).ToList(),
-            };
-        }
-
-        public static OrderItemEntityDomain MapToOrderItemEntityDomain(this OrderItemEntityApplication rootEntity)
+        public static OrderItemEntityDomain MapToEntityDomain(this OrderItemEntityApplication rootEntity)
         {
             return new OrderItemEntityDomain(
                 rootEntity.Id, rootEntity.ProductId, rootEntity.ProductName,
@@ -75,18 +66,42 @@ namespace EShop.Application.Extensions
                 rootEntity.Units);
         }
 
-        public static OrderItemEntityApplication MapToOrderItemEntityApplication(this OrderItemEntityDomain rootEntity)
+        #endregion
+
+        #region Map To Entity Application
+        public static void ConvertToEntityApplication(this OrderEntityDomain rootEntity, ref OrderEntityApplication orderEntityApplication)
         {
-            return new OrderItemEntityApplication
+            orderEntityApplication.Id = rootEntity.OrderId;
+            orderEntityApplication.BuyerId = rootEntity.BuyerId;
+            orderEntityApplication.PaymentId = rootEntity.PaymentId;
+            orderEntityApplication.Id = rootEntity.OrderId;
+            orderEntityApplication.OrderStatus = (Enums.OrderStatus)rootEntity.OrderStatus;
+            orderEntityApplication.AddressId = 0;
+            orderEntityApplication.Amount = rootEntity.GetTotal();
+            orderEntityApplication.Address = new Entities.Address();
+            orderEntityApplication.OrderItems = null;
+        }
+
+        public static void ConvertToEntityApplication(this Buyer rootEntity, ref User userEntity)
+        {
+            userEntity.Id = rootEntity.BuyerId;
+            userEntity.UserName = rootEntity.BuyerName;
+            userEntity.Payments = rootEntity.PaymentMethods.Select(MapToEntityApplication).ToList();
+        }
+
+        public static Payment MapToEntityApplication(this PaymentMethod rootEntity)
+        {
+            return new Payment
             {
-                Id = rootEntity.Id,
-                ProductId = rootEntity.ProductId,
-                ProductName = rootEntity.ProductName,
-                PictureUrl = rootEntity.PictureUrl,
-                UnitPrice = rootEntity.UnitPrice,
-                Discount = rootEntity.Discount,
-                Units = rootEntity.Units
+                Id = rootEntity.CardTypeId,
+                Alias = rootEntity.Alias,
+                CardHolderName = rootEntity.CardHolderName,
+                CardNumber = rootEntity.CardNumber,
+                CardType = (Enums.CardType)rootEntity.CardTypeId,
+                Expiration = rootEntity.Expiration,
+                SecurityNumber = rootEntity.SecurityNumber
             };
         }
+        #endregion
     }
 }

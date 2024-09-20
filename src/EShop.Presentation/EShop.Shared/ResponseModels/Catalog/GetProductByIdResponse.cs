@@ -10,7 +10,7 @@ namespace EShop.Shared.ResponseModels.Catalog
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Summary { get; set; }
+        public string ShortDescription { get; set; }
         public List<string> DescriptionSections { get; set; } = new();
         public double Price { get; set; }
         public string ImageUrl { get; set; }
@@ -42,11 +42,11 @@ namespace EShop.Shared.ResponseModels.Catalog
         public class Variant
         {
             public int ProductId { get; set; }
-            public int Sku { get; set; }
+            public int ProductVariantId { get; set; }
+            public string Sku { get; set; }
             public int OptionTypeId { get; set; }
             public string OptionType { get; set; }
             public string OptionValue { get; set; }
-            public string ImageUrl { get; set; }
         }
     }
 }
