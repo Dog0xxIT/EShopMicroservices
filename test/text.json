@@ -1,0 +1,2368 @@
+{
+	"data": [
+		{
+			"id": 2,
+			"parent_id": 1,
+			"name": "Root",
+			"type": null,
+			"url_key": "default-category",
+			"url_path": "default-category/c2",
+			"level": 1,
+			"status": "active",
+			"include_in_menu": true,
+			"product_count": 0,
+			"is_leaf": false,
+			"meta_title": "The best English books",
+			"meta_description": null,
+			"meta_keywords": null,
+			"thumbnail_url": "https://salt.tikicdn.com/cache/280x280/ts/product/97/bc/ae/7fe8a253cce6da248aebe6679bb9c88f.jpg",
+			"children": [
+				{
+					"id": 2549,
+					"name": "\u0110\u1ed3 Ch\u01a1i - M\u1eb9 & B\u00e9",
+					"type": null,
+					"children": [
+						{
+							"id": 2551,
+							"name": "T\u00e3, B\u1ec9m",
+							"url_key": "ta-bim-cho-be",
+							"full_url_key": "default-category/do-choi-me-be/ta-bim-cho-be",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8339,
+							"name": "Dinh d\u01b0\u1ee1ng cho b\u00e9",
+							"url_key": "dinh-duong-cho-be",
+							"full_url_key": "default-category/do-choi-me-be/dinh-duong-cho-be",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 6568,
+							"name": "Th\u1ef1c ph\u1ea9m \u0103n d\u1eb7m",
+							"url_key": "thuc-pham-an-dam",
+							"full_url_key": "default-category/do-choi-me-be/thuc-pham-an-dam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 10416,
+							"name": "Dinh d\u01b0\u1ee1ng cho m\u1eb9",
+							"url_key": "dinh-duong-cho-me",
+							"full_url_key": "default-category/do-choi-me-be/dinh-duong-cho-me",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 10418,
+							"name": "Dinh d\u01b0\u1ee1ng cho ng\u01b0\u1eddi l\u1edbn",
+							"url_key": "dinh-duong-cho-nguoi-lon",
+							"full_url_key": "default-category/do-choi-me-be/dinh-duong-cho-nguoi-lon",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 11601,
+							"name": "\u0110\u1ed3 d\u00f9ng cho b\u00e9",
+							"url_key": "do-dung-cho-be",
+							"full_url_key": "default-category/do-choi-me-be/do-dung-cho-be",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5250,
+							"name": "\u0110\u1ed3 ch\u01a1i",
+							"url_key": "do-choi",
+							"full_url_key": "default-category/do-choi-me-be/do-choi",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5164,
+							"name": "\u0110\u1ed3 d\u00f9ng cho ng\u01b0\u1eddi gi\u00e0",
+							"url_key": "do-dung-cho-nguoi-gia",
+							"full_url_key": "default-category/do-choi-me-be/do-dung-cho-nguoi-gia",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 2640,
+							"name": "Ch\u0103m s\u00f3c m\u1eb9 mang thai, sau sinh",
+							"url_key": "cham-soc-me-mang-thai-sau-sinh",
+							"full_url_key": "default-category/do-choi-me-be/cham-soc-me-mang-thai-sau-sinh",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 10570,
+							"name": "Chu\u1ea9n b\u1ecb mang thai",
+							"url_key": "chuan-bi-mang-thai",
+							"full_url_key": "default-category/do-choi-me-be/chuan-bi-mang-thai",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "do-choi-me-be",
+					"url_path": "do-choi-me-be/c2549",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/13/64/43/226301adcc7660ffcf44a61bb6df99b7.png",
+					"is_leaf": false
+				},
+				{
+					"id": 1789,
+					"name": "\u0110i\u1ec7n Tho\u1ea1i - M\u00e1y T\u00ednh B\u1ea3ng",
+					"type": null,
+					"children": [
+						{
+							"id": 1795,
+							"name": "\u0110i\u1ec7n tho\u1ea1i Smartphone",
+							"url_key": "dien-thoai-smartphone",
+							"full_url_key": "default-category/dien-thoai-may-tinh-bang/dien-thoai-smartphone",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1794,
+							"name": "M\u00e1y t\u00ednh b\u1ea3ng",
+							"url_key": "may-tinh-bang",
+							"full_url_key": "default-category/dien-thoai-may-tinh-bang/may-tinh-bang",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 28856,
+							"name": "M\u00e1y \u0111\u1ecdc s\u00e1ch",
+							"url_key": "may-doc-sach",
+							"full_url_key": "default-category/dien-thoai-may-tinh-bang/may-doc-sach",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1796,
+							"name": "\u0110i\u1ec7n tho\u1ea1i ph\u1ed5 th\u00f4ng",
+							"url_key": "dien-thoai-pho-thong",
+							"full_url_key": "default-category/dien-thoai-may-tinh-bang/dien-thoai-pho-thong",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8061,
+							"name": "\u0110i\u1ec7n tho\u1ea1i b\u00e0n",
+							"url_key": "dien-thoai-ban",
+							"full_url_key": "default-category/dien-thoai-may-tinh-bang/dien-thoai-ban",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "dien-thoai-may-tinh-bang",
+					"url_path": "dien-thoai-may-tinh-bang/c1789",
+					"product_count": 450,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/54/c0/ff/fe98a4afa2d3e5142dc8096addc4e40b.png",
+					"is_leaf": false
+				},
+				{
+					"id": 44792,
+					"name": "NGON",
+					"type": null,
+					"children": [
+						{
+							"id": 44824,
+							"name": "Tr\u00e1i C\u00e2y",
+							"url_key": "trai-cay",
+							"full_url_key": "default-category/ngon/trai-cay",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54276,
+							"name": "Th\u1ecbt, Tr\u1ee9ng",
+							"url_key": "thit-trung",
+							"full_url_key": "default-category/ngon/thit-trung",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54290,
+							"name": "C\u00e1, thu\u1ef7 h\u1ea3i s\u1ea3n",
+							"url_key": "ca-thuy-hai-san",
+							"full_url_key": "default-category/ngon/ca-thuy-hai-san",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54302,
+							"name": "Rau c\u1ee7 qu\u1ea3",
+							"url_key": "rau-cu-qua",
+							"full_url_key": "default-category/ngon/rau-cu-qua",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54316,
+							"name": "Th\u1ef1c ph\u1ea9m \u0111\u00f3ng h\u1ed9p v\u00e0 kh\u00f4",
+							"url_key": "thuc-pham-dong-hop-va-kho",
+							"full_url_key": "default-category/ngon/thuc-pham-dong-hop-va-kho",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54330,
+							"name": "S\u1eefa v\u00e0 c\u00e1c S\u1ea3n ph\u1ea9m t\u1eeb s\u1eefa",
+							"url_key": "sua-va-cac-san-pham-tu-sua",
+							"full_url_key": "default-category/ngon/sua-va-cac-san-pham-tu-sua",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54344,
+							"name": "\u0110\u00f4ng l\u1ea1nh, m\u00e1t",
+							"url_key": "dong-lanh-mat",
+							"full_url_key": "default-category/ngon/dong-lanh-mat",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54362,
+							"name": "Gia V\u1ecb v\u00e0 Ch\u1ebf Bi\u1ebfn",
+							"url_key": "gia-vi-va-che-bien",
+							"full_url_key": "default-category/ngon/gia-vi-va-che-bien",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54412,
+							"name": "\u0110\u1ed3 u\u1ed1ng c\u00f3 c\u1ed3n",
+							"url_key": "do-uong-co-con",
+							"full_url_key": "default-category/ngon/do-uong-co-con",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54438,
+							"name": "D\u00e0nh cho tr\u1ebb em",
+							"url_key": "danh-cho-tre-em",
+							"full_url_key": "default-category/ngon/danh-cho-tre-em",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54452,
+							"name": "B\u00e1nh k\u1eb9o, \u0111\u1ed3 \u0103n v\u1eb7t",
+							"url_key": "banh-keo-do-an-vat",
+							"full_url_key": "default-category/ngon/banh-keo-do-an-vat",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54466,
+							"name": "Ch\u0103m s\u00f3c th\u00fa c\u01b0ng",
+							"url_key": "cham-soc-thu-cung",
+							"full_url_key": "default-category/ngon/cham-soc-thu-cung",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54500,
+							"name": "Ch\u0103m s\u00f3c nh\u00e0 c\u1eeda",
+							"url_key": "cham-soc-nha-cua",
+							"full_url_key": "default-category/ngon/cham-soc-nha-cua",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54514,
+							"name": "Gia d\u1ee5ng, ti\u1ec7n \u00edch",
+							"url_key": "gia-dung-tien-ich",
+							"full_url_key": "default-category/ngon/gia-dung-tien-ich",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 68747,
+							"name": "B\u1ed9 qu\u00e0 t\u1eb7ng",
+							"url_key": "bo-qua-tang",
+							"full_url_key": "default-category/ngon/bo-qua-tang",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 68840,
+							"name": "L\u00e0m \u0110\u1eb9p - S\u1ee9c Kh\u1ecfe",
+							"url_key": "lam-dep-suc-khoe",
+							"full_url_key": "default-category/ngon/lam-dep-suc-khoe",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 69032,
+							"name": "\u0110\u1ed3 u\u1ed1ng - Pha ch\u1ebf d\u1ea1ng b\u1ed9t",
+							"url_key": "do-uong-pha-che-dang-bot",
+							"full_url_key": "default-category/ngon/do-uong-pha-che-dang-bot",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 69118,
+							"name": "\u0110\u1ed3 U\u1ed1ng Kh\u00f4ng C\u1ed3n",
+							"url_key": "do-uong-khong-con",
+							"full_url_key": "default-category/ngon/do-uong-khong-con",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 54430,
+							"name": "Th\u1ef1c ph\u1ea9m chay",
+							"url_key": "thuc-pham-chay",
+							"full_url_key": "default-category/ngon/thuc-pham-chay",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "ngon",
+					"url_path": "ngon/c44792",
+					"product_count": 3084,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/1e/8c/08/d8b02f8a0d958c74539316e8cd437cbd.png",
+					"is_leaf": false
+				},
+				{
+					"id": 1520,
+					"name": "L\u00e0m \u0110\u1eb9p - S\u1ee9c Kh\u1ecfe",
+					"type": null,
+					"children": [
+						{
+							"id": 1582,
+							"name": "Ch\u0103m s\u00f3c da m\u1eb7t",
+							"url_key": "cham-soc-da-mat",
+							"full_url_key": "default-category/lam-dep-suc-khoe/cham-soc-da-mat",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1584,
+							"name": "Trang \u0111i\u1ec3m ",
+							"url_key": "trang-diem",
+							"full_url_key": "default-category/lam-dep-suc-khoe/trang-diem",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1594,
+							"name": "Ch\u0103m s\u00f3c c\u00e1 nh\u00e2n",
+							"url_key": "cham-soc-ca-nhan",
+							"full_url_key": "default-category/lam-dep-suc-khoe/cham-soc-ca-nhan",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1592,
+							"name": "Ch\u0103m s\u00f3c c\u01a1 th\u1ec3",
+							"url_key": "cham-soc-co-the",
+							"full_url_key": "default-category/lam-dep-suc-khoe/cham-soc-co-the",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5873,
+							"name": "S\u1ea3n ph\u1ea9m thi\u00ean nhi\u00ean & Kh\u00e1c",
+							"url_key": "san-pham-thien-nhien-khac",
+							"full_url_key": "default-category/lam-dep-suc-khoe/san-pham-thien-nhien-khac",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1591,
+							"name": "Ch\u0103m s\u00f3c t\u00f3c v\u00e0 da \u0111\u1ea7u",
+							"url_key": "cham-soc-toc-da-dau",
+							"full_url_key": "default-category/lam-dep-suc-khoe/cham-soc-toc-da-dau",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1595,
+							"name": "N\u01b0\u1edbc hoa",
+							"url_key": "nuoc-hoa",
+							"full_url_key": "default-category/lam-dep-suc-khoe/nuoc-hoa",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 2306,
+							"name": "D\u1ee5ng c\u1ee5 l\u00e0m \u0111\u1eb9p",
+							"url_key": "dung-cu-lam-dep",
+							"full_url_key": "default-category/lam-dep-suc-khoe/dung-cu-lam-dep",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 2307,
+							"name": "M\u00e1y Massage & Thi\u1ebft b\u1ecb ch\u0103m s\u00f3c s\u1ee9c kh\u1ecfe",
+							"url_key": "may-massage-thiet-bi-cham-soc-suc-khoe",
+							"full_url_key": "default-category/lam-dep-suc-khoe/may-massage-thiet-bi-cham-soc-suc-khoe",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 2322,
+							"name": "Th\u1ef1c ph\u1ea9m ch\u1ee9c n\u0103ng",
+							"url_key": "thuc-pham-chuc-nang",
+							"full_url_key": "default-category/lam-dep-suc-khoe/thuc-pham-chuc-nang",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8142,
+							"name": "H\u1ed7 tr\u1ee3 t\u00ecnh d\u1ee5c",
+							"url_key": "ho-tro-tinh-duc",
+							"full_url_key": "default-category/lam-dep-suc-khoe/ho-tro-tinh-duc",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1625,
+							"name": "Ch\u0103m s\u00f3c r\u0103ng mi\u1ec7ng",
+							"url_key": "cham-soc-rang-mieng",
+							"full_url_key": "default-category/lam-dep-suc-khoe/cham-soc-rang-mieng",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "lam-dep-suc-khoe",
+					"url_path": "lam-dep-suc-khoe/c1520",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/73/0e/89/bf5095601d17f9971d7a08a1ffe98a42.png",
+					"is_leaf": false
+				},
+				{
+					"id": 1882,
+					"name": "\u0110i\u1ec7n Gia D\u1ee5ng",
+					"type": null,
+					"children": [
+						{
+							"id": 1884,
+							"name": "\u0110\u1ed3 d\u00f9ng nh\u00e0 b\u1ebfp",
+							"url_key": "do-dung-nha-bep",
+							"full_url_key": "default-category/dien-gia-dung/do-dung-nha-bep",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1946,
+							"name": "Thi\u1ebft b\u1ecb gia \u0111\u00ecnh",
+							"url_key": "thiet-bi-gia-dinh",
+							"full_url_key": "default-category/dien-gia-dung/thiet-bi-gia-dinh",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "dien-gia-dung",
+					"url_path": "dien-gia-dung/c1882",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/61/d4/ea/e6ea3ffc1fcde3b6224d2bb691ea16a2.png",
+					"is_leaf": false
+				},
+				{
+					"id": 931,
+					"name": "Th\u1eddi trang n\u1eef",
+					"type": null,
+					"children": [
+						{
+							"id": 941,
+							"name": "\u0110\u1ea7m n\u1eef",
+							"url_key": "dam-vay-lien",
+							"full_url_key": "default-category/thoi-trang-nu/dam-vay-lien",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5404,
+							"name": "Ch\u00e2n v\u00e1y",
+							"url_key": "chan-vay-nu",
+							"full_url_key": "default-category/thoi-trang-nu/chan-vay-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 27600,
+							"name": "Qu\u1ea7n n\u1eef",
+							"url_key": "quan-nu",
+							"full_url_key": "default-category/thoi-trang-nu/quan-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 936,
+							"name": "\u00c1o vest - \u00c1o kho\u00e1c n\u1eef",
+							"url_key": "ao-vest-ao-khoac-nu",
+							"full_url_key": "default-category/thoi-trang-nu/ao-vest-ao-khoac-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1702,
+							"name": "\u00c1o li\u1ec1n qu\u1ea7n - B\u1ed9 trang ph\u1ee5c",
+							"url_key": "ao-lien-quan-bo-trang-phuc",
+							"full_url_key": "default-category/thoi-trang-nu/ao-lien-quan-bo-trang-phuc",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4553,
+							"name": "\u0110\u1ed3 \u0111\u00f4i - \u0110\u1ed3 gia \u0111\u00ecnh",
+							"url_key": "do-doi-do-gia-dinh",
+							"full_url_key": "default-category/thoi-trang-nu/do-doi-do-gia-dinh",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 49372,
+							"name": "Th\u1eddi trang b\u1ea7u v\u00e0 sau sinh",
+							"url_key": "thoi-trang-bau-va-sau-sinh",
+							"full_url_key": "default-category/thoi-trang-nu/thoi-trang-bau-va-sau-sinh",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 49384,
+							"name": "Th\u1eddi trang n\u1eef trung ni\u00ean",
+							"url_key": "thoi-trang-nu-trung-nien",
+							"full_url_key": "default-category/thoi-trang-nu/thoi-trang-nu-trung-nien",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4554,
+							"name": "\u0110\u1ed3 l\u00f3t n\u1eef",
+							"url_key": "do-lot-nu",
+							"full_url_key": "default-category/thoi-trang-nu/do-lot-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1508,
+							"name": "\u0110\u1ed3 ng\u1ee7 - \u0110\u1ed3 m\u1eb7c nh\u00e0 n\u1eef",
+							"url_key": "do-ngu-do-mac-nha-nu",
+							"full_url_key": "default-category/thoi-trang-nu/do-ngu-do-mac-nha-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 6179,
+							"name": "Trang ph\u1ee5c b\u01a1i n\u1eef",
+							"url_key": "trang-phuc-boi-nu",
+							"full_url_key": "default-category/thoi-trang-nu/trang-phuc-boi-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 934,
+							"name": "\u00c1o s\u01a1 mi n\u1eef",
+							"url_key": "ao-so-mi-nu",
+							"full_url_key": "default-category/thoi-trang-nu/ao-so-mi-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 935,
+							"name": "\u00c1o ki\u1ec3u n\u1eef",
+							"url_key": "ao-kieu-nu",
+							"full_url_key": "default-category/thoi-trang-nu/ao-kieu-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 10389,
+							"name": "\u00c1o crop-top",
+							"url_key": "ao-crop-top",
+							"full_url_key": "default-category/thoi-trang-nu/ao-crop-top",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 933,
+							"name": "\u00c1o thun n\u1eef",
+							"url_key": "ao-thun-nu",
+							"full_url_key": "default-category/thoi-trang-nu/ao-thun-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 67230,
+							"name": "Qu\u1ea7n \u00e1o n\u1eef k\u00edch c\u1ee1 l\u1edbn",
+							"url_key": "quan-ao-nu-kich-co-lon",
+							"full_url_key": "default-category/thoi-trang-nu/quan-ao-nu-kich-co-lon",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "thoi-trang-nu",
+					"url_path": "thoi-trang-nu/c931",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/55/5b/80/48cbaafe144c25d5065786ecace86d38.png",
+					"is_leaf": false
+				},
+				{
+					"id": 915,
+					"name": "Th\u1eddi trang nam",
+					"type": null,
+					"children": [
+						{
+							"id": 917,
+							"name": "\u00c1o thun nam",
+							"url_key": "ao-thun-nam",
+							"full_url_key": "default-category/thoi-trang-nam/ao-thun-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 918,
+							"name": "\u00c1o s\u01a1 mi nam",
+							"url_key": "ao-so-mi-nam",
+							"full_url_key": "default-category/thoi-trang-nam/ao-so-mi-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 925,
+							"name": "\u00c1o vest - \u00c1o kho\u00e1c nam",
+							"url_key": "ao-vest-ao-khoac-nam",
+							"full_url_key": "default-category/thoi-trang-nam/ao-vest-ao-khoac-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 10382,
+							"name": "\u00c1o hoodie nam",
+							"url_key": "ao-hoodie-nam",
+							"full_url_key": "default-category/thoi-trang-nam/ao-hoodie-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4546,
+							"name": "\u00c1o n\u1ec9 - \u00c1o len nam",
+							"url_key": "ao-ni-ao-len-nam",
+							"full_url_key": "default-category/thoi-trang-nam/ao-ni-ao-len-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 27562,
+							"name": "Qu\u1ea7n d\u00e0i nam",
+							"url_key": "quan-dai-nam",
+							"full_url_key": "default-category/thoi-trang-nam/quan-dai-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 27570,
+							"name": "\u0110\u1ed3 ng\u1ee7, \u0111\u1ed3 m\u1eb7c nh\u00e0 nam",
+							"url_key": "do-ngu-do-mac-nha-nam",
+							"full_url_key": "default-category/thoi-trang-nam/do-ngu-do-mac-nha-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 49516,
+							"name": "\u0110\u1ed3 \u0111\u00f4i - \u0110\u1ed3 gia \u0111\u00ecnh nam",
+							"url_key": "do-doi-do-gia-dinh-nam",
+							"full_url_key": "default-category/thoi-trang-nam/do-doi-do-gia-dinh-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 27548,
+							"name": "\u0110\u1ed3 l\u00f3t nam",
+							"url_key": "do-lot-nam",
+							"full_url_key": "default-category/thoi-trang-nam/do-lot-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 49524,
+							"name": "Qu\u1ea7n \u00e1o nam k\u00edch c\u1ee1 l\u1edbn",
+							"url_key": "quan-ao-nam-kich-co-lon",
+							"full_url_key": "default-category/thoi-trang-nam/quan-ao-nam-kich-co-lon",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 49532,
+							"name": "Qu\u1ea7n \u00e1o nam trung ni\u00ean",
+							"url_key": "quan-ao-nam-trung-nien",
+							"full_url_key": "default-category/thoi-trang-nam/quan-ao-nam-trung-nien",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 16004,
+							"name": "\u0110\u1ed3 b\u01a1i - \u0110\u1ed3 \u0111i bi\u1ec3n nam",
+							"url_key": "do-boi-do-di-bien-nam",
+							"full_url_key": "default-category/thoi-trang-nam/do-boi-do-di-bien-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 67309,
+							"name": "B\u1ed9 trang ph\u1ee5c nam",
+							"url_key": "bo-trang-phuc-nam",
+							"full_url_key": "default-category/thoi-trang-nam/bo-trang-phuc-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 67329,
+							"name": "Qu\u1ea7n short nam",
+							"url_key": "quan-short-nam",
+							"full_url_key": "default-category/thoi-trang-nam/quan-short-nam",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "thoi-trang-nam",
+					"url_path": "thoi-trang-nam/c915",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/00/5d/97/384ca1a678c4ee93a0886a204f47645d.png",
+					"is_leaf": false
+				},
+				{
+					"id": 1703,
+					"name": "Gi\u00e0y - D\u00e9p n\u1eef",
+					"type": null,
+					"children": [
+						{
+							"id": 8355,
+							"name": "Gi\u00e0y cao g\u00f3t",
+							"url_key": "giay-cao-got",
+							"full_url_key": "default-category/giay-dep-nu/giay-cao-got",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 27604,
+							"name": "Gi\u00e0y th\u1ec3 thao n\u1eef",
+							"url_key": "giay-the-thao-nu",
+							"full_url_key": "default-category/giay-dep-nu/giay-the-thao-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4550,
+							"name": "Gi\u00e0y sandals n\u1eef",
+							"url_key": "giay-sandals-nu",
+							"full_url_key": "default-category/giay-dep-nu/giay-sandals-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1192,
+							"name": "Gi\u00e0y b\u00fap b\u00ea",
+							"url_key": "giay-bup-be",
+							"full_url_key": "default-category/giay-dep-nu/giay-bup-be",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1008,
+							"name": "Gi\u00e0y \u0110\u1ebf xu\u1ed3ng n\u1eef ",
+							"url_key": "giay-de-xuong-nu",
+							"full_url_key": "default-category/giay-dep-nu/giay-de-xuong-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 981,
+							"name": "Gi\u00e0y boots n\u1eef",
+							"url_key": "giay-boots-nu",
+							"full_url_key": "default-category/giay-dep-nu/giay-boots-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 984,
+							"name": "D\u00e9p - Gu\u1ed1c n\u1eef",
+							"url_key": "dep-guoc-nu",
+							"full_url_key": "default-category/giay-dep-nu/dep-guoc-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4551,
+							"name": "Gi\u00e0y l\u01b0\u1eddi n\u1eef",
+							"url_key": "giay-luoi-nu",
+							"full_url_key": "default-category/giay-dep-nu/giay-luoi-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8357,
+							"name": "Ph\u1ee5 ki\u1ec7n gi\u00e0y n\u1eef",
+							"url_key": "phu-kien-giay-nu",
+							"full_url_key": "default-category/giay-dep-nu/phu-kien-giay-nu",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "giay-dep-nu",
+					"url_path": "giay-dep-nu/c1703",
+					"product_count": 4126,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/cf/ed/e1/5a6b58f21fbcad0d201480c987f8defe.png",
+					"is_leaf": false
+				},
+				{
+					"id": 976,
+					"name": "T\u00fai th\u1eddi trang n\u1eef",
+					"type": null,
+					"children": [
+						{
+							"id": 4559,
+							"name": "T\u00fai tote n\u1eef",
+							"url_key": "tui-deo-vai-nu",
+							"full_url_key": "default-category/tui-vi-nu/tui-deo-vai-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4558,
+							"name": "T\u00fai \u0111eo ch\u00e9o, t\u00fai \u0111eo vai n\u1eef",
+							"url_key": "tui-deo-cheo-tui-deo-vai-nu",
+							"full_url_key": "default-category/tui-vi-nu/tui-deo-cheo-tui-deo-vai-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4560,
+							"name": "T\u00fai x\u00e1ch tay n\u1eef",
+							"url_key": "tui-cam-tay-nu",
+							"full_url_key": "default-category/tui-vi-nu/tui-cam-tay-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4561,
+							"name": "V\u00ed n\u1eef",
+							"url_key": "vi-bop-nu",
+							"full_url_key": "default-category/tui-vi-nu/vi-bop-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8350,
+							"name": "V\u00ed \u0111i ti\u1ec7c",
+							"url_key": "vi-di-tiec",
+							"full_url_key": "default-category/tui-vi-nu/vi-di-tiec",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8352,
+							"name": "Ph\u1ee5 ki\u1ec7n t\u00fai",
+							"url_key": "phu-kien-tui",
+							"full_url_key": "default-category/tui-vi-nu/phu-kien-tui",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "tui-vi-nu",
+					"url_path": "tui-vi-nu/c976",
+					"product_count": 3285,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/31/a7/94/6524d2ecbec216816d91b6066452e3f2.png",
+					"is_leaf": false
+				},
+				{
+					"id": 1686,
+					"name": "Gi\u00e0y - D\u00e9p nam",
+					"type": null,
+					"children": [
+						{
+							"id": 27572,
+							"name": "Gi\u00e0y th\u1ec3 thao nam",
+							"url_key": "giay-the-thao-nam",
+							"full_url_key": "default-category/giay-dep-nam/giay-the-thao-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5340,
+							"name": "Gi\u00e0y l\u01b0\u1eddi nam",
+							"url_key": "giay-luoi-nam",
+							"full_url_key": "default-category/giay-dep-nam/giay-luoi-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1581,
+							"name": "Gi\u00e0y t\u00e2y nam",
+							"url_key": "giay-tay-cong-so",
+							"full_url_key": "default-category/giay-dep-nam/giay-tay-cong-so",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5341,
+							"name": "Gi\u00e0y sandals nam",
+							"url_key": "giay-sandals-nam",
+							"full_url_key": "default-category/giay-dep-nam/giay-sandals-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5342,
+							"name": "D\u00e9p nam",
+							"url_key": "dep-nam",
+							"full_url_key": "default-category/giay-dep-nam/dep-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8337,
+							"name": "Gi\u00e0y boots nam",
+							"url_key": "giay-boots-nam",
+							"full_url_key": "default-category/giay-dep-nam/giay-boots-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8338,
+							"name": "Ph\u1ee5 ki\u1ec7n gi\u00e0y nam",
+							"url_key": "phu-kien-giay-nam",
+							"full_url_key": "default-category/giay-dep-nam/phu-kien-giay-nam",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "giay-dep-nam",
+					"url_path": "giay-dep-nam/c1686",
+					"product_count": 4416,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/d6/7f/6c/5d53b60efb9448b6a1609c825c29fa40.png",
+					"is_leaf": false
+				},
+				{
+					"id": 27616,
+					"name": "T\u00fai th\u1eddi trang nam",
+					"type": null,
+					"children": [
+						{
+							"id": 5337,
+							"name": "T\u00fai x\u00e1ch c\u00f4ng s\u1edf nam",
+							"url_key": "tui-xach-cong-so-nam",
+							"full_url_key": "default-category/tui-thoi-trang-nam/tui-xach-cong-so-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 958,
+							"name": "T\u00fai \u0111eo ch\u00e9o nam",
+							"url_key": "phu-kien-nam-tui-xach",
+							"full_url_key": "default-category/tui-thoi-trang-nam/phu-kien-nam-tui-xach",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 49650,
+							"name": "T\u00fai bao t\u1eed, t\u00fai \u0111eo b\u1ee5ng",
+							"url_key": "tui-bao-tu-tui-deo-bung",
+							"full_url_key": "default-category/tui-thoi-trang-nam/tui-bao-tu-tui-deo-bung",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 959,
+							"name": "V\u00ed nam",
+							"url_key": "vi-nam",
+							"full_url_key": "default-category/tui-thoi-trang-nam/vi-nam",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "tui-thoi-trang-nam",
+					"url_path": "tui-thoi-trang-nam/c27616",
+					"product_count": 3272,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/9b/31/af/669e6a133118e5439d6c175e27c1f963.png",
+					"is_leaf": false
+				},
+				{
+					"id": 6000,
+					"name": "Balo v\u00e0 Vali",
+					"type": null,
+					"children": [
+						{
+							"id": 27608,
+							"name": "Balo",
+							"url_key": "balo",
+							"full_url_key": "default-category/balo-va-vali/balo",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 27612,
+							"name": "Balo, c\u1eb7p, t\u00fai ch\u1ed1ng s\u1ed1c laptop",
+							"url_key": "balo-cap-tui-chong-soc-laptop",
+							"full_url_key": "default-category/balo-va-vali/balo-cap-tui-chong-soc-laptop",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8387,
+							"name": "T\u00fai du l\u1ecbch v\u00e0 ph\u1ee5 ki\u1ec7n",
+							"url_key": "tui-du-lich-va-phu-kien",
+							"full_url_key": "default-category/balo-va-vali/tui-du-lich-va-phu-kien",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 6526,
+							"name": "Vali, ph\u1ee5 ki\u1ec7n vali ",
+							"url_key": "vali-phu-kien-vali",
+							"full_url_key": "default-category/balo-va-vali/vali-phu-kien-vali",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 68140,
+							"name": "Ph\u1ee5 ki\u1ec7n du l\u1ecbch",
+							"url_key": "phu-kien-du-lich",
+							"full_url_key": "default-category/balo-va-vali/phu-kien-du-lich",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "balo-va-vali",
+					"url_path": "balo-va-vali/c6000",
+					"product_count": 5587,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/3e/c0/30/1110651bd36a3e0d9b962cf135c818ee.png",
+					"is_leaf": false
+				},
+				{
+					"id": 27498,
+					"name": "Ph\u1ee5 ki\u1ec7n th\u1eddi trang",
+					"type": null,
+					"children": [
+						{
+							"id": 8370,
+							"name": "M\u1eaft k\u00ednh",
+							"url_key": "mat-kinh",
+							"full_url_key": "default-category/phu-kien-thoi-trang/mat-kinh",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 975,
+							"name": "Ph\u1ee5 ki\u1ec7n th\u1eddi trang n\u1eef",
+							"url_key": "phu-kien-thoi-trang-nu",
+							"full_url_key": "default-category/phu-kien-thoi-trang/phu-kien-thoi-trang-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 27550,
+							"name": "Ph\u1ee5 ki\u1ec7n th\u1eddi trang nam",
+							"url_key": "phu-kien-thoi-trang-nam",
+							"full_url_key": "default-category/phu-kien-thoi-trang/phu-kien-thoi-trang-nam",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "phu-kien-thoi-trang",
+					"url_path": "phu-kien-thoi-trang/c27498",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/ca/53/64/49c6189a0e1c1bf7cb91b01ff6d3fe43.png",
+					"is_leaf": false
+				},
+				{
+					"id": 8371,
+					"name": "\u0110\u1ed3ng h\u1ed3 v\u00e0 Trang s\u1ee9c",
+					"type": null,
+					"children": [
+						{
+							"id": 1778,
+							"name": "\u0110\u1ed3ng h\u1ed3 nam",
+							"url_key": "dong-ho-nam",
+							"full_url_key": "default-category/dong-ho-va-trang-suc/dong-ho-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 977,
+							"name": "\u0110\u1ed3ng h\u1ed3 n\u1eef",
+							"url_key": "dong-ho-nu",
+							"full_url_key": "default-category/dong-ho-va-trang-suc/dong-ho-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 11375,
+							"name": "\u0110\u1ed3ng h\u1ed3 tr\u1ebb em",
+							"url_key": "dong-ho-tre-em",
+							"full_url_key": "default-category/dong-ho-va-trang-suc/dong-ho-tre-em",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 27542,
+							"name": "Ph\u1ee5 ki\u1ec7n \u0111\u1ed3ng h\u1ed3",
+							"url_key": "phu-kien-dong-ho",
+							"full_url_key": "default-category/dong-ho-va-trang-suc/phu-kien-dong-ho",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8374,
+							"name": "Trang s\u1ee9c",
+							"url_key": "trang-suc",
+							"full_url_key": "default-category/dong-ho-va-trang-suc/trang-suc",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "dong-ho-va-trang-suc",
+					"url_path": "dong-ho-va-trang-suc/c8371",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/8b/d4/a8/5924758b5c36f3b1c43b6843f52d6dd2.png",
+					"is_leaf": false
+				},
+				{
+					"id": 1846,
+					"name": "Laptop - M\u00e1y Vi T\u00ednh - Linh ki\u1ec7n",
+					"type": null,
+					"children": [
+						{
+							"id": 8095,
+							"name": "Laptop",
+							"url_key": "laptop",
+							"full_url_key": "default-category/laptop-may-vi-tinh-linh-kien/laptop",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 12884,
+							"name": "Thi\u1ebft B\u1ecb V\u0103n Ph\u00f2ng - Thi\u1ebft B\u1ecb Ngo\u1ea1i Vi",
+							"url_key": "thiet-bi-van-phong-thiet-bi-ngoai-vi",
+							"full_url_key": "default-category/laptop-may-vi-tinh-linh-kien/thiet-bi-van-phong-thiet-bi-ngoai-vi",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8060,
+							"name": "Thi\u1ebft B\u1ecb L\u01b0u Tr\u1eef",
+							"url_key": "thiet-bi-luu-tru",
+							"full_url_key": "default-category/laptop-may-vi-tinh-linh-kien/thiet-bi-luu-tru",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 2663,
+							"name": "Thi\u1ebft B\u1ecb M\u1ea1ng",
+							"url_key": "thiet-bi-mang",
+							"full_url_key": "default-category/laptop-may-vi-tinh-linh-kien/thiet-bi-mang",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8093,
+							"name": "PC - M\u00e1y T\u00ednh B\u1ed9",
+							"url_key": "pc-may-tinh-bo",
+							"full_url_key": "default-category/laptop-may-vi-tinh-linh-kien/pc-may-tinh-bo",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8129,
+							"name": "Linh Ki\u1ec7n M\u00e1y T\u00ednh - Ph\u1ee5 Ki\u1ec7n M\u00e1y T\u00ednh",
+							"url_key": "linh-kien-may-tinh-phu-kien-may-tinh",
+							"full_url_key": "default-category/laptop-may-vi-tinh-linh-kien/linh-kien-may-tinh-phu-kien-may-tinh",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "laptop-may-vi-tinh-linh-kien",
+					"url_path": "laptop-may-vi-tinh-linh-kien/c1846",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/92/b5/c0/3ffdb7dbfafd5f8330783e1df20747f6.png",
+					"is_leaf": false
+				},
+				{
+					"id": 1883,
+					"name": "Nh\u00e0 C\u1eeda - \u0110\u1eddi S\u1ed1ng",
+					"type": null,
+					"children": [
+						{
+							"id": 1951,
+							"name": "D\u1ee5ng c\u1ee5 nh\u00e0 b\u1ebfp",
+							"url_key": "nha-bep",
+							"full_url_key": "default-category/nha-cua-doi-song/nha-bep",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1954,
+							"name": "\u0110\u1ed3 d\u00f9ng ph\u00f2ng \u0103n",
+							"url_key": "phong-an",
+							"full_url_key": "default-category/nha-cua-doi-song/phong-an",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 2150,
+							"name": "N\u1ed9i th\u1ea5t",
+							"url_key": "noi-that",
+							"full_url_key": "default-category/nha-cua-doi-song/noi-that",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8313,
+							"name": "\u0110\u1ed3 d\u00f9ng ph\u00f2ng ng\u1ee7",
+							"url_key": "do-dung-phong-ngu",
+							"full_url_key": "default-category/nha-cua-doi-song/do-dung-phong-ngu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1973,
+							"name": "Trang tr\u00ed nh\u00e0 c\u1eeda",
+							"url_key": "trang-tri-nha-cua",
+							"full_url_key": "default-category/nha-cua-doi-song/trang-tri-nha-cua",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 2015,
+							"name": "\u0110\u00e8n & thi\u1ebft b\u1ecb chi\u1ebfu s\u00e1ng",
+							"url_key": "den-thiet-bi-chieu-sang",
+							"full_url_key": "default-category/nha-cua-doi-song/den-thiet-bi-chieu-sang",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 2223,
+							"name": "Ngo\u00e0i tr\u1eddi & s\u00e2n v\u01b0\u1eddn",
+							"url_key": "ngoai-troi-san-vuon",
+							"full_url_key": "default-category/nha-cua-doi-song/ngoai-troi-san-vuon",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1966,
+							"name": "\u0110\u1ed3 d\u00f9ng v\u00e0 thi\u1ebft b\u1ecb nh\u00e0 t\u1eafm",
+							"url_key": "do-dung-va-thiet-bi-nha-tam",
+							"full_url_key": "default-category/nha-cua-doi-song/do-dung-va-thiet-bi-nha-tam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1974,
+							"name": "S\u1eeda ch\u1eefa nh\u00e0 c\u1eeda",
+							"url_key": "sua-chua-nha-cua",
+							"full_url_key": "default-category/nha-cua-doi-song/sua-chua-nha-cua",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 10068,
+							"name": "Nh\u1ea1c c\u1ee5",
+							"url_key": "nhac-cu",
+							"full_url_key": "default-category/nha-cua-doi-song/nhac-cu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 23054,
+							"name": "\u0110\u1ed3 th\u1edd c\u00fang",
+							"url_key": "do-tho-cung",
+							"full_url_key": "default-category/nha-cua-doi-song/do-tho-cung",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 53050,
+							"name": "D\u1ee5ng c\u1ee5 & Thi\u1ebft b\u1ecb ti\u1ec7n \u00edch",
+							"url_key": "dung-cu-thiet-bi-tien-ich",
+							"full_url_key": "default-category/nha-cua-doi-song/dung-cu-thiet-bi-tien-ich",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "nha-cua-doi-song",
+					"url_path": "nha-cua-doi-song/c1883",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/f6/22/46/7e2185d2cf1bca72d5aeac385a865b2b.png",
+					"is_leaf": false
+				},
+				{
+					"id": 17166,
+					"name": "Cross Border - H\u00e0ng Qu\u1ed1c T\u1ebf",
+					"type": null,
+					"children": [
+						{
+							"id": 20766,
+							"name": "B\u00e1ch h\u00f3a online",
+							"url_key": "bach-hoa-online",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/bach-hoa-online",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 20824,
+							"name": "\u0110i\u1ec7n gia d\u1ee5ng",
+							"url_key": "dien-gia-dung",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/dien-gia-dung",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 20908,
+							"name": "L\u00e0m \u0110\u1eb9p - S\u1ee9c Kh\u1ecfe",
+							"url_key": "lam-dep-suc-khoe",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/lam-dep-suc-khoe",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 21054,
+							"name": "\u0110i\u1ec7n Tho\u1ea1i - M\u00e1y T\u00ednh B\u1ea3ng",
+							"url_key": "dien-thoai-may-tinh-bang",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/dien-thoai-may-tinh-bang",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 21074,
+							"name": "Laptop & M\u00e1y Vi T\u00ednh",
+							"url_key": "laptop-may-vi-tinh",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/laptop-may-vi-tinh",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 21134,
+							"name": "M\u00e1y \u1ea2nh - M\u00e1y Quay Phim",
+							"url_key": "may-anh-may-quay-phim",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/may-anh-may-quay-phim",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 21166,
+							"name": "M\u1eb9 & B\u00e9",
+							"url_key": "me-be",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/me-be",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 21268,
+							"name": "Nh\u00e0 C\u1eeda - \u0110\u1eddi S\u1ed1ng",
+							"url_key": "nha-cua-doi-song",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/nha-cua-doi-song",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 21298,
+							"name": "S\u00e1ch, V\u0103n ph\u00f2ng ph\u1ea9m & Qu\u00e0 l\u01b0u ni\u1ec7m",
+							"url_key": "sach-van-phong-pham-qua-luu-niem",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/sach-van-phong-pham-qua-luu-niem",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 21346,
+							"name": "\u00d4 t\u00f4, xe m\u00e1y, xe \u0111\u1ea1p",
+							"url_key": "o-to-xe-may-xe-dap",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/o-to-xe-may-xe-dap",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 21356,
+							"name": "Th\u1ec3 thao - D\u00e3 ngo\u1ea1i",
+							"url_key": "the-thao-da-ngoai",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/the-thao-da-ngoai",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 21382,
+							"name": "Thi\u1ebft B\u1ecb S\u1ed1 - Ph\u1ee5 Ki\u1ec7n S\u1ed1",
+							"url_key": "thiet-bi-so-phu-kien-so",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/thiet-bi-so-phu-kien-so",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 21442,
+							"name": "Th\u1eddi Trang",
+							"url_key": "thoi-trang",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/thoi-trang",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 21496,
+							"name": "Tivi & Thi\u1ebft B\u1ecb Nghe Nh\u00ecn",
+							"url_key": "tivi-thiet-bi-nghe-nhin",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/tivi-thiet-bi-nghe-nhin",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 25036,
+							"name": "S\u1ea3n ph\u1ea9m - thi\u1ebft b\u1ecb c\u00f4ng nghi\u1ec7p",
+							"url_key": "san-pham-thiet-bi-cong-nghiep",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/san-pham-thiet-bi-cong-nghiep",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 27468,
+							"name": "Artist Collection",
+							"url_key": "artist-collection",
+							"full_url_key": "default-category/cross-border-hang-quoc-te/artist-collection",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "cross-border-hang-quoc-te",
+					"url_path": "cross-border-hang-quoc-te/c17166",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/3c/e4/99/eeee1801c838468d94af9997ec2bbe42.png",
+					"is_leaf": false
+				},
+				{
+					"id": 4384,
+					"name": "B\u00e1ch H\u00f3a Online",
+					"type": null,
+					"children": [
+						{
+							"id": 4421,
+							"name": "\u0110\u1ed3 \u0102n V\u1eb7t",
+							"url_key": "do-an-vat",
+							"full_url_key": "default-category/bach-hoa-online/do-an-vat",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 15074,
+							"name": "Th\u1ef1c ph\u1ea9m \u0110\u00f3ng h\u1ed9p v\u00e0 Kh\u00f4",
+							"url_key": "thuc-pham-dong-hop-va-kho",
+							"full_url_key": "default-category/bach-hoa-online/thuc-pham-dong-hop-va-kho",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 24024,
+							"name": "\u0110\u1ed3 U\u1ed1ng Kh\u00f4ng C\u1ed3n",
+							"url_key": "do-uong-khong-con",
+							"full_url_key": "default-category/bach-hoa-online/do-uong-khong-con",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4422,
+							"name": "Gia V\u1ecb v\u00e0 Ch\u1ebf Bi\u1ebfn",
+							"url_key": "gia-vi-va-che-bien",
+							"full_url_key": "default-category/bach-hoa-online/gia-vi-va-che-bien",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5451,
+							"name": "Ch\u0103m s\u00f3c th\u00fa c\u01b0ng",
+							"url_key": "thu-cung",
+							"full_url_key": "default-category/bach-hoa-online/thu-cung",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 11347,
+							"name": "B\u1ed9 qu\u00e0 t\u1eb7ng",
+							"url_key": "bo-qua-tang",
+							"full_url_key": "default-category/bach-hoa-online/bo-qua-tang",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 22998,
+							"name": "\u0110\u1ed3 u\u1ed1ng",
+							"url_key": "do-uong",
+							"full_url_key": "default-category/bach-hoa-online/do-uong",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 53562,
+							"name": "S\u1eefa v\u00e0 c\u00e1c S\u1ea3n ph\u1ea9m t\u1eeb s\u1eefa",
+							"url_key": "sua-va-cac-san-pham-tu-sua",
+							"full_url_key": "default-category/bach-hoa-online/sua-va-cac-san-pham-tu-sua",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 53582,
+							"name": "R\u01b0\u1ee3u, bia v\u00e0 n\u01b0\u1edbc l\u00ean men",
+							"url_key": "ruou-bia-va-nuoc-len-men",
+							"full_url_key": "default-category/bach-hoa-online/ruou-bia-va-nuoc-len-men",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 53620,
+							"name": "\u0110\u1eadu & H\u1ea1t C\u00e1c Lo\u1ea1i",
+							"url_key": "dau-hat-cac-loai",
+							"full_url_key": "default-category/bach-hoa-online/dau-hat-cac-loai",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 68576,
+							"name": "Ng\u0169 c\u1ed1c v\u00e0 m\u1ee9t",
+							"url_key": "ngu-coc-va-mut",
+							"full_url_key": "default-category/bach-hoa-online/ngu-coc-va-mut",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "bach-hoa-online",
+					"url_path": "bach-hoa-online/c4384",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/40/0f/9b/62a58fd19f540c70fce804e2a9bb5b2d.png",
+					"is_leaf": false
+				},
+				{
+					"id": 1815,
+					"name": "Thi\u1ebft B\u1ecb S\u1ed1 - Ph\u1ee5 Ki\u1ec7n S\u1ed1",
+					"type": null,
+					"children": [
+						{
+							"id": 8215,
+							"name": "Thi\u1ebft B\u1ecb \u00c2m Thanh v\u00e0 Ph\u1ee5 Ki\u1ec7n",
+							"url_key": "thiet-bi-am-thanh-va-phu-kien",
+							"full_url_key": "default-category/thiet-bi-kts-phu-kien-so/thiet-bi-am-thanh-va-phu-kien",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 2667,
+							"name": "Thi\u1ebft B\u1ecb Ch\u01a1i Game v\u00e0 Ph\u1ee5 Ki\u1ec7n",
+							"url_key": "thiet-bi-choi-game-va-phu-kien",
+							"full_url_key": "default-category/thiet-bi-kts-phu-kien-so/thiet-bi-choi-game-va-phu-kien",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8039,
+							"name": "Thi\u1ebft B\u1ecb \u0110eo Th\u00f4ng Minh v\u00e0 Ph\u1ee5 Ki\u1ec7n",
+							"url_key": "thiet-bi-deo-thong-minh-va-phu-kien",
+							"full_url_key": "default-category/thiet-bi-kts-phu-kien-so/thiet-bi-deo-thong-minh-va-phu-kien",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 28432,
+							"name": "Thi\u1ebft B\u1ecb Th\u00f4ng Minh v\u00e0 Linh Ki\u1ec7n \u0110i\u1ec7n T\u1eed",
+							"url_key": "thiet-bi-thong-minh-va-linh-kien-dien-tu",
+							"full_url_key": "default-category/thiet-bi-kts-phu-kien-so/thiet-bi-thong-minh-va-linh-kien-dien-tu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8214,
+							"name": "Ph\u1ee5 Ki\u1ec7n \u0110i\u1ec7n Tho\u1ea1i v\u00e0 M\u00e1y T\u00ednh B\u1ea3ng",
+							"url_key": "phu-kien-dien-thoai-va-may-tinh-bang",
+							"full_url_key": "default-category/thiet-bi-kts-phu-kien-so/phu-kien-dien-thoai-va-may-tinh-bang",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 28670,
+							"name": "Ph\u1ee5 ki\u1ec7n m\u00e1y t\u00ednh v\u00e0 Laptop",
+							"url_key": "phu-kien-may-tinh-va-laptop",
+							"full_url_key": "default-category/thiet-bi-kts-phu-kien-so/phu-kien-may-tinh-va-laptop",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "thiet-bi-kts-phu-kien-so",
+					"url_path": "thiet-bi-kts-phu-kien-so/c1815",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/75/34/29/78e428fdd90408587181005f5cc3de32.png",
+					"is_leaf": false
+				},
+				{
+					"id": 11312,
+					"name": "Voucher - D\u1ecbch v\u1ee5",
+					"type": null,
+					"children": [
+						{
+							"id": 11313,
+							"name": "Nh\u00e0 h\u00e0ng - \u0102n u\u1ed1ng",
+							"url_key": "nha-hang-an-uong",
+							"full_url_key": "default-category/voucher-dich-vu/nha-hang-an-uong",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 11319,
+							"name": "Du l\u1ecbch - Kh\u00e1ch s\u1ea1n",
+							"url_key": "du-lich-khach-san",
+							"full_url_key": "default-category/voucher-dich-vu/du-lich-khach-san",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 11322,
+							"name": "Spa & L\u00e0m \u0111\u1eb9p",
+							"url_key": "spa-lam-dep",
+							"full_url_key": "default-category/voucher-dich-vu/spa-lam-dep",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 11327,
+							"name": "S\u1ef1 ki\u1ec7n - Gi\u1ea3i tr\u00ed",
+							"url_key": "su-kien-giai-tri",
+							"full_url_key": "default-category/voucher-dich-vu/su-kien-giai-tri",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 11333,
+							"name": "S\u1ef1 ki\u1ec7n - Th\u1ec3 thao",
+							"url_key": "su-kien-the-thao",
+							"full_url_key": "default-category/voucher-dich-vu/su-kien-the-thao",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 11326,
+							"name": "Nha khoa - S\u1ee9c kh\u1ecfe",
+							"url_key": "nha-khoa-suc-khoe",
+							"full_url_key": "default-category/voucher-dich-vu/nha-khoa-suc-khoe",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 11332,
+							"name": "Kh\u00f3a h\u1ecdc",
+							"url_key": "khoa-hoc",
+							"full_url_key": "default-category/voucher-dich-vu/khoa-hoc",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 11334,
+							"name": "D\u1ecbch v\u1ee5 kh\u00e1c",
+							"url_key": "dich-vu-khac",
+							"full_url_key": "default-category/voucher-dich-vu/dich-vu-khac",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 33466,
+							"name": "TikiNOW",
+							"url_key": "tikinow",
+							"full_url_key": "default-category/voucher-dich-vu/tikinow",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 44472,
+							"name": "Quy\u00ean g\u00f3p",
+							"url_key": "quyen-gop",
+							"full_url_key": "default-category/voucher-dich-vu/quyen-gop",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 46516,
+							"name": "TicketBox",
+							"url_key": "ticketbox ticket-box",
+							"full_url_key": "default-category/voucher-dich-vu/ticketbox ticket-box",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 52842,
+							"name": "V\u00e9 xe bus",
+							"url_key": "ve-xe-bus",
+							"full_url_key": "default-category/voucher-dich-vu/ve-xe-bus",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 69482,
+							"name": "Key \u0111i\u1ec7n t\u1eed",
+							"url_key": "key-dien-tu",
+							"full_url_key": "default-category/voucher-dich-vu/key-dien-tu",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "voucher-dich-vu",
+					"url_path": "voucher-dich-vu/c11312",
+					"product_count": 4326,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/0a/c9/7b/8e466bdf6d4a5f5e14665ce56e58631d.png",
+					"is_leaf": false
+				},
+				{
+					"id": 8594,
+					"name": "\u00d4 T\u00f4 - Xe M\u00e1y - Xe \u0110\u1ea1p",
+					"type": null,
+					"children": [
+						{
+							"id": 8597,
+							"name": "Xe m\u00e1y",
+							"url_key": "xe-may",
+							"full_url_key": "default-category/o-to-xe-may-xe-dap/xe-may",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 6070,
+							"name": "Xe \u0111i\u1ec7n",
+							"url_key": "xe-dien",
+							"full_url_key": "default-category/o-to-xe-may-xe-dap/xe-dien",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8431,
+							"name": "Xe \u0111\u1ea1p",
+							"url_key": "xe-dap",
+							"full_url_key": "default-category/o-to-xe-may-xe-dap/xe-dap",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8595,
+							"name": "\u00d4 t\u00f4",
+							"url_key": "o-to",
+							"full_url_key": "default-category/o-to-xe-may-xe-dap/o-to",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 24832,
+							"name": "Ph\u1ee5 ki\u1ec7n - Ch\u0103m s\u00f3c xe",
+							"url_key": "phu-kien-cham-soc-xe",
+							"full_url_key": "default-category/o-to-xe-may-xe-dap/phu-kien-cham-soc-xe",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 17208,
+							"name": "D\u1ecbch v\u1ee5, l\u1eafp \u0111\u1eb7t",
+							"url_key": "dich-vu-lap-dat",
+							"full_url_key": "default-category/o-to-xe-may-xe-dap/dich-vu-lap-dat",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "o-to-xe-may-xe-dap",
+					"url_path": "o-to-xe-may-xe-dap/c8594",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/69/f5/36/c6cd9e2849854630ed74ff1678db8f19.png",
+					"is_leaf": false
+				},
+				{
+					"id": 8322,
+					"name": "Nh\u00e0 S\u00e1ch Tiki",
+					"type": null,
+					"children": [
+						{
+							"id": 320,
+							"name": "English Books",
+							"url_key": "sach-tieng-anh",
+							"full_url_key": "default-category/nha-sach-tiki/sach-tieng-anh",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 316,
+							"name": "S\u00e1ch ti\u1ebfng Vi\u1ec7t",
+							"url_key": "sach-truyen-tieng-viet",
+							"full_url_key": "default-category/nha-sach-tiki/sach-truyen-tieng-viet",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 7741,
+							"name": "V\u0103n ph\u00f2ng ph\u1ea9m",
+							"url_key": "van-phong-pham-qua-luu-niem",
+							"full_url_key": "default-category/nha-sach-tiki/van-phong-pham-qua-luu-niem",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 18328,
+							"name": "Qu\u00e0 l\u01b0u ni\u1ec7m",
+							"url_key": "qua-luu-niem",
+							"full_url_key": "default-category/nha-sach-tiki/qua-luu-niem",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "nha-sach-tiki",
+					"url_path": "nha-sach-tiki/c8322",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/ed/20/60/afa9b3b474bf7ad70f10dd6443211d5f.png",
+					"is_leaf": false
+				},
+				{
+					"id": 4221,
+					"name": "\u0110i\u1ec7n T\u1eed - \u0110i\u1ec7n L\u1ea1nh",
+					"type": null,
+					"children": [
+						{
+							"id": 5015,
+							"name": "Tivi",
+							"url_key": "tivi",
+							"full_url_key": "default-category/dien-tu-dien-lanh/tivi",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 3862,
+							"name": "M\u00e1y gi\u1eb7t",
+							"url_key": "may-giat",
+							"full_url_key": "default-category/dien-tu-dien-lanh/may-giat",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 26568,
+							"name": "\u00c2m thanh & Ph\u1ee5 ki\u1ec7n Tivi",
+							"url_key": "am-thanh-phu-kien-tivi",
+							"full_url_key": "default-category/dien-tu-dien-lanh/am-thanh-phu-kien-tivi",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 3863,
+							"name": "M\u00e1y s\u1ea5y qu\u1ea7n \u00e1o",
+							"url_key": "may-say-quan-ao",
+							"full_url_key": "default-category/dien-tu-dien-lanh/may-say-quan-ao",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 3864,
+							"name": "M\u00e1y r\u1eeda ch\u00e9n",
+							"url_key": "may-rua-chen",
+							"full_url_key": "default-category/dien-tu-dien-lanh/may-rua-chen",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 3865,
+							"name": "M\u00e1y l\u1ea1nh - M\u00e1y \u0111i\u1ec1u h\u00f2a",
+							"url_key": "may-lanh-may-dieu-hoa",
+							"full_url_key": "default-category/dien-tu-dien-lanh/may-lanh-may-dieu-hoa",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 3866,
+							"name": "M\u00e1y n\u01b0\u1edbc n\u00f3ng",
+							"url_key": "may-nuoc-nong",
+							"full_url_key": "default-category/dien-tu-dien-lanh/may-nuoc-nong",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 2328,
+							"name": "T\u1ee7 l\u1ea1nh",
+							"url_key": "tu-lanh",
+							"full_url_key": "default-category/dien-tu-dien-lanh/tu-lanh",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 3868,
+							"name": "T\u1ee7 \u0111\u00f4ng - T\u1ee7 m\u00e1t",
+							"url_key": "tu-dong-tu-mat",
+							"full_url_key": "default-category/dien-tu-dien-lanh/tu-dong-tu-mat",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 3869,
+							"name": "T\u1ee7 \u01b0\u1edbp r\u01b0\u1ee3u",
+							"url_key": "tu-uop-ruou",
+							"full_url_key": "default-category/dien-tu-dien-lanh/tu-uop-ruou",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8074,
+							"name": "Ph\u1ee5 ki\u1ec7n \u0111i\u1ec7n l\u1ea1nh",
+							"url_key": "phu-kien-dien-lanh",
+							"full_url_key": "default-category/dien-tu-dien-lanh/phu-kien-dien-lanh",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "dien-tu-dien-lanh",
+					"url_path": "dien-tu-dien-lanh/c4221",
+					"product_count": 5040,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/c8/82/d4/64c561c4ced585c74b9c292208e4995a.png",
+					"is_leaf": false
+				},
+				{
+					"id": 1975,
+					"name": "Th\u1ec3 Thao - D\u00e3 Ngo\u1ea1i",
+					"type": null,
+					"children": [
+						{
+							"id": 8411,
+							"name": "C\u00e1c m\u00f4n th\u1ec3 thao ch\u01a1i v\u1ee3t",
+							"url_key": "cac-mon-the-thao-choi-vot",
+							"full_url_key": "default-category/the-thao-da-ngoai/cac-mon-the-thao-choi-vot",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4227,
+							"name": "C\u00e1c m\u00f4n th\u1ec3 thao \u0111\u1ed3ng \u0111\u1ed9i",
+							"url_key": "the-thao-dong-doi",
+							"full_url_key": "default-category/the-thao-da-ngoai/the-thao-dong-doi",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 23120,
+							"name": "C\u00e1c m\u00f4n th\u1ec3 thao \u0111\u1ed1i kh\u00e1ng ",
+							"url_key": "cac-mon-the-thao-doi-khang",
+							"full_url_key": "default-category/the-thao-da-ngoai/cac-mon-the-thao-doi-khang",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 24002,
+							"name": "C\u00e1c m\u00f4n th\u1ec3 thao kh\u00e1c",
+							"url_key": "cac-mon-the-thao-khac",
+							"full_url_key": "default-category/the-thao-da-ngoai/cac-mon-the-thao-khac",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 6826,
+							"name": "Gi\u00e0y th\u1ec3 thao nam",
+							"url_key": "giay-the-thao-nam",
+							"full_url_key": "default-category/the-thao-da-ngoai/giay-the-thao-nam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 6827,
+							"name": "Gi\u00e0y th\u1ec3 thao n\u1eef",
+							"url_key": "giay-the-thao-nu",
+							"full_url_key": "default-category/the-thao-da-ngoai/giay-the-thao-nu",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 24306,
+							"name": "Ph\u1ee5 ki\u1ec7n th\u1ec3 thao",
+							"url_key": "phu-kien-the-thao",
+							"full_url_key": "default-category/the-thao-da-ngoai/phu-kien-the-thao",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8413,
+							"name": "Th\u1ec3 thao d\u01b0\u1edbi n\u01b0\u1edbc",
+							"url_key": "the-thao-duoi-nuoc",
+							"full_url_key": "default-category/the-thao-da-ngoai/the-thao-duoi-nuoc",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 10803,
+							"name": "Th\u1ef1c ph\u1ea9m b\u1ed5 sung n\u0103ng l\u01b0\u1ee3ng",
+							"url_key": "thuc-pham-bo-sung-nang-luong",
+							"full_url_key": "default-category/the-thao-da-ngoai/thuc-pham-bo-sung-nang-luong",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 67485,
+							"name": "\u0110\u1ed3 d\u00f9ng d\u00e3 ngo\u1ea1i & Leo n\u00fai",
+							"url_key": "do-dung-da-ngoai-leo-nui",
+							"full_url_key": "default-category/the-thao-da-ngoai/do-dung-da-ngoai-leo-nui",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 67647,
+							"name": "Trang ph\u1ee5c th\u1ec3 thao",
+							"url_key": "trang-phuc-the-thao",
+							"full_url_key": "default-category/the-thao-da-ngoai/trang-phuc-the-thao",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 67703,
+							"name": "Ch\u1ea1y b\u1ed9 v\u00e0 \u0111i b\u1ed9",
+							"url_key": "chay-bo-va-di-bo",
+							"full_url_key": "default-category/the-thao-da-ngoai/chay-bo-va-di-bo",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 69498,
+							"name": "Gym v\u00e0 Boxing",
+							"url_key": "gym-va-boxing",
+							"full_url_key": "default-category/the-thao-da-ngoai/gym-va-boxing",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 24064,
+							"name": "Golf",
+							"url_key": "golf",
+							"full_url_key": "default-category/the-thao-da-ngoai/golf",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "the-thao-da-ngoai",
+					"url_path": "the-thao-da-ngoai/c1975",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/0b/5e/3d/00941c9eb338ea62a47d5b1e042843d8.png",
+					"is_leaf": false
+				},
+				{
+					"id": 1801,
+					"name": "M\u00e1y \u1ea2nh - M\u00e1y Quay Phim",
+					"type": null,
+					"children": [
+						{
+							"id": 28806,
+							"name": "M\u00e1y \u1ea2nh",
+							"url_key": "may-anh",
+							"full_url_key": "default-category/may-anh/may-anh",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1818,
+							"name": "Ph\u1ee5 Ki\u1ec7n M\u00e1y \u1ea2nh, M\u00e1y Quay",
+							"url_key": "phu-kien-may-anh-may-quay",
+							"full_url_key": "default-category/may-anh/phu-kien-may-anh-may-quay",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 1840,
+							"name": "Balo - T\u00fai \u0110\u1ef1ng - Bao Da",
+							"url_key": "balo-tui-dung-bao-da",
+							"full_url_key": "default-category/may-anh/balo-tui-dung-bao-da",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 28794,
+							"name": "\u1ed0ng K\u00ednh - \u1ed0ng Ng\u1eafm",
+							"url_key": "ong-kinh-ong-ngam",
+							"full_url_key": "default-category/may-anh/ong-kinh-ong-ngam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 2757,
+							"name": "\u1ed0ng K\u00ednh (Lens)",
+							"url_key": "ong-kinh-lens",
+							"full_url_key": "default-category/may-anh/ong-kinh-lens",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 28814,
+							"name": "Thi\u1ebft B\u1ecb \u00c1nh S\u00e1ng",
+							"url_key": "thiet-bi-anh-sang",
+							"full_url_key": "default-category/may-anh/thiet-bi-anh-sang",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 28822,
+							"name": "Thi\u1ebft B\u1ecb Quay Phim",
+							"url_key": "thiet-bi-quay-phim",
+							"full_url_key": "default-category/may-anh/thiet-bi-quay-phim",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4077,
+							"name": "Camera Gi\u00e1m S\u00e1t",
+							"url_key": "camera-giam-sat",
+							"full_url_key": "default-category/may-anh/camera-giam-sat",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 8047,
+							"name": "M\u00e1y Bay Camera v\u00e0 Ph\u1ee5 Ki\u1ec7n",
+							"url_key": "may-bay-camera-va-phu-kien",
+							"full_url_key": "default-category/may-anh/may-bay-camera-va-phu-kien",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 28834,
+							"name": "Camera H\u00e0nh Tr\u00ecnh - Action Camera v\u00e0 Ph\u1ee5 Ki\u1ec7n",
+							"url_key": "camera-hanh-trinh-action-camera-va-phu-kien",
+							"full_url_key": "default-category/may-anh/camera-hanh-trinh-action-camera-va-phu-kien",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "may-anh",
+					"url_path": "may-anh/c1801",
+					"product_count": 4462,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/2d/7c/45/e4976f3fa4061ab310c11d2a1b759e5b.png",
+					"is_leaf": false
+				},
+				{
+					"id": 54042,
+					"name": "S\u1ea3n ph\u1ea9m T\u00e0i ch\u00ednh - B\u1ea3o hi\u1ec3m",
+					"type": null,
+					"children": [
+						{
+							"id": 56009,
+							"name": "T\u00e0i Ch\u00ednh",
+							"url_key": "tai-chinh",
+							"full_url_key": "default-category/san-pham-tai-chinh-bao-hiem/tai-chinh",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "san-pham-tai-chinh-bao-hiem",
+					"url_path": "san-pham-tai-chinh-bao-hiem/c54042",
+					"product_count": 1,
+					"thumbnail_url": "https://salt.tikicdn.com/ts/category/a0/49/f4/a75f6e5dc021b0005fb8923b9846abc2.jpg",
+					"is_leaf": false
+				},
+				{
+					"id": 11603,
+					"name": "Th\u1eddi Trang Cho M\u1eb9 V\u00e0 B\u00e9",
+					"type": null,
+					"children": [
+						{
+							"id": 5191,
+							"name": "Th\u1eddi trang b\u1ea7u",
+							"url_key": "thoi-trang-me-bau",
+							"full_url_key": "default-category/thoi-trang-cho-me-va-be/thoi-trang-me-bau",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5188,
+							"name": "Th\u1eddi trang s\u01a1 sinh",
+							"url_key": "thoi-trang-so-sinh",
+							"full_url_key": "default-category/thoi-trang-cho-me-va-be/thoi-trang-so-sinh",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5189,
+							"name": "Th\u1eddi trang b\u00e9 g\u00e1i",
+							"url_key": "thoi-trang-be-gai",
+							"full_url_key": "default-category/thoi-trang-cho-me-va-be/thoi-trang-be-gai",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5190,
+							"name": "Th\u1eddi trang b\u00e9 trai",
+							"url_key": "thoi-trang-be-trai",
+							"full_url_key": "default-category/thoi-trang-cho-me-va-be/thoi-trang-be-trai",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5192,
+							"name": "Ph\u1ee5 ki\u1ec7n cho b\u00e9",
+							"url_key": "phu-kien-cho-be",
+							"full_url_key": "default-category/thoi-trang-cho-me-va-be/phu-kien-cho-be",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 5602,
+							"name": "Ph\u1ee5 ki\u1ec7n th\u1eddi trang s\u01a1 sinh",
+							"url_key": "phu-kien-thoi-trang-so-sinh",
+							"full_url_key": "default-category/thoi-trang-cho-me-va-be/phu-kien-thoi-trang-so-sinh",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "thoi-trang-cho-me-va-be",
+					"url_path": "thoi-trang-cho-me-va-be/c11603",
+					"product_count": 10000,
+					"thumbnail_url": "https://salt.tikicdn.com/assets/img/image.svg",
+					"is_leaf": false
+				},
+				{
+					"id": 15078,
+					"name": "Ch\u0103m s\u00f3c nh\u00e0 c\u1eeda",
+					"type": null,
+					"children": [
+						{
+							"id": 4386,
+							"name": "V\u1ec7 sinh nh\u00e0 c\u1eeda",
+							"url_key": "cham-soc-ve-sinh-nha-cua",
+							"full_url_key": "default-category/cham-soc-nha-cua/cham-soc-ve-sinh-nha-cua",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4399,
+							"name": "V\u1ec7 sinh nh\u00e0 b\u1ebfp",
+							"url_key": "ve-sinh-bep-va-nha-bep",
+							"full_url_key": "default-category/cham-soc-nha-cua/ve-sinh-bep-va-nha-bep",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4400,
+							"name": "V\u1ec7 sinh nh\u00e0 t\u1eafm",
+							"url_key": "ve-sinh-nha-tam",
+							"full_url_key": "default-category/cham-soc-nha-cua/ve-sinh-nha-tam",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4388,
+							"name": "Gi\u1ea5y v\u1ec7 sinh v\u00e0 gi\u1ea5y \u0103n",
+							"url_key": "giay-ve-sinh-va-giay-an",
+							"full_url_key": "default-category/cham-soc-nha-cua/giay-ve-sinh-va-giay-an",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4387,
+							"name": "Gi\u1eb7t gi\u0169 & Ch\u0103m s\u00f3c qu\u1ea7n \u00e1o",
+							"url_key": "giat-giu-cham-soc-quan-ao",
+							"full_url_key": "default-category/cham-soc-nha-cua/giat-giu-cham-soc-quan-ao",
+							"include_in_menu": "1",
+							"type": null
+						},
+						{
+							"id": 4441,
+							"name": "Di\u1ec7t c\u00f4n tr\u00f9ng",
+							"url_key": "diet-con-trung",
+							"full_url_key": "default-category/cham-soc-nha-cua/diet-con-trung",
+							"include_in_menu": "1",
+							"type": null
+						}
+					],
+					"include_in_menu": true,
+					"url_key": "cham-soc-nha-cua",
+					"url_path": "cham-soc-nha-cua/c15078",
+					"product_count": 5903,
+					"thumbnail_url": "https://salt.tikicdn.com/assets/img/image.svg",
+					"is_leaf": false
+				}
+			]
+		},
+		{
+			"id": 8895,
+			"parent_id": 1,
+			"name": "NESLE FITNESSES",
+			"type": null,
+			"url_key": "nesle-fitnesses",
+			"url_path": "nesle-fitnesses/c8895",
+			"level": 1,
+			"status": "active",
+			"include_in_menu": true,
+			"product_count": 0,
+			"is_leaf": true,
+			"meta_title": "NESLE FITNESSES",
+			"meta_description": "B\u00c1CH H\u00d3A ONLINE\r\n",
+			"meta_keywords": null,
+			"thumbnail_url": null
+		},
+		{
+			"id": 8977,
+			"parent_id": 1,
+			"name": "\u01afu \u0111\u00e3i T\u1eeb Tiki v\u00e0 Microsoft",
+			"type": null,
+			"url_key": "uu-dai-tu-tiki-va-microsoft",
+			"url_path": "uu-dai-tu-tiki-va-microsoft/c8977",
+			"level": 1,
+			"status": "active",
+			"include_in_menu": true,
+			"product_count": 0,
+			"is_leaf": true,
+			"meta_title": "\u01afu \u0111\u00e3i T\u1eeb Tiki v\u00e0 Microsoft",
+			"meta_description": "\u01afu \u0111\u00e3i T\u1eeb Tiki v\u00e0 Microsoft",
+			"meta_keywords": null,
+			"thumbnail_url": null
+		},
+		{
+			"id": 9983,
+			"parent_id": 1,
+			"name": "hazeline lauching",
+			"type": null,
+			"url_key": "hazeline-san-pham-moi",
+			"url_path": "hazeline-san-pham-moi/c9983",
+			"level": 1,
+			"status": "active",
+			"include_in_menu": true,
+			"product_count": 0,
+			"is_leaf": true,
+			"meta_title": "hazeline lauching",
+			"meta_description": "hazeline lauching",
+			"meta_keywords": null,
+			"thumbnail_url": null
+		},
+		{
+			"id": 11033,
+			"parent_id": 1,
+			"name": "Engineering",
+			"type": null,
+			"url_key": "engineering",
+			"url_path": "engineering/c11033",
+			"level": 1,
+			"status": "active",
+			"include_in_menu": true,
+			"product_count": 0,
+			"is_leaf": true,
+			"meta_title": "Engineering",
+			"meta_description": "Engineering",
+			"meta_keywords": null,
+			"thumbnail_url": null
+		}
+	],
+	"show_max": 2
+}
