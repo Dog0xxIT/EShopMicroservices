@@ -1,10 +1,6 @@
-﻿using EShop.Application.Entities;
-using EShop.Application.Enums;
-using EShop.Application.Services.Interfaces;
+﻿using EShop.Application.Enums;
 using EShop.Shared.RequestModels.Order;
 using EShop.Shared.ResponseModels;
-using EShop.Shared.ResponseModels.Common;
-using Microsoft.AspNetCore.Mvc;
 
 namespace EShop.Api.Controllers
 {
@@ -12,13 +8,13 @@ namespace EShop.Api.Controllers
     [Route("orders")]
     public class OrderController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<OrderController> _logger;
+        private readonly IDbContext _context;
 
-        public OrderController(IUnitOfWork unitOfWork, ILogger<OrderController> logger)
+        public OrderController(ILogger<OrderController> logger, IDbContext context)
         {
-            _unitOfWork = unitOfWork;
             _logger = logger;
+            _context = context;
         }
 
         #region Get method
@@ -26,10 +22,11 @@ namespace EShop.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllByBuyerId([FromQuery] int buyerId)
         {
-            var orders = await _unitOfWork.OrderRepository
-                .Get(
-                    filter: o => o.BuyerId == buyerId,
-                    includeProperties: new List<string> { nameof(Order.OrderItems) });
+            var orders = await _context.Orders
+                .Where(o => o.BuyerId == buyerId)
+                .Include(o => o.OrderItems)
+                .AsNoTracking()
+                .ToListAsync();
 
             return Ok(orders);
         }
@@ -64,7 +61,7 @@ namespace EShop.Api.Controllers
         [HttpPatch("cancel/{id}")]
         public async Task<IActionResult> Cancel([FromRoute] int id)
         {
-            var order = await _unitOfWork.OrderRepository.GetById(id);
+            var order = await _context.Orders.FindAsync(id);
             if (order is null)
             {
                 return NotFound();
@@ -74,8 +71,8 @@ namespace EShop.Api.Controllers
 
             try
             {
-                _unitOfWork.OrderRepository.Update(order);
-                var result = await _unitOfWork.Commit();
+                //_unitOfWork.OrderRepository.Update(order);
+                //var result = await _unitOfWork.Commit();
                 return Ok(ResponseObject.Succeeded);
             }
             catch (Exception ex)
@@ -87,7 +84,7 @@ namespace EShop.Api.Controllers
         [HttpPatch("ship/{id}")]
         public async Task<IActionResult> Ship([FromRoute] int id)
         {
-            var order = await _unitOfWork.OrderRepository.GetById(id);
+            var order = await _context.Orders.FindAsync(id);
             if (order is null)
             {
                 return NotFound();
@@ -97,8 +94,8 @@ namespace EShop.Api.Controllers
 
             try
             {
-                _unitOfWork.OrderRepository.Update(order);
-                var result = await _unitOfWork.Commit();
+                //_unitOfWork.OrderRepository.Update(order);
+                //var result = await _unitOfWork.Commit();
                 return Ok(ResponseObject.Succeeded);
             }
             catch (Exception ex)

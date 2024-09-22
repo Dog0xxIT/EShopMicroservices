@@ -1,10 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using EShop.Application.Constants;
-using EShop.Application.Entities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.FileIO;
 using System.Globalization;
+using EShop.Application.Models;
 using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
 

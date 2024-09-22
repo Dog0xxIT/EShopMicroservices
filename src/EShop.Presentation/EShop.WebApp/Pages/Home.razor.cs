@@ -1,6 +1,10 @@
 ﻿using EShop.Shared.RequestModels.Catalog;
 using EShop.Shared.RequestModels.Common;
 using EShop.Shared.ResponseModels.Catalog;
+using GetAllCategoriesResponse = EShop.WebApp.Core.ResponseModels.Catalog.GetAllCategoriesResponse;
+using GetAllProductRequest = EShop.WebApp.Core.RequestModels.Catalog.GetAllProductRequest;
+using GetListProductResponse = EShop.WebApp.Core.ResponseModels.Catalog.GetListProductResponse;
+using PaginationRequest = EShop.WebApp.Core.RequestModels.Common.PaginationRequest;
 
 namespace EShop.WebApp.Pages;
 

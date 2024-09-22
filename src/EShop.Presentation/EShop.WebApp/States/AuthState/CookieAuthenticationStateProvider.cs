@@ -1,13 +1,11 @@
-﻿using System.Net.Http.Json;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using EShop.Shared.RequestModels.Identity;
 using EShop.Shared.ResponseModels.Common;
 using EShop.Shared.ResponseModels.Identity;
-using EShop.WebApp;
-using EShop.WebApp.Core;
-using EShop.WebApp.Services.IdentityService;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.WebAssembly.Http;
+using ManageInfoResponse = EShop.WebApp.Core.ResponseModels.Identity.ManageInfoResponse;
+using ResponseObject = EShop.WebApp.Core.ResponseModels.Common.ResponseObject;
+using SignInRequest = EShop.WebApp.Core.RequestModels.Identity.SignInRequest;
 
 namespace EShop.WebApp.States.AuthState;
 

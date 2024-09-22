@@ -18,14 +18,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Exceptions\" />
-		<Folder Include="Middlewares\" />
-		<Folder Include="Utilities\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\..\EShop.Application\EShop.Application.csproj" />
 		<ProjectReference Include="..\..\EShop.Infrastructure\EShop.Infrastructure.csproj" />
 		<ProjectReference Include="..\EShop.Shared\EShop.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Middlewares\" />
 	</ItemGroup>
 </Project>

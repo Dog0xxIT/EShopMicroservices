@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EShop.Application.Entities;
+﻿using EShop.Application.Models;
 using EShop.Domain.Aggregates.BuyerAggregate;
 using EShop.Domain.Enums;
-using OrderEntityApplication = EShop.Application.Entities.Order;
-using OrderItemEntityApplication = EShop.Application.Entities.OrderItem;
+using OrderEntityApplication = EShop.Application.Models.Order;
+using OrderItemEntityApplication = EShop.Application.Models.OrderItem;
 using OrderEntityDomain = EShop.Domain.Aggregates.OrderAggregate.Order;
 using OrderItemEntityDomain = EShop.Domain.Aggregates.OrderAggregate.OrderItem;
 using Address = EShop.Domain.Aggregates.OrderAggregate.Address;
@@ -78,7 +73,7 @@ namespace EShop.Application.Extensions
             orderEntityApplication.OrderStatus = (Enums.OrderStatus)rootEntity.OrderStatus;
             orderEntityApplication.AddressId = 0;
             orderEntityApplication.Amount = rootEntity.GetTotal();
-            orderEntityApplication.Address = new Entities.Address();
+            orderEntityApplication.Address = new Models.Address();
             orderEntityApplication.OrderItems = null;
         }
 

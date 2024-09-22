@@ -2,9 +2,13 @@
 using EShop.Shared.RequestModels.Common;
 using EShop.Shared.ResponseModels.Catalog;
 using EShop.Shared.ResponseModels.Common;
-using EShop.WebApp;
-using EShop.WebApp.Core;
 using EShop.WebApp.Core.CoreHttpClient;
+using GetAllBrandsResponse = EShop.WebApp.Core.ResponseModels.Catalog.GetAllBrandsResponse;
+using GetAllCategoriesResponse = EShop.WebApp.Core.ResponseModels.Catalog.GetAllCategoriesResponse;
+using GetAllProductRequest = EShop.WebApp.Core.RequestModels.Catalog.GetAllProductRequest;
+using GetListProductResponse = EShop.WebApp.Core.ResponseModels.Catalog.GetListProductResponse;
+using GetProductByIdResponse = EShop.WebApp.Core.ResponseModels.Catalog.GetProductByIdResponse;
+using PaginationRequest = EShop.WebApp.Core.RequestModels.Common.PaginationRequest;
 
 namespace EShop.WebApp.Services.CatalogService
 {
@@ -17,9 +21,9 @@ namespace EShop.WebApp.Services.CatalogService
             _coreHttpClient = coreHttpClient;
         }
 
-        public async Task<PaginationResponse<GetListProductResponse>> GetAllProducts(GetAllProductRequest req)
+        public async Task<Core.ResponseModels.Common.PaginationResponse<GetListProductResponse>> GetAllProducts(GetAllProductRequest req)
         {
-            var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
+            var resultObject = await _coreHttpClient.GetAsync<Core.ResponseModels.Common.PaginationResponse<GetListProductResponse>>(
                  clientName: UrlsConfig.ClientName,
                  uri: "/catalog/products",
                  queryObj: req);
@@ -35,18 +39,18 @@ namespace EShop.WebApp.Services.CatalogService
                 uri: $"/catalog/products/{productId}");
         }
 
-        public async Task<PaginationResponse<GetAllBrandsResponse>> GetAllBrands(PaginationRequest paginationRequest)
+        public async Task<Core.ResponseModels.Common.PaginationResponse<GetAllBrandsResponse>> GetAllBrands(PaginationRequest paginationRequest)
         {
-            var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetAllBrandsResponse>>(
+            var resultObject = await _coreHttpClient.GetAsync<Core.ResponseModels.Common.PaginationResponse<GetAllBrandsResponse>>(
                 clientName: UrlsConfig.ClientName,
                 uri: "/catalog/brands",
                 queryObj: paginationRequest);
             return resultObject.Data;
         }
 
-        public async Task<PaginationResponse<GetAllCategoriesResponse>> GetAllCategories(PaginationRequest paginationRequest)
+        public async Task<Core.ResponseModels.Common.PaginationResponse<GetAllCategoriesResponse>> GetAllCategories(PaginationRequest paginationRequest)
         {
-            var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetAllCategoriesResponse>>(
+            var resultObject = await _coreHttpClient.GetAsync<Core.ResponseModels.Common.PaginationResponse<GetAllCategoriesResponse>>(
                 clientName: UrlsConfig.ClientName,
                 uri: "/catalog/categories",
                 queryObj: paginationRequest);

@@ -3,14 +3,8 @@ using System.Security.Claims;
 using System.Text;
 using EShop.Application.Configurations;
 using EShop.Application.Constants;
-using EShop.Application.Entities;
-using EShop.Application.Services.ApplicationService;
-using EShop.Application.Services.Interfaces;
+using EShop.Application.Models;
 using EShop.Shared.ResponseModels.Identity;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Linq;
 
 namespace EShop.Infrastructure.Services
 {

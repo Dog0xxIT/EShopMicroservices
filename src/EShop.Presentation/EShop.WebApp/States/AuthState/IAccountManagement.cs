@@ -1,7 +1,7 @@
 ﻿using EShop.Shared.RequestModels.Identity;
 using EShop.Shared.ResponseModels.Common;
-using EShop.WebApp;
-using EShop.WebApp.Core;
+using ResponseObject = EShop.WebApp.Core.ResponseModels.Common.ResponseObject;
+using SignInRequest = EShop.WebApp.Core.RequestModels.Identity.SignInRequest;
 
 namespace EShop.WebApp.States.AuthState
 {

@@ -1,9 +1,9 @@
-﻿using System.Net.Http.Json;
-using System.Text;
+﻿using System.Text;
 using System.Web;
 using EShop.Shared.ResponseModels;
 using EShop.Shared.ResponseModels.Common;
 using Newtonsoft.Json;
+using ProblemDetailsResponse = EShop.WebApp.Core.ResponseModels.Common.ProblemDetailsResponse;
 
 namespace EShop.WebApp.Core.CoreHttpClient;
 

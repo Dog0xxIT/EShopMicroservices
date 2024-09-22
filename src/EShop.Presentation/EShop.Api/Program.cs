@@ -1,16 +1,12 @@
 using System.Text;
 using EShop.Application.Configurations;
-using EShop.Application.Entities;
-using EShop.Application.Services.ApplicationService;
-using EShop.Application.Services.Interfaces;
+using EShop.Application.Models;
 using EShop.Infrastructure;
 using EShop.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,12 +25,10 @@ builder.Services.AddTransient<IBasketService, BasketService>();
 builder.Services.AddTransient<ICatalogService, CatalogService>();
 builder.Services.AddTransient<IEmailSenderService, EmailSenderService>();
 builder.Services.AddTransient<ICloudinaryService, CloudinaryService>();
-builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 // Add services to the container.
 builder.Services.
-    AddDbContext<EShopDbContext>(options =>
-    options.UseSqlServer(connectionString), contextLifetime: ServiceLifetime.Transient);
+    AddDbContext<EShopDbContext>(options => options.UseSqlServer(connectionString), contextLifetime: ServiceLifetime.Transient);
 
 
 builder.Services

@@ -1,9 +1,4 @@
-﻿using EShop.Application.Services.Interfaces;
-using EShop.Shared.RequestModels.Basket;
-using EShop.Shared.RequestModels.Common;
-using EShop.Shared.ResponseModels.Common;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using EShop.Shared.RequestModels.Basket;
 
 namespace EShop.Api.Controllers
 {

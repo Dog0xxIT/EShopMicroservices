@@ -1,24 +1,17 @@
-﻿using EShop.Application.Services.ApplicationService;
-using EShop.Application.Services.Interfaces;
-using EShop.Shared.RequestModels.Catalog;
-using EShop.Shared.RequestModels.Common;
-using EShop.Shared.ResponseModels.Common;
-using Microsoft.AspNetCore.Mvc;
-
-namespace EShop.Api.Controllers
+﻿namespace EShop.Api.Controllers
 {
     [ApiController]
     [Route("catalog")]
     public class CatalogController : Controller
     {
         private readonly ICatalogService _catalogService;
-        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<CatalogController> _logger;
         private readonly ICloudinaryService _cloudinaryService;
+        private readonly IDbContext _context;
 
-        public CatalogController(IUnitOfWork unitOfWork, ILogger<CatalogController> logger, ICloudinaryService cloudinaryService, ICatalogService catalogService)
+        public CatalogController(IDbContext context, ILogger<CatalogController> logger, ICloudinaryService cloudinaryService, ICatalogService catalogService)
         {
-            _unitOfWork = unitOfWork;
+            _context = context;
             _logger = logger;
             _cloudinaryService = cloudinaryService;
             _catalogService = catalogService;

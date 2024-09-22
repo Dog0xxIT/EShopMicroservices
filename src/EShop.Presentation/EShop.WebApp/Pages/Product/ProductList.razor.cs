@@ -2,13 +2,18 @@
 using EShop.Shared.RequestModels.Common;
 using EShop.Shared.ResponseModels.Catalog;
 using EShop.Shared.ResponseModels.Common;
+using GetAllBrandsResponse = EShop.WebApp.Core.ResponseModels.Catalog.GetAllBrandsResponse;
+using GetAllCategoriesResponse = EShop.WebApp.Core.ResponseModels.Catalog.GetAllCategoriesResponse;
+using GetAllProductRequest = EShop.WebApp.Core.RequestModels.Catalog.GetAllProductRequest;
+using GetListProductResponse = EShop.WebApp.Core.ResponseModels.Catalog.GetListProductResponse;
+using PaginationRequest = EShop.WebApp.Core.RequestModels.Common.PaginationRequest;
 
 namespace EShop.WebApp.Pages.Product;
 
 public partial class ProductList
 {
     private GetAllProductRequest _getAllProductReq;
-    private PaginationResponse<GetListProductResponse> _productPaginationRes;
+    private Core.ResponseModels.Common.PaginationResponse<GetListProductResponse> _productPaginationRes;
     private List<GetAllCategoriesResponse> _categoryList;
     private List<GetAllBrandsResponse> _brandList;
 

@@ -1,8 +1,4 @@
-﻿using EShop.Application.Services.Interfaces;
-using EShop.Shared.RequestModels.Identity;
-using EShop.Shared.ResponseModels.Common;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using EShop.Shared.RequestModels.Identity;
 using Newtonsoft.Json.Linq;
 
 namespace EShop.Api.Controllers

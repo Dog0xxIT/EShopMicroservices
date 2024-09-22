@@ -1,13 +1,7 @@
-using EShop.WebApp;
-using EShop.WebApp.Core;
 using EShop.WebApp.Core.CoreHttpClient;
-using EShop.WebApp.Services.BasketService;
-using EShop.WebApp.Services.CatalogService;
-using EShop.WebApp.Services.IdentityService;
 using EShop.WebApp.States;
 using EShop.WebApp.States.AuthState;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);

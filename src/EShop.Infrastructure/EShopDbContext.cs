@@ -1,8 +1,8 @@
-using EShop.Application.Entities;
+using EShop.Application.Models;
 using EShop.Infrastructure.SeedData;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace EShop.Infrastructure
 {
@@ -19,7 +19,7 @@ namespace EShop.Infrastructure
     ///
     /// </remarks>
     /// 
-    public class EShopDbContext : IdentityDbContext<User, IdentityRole<int>, int>
+    public class EShopDbContext : IdentityDbContext<User, IdentityRole<int>, int>, IDbContext
     {
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Basket> Baskets { get; set; }

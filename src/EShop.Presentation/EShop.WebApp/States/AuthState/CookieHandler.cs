@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.WebAssembly.Http;
-
-namespace EShop.WebApp.States.AuthState;
+﻿namespace EShop.WebApp.States.AuthState;
 
 /// <summary>
 /// Handler to ensure cookie credentials are automatically sent over with each request.

@@ -1,9 +1,6 @@
 ﻿using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using dotenv.net;
-using EShop.Application.Services.ApplicationService;
-using EShop.Application.Services.Interfaces;
-using Microsoft.Extensions.Logging;
 
 namespace EShop.Infrastructure.Services
 {
