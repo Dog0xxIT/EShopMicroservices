@@ -1,6 +1,4 @@
-﻿using Identity.Api.Configurations;
-using MailKit.Net.Smtp;
-using Microsoft.AspNetCore.Identity;
+﻿using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using MimeKit;
 using MimeKit.Text;

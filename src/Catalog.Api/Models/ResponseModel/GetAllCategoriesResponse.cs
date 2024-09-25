@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Catalog.Api.Models.ResponseModel
+﻿namespace Catalog.Api.Models.ResponseModel
 {
     public class GetAllCategoriesResponse
     {
@@ -12,8 +6,10 @@ namespace Catalog.Api.Models.ResponseModel
 
         public string Name { get; set; }
 
-        public string Code { get; set; }
+        public string ThumbnailUrl { get; set; }
 
-        public string Icon { get; set; }
+        public int? ParentId { get; set; }
+
+        public List<GetAllCategoriesResponse> Childs { get; set; } = new();
     }
 }

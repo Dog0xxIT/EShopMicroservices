@@ -1,0 +1,1634 @@
+[
+  {
+    "Id": 2,
+    "Name": "Root",
+    "ThumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/97/bc/ae/7fe8a253cce6da248aebe6679bb9c88f.jpg",
+    "ParentId": 1
+  },
+  {
+    "Id": 2549,
+    "Name": "Đồ Chơi - Mẹ & Bé",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/13/64/43/226301adcc7660ffcf44a61bb6df99b7.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 2551,
+    "Name": "Tã, Bỉm",
+    "ThumbnailUrl": null,
+    "ParentId": 2549
+  },
+  {
+    "Id": 8339,
+    "Name": "Dinh dưỡng cho bé",
+    "ThumbnailUrl": null,
+    "ParentId": 2549
+  },
+  {
+    "Id": 6568,
+    "Name": "Thực phẩm ăn dặm",
+    "ThumbnailUrl": null,
+    "ParentId": 2549
+  },
+  {
+    "Id": 10416,
+    "Name": "Dinh dưỡng cho mẹ",
+    "ThumbnailUrl": null,
+    "ParentId": 2549
+  },
+  {
+    "Id": 10418,
+    "Name": "Dinh dưỡng cho người lớn",
+    "ThumbnailUrl": null,
+    "ParentId": 2549
+  },
+  {
+    "Id": 11601,
+    "Name": "Đồ dùng cho bé",
+    "ThumbnailUrl": null,
+    "ParentId": 2549
+  },
+  {
+    "Id": 5250,
+    "Name": "Đồ chơi",
+    "ThumbnailUrl": null,
+    "ParentId": 2549
+  },
+  {
+    "Id": 5164,
+    "Name": "Đồ dùng cho người già",
+    "ThumbnailUrl": null,
+    "ParentId": 2549
+  },
+  {
+    "Id": 2640,
+    "Name": "Chăm sóc mẹ mang thai, sau sinh",
+    "ThumbnailUrl": null,
+    "ParentId": 2549
+  },
+  {
+    "Id": 10570,
+    "Name": "Chuẩn bị mang thai",
+    "ThumbnailUrl": null,
+    "ParentId": 2549
+  },
+  {
+    "Id": 1789,
+    "Name": "Điện Thoại - Máy Tính Bảng",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/54/c0/ff/fe98a4afa2d3e5142dc8096addc4e40b.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 1795,
+    "Name": "Điện thoại Smartphone",
+    "ThumbnailUrl": null,
+    "ParentId": 1789
+  },
+  {
+    "Id": 1794,
+    "Name": "Máy tính bảng",
+    "ThumbnailUrl": null,
+    "ParentId": 1789
+  },
+  {
+    "Id": 28856,
+    "Name": "Máy đọc sách",
+    "ThumbnailUrl": null,
+    "ParentId": 1789
+  },
+  {
+    "Id": 1796,
+    "Name": "Điện thoại phổ thông",
+    "ThumbnailUrl": null,
+    "ParentId": 1789
+  },
+  {
+    "Id": 8061,
+    "Name": "Điện thoại bàn",
+    "ThumbnailUrl": null,
+    "ParentId": 1789
+  },
+  {
+    "Id": 44792,
+    "Name": "NGON",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/1e/8c/08/d8b02f8a0d958c74539316e8cd437cbd.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 44824,
+    "Name": "Trái Cây",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54276,
+    "Name": "Thịt, Trứng",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54290,
+    "Name": "Cá, thuỷ hải sản",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54302,
+    "Name": "Rau củ quả",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54316,
+    "Name": "Thực phẩm đóng hộp và khô",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54330,
+    "Name": "Sữa và các Sản phẩm từ sữa",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54344,
+    "Name": "Đông lạnh, mát",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54362,
+    "Name": "Gia Vị và Chế Biến",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54412,
+    "Name": "Đồ uống có cồn",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54438,
+    "Name": "Dành cho trẻ em",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54452,
+    "Name": "Bánh kẹo, đồ ăn vặt",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54466,
+    "Name": "Chăm sóc thú cưng",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54500,
+    "Name": "Chăm sóc nhà cửa",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54514,
+    "Name": "Gia dụng, tiện ích",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 68747,
+    "Name": "Bộ quà tặng",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 68840,
+    "Name": "Làm Đẹp - Sức Khỏe",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 69032,
+    "Name": "Đồ uống - Pha chế dạng bột",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 69118,
+    "Name": "Đồ Uống Không Cồn",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 54430,
+    "Name": "Thực phẩm chay",
+    "ThumbnailUrl": null,
+    "ParentId": 44792
+  },
+  {
+    "Id": 1520,
+    "Name": "Làm Đẹp - Sức Khỏe",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/73/0e/89/bf5095601d17f9971d7a08a1ffe98a42.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 1582,
+    "Name": "Chăm sóc da mặt",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 1584,
+    "Name": "Trang điểm ",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 1594,
+    "Name": "Chăm sóc cá nhân",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 1592,
+    "Name": "Chăm sóc cơ thể",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 5873,
+    "Name": "Sản phẩm thiên nhiên & Khác",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 1591,
+    "Name": "Chăm sóc tóc và da đầu",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 1595,
+    "Name": "Nước hoa",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 2306,
+    "Name": "Dụng cụ làm đẹp",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 2307,
+    "Name": "Máy Massage & Thiết bị chăm sóc sức khỏe",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 2322,
+    "Name": "Thực phẩm chức năng",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 8142,
+    "Name": "Hỗ trợ tình dục",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 1625,
+    "Name": "Chăm sóc răng miệng",
+    "ThumbnailUrl": null,
+    "ParentId": 1520
+  },
+  {
+    "Id": 1882,
+    "Name": "Điện Gia Dụng",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/61/d4/ea/e6ea3ffc1fcde3b6224d2bb691ea16a2.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 1884,
+    "Name": "Đồ dùng nhà bếp",
+    "ThumbnailUrl": null,
+    "ParentId": 1882
+  },
+  {
+    "Id": 1946,
+    "Name": "Thiết bị gia đình",
+    "ThumbnailUrl": null,
+    "ParentId": 1882
+  },
+  {
+    "Id": 931,
+    "Name": "Thời trang nữ",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/55/5b/80/48cbaafe144c25d5065786ecace86d38.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 941,
+    "Name": "Đầm nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 5404,
+    "Name": "Chân váy",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 27600,
+    "Name": "Quần nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 936,
+    "Name": "Áo vest - Áo khoác nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 1702,
+    "Name": "Áo liền quần - Bộ trang phục",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 4553,
+    "Name": "Đồ đôi - Đồ gia đình",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 49372,
+    "Name": "Thời trang bầu và sau sinh",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 49384,
+    "Name": "Thời trang nữ trung niên",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 4554,
+    "Name": "Đồ lót nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 1508,
+    "Name": "Đồ ngủ - Đồ mặc nhà nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 6179,
+    "Name": "Trang phục bơi nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 934,
+    "Name": "Áo sơ mi nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 935,
+    "Name": "Áo kiểu nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 10389,
+    "Name": "Áo crop-top",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 933,
+    "Name": "Áo thun nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 67230,
+    "Name": "Quần áo nữ kích cỡ lớn",
+    "ThumbnailUrl": null,
+    "ParentId": 931
+  },
+  {
+    "Id": 915,
+    "Name": "Thời trang nam",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/00/5d/97/384ca1a678c4ee93a0886a204f47645d.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 917,
+    "Name": "Áo thun nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 918,
+    "Name": "Áo sơ mi nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 925,
+    "Name": "Áo vest - Áo khoác nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 10382,
+    "Name": "Áo hoodie nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 4546,
+    "Name": "Áo nỉ - Áo len nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 27562,
+    "Name": "Quần dài nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 27570,
+    "Name": "Đồ ngủ, đồ mặc nhà nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 49516,
+    "Name": "Đồ đôi - Đồ gia đình nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 27548,
+    "Name": "Đồ lót nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 49524,
+    "Name": "Quần áo nam kích cỡ lớn",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 49532,
+    "Name": "Quần áo nam trung niên",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 16004,
+    "Name": "Đồ bơi - Đồ đi biển nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 67309,
+    "Name": "Bộ trang phục nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 67329,
+    "Name": "Quần short nam",
+    "ThumbnailUrl": null,
+    "ParentId": 915
+  },
+  {
+    "Id": 1703,
+    "Name": "Giày - Dép nữ",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/cf/ed/e1/5a6b58f21fbcad0d201480c987f8defe.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 8355,
+    "Name": "Giày cao gót",
+    "ThumbnailUrl": null,
+    "ParentId": 1703
+  },
+  {
+    "Id": 27604,
+    "Name": "Giày thể thao nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 1703
+  },
+  {
+    "Id": 4550,
+    "Name": "Giày sandals nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 1703
+  },
+  {
+    "Id": 1192,
+    "Name": "Giày búp bê",
+    "ThumbnailUrl": null,
+    "ParentId": 1703
+  },
+  {
+    "Id": 1008,
+    "Name": "Giày Đế xuồng nữ ",
+    "ThumbnailUrl": null,
+    "ParentId": 1703
+  },
+  {
+    "Id": 981,
+    "Name": "Giày boots nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 1703
+  },
+  {
+    "Id": 984,
+    "Name": "Dép - Guốc nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 1703
+  },
+  {
+    "Id": 4551,
+    "Name": "Giày lười nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 1703
+  },
+  {
+    "Id": 8357,
+    "Name": "Phụ kiện giày nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 1703
+  },
+  {
+    "Id": 976,
+    "Name": "Túi thời trang nữ",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/31/a7/94/6524d2ecbec216816d91b6066452e3f2.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 4559,
+    "Name": "Túi tote nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 976
+  },
+  {
+    "Id": 4558,
+    "Name": "Túi đeo chéo, túi đeo vai nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 976
+  },
+  {
+    "Id": 4560,
+    "Name": "Túi xách tay nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 976
+  },
+  {
+    "Id": 4561,
+    "Name": "Ví nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 976
+  },
+  {
+    "Id": 8350,
+    "Name": "Ví đi tiệc",
+    "ThumbnailUrl": null,
+    "ParentId": 976
+  },
+  {
+    "Id": 8352,
+    "Name": "Phụ kiện túi",
+    "ThumbnailUrl": null,
+    "ParentId": 976
+  },
+  {
+    "Id": 1686,
+    "Name": "Giày - Dép nam",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/d6/7f/6c/5d53b60efb9448b6a1609c825c29fa40.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 27572,
+    "Name": "Giày thể thao nam",
+    "ThumbnailUrl": null,
+    "ParentId": 1686
+  },
+  {
+    "Id": 5340,
+    "Name": "Giày lười nam",
+    "ThumbnailUrl": null,
+    "ParentId": 1686
+  },
+  {
+    "Id": 1581,
+    "Name": "Giày tây nam",
+    "ThumbnailUrl": null,
+    "ParentId": 1686
+  },
+  {
+    "Id": 5341,
+    "Name": "Giày sandals nam",
+    "ThumbnailUrl": null,
+    "ParentId": 1686
+  },
+  {
+    "Id": 5342,
+    "Name": "Dép nam",
+    "ThumbnailUrl": null,
+    "ParentId": 1686
+  },
+  {
+    "Id": 8337,
+    "Name": "Giày boots nam",
+    "ThumbnailUrl": null,
+    "ParentId": 1686
+  },
+  {
+    "Id": 8338,
+    "Name": "Phụ kiện giày nam",
+    "ThumbnailUrl": null,
+    "ParentId": 1686
+  },
+  {
+    "Id": 27616,
+    "Name": "Túi thời trang nam",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/9b/31/af/669e6a133118e5439d6c175e27c1f963.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 5337,
+    "Name": "Túi xách công sở nam",
+    "ThumbnailUrl": null,
+    "ParentId": 27616
+  },
+  {
+    "Id": 958,
+    "Name": "Túi đeo chéo nam",
+    "ThumbnailUrl": null,
+    "ParentId": 27616
+  },
+  {
+    "Id": 49650,
+    "Name": "Túi bao tử, túi đeo bụng",
+    "ThumbnailUrl": null,
+    "ParentId": 27616
+  },
+  {
+    "Id": 959,
+    "Name": "Ví nam",
+    "ThumbnailUrl": null,
+    "ParentId": 27616
+  },
+  {
+    "Id": 6000,
+    "Name": "Balo và Vali",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/3e/c0/30/1110651bd36a3e0d9b962cf135c818ee.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 27608,
+    "Name": "Balo",
+    "ThumbnailUrl": null,
+    "ParentId": 6000
+  },
+  {
+    "Id": 27612,
+    "Name": "Balo, cặp, túi chống sốc laptop",
+    "ThumbnailUrl": null,
+    "ParentId": 6000
+  },
+  {
+    "Id": 8387,
+    "Name": "Túi du lịch và phụ kiện",
+    "ThumbnailUrl": null,
+    "ParentId": 6000
+  },
+  {
+    "Id": 6526,
+    "Name": "Vali, phụ kiện vali ",
+    "ThumbnailUrl": null,
+    "ParentId": 6000
+  },
+  {
+    "Id": 68140,
+    "Name": "Phụ kiện du lịch",
+    "ThumbnailUrl": null,
+    "ParentId": 6000
+  },
+  {
+    "Id": 27498,
+    "Name": "Phụ kiện thời trang",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/ca/53/64/49c6189a0e1c1bf7cb91b01ff6d3fe43.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 8370,
+    "Name": "Mắt kính",
+    "ThumbnailUrl": null,
+    "ParentId": 27498
+  },
+  {
+    "Id": 975,
+    "Name": "Phụ kiện thời trang nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 27498
+  },
+  {
+    "Id": 27550,
+    "Name": "Phụ kiện thời trang nam",
+    "ThumbnailUrl": null,
+    "ParentId": 27498
+  },
+  {
+    "Id": 8371,
+    "Name": "Đồng hồ và Trang sức",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/8b/d4/a8/5924758b5c36f3b1c43b6843f52d6dd2.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 1778,
+    "Name": "Đồng hồ nam",
+    "ThumbnailUrl": null,
+    "ParentId": 8371
+  },
+  {
+    "Id": 977,
+    "Name": "Đồng hồ nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 8371
+  },
+  {
+    "Id": 11375,
+    "Name": "Đồng hồ trẻ em",
+    "ThumbnailUrl": null,
+    "ParentId": 8371
+  },
+  {
+    "Id": 27542,
+    "Name": "Phụ kiện đồng hồ",
+    "ThumbnailUrl": null,
+    "ParentId": 8371
+  },
+  {
+    "Id": 8374,
+    "Name": "Trang sức",
+    "ThumbnailUrl": null,
+    "ParentId": 8371
+  },
+  {
+    "Id": 1846,
+    "Name": "Laptop - Máy Vi Tính - Linh kiện",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/92/b5/c0/3ffdb7dbfafd5f8330783e1df20747f6.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 8095,
+    "Name": "Laptop",
+    "ThumbnailUrl": null,
+    "ParentId": 1846
+  },
+  {
+    "Id": 12884,
+    "Name": "Thiết Bị Văn Phòng - Thiết Bị Ngoại Vi",
+    "ThumbnailUrl": null,
+    "ParentId": 1846
+  },
+  {
+    "Id": 8060,
+    "Name": "Thiết Bị Lưu Trữ",
+    "ThumbnailUrl": null,
+    "ParentId": 1846
+  },
+  {
+    "Id": 2663,
+    "Name": "Thiết Bị Mạng",
+    "ThumbnailUrl": null,
+    "ParentId": 1846
+  },
+  {
+    "Id": 8093,
+    "Name": "PC - Máy Tính Bộ",
+    "ThumbnailUrl": null,
+    "ParentId": 1846
+  },
+  {
+    "Id": 8129,
+    "Name": "Linh Kiện Máy Tính - Phụ Kiện Máy Tính",
+    "ThumbnailUrl": null,
+    "ParentId": 1846
+  },
+  {
+    "Id": 1883,
+    "Name": "Nhà Cửa - Đời Sống",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/f6/22/46/7e2185d2cf1bca72d5aeac385a865b2b.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 1951,
+    "Name": "Dụng cụ nhà bếp",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 1954,
+    "Name": "Đồ dùng phòng ăn",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 2150,
+    "Name": "Nội thất",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 8313,
+    "Name": "Đồ dùng phòng ngủ",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 1973,
+    "Name": "Trang trí nhà cửa",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 2015,
+    "Name": "Đèn & thiết bị chiếu sáng",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 2223,
+    "Name": "Ngoài trời & sân vườn",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 1966,
+    "Name": "Đồ dùng và thiết bị nhà tắm",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 1974,
+    "Name": "Sửa chữa nhà cửa",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 10068,
+    "Name": "Nhạc cụ",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 23054,
+    "Name": "Đồ thờ cúng",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 53050,
+    "Name": "Dụng cụ & Thiết bị tiện ích",
+    "ThumbnailUrl": null,
+    "ParentId": 1883
+  },
+  {
+    "Id": 17166,
+    "Name": "Cross Border - Hàng Quốc Tế",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/3c/e4/99/eeee1801c838468d94af9997ec2bbe42.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 20766,
+    "Name": "Bách hóa online",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 20824,
+    "Name": "Điện gia dụng",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 20908,
+    "Name": "Làm Đẹp - Sức Khỏe",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 21054,
+    "Name": "Điện Thoại - Máy Tính Bảng",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 21074,
+    "Name": "Laptop & Máy Vi Tính",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 21134,
+    "Name": "Máy Ảnh - Máy Quay Phim",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 21166,
+    "Name": "Mẹ & Bé",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 21268,
+    "Name": "Nhà Cửa - Đời Sống",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 21298,
+    "Name": "Sách, Văn phòng phẩm & Quà lưu niệm",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 21346,
+    "Name": "Ô tô, xe máy, xe đạp",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 21356,
+    "Name": "Thể thao - Dã ngoại",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 21382,
+    "Name": "Thiết Bị Số - Phụ Kiện Số",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 21442,
+    "Name": "Thời Trang",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 21496,
+    "Name": "Tivi & Thiết Bị Nghe Nhìn",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 25036,
+    "Name": "Sản phẩm - thiết bị công nghiệp",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 27468,
+    "Name": "Artist Collection",
+    "ThumbnailUrl": null,
+    "ParentId": 17166
+  },
+  {
+    "Id": 4384,
+    "Name": "Bách Hóa Online",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/40/0f/9b/62a58fd19f540c70fce804e2a9bb5b2d.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 4421,
+    "Name": "Đồ Ăn Vặt",
+    "ThumbnailUrl": null,
+    "ParentId": 4384
+  },
+  {
+    "Id": 15074,
+    "Name": "Thực phẩm Đóng hộp và Khô",
+    "ThumbnailUrl": null,
+    "ParentId": 4384
+  },
+  {
+    "Id": 24024,
+    "Name": "Đồ Uống Không Cồn",
+    "ThumbnailUrl": null,
+    "ParentId": 4384
+  },
+  {
+    "Id": 4422,
+    "Name": "Gia Vị và Chế Biến",
+    "ThumbnailUrl": null,
+    "ParentId": 4384
+  },
+  {
+    "Id": 5451,
+    "Name": "Chăm sóc thú cưng",
+    "ThumbnailUrl": null,
+    "ParentId": 4384
+  },
+  {
+    "Id": 11347,
+    "Name": "Bộ quà tặng",
+    "ThumbnailUrl": null,
+    "ParentId": 4384
+  },
+  {
+    "Id": 22998,
+    "Name": "Đồ uống",
+    "ThumbnailUrl": null,
+    "ParentId": 4384
+  },
+  {
+    "Id": 53562,
+    "Name": "Sữa và các Sản phẩm từ sữa",
+    "ThumbnailUrl": null,
+    "ParentId": 4384
+  },
+  {
+    "Id": 53582,
+    "Name": "Rượu, bia và nước lên men",
+    "ThumbnailUrl": null,
+    "ParentId": 4384
+  },
+  {
+    "Id": 53620,
+    "Name": "Đậu & Hạt Các Loại",
+    "ThumbnailUrl": null,
+    "ParentId": 4384
+  },
+  {
+    "Id": 68576,
+    "Name": "Ngũ cốc và mứt",
+    "ThumbnailUrl": null,
+    "ParentId": 4384
+  },
+  {
+    "Id": 1815,
+    "Name": "Thiết Bị Số - Phụ Kiện Số",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/75/34/29/78e428fdd90408587181005f5cc3de32.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 8215,
+    "Name": "Thiết Bị Âm Thanh và Phụ Kiện",
+    "ThumbnailUrl": null,
+    "ParentId": 1815
+  },
+  {
+    "Id": 2667,
+    "Name": "Thiết Bị Chơi Game và Phụ Kiện",
+    "ThumbnailUrl": null,
+    "ParentId": 1815
+  },
+  {
+    "Id": 8039,
+    "Name": "Thiết Bị Đeo Thông Minh và Phụ Kiện",
+    "ThumbnailUrl": null,
+    "ParentId": 1815
+  },
+  {
+    "Id": 28432,
+    "Name": "Thiết Bị Thông Minh và Linh Kiện Điện Tử",
+    "ThumbnailUrl": null,
+    "ParentId": 1815
+  },
+  {
+    "Id": 8214,
+    "Name": "Phụ Kiện Điện Thoại và Máy Tính Bảng",
+    "ThumbnailUrl": null,
+    "ParentId": 1815
+  },
+  {
+    "Id": 28670,
+    "Name": "Phụ kiện máy tính và Laptop",
+    "ThumbnailUrl": null,
+    "ParentId": 1815
+  },
+  {
+    "Id": 11312,
+    "Name": "Voucher - Dịch vụ",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/0a/c9/7b/8e466bdf6d4a5f5e14665ce56e58631d.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 11313,
+    "Name": "Nhà hàng - Ăn uống",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 11319,
+    "Name": "Du lịch - Khách sạn",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 11322,
+    "Name": "Spa & Làm đẹp",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 11327,
+    "Name": "Sự kiện - Giải trí",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 11333,
+    "Name": "Sự kiện - Thể thao",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 11326,
+    "Name": "Nha khoa - Sức khỏe",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 11332,
+    "Name": "Khóa học",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 11334,
+    "Name": "Dịch vụ khác",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 33466,
+    "Name": "TikiNOW",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 44472,
+    "Name": "Quyên góp",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 46516,
+    "Name": "TicketBox",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 52842,
+    "Name": "Vé xe bus",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 69482,
+    "Name": "Key điện tử",
+    "ThumbnailUrl": null,
+    "ParentId": 11312
+  },
+  {
+    "Id": 8594,
+    "Name": "Ô Tô - Xe Máy - Xe Đạp",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/69/f5/36/c6cd9e2849854630ed74ff1678db8f19.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 8597,
+    "Name": "Xe máy",
+    "ThumbnailUrl": null,
+    "ParentId": 8594
+  },
+  {
+    "Id": 6070,
+    "Name": "Xe điện",
+    "ThumbnailUrl": null,
+    "ParentId": 8594
+  },
+  {
+    "Id": 8431,
+    "Name": "Xe đạp",
+    "ThumbnailUrl": null,
+    "ParentId": 8594
+  },
+  {
+    "Id": 8595,
+    "Name": "Ô tô",
+    "ThumbnailUrl": null,
+    "ParentId": 8594
+  },
+  {
+    "Id": 24832,
+    "Name": "Phụ kiện - Chăm sóc xe",
+    "ThumbnailUrl": null,
+    "ParentId": 8594
+  },
+  {
+    "Id": 17208,
+    "Name": "Dịch vụ, lắp đặt",
+    "ThumbnailUrl": null,
+    "ParentId": 8594
+  },
+  {
+    "Id": 8322,
+    "Name": "Nhà Sách Tiki",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/ed/20/60/afa9b3b474bf7ad70f10dd6443211d5f.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 320,
+    "Name": "English Books",
+    "ThumbnailUrl": null,
+    "ParentId": 8322
+  },
+  {
+    "Id": 316,
+    "Name": "Sách tiếng Việt",
+    "ThumbnailUrl": null,
+    "ParentId": 8322
+  },
+  {
+    "Id": 7741,
+    "Name": "Văn phòng phẩm",
+    "ThumbnailUrl": null,
+    "ParentId": 8322
+  },
+  {
+    "Id": 18328,
+    "Name": "Quà lưu niệm",
+    "ThumbnailUrl": null,
+    "ParentId": 8322
+  },
+  {
+    "Id": 4221,
+    "Name": "Điện Tử - Điện Lạnh",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/c8/82/d4/64c561c4ced585c74b9c292208e4995a.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 5015,
+    "Name": "Tivi",
+    "ThumbnailUrl": null,
+    "ParentId": 4221
+  },
+  {
+    "Id": 3862,
+    "Name": "Máy giặt",
+    "ThumbnailUrl": null,
+    "ParentId": 4221
+  },
+  {
+    "Id": 26568,
+    "Name": "Âm thanh & Phụ kiện Tivi",
+    "ThumbnailUrl": null,
+    "ParentId": 4221
+  },
+  {
+    "Id": 3863,
+    "Name": "Máy sấy quần áo",
+    "ThumbnailUrl": null,
+    "ParentId": 4221
+  },
+  {
+    "Id": 3864,
+    "Name": "Máy rửa chén",
+    "ThumbnailUrl": null,
+    "ParentId": 4221
+  },
+  {
+    "Id": 3865,
+    "Name": "Máy lạnh - Máy điều hòa",
+    "ThumbnailUrl": null,
+    "ParentId": 4221
+  },
+  {
+    "Id": 3866,
+    "Name": "Máy nước nóng",
+    "ThumbnailUrl": null,
+    "ParentId": 4221
+  },
+  {
+    "Id": 2328,
+    "Name": "Tủ lạnh",
+    "ThumbnailUrl": null,
+    "ParentId": 4221
+  },
+  {
+    "Id": 3868,
+    "Name": "Tủ đông - Tủ mát",
+    "ThumbnailUrl": null,
+    "ParentId": 4221
+  },
+  {
+    "Id": 3869,
+    "Name": "Tủ ướp rượu",
+    "ThumbnailUrl": null,
+    "ParentId": 4221
+  },
+  {
+    "Id": 8074,
+    "Name": "Phụ kiện điện lạnh",
+    "ThumbnailUrl": null,
+    "ParentId": 4221
+  },
+  {
+    "Id": 1975,
+    "Name": "Thể Thao - Dã Ngoại",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/0b/5e/3d/00941c9eb338ea62a47d5b1e042843d8.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 8411,
+    "Name": "Các môn thể thao chơi vợt",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 4227,
+    "Name": "Các môn thể thao đồng đội",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 23120,
+    "Name": "Các môn thể thao đối kháng ",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 24002,
+    "Name": "Các môn thể thao khác",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 6826,
+    "Name": "Giày thể thao nam",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 6827,
+    "Name": "Giày thể thao nữ",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 24306,
+    "Name": "Phụ kiện thể thao",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 8413,
+    "Name": "Thể thao dưới nước",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 10803,
+    "Name": "Thực phẩm bổ sung năng lượng",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 67485,
+    "Name": "Đồ dùng dã ngoại & Leo núi",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 67647,
+    "Name": "Trang phục thể thao",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 67703,
+    "Name": "Chạy bộ và đi bộ",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 69498,
+    "Name": "Gym và Boxing",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 24064,
+    "Name": "Golf",
+    "ThumbnailUrl": null,
+    "ParentId": 1975
+  },
+  {
+    "Id": 1801,
+    "Name": "Máy Ảnh - Máy Quay Phim",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/2d/7c/45/e4976f3fa4061ab310c11d2a1b759e5b.png",
+    "ParentId": 2
+  },
+  {
+    "Id": 28806,
+    "Name": "Máy Ảnh",
+    "ThumbnailUrl": null,
+    "ParentId": 1801
+  },
+  {
+    "Id": 1818,
+    "Name": "Phụ Kiện Máy Ảnh, Máy Quay",
+    "ThumbnailUrl": null,
+    "ParentId": 1801
+  },
+  {
+    "Id": 1840,
+    "Name": "Balo - Túi Đựng - Bao Da",
+    "ThumbnailUrl": null,
+    "ParentId": 1801
+  },
+  {
+    "Id": 28794,
+    "Name": "Ống Kính - Ống Ngắm",
+    "ThumbnailUrl": null,
+    "ParentId": 1801
+  },
+  {
+    "Id": 2757,
+    "Name": "Ống Kính (Lens)",
+    "ThumbnailUrl": null,
+    "ParentId": 1801
+  },
+  {
+    "Id": 28814,
+    "Name": "Thiết Bị Ánh Sáng",
+    "ThumbnailUrl": null,
+    "ParentId": 1801
+  },
+  {
+    "Id": 28822,
+    "Name": "Thiết Bị Quay Phim",
+    "ThumbnailUrl": null,
+    "ParentId": 1801
+  },
+  {
+    "Id": 4077,
+    "Name": "Camera Giám Sát",
+    "ThumbnailUrl": null,
+    "ParentId": 1801
+  },
+  {
+    "Id": 8047,
+    "Name": "Máy Bay Camera và Phụ Kiện",
+    "ThumbnailUrl": null,
+    "ParentId": 1801
+  },
+  {
+    "Id": 28834,
+    "Name": "Camera Hành Trình - Action Camera và Phụ Kiện",
+    "ThumbnailUrl": null,
+    "ParentId": 1801
+  },
+  {
+    "Id": 54042,
+    "Name": "Sản phẩm Tài chính - Bảo hiểm",
+    "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/a0/49/f4/a75f6e5dc021b0005fb8923b9846abc2.jpg",
+    "ParentId": 2
+  },
+  {
+    "Id": 56009,
+    "Name": "Tài Chính",
+    "ThumbnailUrl": null,
+    "ParentId": 54042
+  },
+  {
+    "Id": 11603,
+    "Name": "Thời Trang Cho Mẹ Và Bé",
+    "ThumbnailUrl": "https://salt.tikicdn.com/assets/img/image.svg",
+    "ParentId": 2
+  },
+  {
+    "Id": 5191,
+    "Name": "Thời trang bầu",
+    "ThumbnailUrl": null,
+    "ParentId": 11603
+  },
+  {
+    "Id": 5188,
+    "Name": "Thời trang sơ sinh",
+    "ThumbnailUrl": null,
+    "ParentId": 11603
+  },
+  {
+    "Id": 5189,
+    "Name": "Thời trang bé gái",
+    "ThumbnailUrl": null,
+    "ParentId": 11603
+  },
+  {
+    "Id": 5190,
+    "Name": "Thời trang bé trai",
+    "ThumbnailUrl": null,
+    "ParentId": 11603
+  },
+  {
+    "Id": 5192,
+    "Name": "Phụ kiện cho bé",
+    "ThumbnailUrl": null,
+    "ParentId": 11603
+  },
+  {
+    "Id": 5602,
+    "Name": "Phụ kiện thời trang sơ sinh",
+    "ThumbnailUrl": null,
+    "ParentId": 11603
+  },
+  {
+    "Id": 15078,
+    "Name": "Chăm sóc nhà cửa",
+    "ThumbnailUrl": "https://salt.tikicdn.com/assets/img/image.svg",
+    "ParentId": 2
+  },
+  {
+    "Id": 4386,
+    "Name": "Vệ sinh nhà cửa",
+    "ThumbnailUrl": null,
+    "ParentId": 15078
+  },
+  {
+    "Id": 4399,
+    "Name": "Vệ sinh nhà bếp",
+    "ThumbnailUrl": null,
+    "ParentId": 15078
+  },
+  {
+    "Id": 4400,
+    "Name": "Vệ sinh nhà tắm",
+    "ThumbnailUrl": null,
+    "ParentId": 15078
+  },
+  {
+    "Id": 4388,
+    "Name": "Giấy vệ sinh và giấy ăn",
+    "ThumbnailUrl": null,
+    "ParentId": 15078
+  },
+  {
+    "Id": 4387,
+    "Name": "Giặt giũ & Chăm sóc quần áo",
+    "ThumbnailUrl": null,
+    "ParentId": 15078
+  },
+  {
+    "Id": 4441,
+    "Name": "Diệt côn trùng",
+    "ThumbnailUrl": null,
+    "ParentId": 15078
+  },
+  {
+    "Id": 8895,
+    "Name": "NESLE FITNESSES",
+    "ThumbnailUrl": null,
+    "ParentId": 1
+  },
+  {
+    "Id": 8977,
+    "Name": "Ưu đãi Từ Tiki và Microsoft",
+    "ThumbnailUrl": null,
+    "ParentId": 1
+  },
+  {
+    "Id": 9983,
+    "Name": "hazeline lauching",
+    "ThumbnailUrl": null,
+    "ParentId": 1
+  },
+  {
+    "Id": 11033,
+    "Name": "Engineering",
+    "ThumbnailUrl": null,
+    "ParentId": 1
+  }
+]

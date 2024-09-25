@@ -1,7 +1,5 @@
 ﻿using Catalog.Api.Infrastructure;
-using Catalog.Api.Models.RequestModel;
 using Catalog.Api.Service.CloudinaryService;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.Api.Controllers
 {
@@ -20,7 +18,6 @@ namespace Catalog.Api.Controllers
             _cloudinaryService = cloudinaryService;
         }
 
-        #region Post method
         [HttpPost("productImages")]
         public async Task<IActionResult> UploadProductImage(UploadProductImageRequest req)
         {
@@ -32,9 +29,7 @@ namespace Catalog.Api.Controllers
             //return Problem(serviceResult.Errors.First());
             return Ok();
         }
-        #endregion
 
-        #region Delete method
         [HttpDelete("productImages/{id}")]
         public async Task<IActionResult> DeleteProductImage([FromRoute] int id)
         {
@@ -46,7 +41,6 @@ namespace Catalog.Api.Controllers
             //return Problem(serviceResult.Errors.First());
             return Ok();
         }
-        #endregion
     }
 }
 

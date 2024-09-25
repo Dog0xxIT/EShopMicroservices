@@ -1,0 +1,219 @@
+﻿@page "/products/{ProductId:int}"
+
+@using WebApp.Core.ResponseModels
+@using WebApp.Services.CatalogService
+@using WebApp.Components.Common
+@using WebApp.Components.Product
+
+@inject ICatalogService CatalogService
+
+<section class="py-8 bg-white antialiased dark:bg-gray-900 md:py-16">
+    <div class="px-4 mx-auto max-w-screen-xl 2xl:px-0">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
+            <div class="mx-auto max-w-md shrink-0 lg:max-w-lg">
+                <img class="w-full dark:hidden" src="@_productInfo.ImageUrl"
+                     alt="" />
+                <img class="hidden w-full dark:block"
+                     src="@_productInfo.ImageUrl" alt="" />
+            </div>
+
+            <div class="mt-6 sm:mt-8 lg:mt-0">
+                <h1 class="text-gray-900 text-xl font-semibold dark:text-white sm:text-2xl">
+                    @_productInfo.Name
+                </h1>
+                <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
+                    <p class="text-gray-900 text-2xl font-extrabold dark:text-white sm:text-3xl">
+                        $ @_productInfo.Price.ToString("F3")
+                    </p>
+
+                    <div class="gap-2 mt-2 flex items-center sm:mt-0">
+                        <Rating Max="5" ValueStar="Convert.ToInt32(_productInfo.Star)"></Rating>
+                        <p class="text-gray-500 text-sm font-medium leading-none dark:text-gray-400">
+                            (@_productInfo.Star.ToString("F1"))
+                        </p>
+                        <a href="#"
+                           class="text-gray-900 text-sm font-medium leading-none underline hover:no-underline dark:text-white">
+                            @_productInfo.ReviewsCount Reviews
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Options -->
+                <div class="mt-4 lg:row-span-3 lg:mt-0">
+                    <h2 class="sr-only">Product information</h2>
+
+                    <p class="my-6 text-gray-500 dark:text-gray-400">
+                        @_productInfo.ShortDescription
+                    </p>
+
+                    <p class="my-6 text-gray-500 dark:text-gray-400">
+                        Category: @_productInfo.Category.CategoryName
+                    </p>
+
+                    <p class="text-gray-500 dark:text-gray-400">
+                        Brand: @_productInfo.Brand.BrandName
+                    </p>
+
+                    <form class="mt-10">
+                        <!-- Colors -->
+                        <div>
+                            <h3 class="text-gray-900 text-sm font-medium">Color</h3>
+
+                            <fieldset aria-label="Choose a color" class="mt-4">
+                                <div class="space-x-3 flex items-center">
+                                    <!-- Active and Checked: "ring ring-offset-1" -->
+                                    <label aria-label="White" class="-m-0.5 p-0.5 ring-gray-400 relative flex cursor-pointer items-center justify-center rounded-full focus:outline-none">
+                                        <input type="radio" name="color-choice" value="White" class="sr-only">
+                                        <span aria-hidden="true" class="h-8 w-8 border-black bg-white rounded-full border border-opacity-10"></span>
+                                    </label>
+                                    <!-- Active and Checked: "ring ring-offset-1" -->
+                                    <label aria-label="Gray" class="-m-0.5 p-0.5 ring-gray-400 relative flex cursor-pointer items-center justify-center rounded-full focus:outline-none">
+                                        <input type="radio" name="color-choice" value="Gray" class="sr-only">
+                                        <span aria-hidden="true" class="h-8 w-8 border-black bg-gray-200 rounded-full border border-opacity-10"></span>
+                                    </label>
+                                    <!-- Active and Checked: "ring ring-offset-1" -->
+                                    <label aria-label="Black" class="-m-0.5 p-0.5 ring-gray-900 relative flex cursor-pointer items-center justify-center rounded-full focus:outline-none">
+                                        <input type="radio" name="color-choice" value="Black" class="sr-only">
+                                        <span aria-hidden="true" class="h-8 w-8 border-black bg-gray-900 rounded-full border border-opacity-10"></span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <!-- Sizes -->
+                        <div class="mt-10">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-gray-900 text-sm font-medium">Size</h3>
+                                <a href="#" class="text-indigo-600 text-sm font-medium hover:text-indigo-500">Size guide</a>
+                            </div>
+
+                            <fieldset aria-label="Choose a size" class="mt-4">
+                                <div class="gap-4 grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-4">
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-gray-50 px-4 py-3 text-gray-200 group relative flex cursor-not-allowed items-center justify-center rounded-md border text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="XXS" disabled class="sr-only">
+                                        <span>XXS</span>
+                                        <span aria-hidden="true" class="-inset-px border-gray-200 pointer-events-none absolute rounded-md border-2">
+                                            <svg class="inset-0 text-gray-200 absolute h-full w-full stroke-2" viewBox="0 0 100 100" preserveAspectRatio="none" stroke="currentColor">
+                                                <line x1="0" y1="100" x2="100" y2="0" vector-effect="non-scaling-stroke" />
+                                            </svg>
+                                        </span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="XS" class="sr-only">
+                                        <span>XS</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="S" class="sr-only">
+                                        <span>S</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="M" class="sr-only">
+                                        <span>M</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="L" class="sr-only">
+                                        <span>L</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="XL" class="sr-only">
+                                        <span>XL</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="2XL" class="sr-only">
+                                        <span>2XL</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                        <input type="radio" name="size-choice" value="3XL" class="sr-only">
+                                        <span>3XL</span>
+                                        <!--
+                                          Active: "border", Not Active: "border-2"
+                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                        -->
+                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <button type="submit" class="mt-10 border-transparent bg-indigo-600 px-8 py-3 text-white flex w-full items-center justify-center rounded-md border text-base font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"> Add to cart</button>
+                    </form>
+                </div>
+
+                <hr class="my-6 border-gray-200 dark:border-gray-800 md:my-8" />
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<ProductDescriptionSection></ProductDescriptionSection>
+
+<ProductReviewSection />
+
+@code {
+    [Parameter]
+
+    public int ProductId { get; set; }
+
+
+
+    private GetProductByIdResponse _productInfo;
+
+
+
+    protected override async Task OnInitializedAsync()
+
+    {
+
+        _productInfo = new()
+            {
+                Brand = new(),
+                Category = new(),
+            };
+
+        var resultObject = await CatalogService.GetProductById(ProductId);
+
+        _productInfo = resultObject.Data;
+
+    }
+}
+

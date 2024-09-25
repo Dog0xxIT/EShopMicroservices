@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Catalog.Api.Models.RequestModel
+﻿namespace Catalog.Api.Models.RequestModel
 {
     public class PaginationRequest
     {

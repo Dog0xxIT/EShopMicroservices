@@ -1,9 +1,7 @@
-﻿using Catalog.Api.Infrastructure;
-using Catalog.Api.Models.RequestModel;
+﻿using Catalog.Api.Infrastructure.Entities;
 using Catalog.Api.Models.ResponseModel;
 using Mapster;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Catalog.Api.Controllers
 {
@@ -18,37 +16,74 @@ namespace Catalog.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet("categories")]
-        public async Task<IActionResult> GetAllCategories([FromQuery] PaginationRequest paginationReq)
+        [HttpGet("categories/hierarchy")]
+        public async Task<IActionResult> GetCategoriesHierarchy()
         {
-            var queryable = _context.Categories
-                .Skip((paginationReq.Page - 1) * paginationReq.Limit)
-                .Take(paginationReq.Limit);
+            var categories = await _context.Categories.ToListAsync();
 
-            queryable = paginationReq.SortDescending
-                ? queryable.OrderByDescending(c => c.Id)
-                : queryable.OrderBy(c => c.Id);
+            var categoriesDto = categories.Select(category => new GetAllCategoriesResponse
+            {
+                Id = category.Id,
+                Name = category.Name,
+                ParentId = category.ParentId,
+                ThumbnailUrl = category.ThumbnailUrl,
+                Childs = GetChildCategories(category.Id, categories, 1)
+            });
 
-            var categories = await queryable.ToListAsync();
+            return Ok(categoriesDto);
+        }
 
-            var categoriesDto = categories.Adapt<List<GetAllCategoriesResponse>>();
+        [HttpGet("categories")]
+        public async Task<IActionResult> GetCategories()
+        {
+            var categories = await _context.Categories.ToListAsync();
 
-            var totalCategory = await _context.Categories.CountAsync();
-            var totalPage = paginationReq.Limit != 1 ? totalCategory / paginationReq.Limit + 1 : 0;
+            var categoriesDto = categories.Select(category => new GetAllCategoriesResponse
+            {
+                Id = category.Id,
+                Name = category.Name,
+                ParentId = category.ParentId,
+                ThumbnailUrl = category.ThumbnailUrl,
+                Childs = new(),
+            }).ToList();
 
             var response = new PaginationResponse<GetAllCategoriesResponse>
             {
                 Data = categoriesDto,
                 Meta = new Pagination
                 {
-                    Count = categoriesDto.Count(),
-                    CurrentPage = paginationReq.Page,
-                    Total = totalCategory,
-                    TotalPages = totalPage,
-                    PerPage = paginationReq.Limit
+                    Count = categoriesDto.Count,
+                    CurrentPage = 1,
+                    Total = categoriesDto.Count,
+                    TotalPages = 1,
+                    PerPage = 1
                 }
             };
+
             return Ok(response);
+        }
+
+        private List<GetAllCategoriesResponse> GetChildCategories(
+            int parentCategoryId,
+            List<Category> categoryList,
+            int level)
+        {
+            if (level >= 3)
+            {
+                return new();
+            }
+
+            // Tìm danh mục con của danh mục hiện tại (parentCategory)
+            var childCategories = categoryList.Where(c => c.ParentId == parentCategoryId);
+
+            return childCategories.Select(child => new GetAllCategoriesResponse
+            {
+                Id = child.Id,
+                Name = child.Name,
+                ThumbnailUrl = child.ThumbnailUrl,
+                ParentId = child.ParentId,
+                Childs = GetChildCategories(child.Id, categoryList, level + 1) // Đệ quy tiếp tục cho các cấp thấp hơn
+            }).ToList();
         }
     }
 }

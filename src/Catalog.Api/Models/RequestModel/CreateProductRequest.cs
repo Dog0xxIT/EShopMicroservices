@@ -1,37 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Catalog.Api.Models.RequestModel
+﻿namespace Catalog.Api.Models.RequestModel
 {
     public sealed class CreateProductRequest
     {
         [Required]
+        public string Sku { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         [Required]
-        public double Price { get; set; }
-
-        [Required]
-        public int CategoryId { get; set; }
-
-        [Required]
-        public int BrandId { get; set; }
-
-        [Required]
-        public string Sku { get; set; }
-
         public string Description { get; set; }
 
-        public string Summary { get; set; }
+        [Required]
+        public string ShortDescription { get; set; }
+
+        [Required]
+        public double? Price { get; set; }
+
+        [Required]
+        public string ThumbnailUrl { get; set; }
 
         public double Discount { get; set; }
 
-        public string OtherAttributes { get; set; }
+        [Required]
+        public int? AvailableStock { get; set; }
 
-        public string ImageUrl { get; set; }
+        [Required]
+        public int? CategoryId { get; set; }
+
+        [Required]
+        public int? BrandId { get; set; }
     }
 }

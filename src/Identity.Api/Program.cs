@@ -1,32 +1,24 @@
-using System.Text;
+using Identity.Api;
 using Identity.Api.Configurations;
-using Identity.Api.Infrastructure;
+using Identity.Api.Data;
 using Identity.Api.Services.EmailService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-var jwtConfig = new JwtConfig();
-builder.Configuration.GetSection(jwtConfig.SectionName).Bind(jwtConfig);
 var smtpConfig = new SmtpConfig();
 builder.Configuration.GetSection(smtpConfig.SectionName).Bind(smtpConfig);
-
-builder.Services.AddSingleton(jwtConfig);
 builder.Services.AddSingleton(smtpConfig);
 
 builder.Services.AddTransient<IEmailSender<IdentityUser>, EmailSender>();
 builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlServer(connectionString),
     contextLifetime: ServiceLifetime.Transient);
-
 
 builder.Services
     .AddIdentity<IdentityUser, IdentityRole>(options =>
@@ -36,30 +28,7 @@ builder.Services
     .AddApiEndpoints()
     .AddEntityFrameworkStores<IdentityContext>();
 
-builder.Services
-    .AddAuthentication(options =>
-    {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidIssuer = jwtConfig.Issuer,
-            ValidAudience = jwtConfig.Audience,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.SecretKey)),
-        };
-        options.Events = new JwtBearerEvents
-        {
-            OnMessageReceived = context =>
-            {
-                context.Token = context.Request.Cookies["jwt"]; // Get token from cookie
-                return Task.CompletedTask;
-            },
-        };
-    });
+builder.AddJwtAuthentication();
 
 builder.Services.AddCors(options =>
 {
@@ -145,7 +114,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors("AllowSpecificOrigin");
 app.UseHttpLogging();
-app.MapIdentityApi<IdentityUser>();
+//app.MapIdentityApi<IdentityUser>();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
