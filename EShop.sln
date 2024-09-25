@@ -7,7 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{251B36D3-E3F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E070BC11-D4AD-4654-8985-D3BB82F5E040}"
 EndProject
-<<<<<<< Updated upstream
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Api", "src\Identity.Api\Identity.Api.csproj", "{46ACF83B-E237-42A0-AC08-FF7897847320}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.Api", "src\Catalog.Api\Catalog.Api.csproj", "{EE38D973-379B-4386-8535-BD394F4A9B8E}"
@@ -17,17 +16,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Api", "src\Basket.Api\Basket.Api.csproj", "{FC3494D5-B6DC-4435-8941-A266E66DF066}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Api", "src\Order\Order.Api\WebApplication1\Order.Api.csproj", "{C66AFFAC-ECFF-4D42-82EF-B338E9F9593E}"
-=======
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EShop", "EShop", "{7EB76A70-5B0B-452D-82EF-A0CD5383C352}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShop.Application", "src\EShop.Application\EShop.Application.csproj", "{E58CCAF8-9126-45A1-9F4E-7CEBD4A33C7D}"
->>>>>>> Stashed changes
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EShop", "EShop", "{7EB76A70-5B0B-452D-82EF-A0CD5383C352}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Infrastructure", "src\Order\Order.Infrastructure\Order.Infrastructure.csproj", "{A2556670-03C4-4BCF-AA7E-A5B46D9EB9CA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8307DB41-75B3-4AE6-88D9-F185F689ED44}"
 EndProject
-<<<<<<< Updated upstream
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventPublisherWorker", "src\Core\EventPubliserService\EventPublisherWorker.csproj", "{BE5DF968-9A4D-499C-92F7-E7FC568371D1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventStoreEF", "src\Core\EventStore\EventStoreEF.csproj", "{C098CCB4-5B44-40C2-8F18-38A70D584987}"
@@ -39,9 +34,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotGateway", "src\OcelotGateway\OcelotGateway.csproj", "{0EED0B12-08D1-4126-9AB1-65DF183B3029}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "src\EShop.WebApp\WebApp.csproj", "{A069BE68-BABA-4321-A7F4-12F3230B604B}"
-=======
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShop.Infrastructure", "src\EShop.Infrastructure\EShop.Infrastructure.csproj", "{62F8E7D9-7220-433F-A929-2D64E71E8C8F}"
->>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,7 +41,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-<<<<<<< Updated upstream
 		{46ACF83B-E237-42A0-AC08-FF7897847320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{46ACF83B-E237-42A0-AC08-FF7897847320}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46ACF83B-E237-42A0-AC08-FF7897847320}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -94,30 +85,11 @@ Global
 		{A069BE68-BABA-4321-A7F4-12F3230B604B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A069BE68-BABA-4321-A7F4-12F3230B604B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A069BE68-BABA-4321-A7F4-12F3230B604B}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
-		{E58CCAF8-9126-45A1-9F4E-7CEBD4A33C7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E58CCAF8-9126-45A1-9F4E-7CEBD4A33C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E58CCAF8-9126-45A1-9F4E-7CEBD4A33C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E58CCAF8-9126-45A1-9F4E-7CEBD4A33C7D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{316268A4-003A-405C-85C0-385B1C84893C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{316268A4-003A-405C-85C0-385B1C84893C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{316268A4-003A-405C-85C0-385B1C84893C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{316268A4-003A-405C-85C0-385B1C84893C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB0B72A5-ECB2-4D91-A36A-CB5D36639588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB0B72A5-ECB2-4D91-A36A-CB5D36639588}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB0B72A5-ECB2-4D91-A36A-CB5D36639588}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB0B72A5-ECB2-4D91-A36A-CB5D36639588}.Release|Any CPU.Build.0 = Release|Any CPU
-		{62F8E7D9-7220-433F-A929-2D64E71E8C8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62F8E7D9-7220-433F-A929-2D64E71E8C8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62F8E7D9-7220-433F-A929-2D64E71E8C8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62F8E7D9-7220-433F-A929-2D64E71E8C8F}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-<<<<<<< Updated upstream
 		{46ACF83B-E237-42A0-AC08-FF7897847320} = {251B36D3-E3F2-4A9E-95C4-28C2AD1BD7B6}
 		{EE38D973-379B-4386-8535-BD394F4A9B8E} = {251B36D3-E3F2-4A9E-95C4-28C2AD1BD7B6}
 		{9B94F043-685B-4B34-9363-666D593B15A4} = {251B36D3-E3F2-4A9E-95C4-28C2AD1BD7B6}
@@ -131,12 +103,6 @@ Global
 		{703FABA3-D2D4-429A-BFAE-92DE41C78B19} = {9B94F043-685B-4B34-9363-666D593B15A4}
 		{0EED0B12-08D1-4126-9AB1-65DF183B3029} = {251B36D3-E3F2-4A9E-95C4-28C2AD1BD7B6}
 		{A069BE68-BABA-4321-A7F4-12F3230B604B} = {251B36D3-E3F2-4A9E-95C4-28C2AD1BD7B6}
-=======
-		{E58CCAF8-9126-45A1-9F4E-7CEBD4A33C7D} = {251B36D3-E3F2-4A9E-95C4-28C2AD1BD7B6}
-		{316268A4-003A-405C-85C0-385B1C84893C} = {251B36D3-E3F2-4A9E-95C4-28C2AD1BD7B6}
-		{FB0B72A5-ECB2-4D91-A36A-CB5D36639588} = {251B36D3-E3F2-4A9E-95C4-28C2AD1BD7B6}
-		{62F8E7D9-7220-433F-A929-2D64E71E8C8F} = {251B36D3-E3F2-4A9E-95C4-28C2AD1BD7B6}
->>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5B98F064-D718-486F-B532-C6B5C44D24A1}
