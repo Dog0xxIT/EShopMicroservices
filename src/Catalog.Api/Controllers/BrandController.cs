@@ -6,6 +6,8 @@ using Mapster;
 
 namespace Catalog.Api.Controllers
 {
+    [ApiController]
+    [Route("/api/v1/brands")]
     public class BrandController : Controller
     {
         private readonly ILogger<BrandController> _logger;
@@ -17,7 +19,7 @@ namespace Catalog.Api.Controllers
             _context = context;
         }
 
-        [HttpGet("brands")]
+        [HttpGet("")]
         public async Task<IActionResult> GetAllBrands([FromQuery] PaginationRequest paginationReq)
         {
             var queryable = _context.Brands
@@ -50,7 +52,7 @@ namespace Catalog.Api.Controllers
             return Ok(response);
         }
 
-        [HttpPost("brands")]
+        [HttpPost("")]
         public async Task<IActionResult> CreateBrand(CreateBrandRequest req)
         {
             var brand = new Brand
@@ -71,7 +73,7 @@ namespace Catalog.Api.Controllers
             }
         }
 
-        [HttpPut("brands/{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBrand(
             [FromRoute] int id,
             [FromBody] UpdateBrandRequest req)
@@ -99,7 +101,7 @@ namespace Catalog.Api.Controllers
             }
         }
 
-        [HttpDelete("brands/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBrand([FromRoute] int id)
         {
             var brand = await _context.Brands.FindAsync(id);

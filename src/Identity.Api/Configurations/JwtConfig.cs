@@ -2,7 +2,7 @@
 {
     public sealed record JwtConfig
     {
-        public readonly string SectionName = "JwtConfig";
+        public static readonly string SectionName = "JwtConfig";
 
         public string Algorithm { get; set; }
         public string Audience { get; set; }

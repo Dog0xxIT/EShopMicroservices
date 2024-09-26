@@ -1,21 +1,19 @@
-using Identity.Api;
 using Identity.Api.Data;
 using Identity.Api.Services.EmailService;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.Configure<SmtpConfig>(builder.Configuration.GetSection(SmtpConfig.SectionName));
 
-var smtpConfig = new SmtpConfig();
-builder.Configuration.GetSection(smtpConfig.SectionName).Bind(smtpConfig);
-builder.Services.AddSingleton(smtpConfig);
+builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(JwtConfig.SectionName));
 
 builder.Services.AddTransient<IEmailSender<IdentityUser>, EmailSender>();
+
 builder.Services.AddDbContext<IdentityContext>(options =>
-    options.UseSqlServer(connectionString),
-    contextLifetime: ServiceLifetime.Transient);
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services
     .AddIdentity<IdentityUser, IdentityRole>(options =>
@@ -25,7 +23,33 @@ builder.Services
     .AddApiEndpoints()
     .AddEntityFrameworkStores<IdentityContext>();
 
-builder.AddJwtAuthentication();
+builder.Services
+    .AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        var jwtConfig = new JwtConfig();
+        builder.Configuration.GetSection(JwtConfig.SectionName).Bind(jwtConfig);
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidIssuer = jwtConfig.Issuer,
+            ValidAudience = jwtConfig.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.SecretKey)),
+        };
+        options.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                context.Token = context.Request.Cookies["jwt"]; // Get token from cookie
+                return Task.CompletedTask;
+            },
+        };
+    });
 
 builder.Services.AddCors(options =>
 {
@@ -43,6 +67,7 @@ builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(options =>
 {
     var securityScheme = new OpenApiSecurityScheme
@@ -66,7 +91,7 @@ builder.Services.AddSwaggerGen(options =>
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            []
         }
     };
 
@@ -99,6 +124,7 @@ builder.Services.AddHttpLogging(logging =>
     logging.CombineLogs = true;
 });
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -109,10 +135,17 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseCors("AllowSpecificOrigin");
+
 app.UseHttpLogging();
+
 //app.MapIdentityApi<IdentityUser>();
+
 app.UseAuthentication();
+
 app.UseAuthorization();
+
 app.MapControllers();
+
 app.Run();

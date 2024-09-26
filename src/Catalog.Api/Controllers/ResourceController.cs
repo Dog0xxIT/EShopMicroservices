@@ -4,7 +4,7 @@ using Catalog.Api.Service.CloudinaryService;
 namespace Catalog.Api.Controllers
 {
     [ApiController]
-    [Route("resources")]
+    [Route("/api/v1/resources")]
     public class ResourceController : Controller
     {
         private readonly CatalogContext _context;

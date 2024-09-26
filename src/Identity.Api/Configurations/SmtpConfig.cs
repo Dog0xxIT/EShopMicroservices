@@ -2,7 +2,7 @@
 {
     public sealed record SmtpConfig
     {
-        public readonly string SectionName = "SmtpConfig";
+        public static readonly string SectionName = "SmtpConfig";
 
         public string From { get; set; }
         public string Host { get; set; }

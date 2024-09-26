@@ -5,6 +5,8 @@ using System.Linq;
 
 namespace Catalog.Api.Controllers
 {
+    [ApiController]
+    [Route("/api/v1/categories")]
     public class CategoryController : Controller
     {
         private readonly ILogger<CategoryController> _logger;
@@ -16,7 +18,7 @@ namespace Catalog.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet("categories/hierarchy")]
+        [HttpGet("hierarchy")]
         public async Task<IActionResult> GetCategoriesHierarchy()
         {
             var categories = await _context.Categories.ToListAsync();
@@ -33,7 +35,7 @@ namespace Catalog.Api.Controllers
             return Ok(categoriesDto);
         }
 
-        [HttpGet("categories")]
+        [HttpGet("")]
         public async Task<IActionResult> GetCategories()
         {
             var categories = await _context.Categories.ToListAsync();
