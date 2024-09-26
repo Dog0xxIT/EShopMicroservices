@@ -3,7 +3,7 @@
     "Id": 2,
     "Name": "Root",
     "ThumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/97/bc/ae/7fe8a253cce6da248aebe6679bb9c88f.jpg",
-    "ParentId": 1
+    "ParentId": null
   },
   {
     "Id": 2549,
@@ -14,61 +14,61 @@
   {
     "Id": 2551,
     "Name": "Tã, Bỉm",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 2549
   },
   {
     "Id": 8339,
     "Name": "Dinh dưỡng cho bé",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 2549
   },
   {
     "Id": 6568,
     "Name": "Thực phẩm ăn dặm",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 2549
   },
   {
     "Id": 10416,
     "Name": "Dinh dưỡng cho mẹ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 2549
   },
   {
     "Id": 10418,
     "Name": "Dinh dưỡng cho người lớn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 2549
   },
   {
     "Id": 11601,
     "Name": "Đồ dùng cho bé",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 2549
   },
   {
     "Id": 5250,
     "Name": "Đồ chơi",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 2549
   },
   {
     "Id": 5164,
     "Name": "Đồ dùng cho người già",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 2549
   },
   {
     "Id": 2640,
     "Name": "Chăm sóc mẹ mang thai, sau sinh",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 2549
   },
   {
     "Id": 10570,
     "Name": "Chuẩn bị mang thai",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 2549
   },
   {
@@ -80,31 +80,31 @@
   {
     "Id": 1795,
     "Name": "Điện thoại Smartphone",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1789
   },
   {
     "Id": 1794,
     "Name": "Máy tính bảng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1789
   },
   {
     "Id": 28856,
     "Name": "Máy đọc sách",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1789
   },
   {
     "Id": 1796,
     "Name": "Điện thoại phổ thông",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1789
   },
   {
     "Id": 8061,
     "Name": "Điện thoại bàn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1789
   },
   {
@@ -116,115 +116,115 @@
   {
     "Id": 44824,
     "Name": "Trái Cây",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54276,
     "Name": "Thịt, Trứng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54290,
     "Name": "Cá, thuỷ hải sản",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54302,
     "Name": "Rau củ quả",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54316,
     "Name": "Thực phẩm đóng hộp và khô",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54330,
     "Name": "Sữa và các Sản phẩm từ sữa",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54344,
     "Name": "Đông lạnh, mát",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54362,
     "Name": "Gia Vị và Chế Biến",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54412,
     "Name": "Đồ uống có cồn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54438,
     "Name": "Dành cho trẻ em",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54452,
     "Name": "Bánh kẹo, đồ ăn vặt",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54466,
     "Name": "Chăm sóc thú cưng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54500,
     "Name": "Chăm sóc nhà cửa",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54514,
     "Name": "Gia dụng, tiện ích",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 68747,
     "Name": "Bộ quà tặng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 68840,
     "Name": "Làm Đẹp - Sức Khỏe",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 69032,
     "Name": "Đồ uống - Pha chế dạng bột",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 69118,
     "Name": "Đồ Uống Không Cồn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
     "Id": 54430,
     "Name": "Thực phẩm chay",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 44792
   },
   {
@@ -236,73 +236,73 @@
   {
     "Id": 1582,
     "Name": "Chăm sóc da mặt",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
     "Id": 1584,
     "Name": "Trang điểm ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
     "Id": 1594,
     "Name": "Chăm sóc cá nhân",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
     "Id": 1592,
     "Name": "Chăm sóc cơ thể",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
     "Id": 5873,
     "Name": "Sản phẩm thiên nhiên & Khác",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
     "Id": 1591,
     "Name": "Chăm sóc tóc và da đầu",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
     "Id": 1595,
     "Name": "Nước hoa",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
     "Id": 2306,
     "Name": "Dụng cụ làm đẹp",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
     "Id": 2307,
     "Name": "Máy Massage & Thiết bị chăm sóc sức khỏe",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
     "Id": 2322,
     "Name": "Thực phẩm chức năng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
     "Id": 8142,
     "Name": "Hỗ trợ tình dục",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
     "Id": 1625,
     "Name": "Chăm sóc răng miệng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1520
   },
   {
@@ -314,13 +314,13 @@
   {
     "Id": 1884,
     "Name": "Đồ dùng nhà bếp",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1882
   },
   {
     "Id": 1946,
     "Name": "Thiết bị gia đình",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1882
   },
   {
@@ -332,97 +332,97 @@
   {
     "Id": 941,
     "Name": "Đầm nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 5404,
     "Name": "Chân váy",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 27600,
     "Name": "Quần nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 936,
     "Name": "Áo vest - Áo khoác nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 1702,
     "Name": "Áo liền quần - Bộ trang phục",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 4553,
     "Name": "Đồ đôi - Đồ gia đình",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 49372,
     "Name": "Thời trang bầu và sau sinh",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 49384,
     "Name": "Thời trang nữ trung niên",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 4554,
     "Name": "Đồ lót nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 1508,
     "Name": "Đồ ngủ - Đồ mặc nhà nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 6179,
     "Name": "Trang phục bơi nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 934,
     "Name": "Áo sơ mi nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 935,
     "Name": "Áo kiểu nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 10389,
     "Name": "Áo crop-top",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 933,
     "Name": "Áo thun nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
     "Id": 67230,
     "Name": "Quần áo nữ kích cỡ lớn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 931
   },
   {
@@ -434,85 +434,85 @@
   {
     "Id": 917,
     "Name": "Áo thun nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 918,
     "Name": "Áo sơ mi nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 925,
     "Name": "Áo vest - Áo khoác nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 10382,
     "Name": "Áo hoodie nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 4546,
     "Name": "Áo nỉ - Áo len nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 27562,
     "Name": "Quần dài nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 27570,
     "Name": "Đồ ngủ, đồ mặc nhà nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 49516,
     "Name": "Đồ đôi - Đồ gia đình nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 27548,
     "Name": "Đồ lót nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 49524,
     "Name": "Quần áo nam kích cỡ lớn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 49532,
     "Name": "Quần áo nam trung niên",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 16004,
     "Name": "Đồ bơi - Đồ đi biển nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 67309,
     "Name": "Bộ trang phục nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
     "Id": 67329,
     "Name": "Quần short nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 915
   },
   {
@@ -524,55 +524,55 @@
   {
     "Id": 8355,
     "Name": "Giày cao gót",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1703
   },
   {
     "Id": 27604,
     "Name": "Giày thể thao nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1703
   },
   {
     "Id": 4550,
     "Name": "Giày sandals nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1703
   },
   {
     "Id": 1192,
     "Name": "Giày búp bê",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1703
   },
   {
     "Id": 1008,
     "Name": "Giày Đế xuồng nữ ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1703
   },
   {
     "Id": 981,
     "Name": "Giày boots nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1703
   },
   {
     "Id": 984,
     "Name": "Dép - Guốc nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1703
   },
   {
     "Id": 4551,
     "Name": "Giày lười nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1703
   },
   {
     "Id": 8357,
     "Name": "Phụ kiện giày nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1703
   },
   {
@@ -584,37 +584,37 @@
   {
     "Id": 4559,
     "Name": "Túi tote nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 976
   },
   {
     "Id": 4558,
     "Name": "Túi đeo chéo, túi đeo vai nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 976
   },
   {
     "Id": 4560,
     "Name": "Túi xách tay nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 976
   },
   {
     "Id": 4561,
     "Name": "Ví nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 976
   },
   {
     "Id": 8350,
     "Name": "Ví đi tiệc",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 976
   },
   {
     "Id": 8352,
     "Name": "Phụ kiện túi",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 976
   },
   {
@@ -626,43 +626,43 @@
   {
     "Id": 27572,
     "Name": "Giày thể thao nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1686
   },
   {
     "Id": 5340,
     "Name": "Giày lười nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1686
   },
   {
     "Id": 1581,
     "Name": "Giày tây nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1686
   },
   {
     "Id": 5341,
     "Name": "Giày sandals nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1686
   },
   {
     "Id": 5342,
     "Name": "Dép nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1686
   },
   {
     "Id": 8337,
     "Name": "Giày boots nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1686
   },
   {
     "Id": 8338,
     "Name": "Phụ kiện giày nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1686
   },
   {
@@ -674,25 +674,25 @@
   {
     "Id": 5337,
     "Name": "Túi xách công sở nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 27616
   },
   {
     "Id": 958,
     "Name": "Túi đeo chéo nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 27616
   },
   {
     "Id": 49650,
     "Name": "Túi bao tử, túi đeo bụng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 27616
   },
   {
     "Id": 959,
     "Name": "Ví nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 27616
   },
   {
@@ -704,31 +704,31 @@
   {
     "Id": 27608,
     "Name": "Balo",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 6000
   },
   {
     "Id": 27612,
     "Name": "Balo, cặp, túi chống sốc laptop",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 6000
   },
   {
     "Id": 8387,
     "Name": "Túi du lịch và phụ kiện",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 6000
   },
   {
     "Id": 6526,
     "Name": "Vali, phụ kiện vali ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 6000
   },
   {
     "Id": 68140,
     "Name": "Phụ kiện du lịch",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 6000
   },
   {
@@ -740,19 +740,19 @@
   {
     "Id": 8370,
     "Name": "Mắt kính",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 27498
   },
   {
     "Id": 975,
     "Name": "Phụ kiện thời trang nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 27498
   },
   {
     "Id": 27550,
     "Name": "Phụ kiện thời trang nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 27498
   },
   {
@@ -764,31 +764,31 @@
   {
     "Id": 1778,
     "Name": "Đồng hồ nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8371
   },
   {
     "Id": 977,
     "Name": "Đồng hồ nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8371
   },
   {
     "Id": 11375,
     "Name": "Đồng hồ trẻ em",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8371
   },
   {
     "Id": 27542,
     "Name": "Phụ kiện đồng hồ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8371
   },
   {
     "Id": 8374,
     "Name": "Trang sức",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8371
   },
   {
@@ -800,37 +800,37 @@
   {
     "Id": 8095,
     "Name": "Laptop",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1846
   },
   {
     "Id": 12884,
     "Name": "Thiết Bị Văn Phòng - Thiết Bị Ngoại Vi",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1846
   },
   {
     "Id": 8060,
     "Name": "Thiết Bị Lưu Trữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1846
   },
   {
     "Id": 2663,
     "Name": "Thiết Bị Mạng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1846
   },
   {
     "Id": 8093,
     "Name": "PC - Máy Tính Bộ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1846
   },
   {
     "Id": 8129,
     "Name": "Linh Kiện Máy Tính - Phụ Kiện Máy Tính",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1846
   },
   {
@@ -842,73 +842,73 @@
   {
     "Id": 1951,
     "Name": "Dụng cụ nhà bếp",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
     "Id": 1954,
     "Name": "Đồ dùng phòng ăn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
     "Id": 2150,
     "Name": "Nội thất",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
     "Id": 8313,
     "Name": "Đồ dùng phòng ngủ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
     "Id": 1973,
     "Name": "Trang trí nhà cửa",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
     "Id": 2015,
     "Name": "Đèn & thiết bị chiếu sáng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
     "Id": 2223,
     "Name": "Ngoài trời & sân vườn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
     "Id": 1966,
     "Name": "Đồ dùng và thiết bị nhà tắm",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
     "Id": 1974,
     "Name": "Sửa chữa nhà cửa",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
     "Id": 10068,
     "Name": "Nhạc cụ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
     "Id": 23054,
     "Name": "Đồ thờ cúng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
     "Id": 53050,
     "Name": "Dụng cụ & Thiết bị tiện ích",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1883
   },
   {
@@ -920,97 +920,97 @@
   {
     "Id": 20766,
     "Name": "Bách hóa online",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 20824,
     "Name": "Điện gia dụng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 20908,
     "Name": "Làm Đẹp - Sức Khỏe",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 21054,
     "Name": "Điện Thoại - Máy Tính Bảng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 21074,
     "Name": "Laptop & Máy Vi Tính",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 21134,
     "Name": "Máy Ảnh - Máy Quay Phim",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 21166,
     "Name": "Mẹ & Bé",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 21268,
     "Name": "Nhà Cửa - Đời Sống",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 21298,
     "Name": "Sách, Văn phòng phẩm & Quà lưu niệm",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 21346,
     "Name": "Ô tô, xe máy, xe đạp",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 21356,
     "Name": "Thể thao - Dã ngoại",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 21382,
     "Name": "Thiết Bị Số - Phụ Kiện Số",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 21442,
     "Name": "Thời Trang",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 21496,
     "Name": "Tivi & Thiết Bị Nghe Nhìn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 25036,
     "Name": "Sản phẩm - thiết bị công nghiệp",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
     "Id": 27468,
     "Name": "Artist Collection",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 17166
   },
   {
@@ -1022,67 +1022,67 @@
   {
     "Id": 4421,
     "Name": "Đồ Ăn Vặt",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4384
   },
   {
     "Id": 15074,
     "Name": "Thực phẩm Đóng hộp và Khô",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4384
   },
   {
     "Id": 24024,
     "Name": "Đồ Uống Không Cồn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4384
   },
   {
     "Id": 4422,
     "Name": "Gia Vị và Chế Biến",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4384
   },
   {
     "Id": 5451,
     "Name": "Chăm sóc thú cưng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4384
   },
   {
     "Id": 11347,
     "Name": "Bộ quà tặng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4384
   },
   {
     "Id": 22998,
     "Name": "Đồ uống",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4384
   },
   {
     "Id": 53562,
     "Name": "Sữa và các Sản phẩm từ sữa",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4384
   },
   {
     "Id": 53582,
     "Name": "Rượu, bia và nước lên men",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4384
   },
   {
     "Id": 53620,
     "Name": "Đậu & Hạt Các Loại",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4384
   },
   {
     "Id": 68576,
     "Name": "Ngũ cốc và mứt",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4384
   },
   {
@@ -1094,37 +1094,37 @@
   {
     "Id": 8215,
     "Name": "Thiết Bị Âm Thanh và Phụ Kiện",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1815
   },
   {
     "Id": 2667,
     "Name": "Thiết Bị Chơi Game và Phụ Kiện",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1815
   },
   {
     "Id": 8039,
     "Name": "Thiết Bị Đeo Thông Minh và Phụ Kiện",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1815
   },
   {
     "Id": 28432,
     "Name": "Thiết Bị Thông Minh và Linh Kiện Điện Tử",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1815
   },
   {
     "Id": 8214,
     "Name": "Phụ Kiện Điện Thoại và Máy Tính Bảng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1815
   },
   {
     "Id": 28670,
     "Name": "Phụ kiện máy tính và Laptop",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1815
   },
   {
@@ -1136,79 +1136,79 @@
   {
     "Id": 11313,
     "Name": "Nhà hàng - Ăn uống",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 11319,
     "Name": "Du lịch - Khách sạn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 11322,
     "Name": "Spa & Làm đẹp",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 11327,
     "Name": "Sự kiện - Giải trí",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 11333,
     "Name": "Sự kiện - Thể thao",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 11326,
     "Name": "Nha khoa - Sức khỏe",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 11332,
     "Name": "Khóa học",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 11334,
     "Name": "Dịch vụ khác",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 33466,
     "Name": "TikiNOW",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 44472,
     "Name": "Quyên góp",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 46516,
     "Name": "TicketBox",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 52842,
     "Name": "Vé xe bus",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
     "Id": 69482,
     "Name": "Key điện tử",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11312
   },
   {
@@ -1220,37 +1220,37 @@
   {
     "Id": 8597,
     "Name": "Xe máy",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8594
   },
   {
     "Id": 6070,
     "Name": "Xe điện",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8594
   },
   {
     "Id": 8431,
     "Name": "Xe đạp",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8594
   },
   {
     "Id": 8595,
     "Name": "Ô tô",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8594
   },
   {
     "Id": 24832,
     "Name": "Phụ kiện - Chăm sóc xe",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8594
   },
   {
     "Id": 17208,
     "Name": "Dịch vụ, lắp đặt",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8594
   },
   {
@@ -1262,25 +1262,25 @@
   {
     "Id": 320,
     "Name": "English Books",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8322
   },
   {
     "Id": 316,
     "Name": "Sách tiếng Việt",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8322
   },
   {
     "Id": 7741,
     "Name": "Văn phòng phẩm",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8322
   },
   {
     "Id": 18328,
     "Name": "Quà lưu niệm",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 8322
   },
   {
@@ -1292,67 +1292,67 @@
   {
     "Id": 5015,
     "Name": "Tivi",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4221
   },
   {
     "Id": 3862,
     "Name": "Máy giặt",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4221
   },
   {
     "Id": 26568,
     "Name": "Âm thanh & Phụ kiện Tivi",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4221
   },
   {
     "Id": 3863,
     "Name": "Máy sấy quần áo",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4221
   },
   {
     "Id": 3864,
     "Name": "Máy rửa chén",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4221
   },
   {
     "Id": 3865,
     "Name": "Máy lạnh - Máy điều hòa",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4221
   },
   {
     "Id": 3866,
     "Name": "Máy nước nóng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4221
   },
   {
     "Id": 2328,
     "Name": "Tủ lạnh",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4221
   },
   {
     "Id": 3868,
     "Name": "Tủ đông - Tủ mát",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4221
   },
   {
     "Id": 3869,
     "Name": "Tủ ướp rượu",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4221
   },
   {
     "Id": 8074,
     "Name": "Phụ kiện điện lạnh",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 4221
   },
   {
@@ -1364,85 +1364,85 @@
   {
     "Id": 8411,
     "Name": "Các môn thể thao chơi vợt",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 4227,
     "Name": "Các môn thể thao đồng đội",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 23120,
     "Name": "Các môn thể thao đối kháng ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 24002,
     "Name": "Các môn thể thao khác",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 6826,
     "Name": "Giày thể thao nam",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 6827,
     "Name": "Giày thể thao nữ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 24306,
     "Name": "Phụ kiện thể thao",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 8413,
     "Name": "Thể thao dưới nước",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 10803,
     "Name": "Thực phẩm bổ sung năng lượng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 67485,
     "Name": "Đồ dùng dã ngoại & Leo núi",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 67647,
     "Name": "Trang phục thể thao",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 67703,
     "Name": "Chạy bộ và đi bộ",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 69498,
     "Name": "Gym và Boxing",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
     "Id": 24064,
     "Name": "Golf",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1975
   },
   {
@@ -1454,61 +1454,61 @@
   {
     "Id": 28806,
     "Name": "Máy Ảnh",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1801
   },
   {
     "Id": 1818,
     "Name": "Phụ Kiện Máy Ảnh, Máy Quay",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1801
   },
   {
     "Id": 1840,
     "Name": "Balo - Túi Đựng - Bao Da",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1801
   },
   {
     "Id": 28794,
     "Name": "Ống Kính - Ống Ngắm",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1801
   },
   {
     "Id": 2757,
     "Name": "Ống Kính (Lens)",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1801
   },
   {
     "Id": 28814,
     "Name": "Thiết Bị Ánh Sáng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1801
   },
   {
     "Id": 28822,
     "Name": "Thiết Bị Quay Phim",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1801
   },
   {
     "Id": 4077,
     "Name": "Camera Giám Sát",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1801
   },
   {
     "Id": 8047,
     "Name": "Máy Bay Camera và Phụ Kiện",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1801
   },
   {
     "Id": 28834,
     "Name": "Camera Hành Trình - Action Camera và Phụ Kiện",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 1801
   },
   {
@@ -1520,7 +1520,7 @@
   {
     "Id": 56009,
     "Name": "Tài Chính",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 54042
   },
   {
@@ -1532,37 +1532,37 @@
   {
     "Id": 5191,
     "Name": "Thời trang bầu",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11603
   },
   {
     "Id": 5188,
     "Name": "Thời trang sơ sinh",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11603
   },
   {
     "Id": 5189,
     "Name": "Thời trang bé gái",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11603
   },
   {
     "Id": 5190,
     "Name": "Thời trang bé trai",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11603
   },
   {
     "Id": 5192,
     "Name": "Phụ kiện cho bé",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11603
   },
   {
     "Id": 5602,
     "Name": "Phụ kiện thời trang sơ sinh",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 11603
   },
   {
@@ -1574,61 +1574,61 @@
   {
     "Id": 4386,
     "Name": "Vệ sinh nhà cửa",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 15078
   },
   {
     "Id": 4399,
     "Name": "Vệ sinh nhà bếp",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 15078
   },
   {
     "Id": 4400,
     "Name": "Vệ sinh nhà tắm",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 15078
   },
   {
     "Id": 4388,
     "Name": "Giấy vệ sinh và giấy ăn",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 15078
   },
   {
     "Id": 4387,
     "Name": "Giặt giũ & Chăm sóc quần áo",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 15078
   },
   {
     "Id": 4441,
     "Name": "Diệt côn trùng",
-    "ThumbnailUrl": null,
+    "ThumbnailUrl": "",
     "ParentId": 15078
   },
   {
     "Id": 8895,
     "Name": "NESLE FITNESSES",
-    "ThumbnailUrl": null,
-    "ParentId": 1
+    "ThumbnailUrl": "",
+    "ParentId": null
   },
   {
     "Id": 8977,
     "Name": "Ưu đãi Từ Tiki và Microsoft",
-    "ThumbnailUrl": null,
-    "ParentId": 1
+    "ThumbnailUrl": "",
+    "ParentId": null
   },
   {
     "Id": 9983,
     "Name": "hazeline lauching",
-    "ThumbnailUrl": null,
-    "ParentId": 1
+    "ThumbnailUrl": "",
+    "ParentId": null
   },
   {
     "Id": 11033,
     "Name": "Engineering",
-    "ThumbnailUrl": null,
-    "ParentId": 1
+    "ThumbnailUrl": "",
+    "ParentId": null
   }
 ]

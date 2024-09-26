@@ -1,10 +1,7 @@
 using Identity.Api;
-using Identity.Api.Configurations;
 using Identity.Api.Data;
 using Identity.Api.Services.EmailService;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);

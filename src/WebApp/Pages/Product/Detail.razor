@@ -11,10 +11,10 @@
     <div class="px-4 mx-auto max-w-screen-xl 2xl:px-0">
         <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
             <div class="mx-auto max-w-md shrink-0 lg:max-w-lg">
-                <img class="w-full dark:hidden" src="@_productInfo.ImageUrl"
+                <img class="w-full dark:hidden" src="@_productInfo.ThumbnailUrl"
                      alt="" />
                 <img class="hidden w-full dark:block"
-                     src="@_productInfo.ImageUrl" alt="" />
+                     src="@_productInfo.ThumbnailUrl" alt="" />
             </div>
 
             <div class="mt-6 sm:mt-8 lg:mt-0">
@@ -27,13 +27,13 @@
                     </p>
 
                     <div class="gap-2 mt-2 flex items-center sm:mt-0">
-                        <Rating Max="5" ValueStar="Convert.ToInt32(_productInfo.Star)"></Rating>
+                        <Rating Max="5" ValueStar="Convert.ToInt32(_productInfo.RatingAverage)"></Rating>
                         <p class="text-gray-500 text-sm font-medium leading-none dark:text-gray-400">
-                            (@_productInfo.Star.ToString("F1"))
+                            (@_productInfo.RatingAverage.ToString("F1"))
                         </p>
                         <a href="#"
                            class="text-gray-900 text-sm font-medium leading-none underline hover:no-underline dark:text-white">
-                            @_productInfo.ReviewsCount Reviews
+                            @_productInfo.ReviewCount Reviews
                         </a>
                     </div>
                 </div>
@@ -47,11 +47,11 @@
                     </p>
 
                     <p class="my-6 text-gray-500 dark:text-gray-400">
-                        Category: @_productInfo.Category.CategoryName
+                        Category: @_productInfo?.Category.Name
                     </p>
 
                     <p class="text-gray-500 dark:text-gray-400">
-                        Brand: @_productInfo.Brand.BrandName
+                        Brand: @_productInfo?.Brand.Name
                     </p>
 
                     <form class="mt-10">
@@ -99,76 +99,25 @@
                                             </svg>
                                         </span>
                                     </label>
-                                    <!-- Active: "ring-2 ring-indigo-500" -->
-                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                        <input type="radio" name="size-choice" value="XS" class="sr-only">
-                                        <span>XS</span>
-                                        <!--
-                                          Active: "border", Not Active: "border-2"
-                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                        -->
-                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
-                                    </label>
-                                    <!-- Active: "ring-2 ring-indigo-500" -->
-                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                        <input type="radio" name="size-choice" value="S" class="sr-only">
-                                        <span>S</span>
-                                        <!--
-                                          Active: "border", Not Active: "border-2"
-                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                        -->
-                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
-                                    </label>
-                                    <!-- Active: "ring-2 ring-indigo-500" -->
-                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                        <input type="radio" name="size-choice" value="M" class="sr-only">
-                                        <span>M</span>
-                                        <!--
-                                          Active: "border", Not Active: "border-2"
-                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                        -->
-                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
-                                    </label>
-                                    <!-- Active: "ring-2 ring-indigo-500" -->
-                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                        <input type="radio" name="size-choice" value="L" class="sr-only">
-                                        <span>L</span>
-                                        <!--
-                                          Active: "border", Not Active: "border-2"
-                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                        -->
-                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
-                                    </label>
-                                    <!-- Active: "ring-2 ring-indigo-500" -->
-                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                        <input type="radio" name="size-choice" value="XL" class="sr-only">
-                                        <span>XL</span>
-                                        <!--
-                                          Active: "border", Not Active: "border-2"
-                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                        -->
-                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
-                                    </label>
-                                    <!-- Active: "ring-2 ring-indigo-500" -->
-                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                        <input type="radio" name="size-choice" value="2XL" class="sr-only">
-                                        <span>2XL</span>
-                                        <!--
-                                          Active: "border", Not Active: "border-2"
-                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                        -->
-                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
-                                    </label>
-                                    <!-- Active: "ring-2 ring-indigo-500" -->
-                                    <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                        <input type="radio" name="size-choice" value="3XL" class="sr-only">
-                                        <span>3XL</span>
-                                        <!--
-                                          Active: "border", Not Active: "border-2"
-                                          Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                        -->
-                                        <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
-                                    </label>
+                                    @{
+                                        var valueList = _productInfo?.ConfigOptions?.ElementAtOrDefault(1)?.Values;
+                                        if (valueList != null)
+                                        {
+                                            foreach (var configValue in valueList)
+                                            {
+                                                <!-- Active: "ring-2 ring-indigo-500" -->
+                                                <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
+                                                    <input type="radio" name="size-choice" value="@configValue" class="sr-only">
+                                                    <span>@configValue</span>
+                                                    <!--
+                                                      Active: "border", Not Active: "border-2"
+                                                      Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                                    -->
+                                                    <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
+                                                </label>
+                                            }
+                                        }
+                                    }
                                 </div>
                             </fieldset>
                         </div>
@@ -188,32 +137,3 @@
 <ProductDescriptionSection></ProductDescriptionSection>
 
 <ProductReviewSection />
-
-@code {
-    [Parameter]
-
-    public int ProductId { get; set; }
-
-
-
-    private GetProductByIdResponse _productInfo;
-
-
-
-    protected override async Task OnInitializedAsync()
-
-    {
-
-        _productInfo = new()
-            {
-                Brand = new(),
-                Category = new(),
-            };
-
-        var resultObject = await CatalogService.GetProductById(ProductId);
-
-        _productInfo = resultObject.Data;
-
-    }
-}
-

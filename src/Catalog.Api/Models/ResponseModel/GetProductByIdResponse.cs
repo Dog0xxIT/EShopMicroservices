@@ -5,42 +5,49 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public string ShortDescription { get; set; }
-        public List<string> DescriptionSections { get; set; } = new();
+        public string EmbedDescription { get; set; }
         public double Price { get; set; }
-        public string ImageUrl { get; set; }
+        public string ThumbnailUrl { get; set; }
         public double Discount { get; set; }
-        public int ReviewsCount { get; set; }
-        public double Star { get; set; }
+        public int ReviewCount { get; set; }
+        public double RatingAverage { get; set; }
         public _Brand Brand { get; set; } = new();
         public _Category Category { get; set; } = new();
-        public int TotalBuyers { get; set; }
+        public int TotalBuyer { get; set; }
         public string Sku { get; set; }
         public List<Variant> Variants { get; set; } = new();
+        public List<ConfigOption> ConfigOptions { get; set; } = new();
 
         public class _Brand
         {
-            public int BrandId { get; set; }
-            public string BrandName { get; set; }
-            public string ThumbnailUrl { get; set; }
-            public string Code { get; set; }
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Slug { get; set; }
         }
 
         public class _Category
         {
-            public int CategoryId { get; set; }
-            public string CategoryName { get; set; }
+            public int Id { get; set; }
+            public string Name { get; set; }
             public string ThumbnailUrl { get; set; }
-            public string Code { get; set; }
         }
 
         public class Variant
         {
-            public int ProductId { get; set; }
             public int ProductVariantId { get; set; }
+            public int ProductId { get; set; }
+            public double Price { get; set; }
+            public int AvailableStock { get; set; }
             public string Sku { get; set; }
+            public string Option1 { get; set; }
+            public string Option2 { get; set; }
+        }
+
+        public class ConfigOption
+        {
             public int OptionTypeId { get; set; }
             public string OptionType { get; set; }
-            public string OptionValue { get; set; }
+            public List<string> Values { get; set; }
         }
     }
 }

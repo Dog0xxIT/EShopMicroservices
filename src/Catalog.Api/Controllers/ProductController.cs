@@ -1,4 +1,4 @@
-using Catalog.Api.Data.Entities;
+﻿using Catalog.Api.Data.Entities;
 using Catalog.Api.Models.ResponseModel;
 using Catalog.Api.Service.CloudinaryService;
 using Mapster;
@@ -25,95 +25,23 @@ namespace Catalog.Api.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetAllProducts([FromQuery] GetListProductRequest req)
         {
-            var response = new PaginationResponse<GetListProductResponse>();
 
             if (req.MinPrice > req.MaxPrice)
             {
-                return Ok(response);
+                return Ok(new PaginationResponse<GetListProductResponse>());
             }
 
-            var brands = new List<int>();
-            if (req.Brands != null)
-            {
-                brands = req.Brands
-                    .Replace(" ", string.Empty)
-                    .Split(",")
-                    .Select(i => Convert.ToInt32(i))
-                    .ToList();
-            }
-
-            var categories = new List<int>();
-            if (req.Categories != null)
-            {
-                categories = req.Categories
-                    .Replace(" ", string.Empty)
-                    .Split(",")
-                    .Select(i => Convert.ToInt32(i))
-                    .ToList();
-            }
+            var brands = ParseIds(req.Brands);
+            var categories = ParseIds(req.Categories);
 
             var queryable = _context.Products.AsQueryable();
+            queryable = ApplyFilters(queryable, req, brands, categories);
+            queryable = ApplySorting(queryable, req);
 
-            if (req.MinPrice != null)
-            {
-                queryable = queryable.Where(product => product.Price >= req.MinPrice);
-            }
-
-            if (req.MaxPrice != null)
-            {
-                queryable = queryable.Where(product => product.Price <= req.MaxPrice);
-            }
-
-            if (brands.Any())
-            {
-                queryable = queryable.Where(product => brands.Contains(product.BrandId));
-            }
-
-            if (categories.Any())
-            {
-                queryable = queryable.Where(product => categories.Contains(product.CategoryId));
-            }
-
-            if (!string.IsNullOrEmpty(req.Sku))
-            {
-                queryable = queryable.Where(product => product.Sku.Equals(req.Sku));
-            }
-
-            if (!string.IsNullOrEmpty(req.Keyword))
-            {
-                queryable = queryable.Where(product =>
-                    product.Name.Contains(req.Keyword) ||
-                    product.Description.Contains(req.Keyword));
-            }
-
-            var sortByList = new Dictionary<string, string>
-            {
-                ["id"] = nameof(Product.Id),
-                ["price"] = nameof(Product.Price),
-                ["date_modified"] = nameof(Product.LastModified),
-            };
-
-            queryable = queryable
-                .OrderBy(product => product.Id)
+            var products = await queryable
                 .Skip((req.Page - 1) * req.Limit)
-                .Take(req.Limit);
-
-
-            queryable = sortByList[req.SortBy] switch
-            {
-                nameof(Product.Id) => req.SortDescending
-                    ? queryable.OrderBy(product => product.Id)
-                    : queryable.OrderByDescending(product => product.Id),
-                nameof(Product.LastModified) => req.SortDescending
-                    ? queryable.OrderBy(product => product.LastModified)
-                    : queryable.OrderByDescending(product => product.LastModified),
-                nameof(Product.Price) => req.SortDescending
-                    ? queryable
-                    : queryable.OrderByDescending(product => product.Price),
-                _ => queryable
-            };
-
-            var products = await queryable.ToListAsync();
+                .Take(req.Limit)
+                .ToListAsync();
 
             var productsDto = products.Select(product =>
                 new GetListProductResponse
@@ -124,17 +52,18 @@ namespace Catalog.Api.Controllers
                     BrandId = product.BrandId,
                     Discount = product.Discount,
                     Name = product.Name,
-                    ImageUrl = product.ThumbnailUrl,
-                    ReviewsCount = product.ReviewCount,
-                    Star = product.RatingAverage,
-                    TotalBuyers = product.TotalBuyer,
+                    ThumbnailUrl = product.ThumbnailUrl,
+                    ReviewCount = product.ReviewCount,
+                    RatingAverage = product.RatingAverage,
+                    TotalBuyer = product.TotalBuyer,
                     Sku = product.Sku,
-                    Summary = product.ShortDescription,
+                    ShortDescription = product.ShortDescription,
                 }).ToList();
 
             var totalProducts = await _context.Products.CountAsync();
             var totalPage = req.Limit != 0 ? (totalProducts / req.Limit) + 1 : 0;
-            response = new PaginationResponse<GetListProductResponse>
+
+            var response = new PaginationResponse<GetListProductResponse>
             {
                 Data = productsDto,
                 Meta = new Pagination
@@ -150,6 +79,7 @@ namespace Catalog.Api.Controllers
             return Ok(response);
         }
 
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById([FromRoute] int id)
         {
@@ -157,8 +87,8 @@ namespace Catalog.Api.Controllers
                 .Include(p => p.Brand)
                 .Include(p => p.Category)
                 .Include(p => p.ProductVariant)
-                .ThenInclude(pv => pv.Options)
-                .ThenInclude(vo => vo.OptionType)
+                    .ThenInclude(pv => pv.Options)
+                    .ThenInclude(vo => vo.OptionType)
                 .SingleOrDefaultAsync(p => p.Id == id);
 
             if (product is null)
@@ -166,47 +96,56 @@ namespace Catalog.Api.Controllers
                 return Problem("Not exist product");
             }
 
-            var variantsResponse = new List<GetProductByIdResponse.Variant>();
-
-            foreach (var productVariant in product.ProductVariant)
-            {
-                var variantList = productVariant.Options.Select(v => new GetProductByIdResponse.Variant
+            var productOptions = product?.ProductVariant?.SelectMany(pv => pv.Options);
+            var groupByOptionType = productOptions?.GroupBy(po => po.OptionType);
+            var configOptions = groupByOptionType?.Select(g =>
+                new GetProductByIdResponse.ConfigOption
                 {
-                    OptionType = v.OptionType.Name,
-                    OptionTypeId = v.OptionTypeId,
-                    OptionValue = v.Value,
+                    OptionTypeId = g.Key.Id,
+                    OptionType = g.Key.Name,
+                    Values = g.Select(i => i.Value).ToList()
+                }).ToList() ?? new();
+
+
+            var productVariants = product?.ProductVariant?.Select(productVariant =>
+                new GetProductByIdResponse.Variant
+                {
                     ProductId = productVariant.ProductId,
                     ProductVariantId = productVariant.Id,
                     Sku = productVariant.Sku,
-                });
-                variantsResponse.AddRange(variantList);
-            }
+                    AvailableStock = productVariant.AvailableStock,
+                    Price = productVariant.Price,
+                    Option1 = productVariant?.Options?.ElementAtOrDefault(0)?.Value ?? "",
+                    Option2 = productVariant?.Options?.ElementAtOrDefault(1)?.Value ?? "",
+                }).ToList() ?? new();
 
             var response = new GetProductByIdResponse
             {
-                Id = product.Id,
+                Id = product!.Id,
                 Name = product.Name,
-                DescriptionSections = [product.Description],
+                EmbedDescription = product.Description,
                 Price = product.Price,
-                ImageUrl = product.ThumbnailUrl,
+                ThumbnailUrl = product.ThumbnailUrl,
                 Discount = product.Discount,
-                ReviewsCount = product.ReviewCount,
-                Star = product.RatingAverage,
-                TotalBuyers = product.TotalBuyer,
+                ReviewCount = product.ReviewCount,
+                RatingAverage = product.RatingAverage,
+                TotalBuyer = product.TotalBuyer,
                 Sku = product.Sku,
                 ShortDescription = product.ShortDescription,
                 Brand = new()
                 {
-                    BrandId = product.BrandId,
-                    BrandName = product.Brand?.Name,
+                    Id = product.BrandId,
+                    Name = product?.Brand.Name ?? "",
+                    Slug = product?.Brand.Slug ?? ""
                 },
                 Category = new()
                 {
-                    CategoryId = product.CategoryId,
-                    CategoryName = product.Category?.Name,
-                    ThumbnailUrl = product.Category?.ThumbnailUrl,
+                    Id = product!.CategoryId,
+                    Name = product?.Category.Name ?? "",
+                    ThumbnailUrl = product?.Category.ThumbnailUrl ?? "",
                 },
-                Variants = variantsResponse,
+                Variants = productVariants,
+                ConfigOptions = configOptions
             };
 
             return Ok(response);
@@ -313,6 +252,60 @@ namespace Catalog.Api.Controllers
             {
                 return Problem(ex.Message);
             }
+        }
+
+        private IQueryable<Product> ApplySorting(IQueryable<Product> queryable, GetListProductRequest req)
+        {
+            var sortByList = new Dictionary<string, string>
+            {
+                ["id"] = nameof(Product.Id),
+                ["price"] = nameof(Product.Price),
+                ["date_modified"] = nameof(Product.LastModified),
+            };
+
+            return sortByList[req.SortBy] switch
+            {
+                nameof(Product.Id) => req.SortDescending
+                    ? queryable.OrderByDescending(product => product.Id)
+                    : queryable.OrderBy(product => product.Id),
+                nameof(Product.LastModified) => req.SortDescending
+                    ? queryable.OrderByDescending(product => product.LastModified)
+                    : queryable.OrderBy(product => product.LastModified),
+                nameof(Product.Price) => req.SortDescending
+                    ? queryable.OrderByDescending(product => product.Price)
+                    : queryable.OrderBy(product => product.Price),
+                _ => queryable
+            };
+        }
+        private List<int> ParseIds(string? ids)
+        {
+            return string.IsNullOrEmpty(ids) ?
+                new() : ids.Replace(" ", string.Empty).Split(",").Select(int.Parse).ToList();
+        }
+        private IQueryable<Product> ApplyFilters(IQueryable<Product> queryable,
+            GetListProductRequest req,
+            List<int> brands,
+            List<int> categories)
+        {
+            if (req.MinPrice != null)
+                queryable = queryable.Where(product => product.Price >= req.MinPrice);
+
+            if (req.MaxPrice != null)
+                queryable = queryable.Where(product => product.Price <= req.MaxPrice);
+
+            if (brands.Any())
+                queryable = queryable.Where(product => brands.Contains(product.BrandId));
+
+            if (categories.Any())
+                queryable = queryable.Where(product => categories.Contains(product.CategoryId));
+
+            if (!string.IsNullOrEmpty(req.Sku))
+                queryable = queryable.Where(product => product.Sku.Equals(req.Sku));
+
+            if (!string.IsNullOrEmpty(req.Keyword))
+                queryable = queryable.Where(product => product.Name.Contains(req.Keyword) || product.Description.Contains(req.Keyword));
+
+            return queryable;
         }
     }
 }

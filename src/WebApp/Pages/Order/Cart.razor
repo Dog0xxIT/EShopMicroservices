@@ -1,9 +1,12 @@
 ﻿@page "/cart"
 
+@using Microsoft.AspNetCore.Authorization
 @using WebApp.Services.BasketService
 @using WebApp.Components.Order
 @using WebApp.Core.RequestModels
 @using WebApp.Core.ResponseModels
+
+@attribute [Authorize]
 
 @inject IBasketService BasketService
 
@@ -158,23 +161,3 @@
         </div>
     </div>
 </section>
-
-@code
-{
-    private List<GetBasketByCustomerIdResponse> basketItemList;
-
-    protected override async Task OnInitializedAsync()
-    {
-        basketItemList = new();
-        await GetBasketByCustomerId();
-    }
-
-    private async Task GetBasketByCustomerId()
-    {
-        var resultObject = await BasketService.GetBasketByCustomerId(3, new PaginationRequest());
-        if (resultObject.ResultCode.Equals(ResultCode.Success))
-        {
-            basketItemList = resultObject.Data.Data.ToList();
-        }
-    }
-}

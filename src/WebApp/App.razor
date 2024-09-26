@@ -1,12 +1,19 @@
 ﻿@using WebApp.Layout.Mainlayout
 @using Microsoft.AspNetCore.Components.Authorization
 @using WebApp.Pages.Common
+@using WebApp.Pages.User
 
 ﻿<CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
-            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <Authorizing>
+                    <text>Please wait, we are authorizing you...</text>
+                </Authorizing>
+                <NotAuthorized>
+                    <SignIn></SignIn>
+                </NotAuthorized>
+            </AuthorizeRouteView>
         </Found>
         <NotFound>
             <PageTitle>Not found</PageTitle>

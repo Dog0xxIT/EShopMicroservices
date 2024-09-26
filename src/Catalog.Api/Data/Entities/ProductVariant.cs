@@ -4,7 +4,7 @@
     {
         public int ProductId { get; set; }
         public string Sku { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public int AvailableStock { get; set; }
         
         [DeleteBehavior(DeleteBehavior.NoAction)]
