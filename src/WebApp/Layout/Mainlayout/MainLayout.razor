@@ -1,16 +1,70 @@
 ﻿@using WebApp.Components.Common
+@using Microsoft.AspNetCore.Components.Authorization
+@using WebApp.Services.CatalogService
 
 @inherits LayoutComponentBase
 
-<Alerts></Alerts>
+@inject ICatalogService _catalogService
+@inject NavigationManager _navManager
 
-<div class="flex min-h-screen flex-col">
-    <NavMenu></NavMenu>
+<TelerikRootComponent>
+    <Alerts></Alerts>
 
-    <main>
-        @Body
+    <TelerikAppBar>
+        <AppBarSection>
+            <img src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/logo-full.svg" alt="">
+        </AppBarSection>
+
+        <AppBarSpacer></AppBarSpacer>
+
+        <AppBarSection>
+            <TelerikTextBox @bind-Value="@_search"
+                            Placeholder="Search"
+                            Width="500px"
+                            DebounceDelay="500"
+                            Rounded="@ThemeConstants.TextBox.Rounded.Large">
+                <TextBoxSuffixTemplate>
+                    <TelerikSvgIcon Icon="@SvgIcon.Search" />
+                </TextBoxSuffixTemplate>
+            </TelerikTextBox>
+        </AppBarSection>
+
+        <AppBarSpacer></AppBarSpacer>
+
+        <AuthorizeView>
+            <Authorized>
+                <AppBarSection>
+                    <TelerikButton Icon="@SvgIcon.User" Class="px-4">User</TelerikButton>
+                </AppBarSection>
+
+                <AppBarSeparator Class="thick-separator"></AppBarSeparator>
+
+                <AppBarSection>
+                    <TelerikButton Icon="@SvgIcon.Cart" Class="px-4" OnClick=@(() => _navManager.NavigateTo("/cart"))>Cart</TelerikButton>
+                </AppBarSection>
+            </Authorized>
+
+            <NotAuthorized>
+                <AppBarSection>
+                    <TelerikButton Icon="@SvgIcon.Login" Class="px-4" OnClick=@(() => _navManager.NavigateTo("/login"))>Login</TelerikButton>
+                </AppBarSection>
+
+                <AppBarSeparator Class="thick-separator"></AppBarSeparator>
+
+                <AppBarSection>
+                    <TelerikButton Icon="@SvgIcon.Cart" Class="px-4" OnClick=@(() => _navManager.NavigateTo("/cart"))>Cart</TelerikButton>
+                </AppBarSection>
+            </NotAuthorized>
+        </AuthorizeView>
+    </TelerikAppBar>
+    <main class="m-5">
+        <CascadingValue Name="SearchText" Value="@_search">
+            @Body
+        </CascadingValue>
     </main>
+</TelerikRootComponent>
 
-    <Footer></Footer>
-</div>
-
+@code
+{
+    private string? _search { get; set; }
+}

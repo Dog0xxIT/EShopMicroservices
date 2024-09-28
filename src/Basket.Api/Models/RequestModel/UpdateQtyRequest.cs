@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Basket.Api.Models.RequestModel
+﻿namespace Basket.Api.Models.RequestModel
 {
     public sealed class UpdateQtyRequest
     {

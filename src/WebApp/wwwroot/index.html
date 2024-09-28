@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EShop</title>
     <base href="/" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="/css/app.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="favicon.png" />
+    <!-- Load the Roboto font file -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+    <link id="telerik-theme" rel="stylesheet"
+          href="https://unpkg.com/@progress/kendo-theme-material@8.2.1/dist/material-sky.css" />
+    <script src="_content/Telerik.UI.for.Blazor/js/telerik-blazor.js"></script>
     <link href="EShop.WebApp.styles.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -26,9 +32,14 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/index.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
-</body>
 
+    <!-- Apply the Roboto font family globally -->
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+        }
+    </style>
+</body>
 </html>

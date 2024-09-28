@@ -1,7 +1,4 @@
-﻿using WebApp.Core.RequestModels;
-using WebApp.Core.ResponseModels;
-
-namespace WebApp.Services.IdentityService;
+﻿namespace WebApp.Services.IdentityService;
 
 public interface IIdentityService
 {

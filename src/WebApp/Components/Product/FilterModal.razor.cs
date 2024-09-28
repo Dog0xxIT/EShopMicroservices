@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using WebApp.Core.RequestModels;
-using WebApp.Core.ResponseModels;
 
 namespace WebApp.Components.Product;
 
@@ -30,7 +28,7 @@ public partial class FilterModal
     {
         var req = new PaginationRequest
         {
-            Page = 0,
+            Page = 1,
             Limit = 40
         };
         var response = await CatalogService.GetListBrands(req);

@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using WebApp;
 using WebApp.Core.CoreHttpClient;
-using WebApp.Services.BasketService;
 using WebApp.Services.CatalogService;
 using WebApp.Services.IdentityService;
 using WebApp.States.AuthState;
@@ -33,7 +32,7 @@ builder.Services
 builder.Services
     .AddHttpClient(UrlsConfig.IdentityClient, httpClient =>
     {
-        httpClient.BaseAddress = new Uri("https://localhost:7038");
+        httpClient.BaseAddress = new Uri("https://localhost:7283");
     })
     .AddHttpMessageHandler<CookieHandler>();
 
@@ -44,6 +43,7 @@ builder.Services
     })
     .AddHttpMessageHandler<CookieHandler>();
 
+builder.Services.AddTelerikBlazor();
 builder.Services.AddTransient<CookieHandler>();
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStateProvider>();

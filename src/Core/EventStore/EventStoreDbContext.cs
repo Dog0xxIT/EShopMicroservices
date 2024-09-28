@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace EventStoreEF
 {
-    public class EventStoreDbContext<TContext> : DbContext where TContext : DbContext
+    public class EventStoreDbContext : DbContext
     {
         public DbSet<EventLog> EventLogs { get; set; }
 
-        public EventStoreDbContext(DbContextOptions<TContext> options) : base(options)
-        {
-        }
+        public EventStoreDbContext(DbContextOptions options) : base(options) { }
     }
 }

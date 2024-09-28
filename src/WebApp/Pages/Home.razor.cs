@@ -1,31 +1,74 @@
-﻿using WebApp.Core.RequestModels;
-using WebApp.Core.ResponseModels;
+﻿using Microsoft.AspNetCore.Components;
+using Telerik.Blazor.Components;
 
 namespace WebApp.Pages;
 
 public partial class Home
 {
+    [CascadingParameter(Name = "SearchText")]
+    private string? _searchText { get; set; }
+    private bool _visibleLoader;
     private GetListProductRequest _getListProductRequest;
     private PaginationResponse<GetListProductResponse> _productPaginationResponse;
     private List<GetAllCategoriesResponse> _categoryList;
-    private bool _visibleFilterModal;
-    private int _totalPage;
-    private int _currentPage;
+    private List<string> _sortOptions = ["Price Low to High", "Price High to Low", "Newest", "Best Seller"];
+    private string SelectedSortOption;
+    private double _minPrice = 0;
+    private double _maxPrice = 300;
 
     protected override async Task OnInitializedAsync()
-
     {
         _getListProductRequest = new()
         {
             Page = 1,
-            Limit = 12,
+            Limit = 36,
         };
         _productPaginationResponse = new();
         _categoryList = new();
 
+        _visibleLoader = true;
         _productPaginationResponse = await _catalogService.GetListProducts(_getListProductRequest);
         _categoryList = await _catalogService.GetAllCategoriesHierarchy();
-        _categoryList = _categoryList.First().Childs;
+        _visibleLoader = false;
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        _getListProductRequest = new()
+        {
+            Keyword = _searchText,
+            Page = 1,
+            Limit = 36,
+        };
+        _visibleLoader = true;
+        _productPaginationResponse = await _catalogService.GetListProducts(_getListProductRequest);
+        _visibleLoader = false;
+    }
+
+    private async Task OnClickCategory(PanelBarItemClickEventArgs args)
+    {
+        var item = (GetAllCategoriesResponse)args.Item;
+        _getListProductRequest.Categories = "";
+        _getListProductRequest.Categories += item.Id;
+        _visibleLoader = true;
+        _productPaginationResponse = await _catalogService.GetListProducts(_getListProductRequest);
+        _visibleLoader = false;
+    }
+
+    private async Task PageChangedHandler(int page)
+    {
+        if (page < 1)
+        {
+            return;
+        }
+        _getListProductRequest = new()
+        {
+            Page = page,
+            Limit = 54,
+        };
+        _visibleLoader = true;
+        _productPaginationResponse = await _catalogService.GetListProducts(_getListProductRequest);
+        _visibleLoader = false;
     }
 
     private async Task GetProductsByCategoryId(int categoryId)
@@ -39,15 +82,9 @@ public partial class Home
         _productPaginationResponse = await _catalogService.GetListProducts(_getListProductRequest);
     }
 
-    private async Task OnChangedCurrentPage(int newPageIndex)
 
+    private void OnSortOptionChange(string value)
     {
-        _currentPage = newPageIndex;
-
-        _getListProductRequest.Page = _currentPage - 1;
-
-        _productPaginationResponse = await _catalogService.GetListProducts(_getListProductRequest);
-
-        StateHasChanged();
+        SelectedSortOption = value;
     }
 }

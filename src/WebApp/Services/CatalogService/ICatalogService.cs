@@ -1,7 +1,4 @@
-﻿using WebApp.Core.RequestModels;
-using WebApp.Core.ResponseModels;
-
-namespace WebApp.Services.CatalogService;
+﻿namespace WebApp.Services.CatalogService;
 
 public interface ICatalogService
 {

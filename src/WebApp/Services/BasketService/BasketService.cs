@@ -1,7 +1,4 @@
 ﻿using WebApp.Core.CoreHttpClient;
-using WebApp.Core.RequestModels;
-using WebApp.Core.ResponseModels;
-using WebApp.Services.BasketService;
 
 namespace EShop.WebApp.Services.BasketService;
 
@@ -19,7 +16,7 @@ public class BasketService : IBasketService
     {
         return await _coreHttpClient.GetAsync<PaginationResponse<GetBasketByCustomerIdResponse>>(
             clientName: UrlsConfig.CatalogClient,
-            uri: UrlsConfig.Basket.GetBasketByCustomerId + $"/{customerId}",
+            uri: "" + $"/{customerId}",
             queryObj: paginationRequest);
     }
 }

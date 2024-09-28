@@ -1,7 +1,11 @@
 using Identity.Api.Data;
 using Identity.Api.Services.EmailService;
+using Identity.Api.Services.TokenService;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.BearerToken;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,25 +15,20 @@ builder.Services.Configure<SmtpConfig>(builder.Configuration.GetSection(SmtpConf
 builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(JwtConfig.SectionName));
 
 builder.Services.AddTransient<IEmailSender<IdentityUser>, EmailSender>();
+builder.Services.AddTransient<ITokenService, TokenService>();
 
 builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services
-    .AddIdentity<IdentityUser, IdentityRole>(options =>
-    {
-        options.SignIn.RequireConfirmedEmail = true;
-    }) // Error AuthenticationScheme
-    .AddApiEndpoints()
-    .AddEntityFrameworkStores<IdentityContext>();
+    .AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<IdentityContext>()
+    .AddDefaultTokenProviders()
+    .AddTokenProvider("EShop.Identity", typeof(DataProtectorTokenProvider<IdentityUser>)); // Config for save refresh token
+
 
 builder.Services
-    .AddAuthentication(options =>
-    {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
+    .AddAuthentication(BearerTokenDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         var jwtConfig = new JwtConfig();
@@ -140,7 +139,7 @@ app.UseCors("AllowSpecificOrigin");
 
 app.UseHttpLogging();
 
-//app.MapIdentityApi<IdentityUser>();
+app.MapIdentityApi<IdentityUser>();
 
 app.UseAuthentication();
 

@@ -5,7 +5,7 @@ namespace Catalog.Api.Data
 {
     // dotnet ef migrations add InitialCreate --output-dir .\Data\Migrations
 
-    public class CatalogContext : EventStoreDbContext<CatalogContext>
+    public class CatalogContext : EventStoreDbContext
     {
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }

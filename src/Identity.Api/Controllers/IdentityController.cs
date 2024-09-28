@@ -1,14 +1,21 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Identity.Api.Models.RequestModels;
 using Identity.Api.Models.ResponseModels;
+using Identity.Api.Services.TokenService;
+using Microsoft.AspNetCore.Authentication.BearerToken;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Identity.Api.Controllers
 {
     [ApiController]
-    [Route("")]
+    [Route("/api/v1")]
     public class IdentityController : ControllerBase
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -16,15 +23,17 @@ namespace Identity.Api.Controllers
         private readonly IEmailSender<IdentityUser> _emailSender;
         private readonly ILogger<IdentityController> _logger;
         private readonly JwtConfig _jwtConfig;
+        private readonly ITokenService _tokenService;
 
-        public IdentityController(UserManager<IdentityUser> userManager, IEmailSender<IdentityUser> emailSender, ILogger<IdentityController> logger, JwtConfig jwtConfig,
-            SignInManager<IdentityUser> signInManager)
+        public IdentityController(UserManager<IdentityUser> userManager, IEmailSender<IdentityUser> emailSender, ILogger<IdentityController> logger, IOptions<JwtConfig> jwtOptions,
+            SignInManager<IdentityUser> signInManager, ITokenService tokenService)
         {
             _userManager = userManager;
             _emailSender = emailSender;
             _signInManager = signInManager;
+            _tokenService = tokenService;
             _logger = logger;
-            _jwtConfig = jwtConfig;
+            _jwtConfig = jwtOptions.Value;
         }
 
         [HttpGet("confirmEmail")]
@@ -136,41 +145,80 @@ namespace Identity.Api.Controllers
             {
                 return Problem("Password incorrect");
             }
-            var token = await GenerateJwtToken(req.Email);
 
-            var cookieOptions = new CookieOptions()
+            var roles = await _userManager.GetRolesAsync(user);
+            var claims = new List<Claim>
             {
-                HttpOnly = true, // XSS
-                Secure = true, // Https
-                Expires = DateTime.UtcNow.AddDays(1), // Expiration
-                SameSite = SameSiteMode.Strict, // CSRF
+                new("email", req.Email),
+                new("roles", string.Join(',', roles))
             };
-            this.HttpContext.Response.Cookies.Append("jwt", token, cookieOptions);
+
+            var accessToken = _tokenService.GenerateAccessToken(claims);
+            var refreshToken = await _userManager.GenerateUserTokenAsync(user, "EShop.Identity", "RefreshToken");
+
+            // Save RefreshToken
+            await _userManager.SetAuthenticationTokenAsync(user, "EShop.Identity", "RefreshToken", refreshToken);
+
+            ConfigTokenInCookie(accessToken, refreshToken);
+
             return Ok(ResponseObject.Succeeded);
         }
 
-
-        [Authorize]
+        [Authorize(AuthenticationSchemes = BearerTokenDefaults.AuthenticationScheme)]
         [HttpPost("refreshToken")]
-        public async Task<IActionResult> RefreshToken()
+        public async Task<IActionResult> RefreshToken(string accessToken)
         {
-            var oldToken = HttpContext.Request.Cookies["jwt"]!;
+            var principal = _tokenService.GetPrincipalFromExpiredToken(accessToken);
+            var email = principal.Claims.SingleOrDefault(c => c.Type == "email")?.Value;
+
             var handler = new JwtSecurityTokenHandler();
-            var jwtSecurityToken = handler.ReadJwtToken(oldToken);
-            var newToken = "";
-            if (jwtSecurityToken != null)
+            var jwtSecurityToken = handler.ReadJwtToken(accessToken);
+
+            if (jwtSecurityToken is null)
             {
-                var email = jwtSecurityToken.Claims.FirstOrDefault(claim => claim.Type == "email")?.Value;
-                newToken = await GenerateJwtToken(email ?? string.Empty);
+                return Unauthorized();
             }
-            var cookieOptions = new CookieOptions()
+
+            if (string.IsNullOrEmpty(email))
+            {
+                return Unauthorized();
+            }
+
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user is null)
+            {
+                return Unauthorized();
+            }
+
+            if (refreshToken != await _userManager.GetAuthenticationTokenAsync(user, "EShop.Identity", "RefreshToken"))
+            {
+                return Unauthorized();
+            }
+
+            var newAccessToken = _tokenService.GenerateAccessToken(jwtSecurityToken.Claims);
+            var newRefreshToken = _tokenService.GenerateRefreshToken();
+
+            // Save RefreshToken
+            await _userManager.SetAuthenticationTokenAsync(user, "EShop.Identity", "RefreshToken", refreshToken);
+
+            var cookieOptionsForAccessToken = new CookieOptions()
             {
                 HttpOnly = true, // XSS
                 Secure = true, // Https
-                Expires = DateTime.UtcNow.AddDays(1), // Expiration
+                Expires = DateTime.UtcNow.AddMinutes(1), // Expiration
                 SameSite = SameSiteMode.Strict, // CSRF
             };
-            this.HttpContext.Response.Cookies.Append("jwt", newToken, cookieOptions);
+            this.HttpContext.Response.Cookies.Append("access-token", newAccessToken, cookieOptionsForAccessToken);
+
+            var cookieOptionsForRefreshToken = new CookieOptions()
+            {
+                HttpOnly = true, // XSS
+                Secure = true, // Https
+                Expires = DateTime.UtcNow.AddMinutes(1), // Expiration
+                SameSite = SameSiteMode.Strict, // CSRF
+            };
+            this.HttpContext.Response.Cookies.Append("refresh-token", newRefreshToken, cookieOptionsForRefreshToken);
+
             return Ok(ResponseObject.Succeeded);
         }
 
@@ -239,42 +287,26 @@ namespace Identity.Api.Controllers
         //    return Ok();
         //}
 
-        private async Task<string> GenerateJwtToken(string email)
+        private void ConfigTokenInCookie(string accessToken, string refreshToken)
         {
-            // Get claims
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user is null)
+            var cookieOptionsForAccessToken = new CookieOptions()
             {
-                return string.Empty;
-            }
-            var roles = await _userManager.GetRolesAsync(user);
-            var claims = new List<Claim>
-            {
-                new("email", email),
-                new("roles", string.Join(',', roles))
+                HttpOnly = true, // XSS
+                Secure = true, // Https
+                Expires = DateTime.UtcNow.AddMinutes(30), // Expiration
+                SameSite = SameSiteMode.Strict, // CSRF
             };
+            this.HttpContext.Response.Cookies.Append("access-token", accessToken, cookieOptionsForAccessToken);
 
-            // GenerateToken
-            var signKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtConfig.SecretKey));
-            var signingCredentials = new SigningCredentials(signKey, _jwtConfig.Algorithm);
-            var optionsHeader = new Dictionary<string, string>
+            var cookieOptionsForRefreshToken = new CookieOptions()
             {
-                ["alg"] = signingCredentials.Algorithm,
-                ["typ"] = JwtConstants.TokenType
+                HttpOnly = true, // XSS
+                Secure = true, // Https
+                Expires = DateTime.UtcNow.AddDays(3), // Expiration
+                SameSite = SameSiteMode.Strict, // CSRF
+                Path = "/refresh-token"
             };
-            var header = new JwtHeader(signingCredentials, optionsHeader);
-
-            var payload = new JwtPayload(
-                issuer: _jwtConfig.Issuer,
-                audience: _jwtConfig.Audience,
-                expires: DateTime.UtcNow.AddDays(Convert.ToInt64(_jwtConfig.Expires)),
-                notBefore: DateTime.UtcNow,
-                claims: claims);
-
-            var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-            var token = jwtSecurityTokenHandler.WriteToken(new JwtSecurityToken(header, payload));
-
-            return token;
+            this.HttpContext.Response.Cookies.Append("refresh-token", refreshToken, cookieOptionsForRefreshToken);
         }
     }
 }

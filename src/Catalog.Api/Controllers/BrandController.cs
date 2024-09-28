@@ -58,7 +58,7 @@ namespace Catalog.Api.Controllers
             var brand = new Brand
             {
                 Name = req.Name,
-                Slug = req.Name.ToLower().TrimStart().TrimEnd().Replace(" ", "-"),
+                Slug = req.Name.ToLower().Trim().Replace(" ", "-"),
             };
 
             try
@@ -86,7 +86,7 @@ namespace Catalog.Api.Controllers
             }
 
             brand.Name = req.Name;
-            brand.Slug = req.Name.ToLower().TrimStart().TrimEnd().Replace(" ", "-");
+            brand.Slug = req.Name.ToLower().Trim().Replace(" ", "-");
             brand.SetTimeLastModified();
 
             try

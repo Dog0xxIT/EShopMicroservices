@@ -1,55 +1,126 @@
 ﻿@page "/"
 
 @using WebApp.Services.CatalogService
-@using WebApp.Components.Product
 @using WebApp.Components.Common
 
 @inject ICatalogService _catalogService
+@inject NavigationManager _navManager
 
-<HeroSection></HeroSection>
+<TelerikLoaderContainer Visible="@_visibleLoader"></TelerikLoaderContainer>
 
-<section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-12">
-    <div class="px-4 mx-auto max-w-screen-xl 2xl:px-0">
-        <div class="mb-4">
-            <div class="px-4 mx-auto max-w-screen-xl 2xl:px-0">
-                <div class="mb-4 gap-4 flex items-center justify-between md:mb-8">
-                    <h2 class="text-gray-900 text-xl font-semibold dark:text-white sm:text-2xl">Shop by category</h2>
+<TelerikGridLayout ColumnSpacing="2%">
+    <GridLayoutColumns>
+        <GridLayoutColumn Width="15%"></GridLayoutColumn>
+        <GridLayoutColumn Width="85%"></GridLayoutColumn>
+    </GridLayoutColumns>
 
-                    <a href="#" title="" class="text-primary-700 flex items-center text-base font-medium hover:underline dark:text-primary-500">
-                        See more categories
-                        <svg class="ms-1 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
+    <GridLayoutItems>
+        <GridLayoutItem>
+            <TelerikPanelBar Data="@_categoryList"
+                             ExpandMode="PanelBarExpandMode.Single"
+                             OnItemClick="OnClickCategory">
+                <PanelBarBindings>
+                    <PanelBarBinding ParentIdField="@nameof(GetAllCategoriesResponse.ParentId)"
+                                     TextField="@nameof(GetAllCategoriesResponse.Name)"
+                                     ItemsField="@nameof(GetAllCategoriesResponse.Childs)"
+                                     IconField="@nameof(GetAllCategoriesResponse.ThumbnailUrl)"
+                                     HasChildrenField="@nameof(GetAllCategoriesResponse.HasChild)"
+                                     IdField="@nameof(GetAllCategoriesResponse.Id)"></PanelBarBinding>
+                </PanelBarBindings>
+            </TelerikPanelBar>
+        </GridLayoutItem>
 
-            <div class="gap-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                @foreach (var category in _categoryList)
+        <GridLayoutItem>
+            <TelerikGridLayout RowSpacing="40px" ColumnSpacing="1%">
+                <GridLayoutColumns>
+                    <GridLayoutColumn Width="15%"></GridLayoutColumn>
+                    <GridLayoutColumn Width="15%"></GridLayoutColumn>
+                    <GridLayoutColumn Width="15%"></GridLayoutColumn>
+                    <GridLayoutColumn Width="15%"></GridLayoutColumn>
+                    <GridLayoutColumn Width="15%"></GridLayoutColumn>
+                    <GridLayoutColumn Width="15%"></GridLayoutColumn>
+                </GridLayoutColumns>
 
-                {
-                    <a @onclick="async () => await GetProductsByCategoryId(category.Id)" href="#" class="border-gray-200 bg-white px-4 py-2 flex items-center rounded-lg border hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                       @*  @((MarkupString)category.ThumbnailUrl) *@
-                        <span class="text-gray-900 text-sm font-medium dark:text-white">@category.Name</span>
-                    </a>
-                }
-            </div>
-        </div>
+                <GridLayoutItems>
+                    <GridLayoutItem Row="1" Column="1" ColumnSpan="6">
+                        <TelerikToolBar>
+                            <ToolBarTemplateItem>
+                                <div class="my-2">
+                                    <span>Min Price</span>
+                                    <TelerikNumericTextBox @bind-Value="@_minPrice"></TelerikNumericTextBox>
 
-        <div class="mb-4 gap-4 grid sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
-            @foreach (var product in _productPaginationResponse.Data)
+                                    <span class="ms-2">Max Price</span>
+                                    <TelerikNumericTextBox @bind-Value="@_maxPrice"></TelerikNumericTextBox>
+                                </div>
+                            </ToolBarTemplateItem>
+
+                            <ToolBarSpacer />
+
+                            <ToolBarTemplateItem>
+                                <div class="my-2">
+                                    <span>Sort by</span>
+                                    <TelerikDropDownList Data="@_sortOptions"
+                                                         Width="200px"
+                                                         Value="@SelectedSortOption"
+                                                         ValueChanged="@((string v) => OnSortOptionChange(v))"
+                                                         Rounded="@ThemeConstants.DropDownList.Rounded.Large">
+                                    </TelerikDropDownList>
+                                </div>
+                            </ToolBarTemplateItem>
+                        </TelerikToolBar>
+                    </GridLayoutItem>
+
+                    @foreach (var product in _productPaginationResponse.Data)
+                    {
+                        <GridLayoutItem>
+                            <div @onclick=@(() => _navManager.NavigateTo($"/products/{product.Id}"))
+                                 style="cursor:pointer;">
+                                <TelerikCard Class="border-primary-subtle rounded-4 border">
+                                    <CardImage Src="@product.ThumbnailUrl" Width="120px" Height="120px" Class="border-secondary-subtle m-auto border"></CardImage>
+                                    <CardBody>
+                                        <div style="height:60px;">
+                                            <!-- Truncate product name if it exceeds 20 characters -->
+                                            @if (product.Name.Length > 55)
+                                            {
+                                                @($"{product.Name.Substring(0, 55)}...")
+                                            }
+                                            else
+                                            {
+                                                @product.Name
+                                            }
+                                        </div>
+
+                                        <CardSeparator></CardSeparator>
+
+                                        <div class="d-flex justify-content-around mt-2">
+                                            <Rating Max="5" Star="@((int)product.RatingAverage)"></Rating>
+                                            <CardSubTitle>Total Buyer :@product.TotalBuyer</CardSubTitle>
+                                        </div>
+
+                                        <CardSeparator></CardSeparator>
+
+                                        <CardTitle>$ @product.Price</CardTitle>
+                                    </CardBody>
+                                    <CardActions Layout="@CardActionsLayout.Stretch">
+                                        <TelerikButton Icon="@SvgIcon.Cart"
+                                                       Rounded="@ThemeConstants.Button.Rounded.Full">
+                                            Add To Cart
+                                        </TelerikButton>
+                                    </CardActions>
+                                </TelerikCard>
+                            </div>
+                        </GridLayoutItem>
+                    }
+                </GridLayoutItems>
+            </TelerikGridLayout>
+            @if (_productPaginationResponse.Data.Any() && _productPaginationResponse?.Meta != null)
             {
-                <ProductCart ProductData="product" />
+                <TelerikPager Class="mt-3 me-5"
+                              Total="@_productPaginationResponse.Meta.Total"
+                              PageSize="@_productPaginationResponse.Meta.PerPage"
+                              Page="@_productPaginationResponse.Meta.CurrentPage"
+                              PageChanged=@(async (page) => await PageChangedHandler(page))></TelerikPager>
             }
-        </div>
-
-        <div class="w-full text-center">
-            <button type="button"
-                    class="border-gray-200 bg-white px-5 py-2.5 text-gray-900 rounded-lg border text-sm font-medium hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">
-                Show more
-            </button>
-        </div>
-    </div>
-    <!-- Filter modal -->
-    <FilterModal @bind-Visible="@_visibleFilterModal" />
-</section>
+        </GridLayoutItem>
+    </GridLayoutItems>
+</TelerikGridLayout>

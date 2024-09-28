@@ -1,8 +1,6 @@
-﻿using Basket.Api.Infrastructure.Entities;
-
-namespace Basket.Api.Data.Entities
+﻿namespace Basket.Api.Data.Entities
 {
-    public class Basket : Entity
+    public class Basket : BaseEntity
     {
         public int UserId { get; set; }
 

@@ -1,139 +1,108 @@
 ﻿@page "/products/{ProductId:int}"
 
-@using WebApp.Core.ResponseModels
 @using WebApp.Services.CatalogService
 @using WebApp.Components.Common
-@using WebApp.Components.Product
 
 @inject ICatalogService CatalogService
 
-<section class="py-8 bg-white antialiased dark:bg-gray-900 md:py-16">
-    <div class="px-4 mx-auto max-w-screen-xl 2xl:px-0">
-        <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
-            <div class="mx-auto max-w-md shrink-0 lg:max-w-lg">
-                <img class="w-full dark:hidden" src="@_productInfo.ThumbnailUrl"
-                     alt="" />
-                <img class="hidden w-full dark:block"
-                     src="@_productInfo.ThumbnailUrl" alt="" />
-            </div>
 
-            <div class="mt-6 sm:mt-8 lg:mt-0">
-                <h1 class="text-gray-900 text-xl font-semibold dark:text-white sm:text-2xl">
-                    @_productInfo.Name
-                </h1>
-                <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
-                    <p class="text-gray-900 text-2xl font-extrabold dark:text-white sm:text-3xl">
-                        $ @_productInfo.Price.ToString("F3")
-                    </p>
 
-                    <div class="gap-2 mt-2 flex items-center sm:mt-0">
-                        <Rating Max="5" ValueStar="Convert.ToInt32(_productInfo.RatingAverage)"></Rating>
-                        <p class="text-gray-500 text-sm font-medium leading-none dark:text-gray-400">
-                            (@_productInfo.RatingAverage.ToString("F1"))
-                        </p>
-                        <a href="#"
-                           class="text-gray-900 text-sm font-medium leading-none underline hover:no-underline dark:text-white">
-                            @_productInfo.ReviewCount Reviews
-                        </a>
-                    </div>
-                </div>
+@code
+{
+    public List<BreadcrumbItem> Items { get; set; }
 
-                <!-- Options -->
-                <div class="mt-4 lg:row-span-3 lg:mt-0">
-                    <h2 class="sr-only">Product information</h2>
+    protected override void OnInitialized()
+    {
+        Items = new List<BreadcrumbItem>
+        {
+            new () { Text = "Home", Icon = SvgIcon.Home },
+            new ()  { Text = "Products"},
+            new ()  { Text = "Computer peripherals"},
+            new ()  { Text = "Keyboards"},
+            new ()  { Text = "Gaming keyboards"}
+        };
+    }
 
-                    <p class="my-6 text-gray-500 dark:text-gray-400">
-                        @_productInfo.ShortDescription
-                    </p>
+    public class BreadcrumbItem
+    {
+        public string Text { get; set; }
+        public ISvgIcon Icon { get; set; }
+        public string Url { get; set; }
+    }
+}
+<div class="w-75 mx-auto">
+    <TelerikBreadcrumb Data="@Items" Class="mb-4">
+    </TelerikBreadcrumb>
 
-                    <p class="my-6 text-gray-500 dark:text-gray-400">
-                        Category: @_productInfo?.Category.Name
-                    </p>
+    <TelerikGridLayout ColumnSpacing="5%" RowSpacing="20px">
+        <GridLayoutColumns>
+            <GridLayoutColumn Width="25%"></GridLayoutColumn>
+            <GridLayoutColumn Width="70%"></GridLayoutColumn>
+        </GridLayoutColumns>
 
-                    <p class="text-gray-500 dark:text-gray-400">
-                        Brand: @_productInfo?.Brand.Name
-                    </p>
+        <GridLayoutItems>
+            <GridLayoutItem>
+                <TelerikCard Class="rounded-4">
+                    <CardImage Src="@_productInfo.ThumbnailUrl"></CardImage>
+                </TelerikCard>
+            </GridLayoutItem>
 
-                    <form class="mt-10">
-                        <!-- Colors -->
-                        <div>
-                            <h3 class="text-gray-900 text-sm font-medium">Color</h3>
+            <GridLayoutItem>
+                <TelerikCard Class="hadow p-3 mb-5 bg-body-tertiary rounded-4">
+                    <CardBody>
+                        <CardTitle>@_productInfo.Name</CardTitle>
+                        <Rating Max="5" Star=@((int)_productInfo.RatingAverage)></Rating>
+                        <CardSubTitle>Total buyer: @_productInfo.TotalBuyer</CardSubTitle>
+                        <CardTitle Class="text-warning">Price: @_productInfo.Price $</CardTitle>
+                        <p>@_productInfo.ShortDescription</p>
 
-                            <fieldset aria-label="Choose a color" class="mt-4">
-                                <div class="space-x-3 flex items-center">
-                                    <!-- Active and Checked: "ring ring-offset-1" -->
-                                    <label aria-label="White" class="-m-0.5 p-0.5 ring-gray-400 relative flex cursor-pointer items-center justify-center rounded-full focus:outline-none">
-                                        <input type="radio" name="color-choice" value="White" class="sr-only">
-                                        <span aria-hidden="true" class="h-8 w-8 border-black bg-white rounded-full border border-opacity-10"></span>
-                                    </label>
-                                    <!-- Active and Checked: "ring ring-offset-1" -->
-                                    <label aria-label="Gray" class="-m-0.5 p-0.5 ring-gray-400 relative flex cursor-pointer items-center justify-center rounded-full focus:outline-none">
-                                        <input type="radio" name="color-choice" value="Gray" class="sr-only">
-                                        <span aria-hidden="true" class="h-8 w-8 border-black bg-gray-200 rounded-full border border-opacity-10"></span>
-                                    </label>
-                                    <!-- Active and Checked: "ring ring-offset-1" -->
-                                    <label aria-label="Black" class="-m-0.5 p-0.5 ring-gray-900 relative flex cursor-pointer items-center justify-center rounded-full focus:outline-none">
-                                        <input type="radio" name="color-choice" value="Black" class="sr-only">
-                                        <span aria-hidden="true" class="h-8 w-8 border-black bg-gray-900 rounded-full border border-opacity-10"></span>
-                                    </label>
-                                </div>
-                            </fieldset>
-                        </div>
+                        <CardSeparator></CardSeparator>
 
-                        <!-- Sizes -->
-                        <div class="mt-10">
-                            <div class="flex items-center justify-between">
-                                <h3 class="text-gray-900 text-sm font-medium">Size</h3>
-                                <a href="#" class="text-indigo-600 text-sm font-medium hover:text-indigo-500">Size guide</a>
-                            </div>
+                        <b>Size</b>
+                        <div class="row">
+                            @for (var i = 0; i < 6; i++)
+                            {
+                                <div class="col">
 
-                            <fieldset aria-label="Choose a size" class="mt-4">
-                                <div class="gap-4 grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-4">
-                                    <!-- Active: "ring-2 ring-indigo-500" -->
-                                    <label class="bg-gray-50 px-4 py-3 text-gray-200 group relative flex cursor-not-allowed items-center justify-center rounded-md border text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                        <input type="radio" name="size-choice" value="XXS" disabled class="sr-only">
-                                        <span>XXS</span>
-                                        <span aria-hidden="true" class="-inset-px border-gray-200 pointer-events-none absolute rounded-md border-2">
-                                            <svg class="inset-0 text-gray-200 absolute h-full w-full stroke-2" viewBox="0 0 100 100" preserveAspectRatio="none" stroke="currentColor">
-                                                <line x1="0" y1="100" x2="100" y2="0" vector-effect="non-scaling-stroke" />
-                                            </svg>
-                                        </span>
-                                    </label>
                                     @{
-                                        var valueList = _productInfo?.ConfigOptions?.ElementAtOrDefault(1)?.Values;
-                                        if (valueList != null)
-                                        {
-                                            foreach (var configValue in valueList)
-                                            {
-                                                <!-- Active: "ring-2 ring-indigo-500" -->
-                                                <label class="bg-white px-4 py-3 text-gray-900 group relative flex cursor-pointer items-center justify-center rounded-md border text-sm font-medium uppercase shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                                    <input type="radio" name="size-choice" value="@configValue" class="sr-only">
-                                                    <span>@configValue</span>
-                                                    <!--
-                                                      Active: "border", Not Active: "border-2"
-                                                      Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                                    -->
-                                                    <span class="-inset-px pointer-events-none absolute rounded-md" aria-hidden="true"></span>
-                                                </label>
-                                            }
-                                        }
+                                        var i1 = i;
                                     }
+                                    <TelerikButton Class="p-4">X @i1</TelerikButton>
                                 </div>
-                            </fieldset>
+                            }
                         </div>
 
-                        <button type="submit" class="mt-10 border-transparent bg-indigo-600 px-8 py-3 text-white flex w-full items-center justify-center rounded-md border text-base font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"> Add to cart</button>
-                    </form>
-                </div>
+                        <b>Color</b>
+                        <div class="row">
+                            @for (var i = 0; i < 6; i++)
+                            {
+                                <div class="col">
 
-                <hr class="my-6 border-gray-200 dark:border-gray-800 md:my-8" />
+                                    @{
+                                        var i1 = i;
+                                    }
+                                    <TelerikButton Class="p-4">X @i1</TelerikButton>
+                                </div>
+                            }
+                        </div>
+                    </CardBody>
 
+                    <CardSeparator></CardSeparator>
 
-            </div>
-        </div>
-    </div>
-</section>
+                    <CardActions Layout="CardActionsLayout.Stretch">
+                        <TelerikButton Icon="@SvgIcon.Cart">Add to basket</TelerikButton>
+                    </CardActions>
+                </TelerikCard>
+            </GridLayoutItem>
 
-<ProductDescriptionSection></ProductDescriptionSection>
-
-<ProductReviewSection />
+            <GridLayoutItem Column="1" Row="2" ColumnSpan="2">
+                @for (var i = 0; i < 20; i++)
+                {
+                    <p>
+                        Tần số quét và độ sáng tối đa được đặt trên C65 lần lượt là 90 Hz và 600 nits. Những thông số vừa đủ để mang đến trải nghiệm lướt và chuyển động mượt mà nhất cho người dùng trên con máy này. Bên cạnh khả năng bảo vệ đến từ mặt kính cường lực Corning Gorilla Glass dán phía trên. Nhờ đó mà chiếc điện thoại không chỉ được an toàn mà còn được gìn giữ luôn mới trong suốt thời gian sử dụng
+                    </p>
+                }
+            </GridLayoutItem>
+        </GridLayoutItems>
+    </TelerikGridLayout>
+</div>

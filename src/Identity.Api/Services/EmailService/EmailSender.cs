@@ -1,5 +1,6 @@
 ﻿using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Options;
 using MimeKit;
 using MimeKit.Text;
 
@@ -10,10 +11,10 @@ namespace Identity.Api.Services.EmailService
         private readonly ILogger<EmailSender> _logger;
         private readonly SmtpConfig _smtpConfig;
 
-        public EmailSender(ILogger<EmailSender> logger, SmtpConfig smtpConfig)
+        public EmailSender(ILogger<EmailSender> logger, IOptions<SmtpConfig> smtpOptions)
         {
             _logger = logger;
-            _smtpConfig = smtpConfig;
+            _smtpConfig = smtpOptions.Value;
         }
         public async Task SendConfirmationLinkAsync(IdentityUser user, string email, string confirmationLink)
         {

@@ -1,5 +1,3 @@
-using EShop.Application.Enums;
-using EShop.Shared.ResponseModels;
 using Microsoft.AspNetCore.Mvc;
 using Order.Api.Models.RequestModels;
 

@@ -10,6 +10,8 @@
 
         public int? ParentId { get; set; }
 
+        public bool HasChild => Childs.Any();
+
         public List<GetAllCategoriesResponse> Childs { get; set; } = new();
     }
 }

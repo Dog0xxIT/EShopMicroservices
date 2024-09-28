@@ -1,7 +1,4 @@
-﻿using WebApp.Core.RequestModels;
-using WebApp.Core.ResponseModels;
-
-namespace WebApp.Services.BasketService;
+﻿namespace WebApp.Services.BasketService;
 
 public interface IBasketService
 {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using WebApp.Core.ResponseModels;
 
 namespace WebApp.Pages.Product;
 

@@ -1,7 +1,4 @@
-﻿using WebApp.Core.RequestModels;
-using WebApp.Core.ResponseModels;
-
-namespace WebApp.States.AuthState
+﻿namespace WebApp.States.AuthState
 {
     public interface IAccountManagement
     {

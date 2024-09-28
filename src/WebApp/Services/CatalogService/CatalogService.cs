@@ -1,6 +1,4 @@
 ﻿using WebApp.Core.CoreHttpClient;
-using WebApp.Core.RequestModels;
-using WebApp.Core.ResponseModels;
 
 namespace WebApp.Services.CatalogService
 {
@@ -17,7 +15,7 @@ namespace WebApp.Services.CatalogService
         {
             var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetListBrandsResponse>>(
                 clientName: UrlsConfig.CatalogClient,
-                uri: "/products",
+                uri: "api/v1/products",
                 queryObj: paginationRequest);
 
             return resultObject.Data;
@@ -27,7 +25,7 @@ namespace WebApp.Services.CatalogService
         {
             var resultObject = await _coreHttpClient.GetAsync<List<GetAllCategoriesResponse>>(
                 clientName: UrlsConfig.CatalogClient,
-                uri: "/categories/hierarchy");
+                uri: "api/v1/categories/hierarchy");
 
             return resultObject.Data;
         }
@@ -36,7 +34,7 @@ namespace WebApp.Services.CatalogService
         {
             var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetAllCategoriesResponse>>(
                 clientName: UrlsConfig.CatalogClient,
-                uri: "/categories");
+                uri: "api/v1/categories");
 
             return resultObject.Data;
         }
@@ -45,7 +43,7 @@ namespace WebApp.Services.CatalogService
         {
             var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
                  clientName: UrlsConfig.CatalogClient,
-                 uri: "/products",
+                 uri: "api/v1/products",
                  queryObj: paginationRequest);
 
             return resultObject.Data;
@@ -56,7 +54,7 @@ namespace WebApp.Services.CatalogService
         {
             return await _coreHttpClient.GetAsync<GetProductByIdResponse>(
                 clientName: UrlsConfig.CatalogClient,
-                uri: $"/products/{productId}");
+                uri: $"api/v1/products/{productId}");
         }
     }
 }

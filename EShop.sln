@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Api", "src\Basket.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Api", "src\Order\Order.Api\WebApplication1\Order.Api.csproj", "{C66AFFAC-ECFF-4D42-82EF-B338E9F9593E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EShop", "EShop", "{7EB76A70-5B0B-452D-82EF-A0CD5383C352}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Infrastructure", "src\Order\Order.Infrastructure\Order.Infrastructure.csproj", "{A2556670-03C4-4BCF-AA7E-A5B46D9EB9CA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8307DB41-75B3-4AE6-88D9-F185F689ED44}"

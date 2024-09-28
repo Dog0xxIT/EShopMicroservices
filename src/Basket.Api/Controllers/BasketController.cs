@@ -1,82 +1,80 @@
-using Basket.Api.Data;
-using Basket.Api.Infrastructure;
-using Basket.Api.Models.RequestModel;
-using Basket.Api.Models.ResponseModel;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Security.Principal;
+using Basket.Api.Services.CatalogService;
+using Basket.Api.Services.IdentityService;
 
 namespace Basket.Api.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("baskets")]
+    [Route("api/v1/baskets")]
     public class BasketController : Controller
     {
         private readonly BasketContext _context;
         private readonly ILogger<BasketController> _logger;
+        private readonly ICatalogService _catalogService;
+        private readonly IIdentityService _identityService;
 
-        public BasketController(ILogger<BasketController> logger, BasketContext context)
+        public BasketController(ILogger<BasketController> logger, BasketContext context, ICatalogService catalogService, IIdentityService identityService)
         {
             _logger = logger;
             _context = context;
+            _catalogService = catalogService;
+            _identityService = identityService;
         }
 
         #region Get method
 
-        [HttpGet("{customerId}")]
+        [HttpGet("{userId}")]
         public async Task<IActionResult> GetBasketByCustomerId(
-            [FromRoute] int customerId,
+            [FromRoute] int userId,
             [FromQuery] PaginationRequest paginationReq)
         {
-            var response = new PaginationResponse<GetBasketByCustomerIdResponse>();
-
             var basketOfCustomer = await _context.Baskets
-                //.Include(b => b.User)
-                .SingleOrDefaultAsync(b => b.UserId == customerId);
+                .Include(b => b.Items)
+                .SingleOrDefaultAsync(b => b.UserId == userId);
 
             if (basketOfCustomer is null)
             {
-                return Ok(response);
+                return Problem("Not exists basket");
             }
 
             var basketItems = await _context.BasketItems
+                .Where(b => b.BasketId == basketOfCustomer.Id)
                 .OrderByDescending(b => b.Id)
                 .Skip((paginationReq.Page - 1) * paginationReq.Limit)
                 .Take(paginationReq.Limit)
-                //.Include(b => b.Product)
-                .Where(b => b.BasketId == basketOfCustomer.Id)
                 .AsNoTracking()
                 .ToListAsync();
 
-            var baskItemsDto = new List<GetBasketByCustomerIdResponse>();
-
-            foreach (var basketItem in basketItems)
-            {
-                //var product = await _context.Products.FindAsync(basketItem.ProductId);
-
-                baskItemsDto.Add(new GetBasketByCustomerIdResponse
+            var baskItemsDto = basketItems.Select(b =>
+                new GetBasketByCustomerIdResponse
                 {
-                    ProductId = basketItem.ProductId,
-                    //CustomerId = basketOfCustomer.User?.Id ?? 0,
-                    //CustomerName = basketOfCustomer.User?.UserName ?? "",
-                    Id = basketItem.Id,
-                    //ProductName = product?.Name ?? "",
-                    //PictureUrl = product?.ImageUrl ?? "",
-                    Quantity = basketItem.Quantity,
-                    UnitPrice = basketItem.UnitPrice
-                });
-            }
+                    ProductId = b.ProductId,
+                    CustomerId = basketOfCustomer.UserId,
+                    Id = b.Id,
+                    ProductName = b.ProductName,
+                    PictureUrl = b.PictureUrl,
+                    Quantity = b.Quantity,
+                    UnitPrice = b.UnitPrice
+                }).ToList();
 
             var totalBasketItems = await _context.BasketItems.CountAsync();
-            var totalPages = paginationReq.Limit != 1 ? totalBasketItems / paginationReq.Limit + 1 : 0;
-
-            response.Data = baskItemsDto;
-            response.Meta.CurrentPage = paginationReq.Page;
-            response.Meta.PerPage = paginationReq.Limit;
-            response.Meta.Count = baskItemsDto.Count;
-            response.Meta.Total = totalBasketItems;
-            response.Meta.TotalPages = totalPages;
+            var totalPages = paginationReq.Limit != 0 ? (totalBasketItems / paginationReq.Limit) + 1 : 0;
+            var response = new PaginationResponse<GetBasketByCustomerIdResponse>
+            {
+                Data = baskItemsDto,
+                Meta = new()
+                {
+                    Count = baskItemsDto.Count,
+                    Total = totalBasketItems,
+                    PerPage = paginationReq.Page,
+                    CurrentPage = paginationReq.Page,
+                    TotalPages = totalPages,
+                    Current = "",
+                    Next = "",
+                    Previous = "",
+                }
+            };
 
             return Ok(response);
         }
@@ -84,130 +82,57 @@ namespace Basket.Api.Controllers
         #endregion
 
         #region Post method
-
+        //[Authorize]
         [HttpPost]
         public async Task<IActionResult> AddToBasket(AddToBasketRequest req)
         {
-            return Ok();
-
-            /*
-            var product = await _context.Products.FindAsync(req.ProductId);
-
+            // Call catalog get info product
+            var product = await _catalogService.GetBaseInfoProduct("Catalog", req.ProductId);
             if (product is null)
             {
-                return Problem("Not found product");
+                return BadRequest("Not exists product");
+            }
+
+            var isExistsUser = await _identityService.CheckExistsUser("Identity", req.CustomerId);
+            if (!isExistsUser)
+            {
+                return BadRequest("Not exists User");
             }
 
             var newBasketItem = new BasketItem
             {
                 ProductId = req.ProductId,
                 Quantity = req.Quantity,
-                UnitPrice = product.Price,
+                ProductName = product.ProductName,
+                UnitPrice = product.UnitPrice,
+                PictureUrl = product.PictureUrl,
             };
 
-            var baskets = await _context.Baskets
-                .Where(b => b.UserId == req.CustomerId)
-                .Include(b => b.Items)
-                .AsNoTracking()
-                .ToListAsync();
+            var basket = await _context.Baskets
+                    .Include(b => b.Items)
+                    .AsNoTracking()
+                    .SingleOrDefaultAsync(b => b.UserId == req.CustomerId);
 
-            if (!baskets.Any())
-            {
-                var newBasket = new Infrastructure.Entities.Basket
-                {
-                    UserId = req.CustomerId,
-                    Items = new() { newBasketItem }
-                };
-                try
-                {
-                    //await _unitOfWork.BasketRepository.Create(newBasket);
-                    //await _unitOfWork.Commit();
-                    return Ok(ResponseObject.Succeeded);
-                }
-                catch (Exception ex)
-                {
-                    return Problem(ex.Message);
-                }
-
-            }
-            else
-            {
-                var basketOfCustomer = baskets.First();
-                var existsBasketItem = basketOfCustomer.Items.Any(i => i.ProductId == req.ProductId);
-                if (existsBasketItem)
-                {
-                    return Problem("Product exists in basket");
-                }
-
-                basketOfCustomer.Items.Add(newBasketItem);
-                try
-                {
-                    //_unitOfWork.BasketRepository.Update(basketOfCustomer);
-                    //await _unitOfWork.Commit();
-                    return Ok(ResponseObject.Succeeded);
-                }
-                catch (Exception ex)
-                {
-                    return Problem(ex.Message);
-                }
-            }
-                  */
-        }
-
-        [HttpPatch("updateQty")]
-        public async Task<IActionResult> UpdateQty(UpdateQtyRequest req)
-        {
-            //Note
-            var basketEntity = await _context.BasketItems.FindAsync(req.BasketItemId);
-
-            if (basketEntity is null)
-            {
-                return Problem("Not exists basket");
-            }
-
-            if (req.Qty == 0)
-            {
-                try
-                {
-                    //_unitOfWork.BasketItemRepository.Update(basketEntity);
-                    //await _unitOfWork.Commit();
-                    return Ok(ResponseObject.Succeeded);
-
-                }
-                catch (Exception ex)
-                {
-                    return Problem(ex.Message);
-                }
-            }
-            else
-            {
-                basketEntity.Quantity = req.Qty;
-                basketEntity.SetTimeLastModified();
-                try
-                {
-                    //_unitOfWork.BasketItemRepository.Update(basketEntity);
-                    //await _unitOfWork.Commit();
-                    return Ok(ResponseObject.Succeeded);
-
-                }
-                catch (Exception ex)
-                {
-                    return Problem(ex.Message);
-                }
-            }
-        }
-
-        #endregion
-
-        #region Delete method
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] int id)
-        {
             try
             {
-                //await _unitOfWork.BasketItemRepository.Delete(basketItemId);
-                //await _unitOfWork.Commit();
+                if (basket is null)
+                {
+                    var newBasket = new Data.Entities.Basket
+                    {
+                        UserId = req.CustomerId,
+                        Items = new() { newBasketItem }
+                    };
+                }
+                else
+                {
+                    var existsBasketItem = basket.Items.Any(i => i.ProductId == req.ProductId);
+                    if (existsBasketItem)
+                    {
+                        return Problem("Product exists in basket");
+                    }
+                    basket.Items.Add(newBasketItem);
+                }
+                await _context.SaveChangesAsync();
                 return Ok(ResponseObject.Succeeded);
             }
             catch (Exception ex)
@@ -216,6 +141,61 @@ namespace Basket.Api.Controllers
             }
         }
 
+        [HttpPatch("updateQty")]
+        public async Task<IActionResult> UpdateQty(UpdateQtyRequest req)
+        {
+            //Note
+            var basketItem = await _context.BasketItems.FindAsync(req.BasketItemId);
+
+            if (basketItem is null)
+            {
+                return Problem("Not exists basket item");
+            }
+
+            try
+            {
+                if (req.Qty == 0)
+                {
+                    _context.BasketItems.Remove(basketItem);
+                }
+                else
+                {
+                    basketItem.Quantity = req.Qty;
+                    basketItem.SetTimeLastModified();
+                }
+                await _context.SaveChangesAsync();
+                return Ok(ResponseObject.Succeeded);
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region Delete method
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            var basketItem = await _context.BasketItems.FindAsync(id);
+
+            if (basketItem is null)
+            {
+                return Problem("Not exists basket item");
+            }
+
+            try
+            {
+                _context.BasketItems.Remove(basketItem);
+                await _context.SaveChangesAsync();
+                return Ok(ResponseObject.Succeeded);
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
         #endregion
     }
 }

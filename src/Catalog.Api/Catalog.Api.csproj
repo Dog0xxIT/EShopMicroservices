@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="IntegrationEvents\SubcribeEvents\**" />
+    <Content Remove="IntegrationEvents\SubcribeEvents\**" />
+    <EmbeddedResource Remove="IntegrationEvents\SubcribeEvents\**" />
+    <None Remove="IntegrationEvents\SubcribeEvents\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
     <PackageReference Include="dotenv.net" Version="3.2.1" />
     <PackageReference Include="Mapster" Version="7.4.0" />
@@ -24,10 +31,6 @@
     <ProjectReference Include="..\Core\EventBus\EventBus.csproj" />
     <ProjectReference Include="..\Core\EventPubliserService\EventPublisherWorker.csproj" />
     <ProjectReference Include="..\Core\EventStore\EventStoreEF.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="IntegrationEvents\SubcribeEvents\" />
   </ItemGroup>
 
 </Project>

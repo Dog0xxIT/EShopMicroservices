@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using System.Web;
 using Newtonsoft.Json;
-using WebApp.Core.ResponseModels;
 
 namespace WebApp.Core.CoreHttpClient;
 

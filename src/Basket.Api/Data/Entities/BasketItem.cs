@@ -1,9 +1,6 @@
-﻿using Basket.Api.Data.Entities;
-using Microsoft.EntityFrameworkCore;
-
-namespace Basket.Api.Infrastructure.Entities
+﻿namespace Basket.Api.Data.Entities
 {
-    public class BasketItem : Entity
+    public class BasketItem : BaseEntity
     {
         public double UnitPrice { get; set; }
 
@@ -11,9 +8,13 @@ namespace Basket.Api.Infrastructure.Entities
 
         public int ProductId { get; set; }
 
+        public string ProductName { get; set; }
+
+        public string PictureUrl { get; set; }
+
         public int BasketId { get; set; }
 
         [DeleteBehavior(DeleteBehavior.NoAction)]
-        public Data.Entities.Basket Basket { get; set; }
+        public Basket Basket { get; set; }
     }
 }

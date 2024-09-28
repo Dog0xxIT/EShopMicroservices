@@ -1,6 +1,35 @@
 {
-  "ReRoutes": [
+  "Routes": [
     {
+      "SwaggerKey": "identity",
+      "UpstreamPathTemplate": "/api/{version}/{everything}",
+      "UpstreamHttpMethod": [],
+      "DownstreamPathTemplate": "/api/{version}/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7283
+        }
+      ]
+    },
+    {
+      "SwaggerKey": "orders",
+      "UpstreamPathTemplate": "/api/{version}/{everything}",
+      "UpstreamHttpMethod": [],
+      "DownstreamPathTemplate": "/api/{version}/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7236
+        }
+      ]
+    },
+    {
+      "SwaggerKey": "catalog",
+      "UpstreamPathTemplate": "/api/{version}/{everything}",
+      "UpstreamHttpMethod": [],
       "DownstreamPathTemplate": "/api/{version}/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
@@ -8,12 +37,65 @@
           "Host": "localhost",
           "Port": 7038
         }
-      ],
-      "UpstreamPathTemplate": "gateway/api/{version}/{everything}",
-      "UpstreamHttpMethod": []
+      ]
+    },
+    {
+      "SwaggerKey": "baskets",
+      "UpstreamPathTemplate": "/api/{version}/{everything}",
+      "UpstreamHttpMethod": [],
+      "DownstreamPathTemplate": "/api/{version}/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7212
+        }
+      ]
     }
   ],
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:7140"
-  }
+  },
+  "SwaggerEndPoints": [
+    {
+      "Key": "identity",
+      "Config": [
+        {
+          "Name": "Identity API",
+          "Version": "v1",
+          "Url": "https://localhost:7283/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "orders",
+      "Config": [
+        {
+          "Name": "Orders API",
+          "Version": "v1",
+          "Url": "https://localhost:7236/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "catalog",
+      "Config": [
+        {
+          "Name": "Catalog API",
+          "Version": "v1",
+          "Url": "https://localhost:7038/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "baskets",
+      "Config": [
+        {
+          "Name": "Baskets API",
+          "Version": "v1",
+          "Url": "https://localhost:7212/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
 }

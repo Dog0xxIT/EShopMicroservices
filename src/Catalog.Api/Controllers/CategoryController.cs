@@ -21,7 +21,9 @@ namespace Catalog.Api.Controllers
         [HttpGet("hierarchy")]
         public async Task<IActionResult> GetCategoriesHierarchy()
         {
-            var categories = await _context.Categories.ToListAsync();
+            var categories = await _context.Categories
+                .AsNoTracking()
+                .ToListAsync();
 
             var categoriesDto = categories.Select(category => new GetAllCategoriesResponse
             {
@@ -29,7 +31,7 @@ namespace Catalog.Api.Controllers
                 Name = category.Name,
                 ParentId = category.ParentId,
                 ThumbnailUrl = category.ThumbnailUrl,
-                Childs = GetChildCategories(category.Id, categories, 1)
+                Childs = GetChildCategories(category.Id, categories, 1),
             });
 
             return Ok(categoriesDto);

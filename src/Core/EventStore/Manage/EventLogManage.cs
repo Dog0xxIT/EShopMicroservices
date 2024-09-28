@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EventStoreEF.Manage
 {
-    public class EventLogManage<TContext> : IEvenLogManage where TContext : DbContext
+    public class EventLogManage : IEvenLogManage
     {
-        private readonly EventStoreDbContext<TContext> _context;
+        private readonly EventStoreDbContext _context;
 
-        public EventLogManage(EventStoreDbContext<TContext> context)
+        public EventLogManage(EventStoreDbContext context)
         {
             _context = context;
         }

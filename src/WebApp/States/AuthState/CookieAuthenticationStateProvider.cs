@@ -1,9 +1,6 @@
 ﻿using System.Security.Claims;
 using EShop.WebApp.States.AuthState;
 using Microsoft.AspNetCore.Components.Authorization;
-using WebApp.Core;
-using WebApp.Core.RequestModels;
-using WebApp.Core.ResponseModels;
 using WebApp.Services.IdentityService;
 
 namespace WebApp.States.AuthState;
@@ -36,7 +33,7 @@ public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IA
         // default to not authenticated
         var user = _unauthenticated;
 
-        var httpClient = _clientFactory.CreateClient(UrlsConfig.CatalogClient);
+        var httpClient = _clientFactory.CreateClient(UrlsConfig.IdentityClient);
 
         try
         {
@@ -44,10 +41,9 @@ public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IA
             request.Method = HttpMethod.Get;
             request.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
             request.Headers.Add("X-Requested-With", ["XMLHttpRequest"]);
-            request.RequestUri = new Uri("https://localhost:7093/Identity/ManageInfo");
+            request.RequestUri = new Uri("api/v1/manageInfo");
 
             var client = await httpClient.SendAsync(request);
-
             if (client.IsSuccessStatusCode)
             {
                 var resultData = await client.Content.ReadFromJsonAsync<ManageInfoResponse>();
