@@ -1,4 +1,4 @@
-﻿namespace EShop.WebApp.Models.Common
+﻿namespace WebApp.Models.Common
 {
     public class AlertItem
     {

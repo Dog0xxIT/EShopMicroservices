@@ -1,15 +1,9 @@
 [
   {
-    "Id": 2,
-    "Name": "Root",
-    "ThumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/97/bc/ae/7fe8a253cce6da248aebe6679bb9c88f.jpg",
-    "ParentId": null
-  },
-  {
     "Id": 2549,
     "Name": "Đồ Chơi - Mẹ & Bé",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/13/64/43/226301adcc7660ffcf44a61bb6df99b7.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 2551,
@@ -75,7 +69,7 @@
     "Id": 1789,
     "Name": "Điện Thoại - Máy Tính Bảng",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/54/c0/ff/fe98a4afa2d3e5142dc8096addc4e40b.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 1795,
@@ -111,7 +105,7 @@
     "Id": 44792,
     "Name": "NGON",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/1e/8c/08/d8b02f8a0d958c74539316e8cd437cbd.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 44824,
@@ -231,7 +225,7 @@
     "Id": 1520,
     "Name": "Làm Đẹp - Sức Khỏe",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/73/0e/89/bf5095601d17f9971d7a08a1ffe98a42.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 1582,
@@ -309,7 +303,7 @@
     "Id": 1882,
     "Name": "Điện Gia Dụng",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/61/d4/ea/e6ea3ffc1fcde3b6224d2bb691ea16a2.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 1884,
@@ -327,7 +321,7 @@
     "Id": 931,
     "Name": "Thời trang nữ",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/55/5b/80/48cbaafe144c25d5065786ecace86d38.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 941,
@@ -429,7 +423,7 @@
     "Id": 915,
     "Name": "Thời trang nam",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/00/5d/97/384ca1a678c4ee93a0886a204f47645d.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 917,
@@ -519,7 +513,7 @@
     "Id": 1703,
     "Name": "Giày - Dép nữ",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/cf/ed/e1/5a6b58f21fbcad0d201480c987f8defe.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 8355,
@@ -579,7 +573,7 @@
     "Id": 976,
     "Name": "Túi thời trang nữ",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/31/a7/94/6524d2ecbec216816d91b6066452e3f2.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 4559,
@@ -621,7 +615,7 @@
     "Id": 1686,
     "Name": "Giày - Dép nam",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/d6/7f/6c/5d53b60efb9448b6a1609c825c29fa40.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 27572,
@@ -669,7 +663,7 @@
     "Id": 27616,
     "Name": "Túi thời trang nam",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/9b/31/af/669e6a133118e5439d6c175e27c1f963.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 5337,
@@ -699,7 +693,7 @@
     "Id": 6000,
     "Name": "Balo và Vali",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/3e/c0/30/1110651bd36a3e0d9b962cf135c818ee.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 27608,
@@ -735,7 +729,7 @@
     "Id": 27498,
     "Name": "Phụ kiện thời trang",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/ca/53/64/49c6189a0e1c1bf7cb91b01ff6d3fe43.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 8370,
@@ -759,7 +753,7 @@
     "Id": 8371,
     "Name": "Đồng hồ và Trang sức",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/8b/d4/a8/5924758b5c36f3b1c43b6843f52d6dd2.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 1778,
@@ -795,7 +789,7 @@
     "Id": 1846,
     "Name": "Laptop - Máy Vi Tính - Linh kiện",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/92/b5/c0/3ffdb7dbfafd5f8330783e1df20747f6.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 8095,
@@ -837,7 +831,7 @@
     "Id": 1883,
     "Name": "Nhà Cửa - Đời Sống",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/f6/22/46/7e2185d2cf1bca72d5aeac385a865b2b.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 1951,
@@ -915,7 +909,7 @@
     "Id": 17166,
     "Name": "Cross Border - Hàng Quốc Tế",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/3c/e4/99/eeee1801c838468d94af9997ec2bbe42.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 20766,
@@ -1017,7 +1011,7 @@
     "Id": 4384,
     "Name": "Bách Hóa Online",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/40/0f/9b/62a58fd19f540c70fce804e2a9bb5b2d.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 4421,
@@ -1089,7 +1083,7 @@
     "Id": 1815,
     "Name": "Thiết Bị Số - Phụ Kiện Số",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/75/34/29/78e428fdd90408587181005f5cc3de32.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 8215,
@@ -1131,7 +1125,7 @@
     "Id": 11312,
     "Name": "Voucher - Dịch vụ",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/0a/c9/7b/8e466bdf6d4a5f5e14665ce56e58631d.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 11313,
@@ -1215,7 +1209,7 @@
     "Id": 8594,
     "Name": "Ô Tô - Xe Máy - Xe Đạp",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/69/f5/36/c6cd9e2849854630ed74ff1678db8f19.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 8597,
@@ -1257,7 +1251,7 @@
     "Id": 8322,
     "Name": "Nhà Sách Tiki",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/ed/20/60/afa9b3b474bf7ad70f10dd6443211d5f.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 320,
@@ -1287,7 +1281,7 @@
     "Id": 4221,
     "Name": "Điện Tử - Điện Lạnh",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/c8/82/d4/64c561c4ced585c74b9c292208e4995a.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 5015,
@@ -1359,7 +1353,7 @@
     "Id": 1975,
     "Name": "Thể Thao - Dã Ngoại",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/0b/5e/3d/00941c9eb338ea62a47d5b1e042843d8.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 8411,
@@ -1449,7 +1443,7 @@
     "Id": 1801,
     "Name": "Máy Ảnh - Máy Quay Phim",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/2d/7c/45/e4976f3fa4061ab310c11d2a1b759e5b.png",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 28806,
@@ -1515,7 +1509,7 @@
     "Id": 54042,
     "Name": "Sản phẩm Tài chính - Bảo hiểm",
     "ThumbnailUrl": "https://salt.tikicdn.com/ts/category/a0/49/f4/a75f6e5dc021b0005fb8923b9846abc2.jpg",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 56009,
@@ -1527,7 +1521,7 @@
     "Id": 11603,
     "Name": "Thời Trang Cho Mẹ Và Bé",
     "ThumbnailUrl": "https://salt.tikicdn.com/assets/img/image.svg",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 5191,
@@ -1569,7 +1563,7 @@
     "Id": 15078,
     "Name": "Chăm sóc nhà cửa",
     "ThumbnailUrl": "https://salt.tikicdn.com/assets/img/image.svg",
-    "ParentId": 2
+    "ParentId": null
   },
   {
     "Id": 4386,
@@ -1606,29 +1600,5 @@
     "Name": "Diệt côn trùng",
     "ThumbnailUrl": "",
     "ParentId": 15078
-  },
-  {
-    "Id": 8895,
-    "Name": "NESLE FITNESSES",
-    "ThumbnailUrl": "",
-    "ParentId": null
-  },
-  {
-    "Id": 8977,
-    "Name": "Ưu đãi Từ Tiki và Microsoft",
-    "ThumbnailUrl": "",
-    "ParentId": null
-  },
-  {
-    "Id": 9983,
-    "Name": "hazeline lauching",
-    "ThumbnailUrl": "",
-    "ParentId": null
-  },
-  {
-    "Id": 11033,
-    "Name": "Engineering",
-    "ThumbnailUrl": "",
-    "ParentId": null
   }
 ]

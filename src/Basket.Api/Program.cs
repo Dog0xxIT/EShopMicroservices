@@ -1,6 +1,8 @@
-using System.Security.Principal;
+using System.Text;
+using Basket.Api.Configurations;
 using Basket.Api.Services.CatalogService;
-using Basket.Api.Services.IdentityService;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,17 +15,32 @@ builder.Services
         httpClient.BaseAddress = new Uri("https://localhost:7038");
     });
 
-builder.Services
-    .AddHttpClient("IdentityClient", httpClient =>
-    {
-        httpClient.BaseAddress = new Uri("https://localhost:7038");
-    });
-
 builder.Services.AddTransient<ICatalogService, CatalogService>();
 
-builder.Services.AddTransient<IIdentityService, IdentityService>();
-
 builder.Services.AddControllers();
+
+builder.Services
+    .AddAuthentication("Bearer")
+    .AddJwtBearer(options =>
+    {
+        var jwtConfig = new JwtConfig();
+        builder.Configuration.GetSection(JwtConfig.SectionName).Bind(jwtConfig);
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidIssuer = jwtConfig.Issuer,
+            ValidAudience = jwtConfig.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.SecretKey)),
+        };
+        options.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                context.Token = context.Request.Cookies["access-token"]; // Get token from cookie
+                return Task.CompletedTask;
+            },
+        };
+    });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -41,8 +58,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.MapControllers();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.Run();

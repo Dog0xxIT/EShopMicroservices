@@ -73,9 +73,9 @@ public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IA
         return new AuthenticationState(user);
     }
 
-    public async Task<ResultObject<ResponseObject>> SignIn(SignInRequest req)
+    public async Task<ResultObject<ResponseObject>> Login(SignInRequest req)
     {
-        var resultObject = await _identityService.SignIn(req);
+        var resultObject = await _identityService.Login(req);
         if (resultObject.ResultCode.Equals(ResultCode.Success))
         {
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
@@ -83,9 +83,9 @@ public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IA
         return resultObject;
     }
 
-    public async Task<ResultObject<ResponseObject>> SignOut()
+    public async Task<ResultObject<ResponseObject>> Logout()
     {
-        var resultObject = await _identityService.SignOut();
+        var resultObject = await _identityService.Logout();
         if (resultObject.ResultCode.Equals(ResultCode.Success))
         {
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());

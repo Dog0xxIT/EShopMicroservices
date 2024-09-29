@@ -21,20 +21,32 @@ namespace Catalog.Api.Data.SeedData
             modelBuilder.Entity<OptionType>()
                 .HasData(optionTypeList!);
 
-            textJson = File.ReadAllText("./Data/SeedData/productOptions.json");
-            var productOptionList = JsonConvert.DeserializeObject<List<ProductOption>>(textJson);
-            modelBuilder.Entity<ProductOption>()
-                .HasData(productOptionList!);
-
             textJson = File.ReadAllText("./Data/SeedData/products.json");
             var productList = JsonConvert.DeserializeObject<List<Product>>(textJson);
+            productList = productList.Where(p => categoryList
+                    .Select(i => i.Id).Contains(p.CategoryId))
+                    .ToList();
             modelBuilder.Entity<Product>()
                 .HasData(productList!);
 
             textJson = File.ReadAllText("./Data/SeedData/productVariants.json");
             var productVariantList = JsonConvert.DeserializeObject<List<ProductVariant>>(textJson);
+            productVariantList = productVariantList
+                .Where(p => productList.Select(i => i.Id).Contains(p.ProductId))
+                .ToList();
             modelBuilder.Entity<ProductVariant>()
                 .HasData(productVariantList!);
+
+            textJson = File.ReadAllText("./Data/SeedData/productOptions.json");
+            var productOptionList = JsonConvert.DeserializeObject<List<ProductOption>>(textJson);
+            productOptionList = productOptionList
+                .Where(i => 
+                    productVariantList.Select(i => i.Id).Contains(i.ProductVariantId))
+                .Where(i => 
+                    optionTypeList.Select(i => i.Id).Contains(i.OptionTypeId))
+                .ToList();
+            modelBuilder.Entity<ProductOption>()
+                .HasData(productOptionList!);
         }
     }
 }

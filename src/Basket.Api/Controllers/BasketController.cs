@@ -1,6 +1,6 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Principal;
 using Basket.Api.Services.CatalogService;
-using Basket.Api.Services.IdentityService;
 
 namespace Basket.Api.Controllers
 {
@@ -12,26 +12,21 @@ namespace Basket.Api.Controllers
         private readonly BasketContext _context;
         private readonly ILogger<BasketController> _logger;
         private readonly ICatalogService _catalogService;
-        private readonly IIdentityService _identityService;
 
-        public BasketController(ILogger<BasketController> logger, BasketContext context, ICatalogService catalogService, IIdentityService identityService)
+        public BasketController(ILogger<BasketController> logger, BasketContext context, ICatalogService catalogService)
         {
             _logger = logger;
             _context = context;
             _catalogService = catalogService;
-            _identityService = identityService;
         }
 
-        #region Get method
-
-        [HttpGet("{userId}")]
+        [HttpPost]
         public async Task<IActionResult> GetBasketByCustomerId(
-            [FromRoute] int userId,
             [FromQuery] PaginationRequest paginationReq)
         {
             var basketOfCustomer = await _context.Baskets
                 .Include(b => b.Items)
-                .SingleOrDefaultAsync(b => b.UserId == userId);
+                .SingleOrDefaultAsync(b => b.UserId == 1);
 
             if (basketOfCustomer is null)
             {
@@ -79,10 +74,6 @@ namespace Basket.Api.Controllers
             return Ok(response);
         }
 
-        #endregion
-
-        #region Post method
-        //[Authorize]
         [HttpPost]
         public async Task<IActionResult> AddToBasket(AddToBasketRequest req)
         {
@@ -93,11 +84,6 @@ namespace Basket.Api.Controllers
                 return BadRequest("Not exists product");
             }
 
-            var isExistsUser = await _identityService.CheckExistsUser("Identity", req.CustomerId);
-            if (!isExistsUser)
-            {
-                return BadRequest("Not exists User");
-            }
 
             var newBasketItem = new BasketItem
             {
@@ -141,6 +127,7 @@ namespace Basket.Api.Controllers
             }
         }
 
+
         [HttpPatch("updateQty")]
         public async Task<IActionResult> UpdateQty(UpdateQtyRequest req)
         {
@@ -172,9 +159,6 @@ namespace Basket.Api.Controllers
             }
         }
 
-        #endregion
-
-        #region Delete method
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
@@ -196,6 +180,12 @@ namespace Basket.Api.Controllers
                 return Problem(ex.Message);
             }
         }
-        #endregion
+
+        private JwtSecurityToken DecodeToken(string accessToken)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(accessToken);
+            return jwtSecurityToken;
+        }
     }
 }

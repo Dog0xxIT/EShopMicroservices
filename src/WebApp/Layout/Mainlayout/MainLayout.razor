@@ -24,7 +24,7 @@
                             DebounceDelay="500"
                             Rounded="@ThemeConstants.TextBox.Rounded.Large">
                 <TextBoxSuffixTemplate>
-                    <TelerikSvgIcon Icon="@SvgIcon.Search" />
+                    <TelerikButton Icon="@SvgIcon.Search" OnClick=@(() => _navManager.NavigateTo("/"))></TelerikButton>
                 </TextBoxSuffixTemplate>
             </TelerikTextBox>
         </AppBarSection>

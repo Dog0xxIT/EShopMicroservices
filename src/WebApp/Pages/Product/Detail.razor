@@ -5,33 +5,9 @@
 
 @inject ICatalogService CatalogService
 
-
-
-@code
-{
-    public List<BreadcrumbItem> Items { get; set; }
-
-    protected override void OnInitialized()
-    {
-        Items = new List<BreadcrumbItem>
-        {
-            new () { Text = "Home", Icon = SvgIcon.Home },
-            new ()  { Text = "Products"},
-            new ()  { Text = "Computer peripherals"},
-            new ()  { Text = "Keyboards"},
-            new ()  { Text = "Gaming keyboards"}
-        };
-    }
-
-    public class BreadcrumbItem
-    {
-        public string Text { get; set; }
-        public ISvgIcon Icon { get; set; }
-        public string Url { get; set; }
-    }
-}
 <div class="w-75 mx-auto">
-    <TelerikBreadcrumb Data="@Items" Class="mb-4">
+    <TelerikBreadcrumb Data="@_breadcrumbItems"
+                       Class="mb-4">
     </TelerikBreadcrumb>
 
     <TelerikGridLayout ColumnSpacing="5%" RowSpacing="20px">
@@ -48,7 +24,7 @@
             </GridLayoutItem>
 
             <GridLayoutItem>
-                <TelerikCard Class="hadow p-3 mb-5 bg-body-tertiary rounded-4">
+                <TelerikCard Class="p-3 mb-5 bg-body-tertiary rounded-4 shadow">
                     <CardBody>
                         <CardTitle>@_productInfo.Name</CardTitle>
                         <Rating Max="5" Star=@((int)_productInfo.RatingAverage)></Rating>
@@ -57,34 +33,39 @@
                         <p>@_productInfo.ShortDescription</p>
 
                         <CardSeparator></CardSeparator>
-
-                        <b>Size</b>
-                        <div class="row">
-                            @for (var i = 0; i < 6; i++)
+                        @{
+                            var configOption1 = _productInfo.ConfigOptions.ElementAtOrDefault(0);
+                            if (configOption1 != null)
                             {
-                                <div class="col">
-
-                                    @{
-                                        var i1 = i;
+                                <div class="my-3">
+                                    <b>@configOption1.OptionType</b>
+                                </div>
+                                <div class="row gy-5 mb-5">
+                                    @foreach (var value in configOption1.Values)
+                                    {
+                                        <div class="col-4">
+                                            <TelerikButton Class="px-4">@value</TelerikButton>
+                                        </div>
                                     }
-                                    <TelerikButton Class="p-4">X @i1</TelerikButton>
                                 </div>
                             }
-                        </div>
 
-                        <b>Color</b>
-                        <div class="row">
-                            @for (var i = 0; i < 6; i++)
+                            var configOption2 = _productInfo.ConfigOptions.ElementAtOrDefault(1);
+                            if (configOption2 != null)
                             {
-                                <div class="col">
-
-                                    @{
-                                        var i1 = i;
+                                <div class="mb-3">
+                                    <b>@configOption2.OptionType</b>
+                                </div>
+                                <div class="row gy-5 mb-5">
+                                    @foreach (var value in configOption2.Values)
+                                    {
+                                        <div class="col-4">
+                                            <TelerikButton Class="px-4">@value</TelerikButton>
+                                        </div>
                                     }
-                                    <TelerikButton Class="p-4">X @i1</TelerikButton>
                                 </div>
                             }
-                        </div>
+                        }
                     </CardBody>
 
                     <CardSeparator></CardSeparator>

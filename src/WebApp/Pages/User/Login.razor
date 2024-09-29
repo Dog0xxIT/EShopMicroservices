@@ -1,9 +1,9 @@
 ﻿@page "/login"
 
 @using EShop.WebApp.Models.Enums
-@using EShop.WebApp.Models.Common
 @using EShop.WebApp.States
 @using WebApp.Core.RequestModels
+@using WebApp.Models.Common
 @using WebApp.Services.IdentityService
 @using WebApp.States.AuthState
 
@@ -56,7 +56,7 @@
 
     private async Task ValidSubmit()
     {
-        var resultObject = await AccountManagement.SignIn(_signInRequest);
+        var resultObject = await AccountManagement.Login(_signInRequest);
         if (resultObject.ResultCode.Equals(ResultCode.Success))
         {
             NavigationManager.NavigateTo("/");

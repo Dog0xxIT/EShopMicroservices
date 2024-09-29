@@ -35,7 +35,7 @@ namespace WebApp.Services.IdentityService
                 reqObj: request);
         }
 
-        public async Task<ResultObject<ResponseObject>> SignIn(SignInRequest request)
+        public async Task<ResultObject<ResponseObject>> Login(SignInRequest request)
         {
             return await _coreHttpClient.PostAsync<ResponseObject>(
                 clientName: UrlsConfig.IdentityClient,
@@ -43,7 +43,7 @@ namespace WebApp.Services.IdentityService
                 reqObj: request);
         }
 
-        public async Task<ResultObject<ResponseObject>> SignOut()
+        public async Task<ResultObject<ResponseObject>> Logout()
         {
             return await _coreHttpClient.GetAsync<ResponseObject>(
                 clientName: UrlsConfig.IdentityClient,

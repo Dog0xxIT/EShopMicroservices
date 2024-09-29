@@ -25,14 +25,15 @@ namespace Catalog.Api.Controllers
                 .AsNoTracking()
                 .ToListAsync();
 
-            var categoriesDto = categories.Select(category => new GetAllCategoriesResponse
-            {
-                Id = category.Id,
-                Name = category.Name,
-                ParentId = category.ParentId,
-                ThumbnailUrl = category.ThumbnailUrl,
-                Childs = GetChildCategories(category.Id, categories, 1),
-            });
+            var categoriesDto = categories
+                .Select(category => new GetAllCategoriesResponse
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                    ParentId = category.ParentId,
+                    ThumbnailUrl = category.ThumbnailUrl,
+                    Childs = GetChildCategories(category.Id, categories, 1),
+                });
 
             return Ok(categoriesDto);
         }

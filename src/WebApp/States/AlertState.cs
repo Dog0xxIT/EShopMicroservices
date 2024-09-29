@@ -1,4 +1,4 @@
-﻿using EShop.WebApp.Models.Common;
+﻿using WebApp.Models.Common;
 
 namespace EShop.WebApp.States
 {
