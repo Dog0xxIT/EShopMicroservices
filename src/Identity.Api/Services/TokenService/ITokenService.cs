@@ -1,4 +1,4 @@
-﻿using System.Security.Claims;
+﻿using System.IdentityModel.Tokens.Jwt;
 
 namespace Identity.Api.Services.TokenService;
 
@@ -6,5 +6,5 @@ public interface ITokenService
 {
     string GenerateAccessToken(IEnumerable<Claim> claims);
     string GenerateRefreshToken();
-    ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
+    JwtSecurityToken DecodeToken(string accessToken);
 }

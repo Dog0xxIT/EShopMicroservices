@@ -1,12 +1,10 @@
 ﻿using MailKit.Net.Smtp;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.Extensions.Options;
 using MimeKit;
 using MimeKit.Text;
 
 namespace Identity.Api.Services.EmailService
 {
-    public class EmailSender : IEmailSender<IdentityUser>
+    public class EmailSender : IEmailSender<User>
     {
         private readonly ILogger<EmailSender> _logger;
         private readonly SmtpConfig _smtpConfig;
@@ -16,7 +14,7 @@ namespace Identity.Api.Services.EmailService
             _logger = logger;
             _smtpConfig = smtpOptions.Value;
         }
-        public async Task SendConfirmationLinkAsync(IdentityUser user, string email, string confirmationLink)
+        public async Task SendConfirmationLinkAsync(User user, string email, string confirmationLink)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_smtpConfig.UserName, _smtpConfig.Host));
@@ -30,7 +28,7 @@ namespace Identity.Api.Services.EmailService
             await SendAsync(message);
         }
 
-        public async Task SendPasswordResetLinkAsync(IdentityUser user, string email, string resetLink)
+        public async Task SendPasswordResetLinkAsync(User user, string email, string resetLink)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_smtpConfig.UserName, _smtpConfig.Host));
@@ -44,7 +42,7 @@ namespace Identity.Api.Services.EmailService
             await SendAsync(message);
         }
 
-        public async Task SendPasswordResetCodeAsync(IdentityUser user, string email, string resetCode)
+        public async Task SendPasswordResetCodeAsync(User user, string email, string resetCode)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_smtpConfig.UserName, _smtpConfig.Host));

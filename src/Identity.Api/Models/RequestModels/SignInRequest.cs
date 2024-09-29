@@ -1,4 +1,6 @@
-﻿namespace Identity.Api.Models.RequestModels
+﻿using System.ComponentModel;
+
+namespace Identity.Api.Models.RequestModels
 {
     public sealed class SignInRequest
     {

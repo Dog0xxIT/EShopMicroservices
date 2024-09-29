@@ -1,16 +1,7 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using Identity.Api.Models.RequestModels;
+﻿using Identity.Api.Models.RequestModels;
 using Identity.Api.Models.ResponseModels;
 using Identity.Api.Services.TokenService;
-using Microsoft.AspNetCore.Authentication.BearerToken;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace Identity.Api.Controllers
 {
@@ -18,15 +9,15 @@ namespace Identity.Api.Controllers
     [Route("/api/v1")]
     public class IdentityController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly IEmailSender<IdentityUser> _emailSender;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly IEmailSender<User> _emailSender;
         private readonly ILogger<IdentityController> _logger;
         private readonly JwtConfig _jwtConfig;
         private readonly ITokenService _tokenService;
 
-        public IdentityController(UserManager<IdentityUser> userManager, IEmailSender<IdentityUser> emailSender, ILogger<IdentityController> logger, IOptions<JwtConfig> jwtOptions,
-            SignInManager<IdentityUser> signInManager, ITokenService tokenService)
+        public IdentityController(UserManager<User> userManager, IEmailSender<User> emailSender, ILogger<IdentityController> logger, IOptions<JwtConfig> jwtOptions,
+            SignInManager<User> signInManager, ITokenService tokenService)
         {
             _userManager = userManager;
             _emailSender = emailSender;
@@ -60,29 +51,43 @@ namespace Identity.Api.Controllers
         [HttpGet("manageInfo")]
         public async Task<IActionResult> ManageInfo()
         {
-            var jwtToken = HttpContext.Request.Cookies["jwt"]!;
-            var handler = new JwtSecurityTokenHandler();
-            var jwtSecurityToken = handler.ReadJwtToken(jwtToken);
-            if (jwtSecurityToken != null)
+            var accessToken = HttpContext.Request.Cookies["access-token"]!;
+
+            var jwtSecurityToken = _tokenService.DecodeToken(accessToken);
+            var email = jwtSecurityToken.Claims.FirstOrDefault(claim => claim.Type == "email")?.Value;
+            var roles = jwtSecurityToken.Claims.FirstOrDefault(claim => claim.Type == "roles")?.Value;
+            var userId = jwtSecurityToken.Claims.FirstOrDefault(claim => claim.Type == "userId")?.Value;
+            return Ok(new ManageInfoResponse
             {
-                var email = jwtSecurityToken.Claims.FirstOrDefault(claim => claim.Type == "email")?.Value;
-                var roles = jwtSecurityToken.Claims.FirstOrDefault(claim => claim.Type == "roles")?.Value;
-
-                return Ok(new ManageInfoResponse
-                {
-                    Email = email ?? "",
-                    Roles = roles?.Split(",").ToList() ?? new(),
-                });
-            }
-
-            return Challenge();
+                Email = email ?? "",
+                Roles = roles?.Split(",").ToList() ?? [],
+                UserId = userId ?? ""
+            });
         }
 
-        [HttpGet("logout")]
         [Authorize]
+        [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
-            this.HttpContext.Response.Cookies.Delete("jwt");
+            var accessToken = this.HttpContext.Request.Cookies["access-token"]!;
+            var jwtSecurityToken = _tokenService.DecodeToken(accessToken);
+            var email = jwtSecurityToken.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Email)?.Value;
+            var user = await _userManager.FindByEmailAsync(email ?? "");
+            if (user is null)
+            {
+                return Unauthorized();
+            }
+
+            user.RefreshToken = "";
+            user.RefreshTokenExpiryTime = DateTime.UtcNow;
+            var identityResult = await _userManager.UpdateAsync(user);
+            if (!identityResult.Succeeded)
+            {
+                var errors = identityResult.Errors.Select(i => i.Description);
+                return Problem(errors.First());
+            }
+            this.HttpContext.Response.Cookies.Delete("access-token");
+            this.HttpContext.Response.Cookies.Delete("refresh-token");
             return Ok(ResponseObject.Succeeded);
         }
 
@@ -90,7 +95,7 @@ namespace Identity.Api.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterRequest req)
         {
-            var user = new IdentityUser
+            var user = new User
             {
                 UserName = req.Email,
                 Email = req.Email,
@@ -147,79 +152,77 @@ namespace Identity.Api.Controllers
             }
 
             var roles = await _userManager.GetRolesAsync(user);
+
             var claims = new List<Claim>
             {
-                new("email", req.Email),
-                new("roles", string.Join(',', roles))
+                new Claim(ClaimTypes.Email, req.Email),
+                new Claim(ClaimTypes.Role, RolesConstant.Customer),
             };
+
 
             var accessToken = _tokenService.GenerateAccessToken(claims);
-            var refreshToken = await _userManager.GenerateUserTokenAsync(user, "EShop.Identity", "RefreshToken");
+            var refreshToken = _tokenService.GenerateRefreshToken();
 
-            // Save RefreshToken
-            await _userManager.SetAuthenticationTokenAsync(user, "EShop.Identity", "RefreshToken", refreshToken);
+            user.RefreshToken = refreshToken;
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(10); // Expiry time refresh token
 
-            ConfigTokenInCookie(accessToken, refreshToken);
-
-            return Ok(ResponseObject.Succeeded);
+            var identityResult = await _userManager.UpdateAsync(user); // Save refresh token in Db
+            if (identityResult.Succeeded)
+            {
+                SetTokenInCookie(accessToken, refreshToken);
+                return Ok(ResponseObject.Succeeded);
+            }
+            return Problem("Server Error");
         }
 
-        [Authorize(AuthenticationSchemes = BearerTokenDefaults.AuthenticationScheme)]
         [HttpPost("refreshToken")]
-        public async Task<IActionResult> RefreshToken(string accessToken)
+        public async Task<IActionResult> RefreshToken()
         {
-            var principal = _tokenService.GetPrincipalFromExpiredToken(accessToken);
-            var email = principal.Claims.SingleOrDefault(c => c.Type == "email")?.Value;
-
-            var handler = new JwtSecurityTokenHandler();
-            var jwtSecurityToken = handler.ReadJwtToken(accessToken);
-
-            if (jwtSecurityToken is null)
+            this.HttpContext.Request.Cookies.TryGetValue("access-token", out var accessToken);
+            this.HttpContext.Request.Cookies.TryGetValue("refresh-token", out var refreshToken);
+            if (string.IsNullOrEmpty(accessToken) || string.IsNullOrEmpty(refreshToken))
             {
                 return Unauthorized();
             }
 
-            if (string.IsNullOrEmpty(email))
+            try
             {
-                return Unauthorized();
+                var principal = _tokenService.DecodeToken(accessToken);
+                var email = principal.Claims.SingleOrDefault(c => c.Type == ClaimTypes.Email)?.Value ?? "";
+                var user = await _userManager.FindByEmailAsync(email);
+                if (user is null)
+                {
+                    return Unauthorized();
+                }
+
+                if (user.RefreshToken != refreshToken)
+                {
+                    return Problem("Invalid Refresh Token");
+                }
+
+                if (user.RefreshTokenExpiryTime < DateTime.UtcNow)
+                {
+                    return Problem("Refresh token timeout. Please login!");
+                }
+
+                var newAccessToken = _tokenService.GenerateAccessToken(principal.Claims);
+                var newRefreshToken = _tokenService.GenerateRefreshToken();
+
+                user.RefreshToken = newRefreshToken;
+                user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(10); // Expiry time refresh token
+
+                var identityResult = await _userManager.UpdateAsync(user); // Save refresh token in Db
+                if (identityResult.Succeeded)
+                {
+                    SetTokenInCookie(newAccessToken, newRefreshToken);
+                    return Ok(ResponseObject.Succeeded);
+                }
+                return Problem("Server Error");
             }
-
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user is null)
+            catch (SecurityTokenException ex)
             {
-                return Unauthorized();
+                return Problem(ex.Message);
             }
-
-            if (refreshToken != await _userManager.GetAuthenticationTokenAsync(user, "EShop.Identity", "RefreshToken"))
-            {
-                return Unauthorized();
-            }
-
-            var newAccessToken = _tokenService.GenerateAccessToken(jwtSecurityToken.Claims);
-            var newRefreshToken = _tokenService.GenerateRefreshToken();
-
-            // Save RefreshToken
-            await _userManager.SetAuthenticationTokenAsync(user, "EShop.Identity", "RefreshToken", refreshToken);
-
-            var cookieOptionsForAccessToken = new CookieOptions()
-            {
-                HttpOnly = true, // XSS
-                Secure = true, // Https
-                Expires = DateTime.UtcNow.AddMinutes(1), // Expiration
-                SameSite = SameSiteMode.Strict, // CSRF
-            };
-            this.HttpContext.Response.Cookies.Append("access-token", newAccessToken, cookieOptionsForAccessToken);
-
-            var cookieOptionsForRefreshToken = new CookieOptions()
-            {
-                HttpOnly = true, // XSS
-                Secure = true, // Https
-                Expires = DateTime.UtcNow.AddMinutes(1), // Expiration
-                SameSite = SameSiteMode.Strict, // CSRF
-            };
-            this.HttpContext.Response.Cookies.Append("refresh-token", newRefreshToken, cookieOptionsForRefreshToken);
-
-            return Ok(ResponseObject.Succeeded);
         }
 
         [HttpPost("resendConfirmEmail")]
@@ -252,6 +255,7 @@ namespace Identity.Api.Controllers
 
             var code = await _userManager.GeneratePasswordResetTokenAsync(user);
             await _emailSender.SendPasswordResetCodeAsync(user, req.Email, code);
+
             return Ok(ResponseObject.Succeeded);
         }
 
@@ -270,8 +274,8 @@ namespace Identity.Api.Controllers
             {
                 var errors = identityResult.Errors.Select(e => e.Description);
                 return Problem(errors.First());
-
             }
+
             return Ok(ResponseObject.Succeeded);
         }
 
@@ -287,13 +291,13 @@ namespace Identity.Api.Controllers
         //    return Ok();
         //}
 
-        private void ConfigTokenInCookie(string accessToken, string refreshToken)
+        private void SetTokenInCookie(string accessToken, string refreshToken)
         {
             var cookieOptionsForAccessToken = new CookieOptions()
             {
                 HttpOnly = true, // XSS
                 Secure = true, // Https
-                Expires = DateTime.UtcNow.AddMinutes(30), // Expiration
+                Expires = DateTime.UtcNow.AddMinutes(_jwtConfig.Expires), // Expiration
                 SameSite = SameSiteMode.Strict, // CSRF
             };
             this.HttpContext.Response.Cookies.Append("access-token", accessToken, cookieOptionsForAccessToken);
@@ -302,9 +306,9 @@ namespace Identity.Api.Controllers
             {
                 HttpOnly = true, // XSS
                 Secure = true, // Https
-                Expires = DateTime.UtcNow.AddDays(3), // Expiration
+                Expires = DateTime.UtcNow.AddDays(_jwtConfig.RefreshTokenExpiryTime), // Expiration
                 SameSite = SameSiteMode.Strict, // CSRF
-                Path = "/refresh-token"
+                //Path = "/api/v1/refreshToken"
             };
             this.HttpContext.Response.Cookies.Append("refresh-token", refreshToken, cookieOptionsForRefreshToken);
         }

@@ -1,8 +1,6 @@
-﻿using Microsoft.Extensions.Options;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Cryptography;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
 
 namespace Identity.Api.Services.TokenService;
 
@@ -45,23 +43,10 @@ public class TokenService : ITokenService
         return Convert.ToBase64String(Guid.NewGuid().ToByteArray());
     }
 
-    public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
+    public JwtSecurityToken DecodeToken(string accessToken)
     {
-        var tokenValidationParameters = new TokenValidationParameters
-        {
-            ValidIssuer = _jwtConfig.Issuer,
-            ValidAudience = _jwtConfig.Audience,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtConfig.SecretKey)),
-        };
-
-        var tokenHandler = new JwtSecurityTokenHandler();
-
-        var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out var securityToken);
-        var jwtSecurityToken = securityToken as JwtSecurityToken;
-
-        if (jwtSecurityToken == null ||
-            !jwtSecurityToken.Header.Alg.Equals(_jwtConfig.Algorithm, StringComparison.InvariantCultureIgnoreCase))
-            throw new SecurityTokenException("Invalid token");
-        return principal;
+        var handler = new JwtSecurityTokenHandler();
+        var jwtSecurityToken = handler.ReadJwtToken(accessToken);
+        return jwtSecurityToken;
     }
 }
