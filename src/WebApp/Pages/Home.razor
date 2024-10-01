@@ -4,6 +4,7 @@
 @using WebApp.Components.Common
 
 @inject ICatalogService _catalogService
+@inject IBasketService _basketService
 @inject NavigationManager _navManager
 
 <TelerikLoaderContainer Visible="@_visibleLoader"></TelerikLoaderContainer>
@@ -73,42 +74,48 @@
                     @foreach (var product in _productPaginationResponse.Data)
                     {
                         <GridLayoutItem>
-                            <div @onclick=@(() => _navManager.NavigateTo($"/products/{product.Id}"))
-                                 style="cursor:pointer;">
-                                <TelerikCard Class="border-primary-subtle rounded-4 border">
-                                    <CardImage Src="@product.ThumbnailUrl" Width="120px" Height="120px" Class="border-secondary-subtle m-auto border"></CardImage>
-                                    <CardBody>
-                                        <div style="height:60px;">
-                                            <!-- Truncate product name if it exceeds 20 characters -->
-                                            @if (product.Name.Length > 55)
-                                            {
-                                                @($"{product.Name.Substring(0, 55)}...")
-                                            }
-                                            else
-                                            {
-                                                @product.Name
-                                            }
-                                        </div>
+                            >
+                            <TelerikCard Class="border-primary-subtle rounded-4 border">
+                                <div class="m-auto" style="cursor:pointer;"
+                                     @onclick=@(() => _navManager.NavigateTo($"/products/{product.Id}"))>
+                                    <CardImage Src="@product.ThumbnailUrl"
+                                               Width="120px"
+                                               Height="120px"
+                                               Class="border-secondary-subtle m-auto border"></CardImage>
+                                </div>
 
-                                        <CardSeparator></CardSeparator>
+                                <CardBody>
+                                    <div style="height:60px;cursor:pointer;" @onclick=@(() => _navManager.NavigateTo($"/products/{product.Id}"))>
+                                        <!-- Truncate product name if it exceeds 20 characters -->
+                                        @if (product.Name.Length > 55)
+                                        {
+                                            @($"{product.Name.Substring(0, 55)}...")
+                                        }
+                                        else
+                                        {
+                                            @product.Name
+                                        }
+                                    </div>
 
-                                        <div class="d-flex justify-content-around mt-2">
-                                            <Rating Max="5" Star="@((int)product.RatingAverage)"></Rating>
-                                            <CardSubTitle>Buyer :@product.TotalBuyer</CardSubTitle>
-                                        </div>
+                                    <CardSeparator></CardSeparator>
 
-                                        <CardSeparator></CardSeparator>
+                                    <div class="d-flex justify-content-around mt-2">
+                                        <Rating Max="5" Star="@((int)product.RatingAverage)"></Rating>
+                                        <CardSubTitle>Buyer :@product.TotalBuyer</CardSubTitle>
+                                    </div>
 
-                                        <CardTitle>$ @product.Price</CardTitle>
-                                    </CardBody>
-                                    <CardActions Layout="@CardActionsLayout.Stretch">
-                                        <TelerikButton Icon="@SvgIcon.Cart"
-                                                       Rounded="@ThemeConstants.Button.Rounded.Full">
-                                            Add To Cart
-                                        </TelerikButton>
-                                    </CardActions>
-                                </TelerikCard>
-                            </div>
+                                    <CardSeparator></CardSeparator>
+
+                                    <CardTitle>$ @product.Price</CardTitle>
+                                </CardBody>
+                                <CardActions Layout="@CardActionsLayout.Stretch">
+                                    <TelerikButton OnClick=@(() => OnClickAddToCartButton(product.Id))
+                                                   Icon="@SvgIcon.Cart"
+                                                   Rounded="@ThemeConstants.Button.Rounded.Full">
+                                        Add To Cart
+                                    </TelerikButton>
+                                </CardActions>
+                            </TelerikCard>
                         </GridLayoutItem>
                     }
                 </GridLayoutItems>

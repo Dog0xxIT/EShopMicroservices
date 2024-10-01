@@ -2,6 +2,6 @@
 {
     public interface ICatalogService
     {
-        Task<GetBaseInfoProductResponse?> GetBaseInfoProduct(string catalogClient, int id);
+        Task<GetProductByIdResponse?> GetProductById(string catalogClient, int id);
     }
 }

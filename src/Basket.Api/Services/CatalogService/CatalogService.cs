@@ -11,7 +11,7 @@
             _logger = logger;
         }
 
-        public async Task<GetBaseInfoProductResponse?> GetBaseInfoProduct(string catalogClient, int id)
+        public async Task<GetProductByIdResponse?> GetProductById(string catalogClient, int id)
         {
             var httpClient = _clientFactory.CreateClient(catalogClient);
 
@@ -21,7 +21,7 @@
 
                 if (client.IsSuccessStatusCode)
                 {
-                    var resultData = await client.Content.ReadFromJsonAsync<GetBaseInfoProductResponse>();
+                    var resultData = await client.Content.ReadFromJsonAsync<GetProductByIdResponse>();
                     _logger.LogInformation($"StatusCode: {client.StatusCode}");
                     return resultData;
                 }

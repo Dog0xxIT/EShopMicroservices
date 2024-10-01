@@ -1,14 +1,16 @@
-﻿@using WebApp.Components.Common
-@using Microsoft.AspNetCore.Components.Authorization
-@using WebApp.Services.CatalogService
+﻿@using Microsoft.AspNetCore.Components.Authorization
 
 @inherits LayoutComponentBase
 
-@inject ICatalogService _catalogService
-@inject NavigationManager _navManager
+@inject NavigationManager _nav
 
 <TelerikRootComponent>
-    <Alerts></Alerts>
+    <TelerikNotification @ref="_notificationRef"
+                         HorizontalPosition="@NotificationHorizontalPosition.Center"
+                         VerticalPosition="@NotificationVerticalPosition.Top"
+                         AnimationType="@AnimationType.PushDown"
+                         AnimationDuration="5">
+    </TelerikNotification>
 
     <TelerikAppBar>
         <AppBarSection>
@@ -24,7 +26,7 @@
                             DebounceDelay="500"
                             Rounded="@ThemeConstants.TextBox.Rounded.Large">
                 <TextBoxSuffixTemplate>
-                    <TelerikButton Icon="@SvgIcon.Search" OnClick=@(() => _navManager.NavigateTo("/"))></TelerikButton>
+                    <TelerikButton Icon="@SvgIcon.Search" OnClick=@(() => _nav.NavigateTo("/"))></TelerikButton>
                 </TextBoxSuffixTemplate>
             </TelerikTextBox>
         </AppBarSection>
@@ -34,37 +36,54 @@
         <AuthorizeView>
             <Authorized>
                 <AppBarSection>
-                    <TelerikButton Icon="@SvgIcon.User" Class="px-4">User</TelerikButton>
+                    <TelerikDropDownButton Icon="@SvgIcon.User"
+                                           Class="px-4"
+                                           Size="@ThemeConstants.DropDownButton.Size.Large">
+                        <DropDownButtonContent>User</DropDownButtonContent>
+                        <DropDownButtonItems>
+                            <DropDownButtonItem Icon="@SvgIcon.User"
+                                                OnClick=@(()=> _nav.NavigateTo("/"))>Profile</DropDownButtonItem>
+                            <DropDownButtonItem Icon="@SvgIcon.ListOrdered"
+                                                OnClick=@(()=> _nav.NavigateTo("/"))>Order</DropDownButtonItem>
+                            <DropDownButtonItem Icon="@SvgIcon.Supscript"
+                                                OnClick=@(()=> _nav.NavigateTo("/"))>Supports</DropDownButtonItem>
+                            <DropDownButtonItem Icon="@SvgIcon.Home"
+                                                OnClick=@(()=> _nav.NavigateTo("/"))>Logout</DropDownButtonItem>
+                        </DropDownButtonItems>
+                    </TelerikDropDownButton>
                 </AppBarSection>
 
                 <AppBarSeparator Class="thick-separator"></AppBarSeparator>
 
                 <AppBarSection>
-                    <TelerikButton Icon="@SvgIcon.Cart" Class="px-4" OnClick=@(() => _navManager.NavigateTo("/cart"))>Cart</TelerikButton>
+                    <TelerikButton Icon="@SvgIcon.Cart" Class="px-4" OnClick=@(() => _nav.NavigateTo("/cart"))>Cart</TelerikButton>
                 </AppBarSection>
             </Authorized>
 
             <NotAuthorized>
                 <AppBarSection>
-                    <TelerikButton Icon="@SvgIcon.Login" Class="px-4" OnClick=@(() => _navManager.NavigateTo("/login"))>Login</TelerikButton>
+                    <TelerikButton Icon="@SvgIcon.Login" Class="px-4" OnClick=@(() => _nav.NavigateTo("/login"))>Login</TelerikButton>
                 </AppBarSection>
 
                 <AppBarSeparator Class="thick-separator"></AppBarSeparator>
 
                 <AppBarSection>
-                    <TelerikButton Icon="@SvgIcon.Cart" Class="px-4" OnClick=@(() => _navManager.NavigateTo("/cart"))>Cart</TelerikButton>
+                    <TelerikButton Icon="@SvgIcon.Cart" Class="px-4" OnClick=@(() => _nav.NavigateTo("/cart"))>Cart</TelerikButton>
                 </AppBarSection>
             </NotAuthorized>
         </AuthorizeView>
     </TelerikAppBar>
     <main class="m-5">
-        <CascadingValue Name="SearchText" Value="@_search">
-            @Body
+        <CascadingValue Name="Notification" Value="@_notificationRef">
+            <CascadingValue Name="SearchText" Value="@_search">
+                @Body
+            </CascadingValue>
         </CascadingValue>
     </main>
 </TelerikRootComponent>
 
 @code
 {
-    private string? _search { get; set; }
+    private string? _search;
+    private TelerikNotification _notificationRef;
 }

@@ -8,6 +8,6 @@
         public string PictureUrl { get; set; }
         public int ProductId { get; set; }
         public string ProductName { get; set; }
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
     }
 }

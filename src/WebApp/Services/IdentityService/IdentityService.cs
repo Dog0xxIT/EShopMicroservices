@@ -19,12 +19,11 @@ namespace WebApp.Services.IdentityService
                 reqObj: request);
         }
 
-        public async Task<ResultObject<ResponseObject>> ManageInfo(ManageInfoRequest request)
+        public async Task<ResultObject<ManageInfoResponse>> ManageInfo()
         {
-            return await _coreHttpClient.PostAsync<ResponseObject>(
+            return await _coreHttpClient.GetAsync<ManageInfoResponse>(
                 clientName: UrlsConfig.IdentityClient,
-                uri: "/api/v1/manageInfo",
-                reqObj: request);
+                uri: "/api/v1/manageInfo");
         }
 
         public async Task<ResultObject<ResponseObject>> Register(RegisterRequest request)
@@ -79,14 +78,6 @@ namespace WebApp.Services.IdentityService
             return await _coreHttpClient.PostAsync<ResponseObject>(
                 clientName: UrlsConfig.IdentityClient,
                 uri: "/api/v1/resetPassword",
-                reqObj: request);
-        }
-
-        public async Task<ResultObject<ResponseObject>> Manage2Fa(Manage2FaRequest request)
-        {
-            return await _coreHttpClient.PostAsync<ResponseObject>(
-                clientName: UrlsConfig.IdentityClient,
-                uri: "/api/v1/resetManage2Fa",
                 reqObj: request);
         }
     }

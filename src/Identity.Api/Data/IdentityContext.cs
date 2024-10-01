@@ -25,6 +25,7 @@ namespace Identity.Api.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            //modelBuilder.SeedData();
         }
     }
 }

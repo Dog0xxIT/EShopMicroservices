@@ -4,7 +4,7 @@ using Identity.Api.Services.EmailService;
 using Identity.Api.Services.TokenService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,22 +14,24 @@ builder.Services.Configure<SmtpConfig>(builder.Configuration.GetSection(SmtpConf
 builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(JwtConfig.SectionName));
 
 builder.Services.AddTransient<IEmailSender<User>, EmailSender>();
+
 builder.Services.AddTransient<ITokenService, TokenService>();
 
 builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Config Identity important
 builder.Services
-    .AddIdentity<User, IdentityRole>()
+    .AddIdentityCore<User>(options =>
+    {
+        options.SignIn.RequireConfirmedEmail = true;
+        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+        options.Lockout.MaxFailedAccessAttempts = 5;
+        options.Lockout.AllowedForNewUsers = true;
+    })
+    .AddRoles<IdentityRole>() // Add Role Manage Service
     .AddEntityFrameworkStores<IdentityContext>()
     .AddDefaultTokenProviders();
-
-builder.Services.Configure<IdentityOptions>(options =>
-{
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-    options.Lockout.MaxFailedAccessAttempts = 5;
-    options.Lockout.AllowedForNewUsers = true;
-});
 
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

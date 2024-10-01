@@ -1,16 +1,11 @@
 ﻿@page "/register"
 
 @layout EmptyLayout
-@using EShop.WebApp.Models.Enums
-@using EShop.WebApp.States
 @using WebApp.Core.RequestModels
-@using WebApp.Models.Common
 @using WebApp.Services.IdentityService
 
-@inject AlertState AlertState
-@inject IIdentityService IdentityService
+@inject IIdentityService _identityService
 @inject NavigationManager _navManager
-
 
 <div class="d-flex flex-column align-items-center justify-content-center rounded-4 border-secondary-subtle mt-5 p-3 bg-body-tertiary mx-auto border shadow"
      style="width: 40%;">
@@ -44,6 +39,8 @@
 
 @code
 {
+    [CascadingParameter(Name = "Notification")]
+    private TelerikNotification _notificatioRef { get; set; }
     private RegisterRequest _registerRequest;
 
     protected override void OnInitialized()
@@ -53,24 +50,18 @@
 
     private async Task ValidSubmit()
     {
-        var resultObject = await IdentityService.Register(_registerRequest);
+        var resultObject = await _identityService.Register(_registerRequest);
 
         if (resultObject.ResultCode.Equals(ResultCode.Success))
         {
-            AlertState.AddMessage(new AlertItem
-                {
-                    Message = resultObject.Messages,
-                    Title = "Success",
-                    Type = AlertType.Success
-                });
+            _notificatioRef.Show(
+                text: resultObject.Messages,
+                themeColor: ThemeConstants.Notification.ThemeColor.Light);
             _navManager.NavigateTo("sign-in");
             return;
         }
-        AlertState.AddMessage(new AlertItem
-            {
-                Message = resultObject.Messages,
-                Title = "Error",
-                Type = AlertType.Danger
-            });
+        _notificatioRef.Show(
+            text: resultObject.Messages,
+            themeColor: ThemeConstants.Notification.ThemeColor.Error);
     }
 }

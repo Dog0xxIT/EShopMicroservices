@@ -1,7 +1,18 @@
-﻿@using WebApp.Components.Common
+﻿@inherits LayoutComponentBase
 
-@inherits LayoutComponentBase
+<TelerikRootComponent>
+    <TelerikNotification @ref="_notificationRef"
+                         HorizontalPosition="@NotificationHorizontalPosition.Center"
+                         VerticalPosition="@NotificationVerticalPosition.Top"
+                         AnimationType="@AnimationType.PushDown"
+                         AnimationDuration="5">
+    </TelerikNotification>
 
-<Alerts></Alerts>
+    <CascadingValue Name="Notification" Value="@_notificationRef">
+        @Body
+    </CascadingValue>
+</TelerikRootComponent>
 
-@Body
+@code {
+    private TelerikNotification _notificationRef;
+}

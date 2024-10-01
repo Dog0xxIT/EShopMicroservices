@@ -2,11 +2,12 @@
 
 @using Microsoft.AspNetCore.Authorization
 @using WebApp.Services.BasketService
-@using WebApp.Components.Order
 
-@* @attribute [Authorize] *@
+@attribute [Authorize]
 
-@inject IBasketService BasketService
+@inject IBasketService _basketService
+
+<TelerikLoaderContainer Visible="@_visibleLoader"></TelerikLoaderContainer>
 
 <TelerikTileLayout Columns="4"
                    Resizable="false"
@@ -18,22 +19,34 @@
             <Content>
                 @foreach (var baskItem in _basketItemList)
                 {
-                        <TelerikCard Orientation="CardOrientation.Horizontal" Class="mb-4">
-                            <CardImage Src="@baskItem.PictureUrl" Height="120px" Width="120px"></CardImage>
+                    <TelerikCard Orientation="CardOrientation.Horizontal" Class="mb-4">
+                        <CardImage Src="@baskItem.PictureUrl" Height="120px" Width="120px"></CardImage>
 
-                            <CardHeader>
-                                <CardTitle>@baskItem.ProductName</CardTitle>
-                                <CardSubTitle>@baskItem.UnitPrice</CardSubTitle>
-                            </CardHeader>
+                        <CardHeader>
+                            @{
+                                var productName = baskItem.ProductName.Length > 40 ?
+                                $"{baskItem.ProductName.Substring(0, 40)}..." :
+                                baskItem.ProductName;
+                            }
+                            <CardTitle>@productName</CardTitle>
+                            <CardSubTitle Class="text-warning">Price: @baskItem.UnitPrice $</CardSubTitle>
                             <CardBody>
                                 <p>Some quick example text to build on the card title and make up the bulk of the card content.</p>
                             </CardBody>
-                            <CardSeparator></CardSeparator>
-                            <CardActions>
-                               <TelerikNumericTextBox @bind-Value="@baskItem.Quantity" Width="100px"></TelerikNumericTextBox>
-                                <TelerikButton>Delete</TelerikButton>
-                            </CardActions>
-                        </TelerikCard>
+                        </CardHeader>
+
+                        <CardSeparator></CardSeparator>
+
+                        <CardActions>
+                            <TelerikNumericTextBox Value="@baskItem.Quantity"
+                                                   Width="100px"
+                                                   Min="0"
+                                                   Max="Int32.MaxValue"
+                                                   ValueChanged=@(async (int newValue) => await UpdateQty(baskItem.Id,newValue))>
+                            </TelerikNumericTextBox>
+                            <TelerikButton OnClick=@(async () => await DeleteBasketItem(baskItem.Id))>Delete</TelerikButton>
+                        </CardActions>
+                    </TelerikCard>
                 }
             </Content>
         </TileLayoutItem>

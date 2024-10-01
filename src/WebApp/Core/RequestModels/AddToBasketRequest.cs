@@ -1,4 +1,6 @@
-﻿namespace Basket.Api.Models.RequestModel
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebApp.Core.RequestModels
 {
     public class AddToBasketRequest
     {

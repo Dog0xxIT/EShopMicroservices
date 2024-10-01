@@ -1,4 +1,3 @@
-using EShop.WebApp.Services.BasketService;
 using EShop.WebApp.States;
 using EShop.WebApp.States.AuthState;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -25,7 +24,7 @@ builder.Services
 builder.Services
     .AddHttpClient(UrlsConfig.BasketClient, httpClient =>
     {
-        httpClient.BaseAddress = new Uri("https://localhost:7038");
+        httpClient.BaseAddress = new Uri("https://localhost:7212");
     })
     .AddHttpMessageHandler<CookieHandler>();
 
@@ -53,5 +52,4 @@ builder.Services.AddScoped<ICoreHttpClient, CoreHttpClient>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
 builder.Services.AddScoped<ICatalogService, CatalogService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
-builder.Services.AddSingleton<AlertState>();
 await builder.Build().RunAsync();

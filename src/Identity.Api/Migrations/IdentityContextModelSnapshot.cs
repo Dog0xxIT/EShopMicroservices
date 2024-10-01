@@ -65,10 +65,9 @@ namespace Identity.Api.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("RefreshToken")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RefreshTokenExpiryTime")
+                    b.Property<DateTime?>("RefreshTokenExpiryTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SecurityStamp")
@@ -119,6 +118,28 @@ namespace Identity.Api.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "51f43e3a-8117-419b-8fd4-df0094590c91",
+                            Name = "Customer"
+                        },
+                        new
+                        {
+                            Id = "ed4c7066-fc0a-4d9c-8c1b-95f10f310545",
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = "c99e4de1-64be-49b9-b7ad-964404c1101b",
+                            Name = "Seller"
+                        },
+                        new
+                        {
+                            Id = "1c505302-6e26-4a42-a1f0-eed97bdc5104",
+                            Name = "Guest"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
