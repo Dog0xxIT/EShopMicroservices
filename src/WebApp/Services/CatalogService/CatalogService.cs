@@ -1,4 +1,7 @@
 ﻿using WebApp.Core.CoreHttpClient;
+using WebApp.Models.RequestModels.Common;
+using WebApp.Models.ResponseModels;
+using WebApp.Models.ResponseModels.Common;
 
 namespace WebApp.Services.CatalogService
 {
@@ -14,7 +17,7 @@ namespace WebApp.Services.CatalogService
         public async Task<PaginationResponse<GetListBrandsResponse>> GetListBrands(PaginationRequest paginationRequest)
         {
             var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetListBrandsResponse>>(
-                clientName: UrlsConfig.CatalogClient,
+                clientName: ClientsConfig.CatalogClient,
                 uri: "api/v1/products",
                 queryObj: paginationRequest);
 
@@ -24,7 +27,7 @@ namespace WebApp.Services.CatalogService
         public async Task<List<GetAllCategoriesResponse>> GetAllCategoriesHierarchy()
         {
             var resultObject = await _coreHttpClient.GetAsync<List<GetAllCategoriesResponse>>(
-                clientName: UrlsConfig.CatalogClient,
+                clientName: ClientsConfig.CatalogClient,
                 uri: "api/v1/categories/hierarchy");
 
             return resultObject.Data;
@@ -33,7 +36,7 @@ namespace WebApp.Services.CatalogService
         public async Task<PaginationResponse<GetAllCategoriesResponse>> GetAllCategories()
         {
             var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetAllCategoriesResponse>>(
-                clientName: UrlsConfig.CatalogClient,
+                clientName: ClientsConfig.CatalogClient,
                 uri: "api/v1/categories");
 
             return resultObject.Data;
@@ -42,7 +45,7 @@ namespace WebApp.Services.CatalogService
         public async Task<PaginationResponse<GetListProductResponse>> GetListProducts(PaginationRequest paginationRequest)
         {
             var resultObject = await _coreHttpClient.GetAsync<PaginationResponse<GetListProductResponse>>(
-                 clientName: UrlsConfig.CatalogClient,
+                 clientName: ClientsConfig.CatalogClient,
                  uri: "api/v1/products",
                  queryObj: paginationRequest);
 
@@ -53,7 +56,7 @@ namespace WebApp.Services.CatalogService
         public async Task<ResultObject<GetProductByIdResponse>> GetProductById(int productId)
         {
             return await _coreHttpClient.GetAsync<GetProductByIdResponse>(
-                clientName: UrlsConfig.CatalogClient,
+                clientName: ClientsConfig.CatalogClient,
                 uri: $"api/v1/products/{productId}");
         }
     }

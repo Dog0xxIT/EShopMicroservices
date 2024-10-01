@@ -1,8 +1,7 @@
-﻿using EShop.WebApp.States;
-using Microsoft.AspNetCore.Components;
-using Telerik.Blazor;
-using Telerik.Blazor.Components;
-using WebApp.Models.Common;
+﻿using Microsoft.AspNetCore.Components;
+using WebApp.Models.RequestModels.Catalog;
+using WebApp.Models.ResponseModels;
+using WebApp.Models.ResponseModels.Common;
 
 namespace WebApp.Pages;
 
@@ -10,8 +9,10 @@ public partial class Home
 {
     [CascadingParameter(Name = "SearchText")]
     private string? _searchText { get; set; }
+
     [CascadingParameter(Name = "Notification")]
     private TelerikNotification _notificatioRef { get; set; }
+
     private bool _visibleLoader;
     private GetListProductRequest _getListProductRequest;
     private PaginationResponse<GetListProductResponse> _productPaginationResponse;
@@ -50,25 +51,6 @@ public partial class Home
         _visibleLoader = false;
     }
 
-    private async Task OnClickAddToCartButton(int productId)
-    {
-        var req = new AddToBasketRequest
-        {
-            ProductId = productId,
-            Quantity = 1,
-        };
-        var resultObject = await _basketService.AddToBasket(req);
-        if (resultObject.ResultCode.Equals(ResultCode.Success))
-        {
-            _notificatioRef.Show(
-                text: resultObject.Messages,
-                themeColor: ThemeConstants.Notification.ThemeColor.Light);
-            return;
-        }
-        _notificatioRef.Show(
-            text: resultObject.Messages,
-            themeColor: ThemeConstants.Notification.ThemeColor.Error);
-    }
     private async Task OnClickCategory(PanelBarItemClickEventArgs args)
     {
         var item = (GetAllCategoriesResponse)args.Item;

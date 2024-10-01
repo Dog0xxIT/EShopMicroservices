@@ -1,4 +1,7 @@
-﻿namespace WebApp.States.AuthState
+﻿using WebApp.Models.RequestModels.Identity;
+using WebApp.Models.ResponseModels.Common;
+
+namespace WebApp.States.AuthState
 {
     public interface IAccountManagement
     {

@@ -1,4 +1,4 @@
-﻿namespace EShop.WebApp.States.AuthState;
+﻿namespace WebApp.States.AuthState;
 
 /// <summary>
 /// Handler to ensure cookie credentials are automatically sent over with each request.

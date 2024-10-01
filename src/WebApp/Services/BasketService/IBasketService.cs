@@ -1,4 +1,8 @@
-﻿namespace WebApp.Services.BasketService;
+﻿using WebApp.Models.RequestModels.Basket;
+using WebApp.Models.ResponseModels.Basket;
+using WebApp.Models.ResponseModels.Common;
+
+namespace WebApp.Services.BasketService;
 
 public interface IBasketService
 {

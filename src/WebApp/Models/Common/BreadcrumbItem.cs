@@ -1,6 +1,4 @@
-﻿using Telerik.SvgIcons;
-
-namespace WebApp.Models.Common
+﻿namespace WebApp.Models.Common
 {
     public class BreadcrumbItem
     {

@@ -1,5 +1,8 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Components.Authorization;
+using WebApp.Models.RequestModels.Identity;
+using WebApp.Models.ResponseModels.Common;
+using WebApp.Models.ResponseModels.Identity;
 using WebApp.Services.IdentityService;
 
 namespace WebApp.States.AuthState;
@@ -7,6 +10,7 @@ namespace WebApp.States.AuthState;
 public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IAccountManagement
 {
 
+    private readonly IHttpClientFactory _clientFactory;
     private readonly IIdentityService _identityService;
 
     /// <summary>
@@ -19,8 +23,9 @@ public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IA
     /// </summary>
     private readonly ClaimsPrincipal _unauthenticated = new(new ClaimsIdentity());
 
-    public CookieAuthenticationStateProvider(IIdentityService identityService)
+    public CookieAuthenticationStateProvider(IHttpClientFactory clientFactory, IIdentityService identityService)
     {
+        _clientFactory = clientFactory;
         _identityService = identityService;
     }
 
@@ -30,27 +35,35 @@ public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IA
         // default to not authenticated
         var user = _unauthenticated;
 
-        var resultObject = await _identityService.ManageInfo();
-        if (resultObject.ResultCode.Equals(ResultCode.Success))
+        var httpClient = _clientFactory.CreateClient(ClientsConfig.IdentityClient);
+        var response1 = await httpClient.GetAsync("/api/v1/manageInfo");
+
+        if (!response1.IsSuccessStatusCode)
         {
-            var resultData = resultObject.Data;
-            if (resultData != null)
+            var response2 = await httpClient.GetAsync("/api/v1/refreshToken");
+            if (!response2.IsSuccessStatusCode)
             {
-                var claims = new List<Claim>
-                    {
-                        new(ClaimTypes.Sid, resultData.UserId),
-                        new(ClaimTypes.Email, resultData.Email)
-                    };
-
-                claims.AddRange(resultData.Roles.Select(role =>
-                    new Claim(ClaimTypes.Role, role)));
-
-                var id = new ClaimsIdentity(claims, nameof(CookieAuthenticationStateProvider));
-                user = new ClaimsPrincipal(id);
-                _authenticated = true;
+                return new AuthenticationState(user);
             }
         }
 
+        var resultData = await response1.Content.ReadFromJsonAsync<ManageInfoResponse>();
+        if (resultData == null)
+        {
+            return new AuthenticationState(user);
+        }
+
+        var claims = new List<Claim>
+        {
+            new(ClaimTypes.Sid, resultData.UserId),
+            new(ClaimTypes.Email, resultData.Email)
+        };
+
+        claims.AddRange(resultData.Roles.Select(role =>
+            new Claim(ClaimTypes.Role, role)));
+        var id = new ClaimsIdentity(claims, nameof(CookieAuthenticationStateProvider));
+        user = new ClaimsPrincipal(id);
+        _authenticated = true;
         return new AuthenticationState(user);
     }
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Telerik.Blazor;
-using Telerik.Blazor.Components;
+using WebApp.Models.RequestModels.Basket;
+using WebApp.Models.ResponseModels.Basket;
 
 namespace WebApp.Pages.Order;
 
@@ -8,6 +8,7 @@ public partial class Cart
 {
     [CascadingParameter(Name = "Notification")]
     private TelerikNotification _notificatioRef { get; set; }
+
     private List<GetBasketByCustomerIdResponse> _basketItemList;
     private bool _visibleLoader;
 

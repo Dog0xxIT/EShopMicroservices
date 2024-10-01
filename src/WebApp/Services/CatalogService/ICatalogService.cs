@@ -1,4 +1,8 @@
-﻿namespace WebApp.Services.CatalogService;
+﻿using WebApp.Models.RequestModels.Common;
+using WebApp.Models.ResponseModels;
+using WebApp.Models.ResponseModels.Common;
+
+namespace WebApp.Services.CatalogService;
 
 public interface ICatalogService
 {

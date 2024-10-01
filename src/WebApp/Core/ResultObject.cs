@@ -1,4 +1,4 @@
-﻿namespace EShop.WebApp.Core
+﻿namespace WebApp.Core
 {
     public class ResultObject<T>
     {

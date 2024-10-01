@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Telerik.SvgIcons;
 using WebApp.Models.Common;
+using WebApp.Models.ResponseModels;
 
 namespace WebApp.Pages.Product;
 
