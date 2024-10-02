@@ -17,10 +17,10 @@ public partial class Home
     private GetListProductRequest _getListProductRequest;
     private PaginationResponse<GetListProductResponse> _productPaginationResponse;
     private List<GetAllCategoriesResponse> _categoryList;
-    private List<string> _sortOptions = ["Price Low to High", "Price High to Low", "Newest", "Best Seller"];
+    private List<string> _sortOptions = ["Price Low To High", "Price High To Low", "Newest", "Best Seller"];
     private string SelectedSortOption;
-    private double _minPrice = 0;
-    private double _maxPrice = 300;
+    private double _minPrice;
+    private double _maxPrice;
 
     protected override async Task OnInitializedAsync()
     {

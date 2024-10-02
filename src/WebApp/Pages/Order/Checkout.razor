@@ -4,23 +4,30 @@
 
 @inject NavigationManager _navManager
 
-<TelerikStepper Linear="true" ValueChanged="@ValueChangeHandler">
-    <StepperSteps>
-        <StepperStep Label="Shipping address"></StepperStep>
-        <StepperStep Label="Payment method"></StepperStep>
-        <StepperStep Label="Items & shipping"></StepperStep>
-        <StepperStep Label="Review order" Disabled="true"></StepperStep>
-    </StepperSteps>
-</TelerikStepper>
-
-@if (stepIndex == 0)
-{
-    <CheckoutAddressForm></CheckoutAddressForm>
-}
-else if (stepIndex == 1)
-{
-    <CheckoutPaymentForm></CheckoutPaymentForm>
-}
+<div class="w-75 mx-auto">
+    <TelerikWizard>
+        <WizardSteps>
+            <WizardStep Label="Shipping Address" Icon="@SvgIcon.MapMarkerTarget">
+                <Content>
+                    <span>1. Please fill in your shipping address</span>
+                    <CheckoutAddressForm></CheckoutAddressForm>
+                </Content>
+            </WizardStep>
+            <WizardStep Label="Payment Method" Icon="@SvgIcon.Dollar">
+                <Content>
+                    <span>2. Please select your payment method</span>
+                    <CheckoutPaymentForm></CheckoutPaymentForm>
+                </Content>
+            </WizardStep>
+            <WizardStep Label="Confirmation" Icon="@SvgIcon.Check">
+                <Content>
+                    <span>3. Review and confirm your order</span>
+                    <h2>Registration completed.</h2>
+                </Content>
+            </WizardStep>
+        </WizardSteps>
+    </TelerikWizard>
+</div>
 
 @code {
 

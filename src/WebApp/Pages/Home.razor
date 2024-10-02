@@ -18,7 +18,8 @@
         <GridLayoutItem>
             <TelerikPanelBar Data="@_categoryList"
                              ExpandMode="PanelBarExpandMode.Single"
-                             OnItemClick="OnClickCategory">
+                             OnItemClick="OnClickCategory"
+                             Class="rounded-4 shadow">
                 <PanelBarBindings>
                     <PanelBarBinding ParentIdField="@nameof(GetAllCategoriesResponse.ParentId)"
                                      TextField="@nameof(GetAllCategoriesResponse.Name)"
@@ -43,31 +44,50 @@
 
                 <GridLayoutItems>
                     <GridLayoutItem Row="1" Column="1" ColumnSpan="6">
-                        <TelerikToolBar>
-                            <ToolBarTemplateItem>
-                                <div class="my-2">
-                                    <span>Min Price</span>
-                                    <TelerikNumericTextBox @bind-Value="@_minPrice"></TelerikNumericTextBox>
+                        <TelerikCarousel Data="@CarouselData"
+                                         Width="100%"
+                                         Height="300px"
+                                         Class="rounded-4 shadow">
+                            <Template>
+                                <img src="https://salt.tikicdn.com/cache/w750/ts/tikimsp/ff/83/91/098d41a8f26e13afa1a4a07d06c883ac.jpg.webp" width="50%" height="300" />
 
-                                    <span class="ms-2">Max Price</span>
-                                    <TelerikNumericTextBox @bind-Value="@_maxPrice"></TelerikNumericTextBox>
+                                <img src="https://salt.tikicdn.com/cache/w750/ts/tikimsp/ff/83/91/098d41a8f26e13afa1a4a07d06c883ac.jpg.webp" width="50%" height="300" />
+                            </Template>
+                        </TelerikCarousel>
+                    </GridLayoutItem>
+
+                    <GridLayoutItem Row="2" Column="1" ColumnSpan="6">
+                        <div class="ms-3 d-flex justify-content-between">
+                            <div>
+                                <div class="d-flex justify-content-between">
+                                    <span>
+                                        Range Price:
+                                        <b>$@_minPrice</b>
+                                    </span>
+                                    <b>$@_maxPrice</b>
                                 </div>
-                            </ToolBarTemplateItem>
+                                <TelerikRangeSlider @bind-StartValue="@_minPrice"
+                                                    @bind-EndValue="@_maxPrice"
+                                                    Min="0"
+                                                    Max="3000"
+                                                    SmallStep="1"
+                                                    LargeStep="1"
+                                                    TickPosition="SliderTickPosition.None"
+                                                    Decimals="3"
+                                                    Width="300px">
+                                </TelerikRangeSlider>
+                            </div>
 
-                            <ToolBarSpacer />
-
-                            <ToolBarTemplateItem>
-                                <div class="my-2">
-                                    <span>Sort by</span>
-                                    <TelerikDropDownList Data="@_sortOptions"
-                                                         Width="200px"
-                                                         Value="@SelectedSortOption"
-                                                         ValueChanged="@((string v) => OnSortOptionChange(v))"
-                                                         Rounded="@ThemeConstants.DropDownList.Rounded.Large">
-                                    </TelerikDropDownList>
-                                </div>
-                            </ToolBarTemplateItem>
-                        </TelerikToolBar>
+                            <div>
+                                <span>Sort by: </span>
+                                <TelerikDropDownList Data="@_sortOptions"
+                                                     Width="200px"
+                                                     Value="@SelectedSortOption"
+                                                     ValueChanged="@((string v) => OnSortOptionChange(v))"
+                                                     Rounded="@ThemeConstants.DropDownList.Rounded.Large">
+                                </TelerikDropDownList>
+                            </div>
+                        </div>
                     </GridLayoutItem>
 
                     @foreach (var product in _productPaginationResponse.Data)
@@ -89,3 +109,15 @@
         </GridLayoutItem>
     </GridLayoutItems>
 </TelerikGridLayout>
+
+@code {
+    public List<CarouselModel> CarouselData = Enumerable.Range(1, 7).Select(x => new CarouselModel
+        {
+            ImageID = x
+        }).ToList();
+
+    public class CarouselModel
+    {
+        public int ImageID { get; set; }
+    }
+}

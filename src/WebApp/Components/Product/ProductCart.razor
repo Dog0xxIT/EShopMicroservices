@@ -1,6 +1,4 @@
-﻿@using WebApp.Models.RequestModels.Basket
-@using WebApp.Models.ResponseModels
-@using WebApp.Components.Common
+﻿@using WebApp.Components.Common
 
 @inject IBasketService _basketService
 @inject NavigationManager _navManager
@@ -9,8 +7,8 @@
     <div class="m-auto" style="cursor:pointer;"
          @onclick=@(() => _navManager.NavigateTo($"/products/{ProductInfo.Id}"))>
         <CardImage Src="@ProductInfo.ThumbnailUrl"
-                   Width="120px"
-                   Height="120px"
+                   Width="100%"
+                   Height="100%"
                    Class="border-secondary-subtle m-auto border"></CardImage>
     </div>
 
@@ -31,12 +29,12 @@
 
         <div class="d-flex justify-content-around mt-2">
             <Rating Max="5" Star="@((int)ProductInfo.RatingAverage)"></Rating>
-            <CardSubTitle>Buyer :@ProductInfo.TotalBuyer</CardSubTitle>
+            <CardSubTitle>@ProductInfo.TotalBuyer</CardSubTitle>
         </div>
 
         <CardSeparator></CardSeparator>
 
-        <CardTitle>$ @ProductInfo.Price</CardTitle>
+        <CardTitle Class="mt-2 text-danger">@(ProductInfo.Price)$</CardTitle>
     </CardBody>
     <CardActions Layout="@CardActionsLayout.Stretch">
         <TelerikButton OnClick=@(() => OnClickAddToCartButton(ProductInfo.Id))

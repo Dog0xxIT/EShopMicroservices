@@ -3,11 +3,15 @@
     {
         if (i < Star)
         {
-            <span class="text-warning">&#9733;</span>  <!-- Filled Star -->
+            <TelerikSvgIcon Class="text-warning"
+                            Icon="@SvgIcon.Star"
+                            Size="@ThemeConstants.SvgIcon.Size.Large"></TelerikSvgIcon>  <!-- Filled Star -->
         }
         else
         {
-            <span class="text-muted">&#9734;</span>    <!-- Empty Star -->
+            <TelerikSvgIcon Class="text-warning"
+                            Icon="@SvgIcon.StarOutline"
+                            Size="@ThemeConstants.SvgIcon.Size.Large"></TelerikSvgIcon>  <!-- Empty Star -->
         }
     }
 </div>

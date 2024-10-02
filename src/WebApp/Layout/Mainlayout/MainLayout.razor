@@ -21,12 +21,15 @@
 
         <AppBarSection>
             <TelerikTextBox @bind-Value="@_search"
+                            Class="ps-2"
                             Placeholder="Search"
                             Width="500px"
                             DebounceDelay="500"
-                            Rounded="@ThemeConstants.TextBox.Rounded.Large">
+                            Rounded="@ThemeConstants.TextBox.Rounded.Full">
                 <TextBoxSuffixTemplate>
-                    <TelerikButton Icon="@SvgIcon.Search" OnClick=@(() => _nav.NavigateTo("/"))></TelerikButton>
+                    <TelerikButton Icon="@SvgIcon.Search"
+                                   Size="@ThemeConstants.Button.Size.Large"
+                                   OnClick=@(() => _nav.NavigateTo("/"))></TelerikButton>
                 </TextBoxSuffixTemplate>
             </TelerikTextBox>
         </AppBarSection>
@@ -37,8 +40,7 @@
             <Authorized>
                 <AppBarSection>
                     <TelerikDropDownButton Icon="@SvgIcon.User"
-                                           Class="px-4"
-                                           Size="@ThemeConstants.DropDownButton.Size.Large">
+                                           Class="px-4">
                         <DropDownButtonContent>User</DropDownButtonContent>
                         <DropDownButtonItems>
                             <DropDownButtonItem Icon="@SvgIcon.User"
@@ -73,7 +75,7 @@
             </NotAuthorized>
         </AuthorizeView>
     </TelerikAppBar>
-    <main class="m-5">
+    <main class="m-5" style="background-color:f5f5fa;">
         <CascadingValue Name="Notification" Value="@_notificationRef">
             <CascadingValue Name="SearchText" Value="@_search">
                 @Body

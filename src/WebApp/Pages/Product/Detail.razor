@@ -10,7 +10,7 @@
                        Class="mb-4">
     </TelerikBreadcrumb>
 
-    <TelerikGridLayout ColumnSpacing="5%" RowSpacing="20px">
+    <TelerikGridLayout ColumnSpacing="5%" RowSpacing="10px">
         <GridLayoutColumns>
             <GridLayoutColumn Width="25%"></GridLayoutColumn>
             <GridLayoutColumn Width="70%"></GridLayoutColumn>
@@ -18,7 +18,7 @@
 
         <GridLayoutItems>
             <GridLayoutItem>
-                <TelerikCard Class="rounded-4">
+                <TelerikCard Class="rounded-4 shadow">
                     <CardImage Src="@_productInfo.ThumbnailUrl"></CardImage>
                 </TelerikCard>
             </GridLayoutItem>
@@ -40,10 +40,10 @@
                                 <div class="my-3">
                                     <b>@configOption1.OptionType</b>
                                 </div>
-                                <div class="row gy-5 mb-5">
+                                <div class="row gy-2 mb-5 w-75">
                                     @foreach (var value in configOption1.Values)
                                     {
-                                        <div class="col-4">
+                                        <div class="col">
                                             <TelerikButton Class="px-4">@value</TelerikButton>
                                         </div>
                                     }
@@ -56,10 +56,10 @@
                                 <div class="mb-3">
                                     <b>@configOption2.OptionType</b>
                                 </div>
-                                <div class="row gy-5 mb-5">
+                                <div class="row gy-2 mb-5 w-75">
                                     @foreach (var value in configOption2.Values)
                                     {
-                                        <div class="col-4">
+                                        <div class="col">
                                             <TelerikButton Class="px-4">@value</TelerikButton>
                                         </div>
                                     }
@@ -77,12 +77,16 @@
             </GridLayoutItem>
 
             <GridLayoutItem Column="1" Row="2" ColumnSpan="2">
-                @for (var i = 0; i < 20; i++)
-                {
-                    <p>
-                        Tần số quét và độ sáng tối đa được đặt trên C65 lần lượt là 90 Hz và 600 nits. Những thông số vừa đủ để mang đến trải nghiệm lướt và chuyển động mượt mà nhất cho người dùng trên con máy này. Bên cạnh khả năng bảo vệ đến từ mặt kính cường lực Corning Gorilla Glass dán phía trên. Nhờ đó mà chiếc điện thoại không chỉ được an toàn mà còn được gìn giữ luôn mới trong suốt thời gian sử dụng
-                    </p>
-                }
+                <TelerikCard Class="rounded-4 shadow">
+                    <CardBody>
+                        @for (var i = 0; i < 20; i++)
+                        {
+                            <p>
+                                Tần số quét và độ sáng tối đa được đặt trên C65 lần lượt là 90 Hz và 600 nits. Những thông số vừa đủ để mang đến trải nghiệm lướt và chuyển động mượt mà nhất cho người dùng trên con máy này. Bên cạnh khả năng bảo vệ đến từ mặt kính cường lực Corning Gorilla Glass dán phía trên. Nhờ đó mà chiếc điện thoại không chỉ được an toàn mà còn được gìn giữ luôn mới trong suốt thời gian sử dụng
+                            </p>
+                        }
+                    </CardBody>
+                </TelerikCard>
             </GridLayoutItem>
         </GridLayoutItems>
     </TelerikGridLayout>
