@@ -1,4 +1,4 @@
-﻿namespace Catalog.Api.IntegrationEvents.Pub
+﻿namespace Catalog.Api.IntegrationEvents.PublishEvents
 {
     public class ChangePriceEvent : IntegrationEvent
     {

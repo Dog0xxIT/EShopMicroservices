@@ -1,24 +1,23 @@
-using Catalog.Api.Infrastructure;
-using Catalog.Api.Service.CloudinaryService;
-using Microsoft.Extensions.DependencyInjection;
-using RabbitMQ.Client.Core.DependencyInjection;
-using EventBus.Extensions;
+using Catalog.Api.Services.CloudinaryService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //builder.AddRabbitMqEventBus("localhost")
 //        .AddSubscription<Event1, EventHandler1>();
 
-builder.Services.AddTransient<ICloudinaryService, CloudinaryService>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.
-    AddDbContext<CatalogContext>(
-        options => options.UseSqlServer(connectionString),
-        contextLifetime: ServiceLifetime.Transient);
+
+builder.Services.AddDbContext<CatalogContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
+
+builder.Services.AddTransient<ICloudinaryService, CloudinaryService>();
+
+builder.Services.AddTransient<ICatalogService, CatalogService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>

@@ -2,7 +2,7 @@
 
 namespace Identity.Api.Models.RequestModels
 {
-    public sealed class SignInRequest
+    public sealed class LoginRequest
     {
         [Required]
         [EmailAddress]
@@ -11,7 +11,5 @@ namespace Identity.Api.Models.RequestModels
         [Required]
         [PasswordPropertyText]
         public string Password { get; set; }
-
-        public bool RememberLogin { get; set; }
     }
 }

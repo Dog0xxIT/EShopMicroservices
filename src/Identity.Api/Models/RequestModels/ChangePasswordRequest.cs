@@ -1,11 +1,11 @@
 ﻿namespace Identity.Api.Models.RequestModels
 {
-    public sealed class ManageInfoRequest
+    public sealed class ChangePasswordRequest
     {
         [Required]
-        [EmailAddress]
-        public string NewEmail { get; set; }
         public string NewPassword { get; set; }
+
+        [Required]
         public string OldPassword { get; set; }
     }
 }

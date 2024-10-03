@@ -1,17 +1,17 @@
-﻿namespace Catalog.Api.Service
+﻿namespace Basket.Api.Services
 {
     public class ServiceResult
     {
         public bool Succeeded { get; private set; }
         public IEnumerable<string> Errors { get; private set; }
 
-        protected ServiceResult(bool success)
+        private ServiceResult(bool success)
         {
             Succeeded = success;
             Errors = Enumerable.Empty<string>();
         }
 
-        public ServiceResult(IEnumerable<string> errors)
+        private ServiceResult(IEnumerable<string> errors)
         {
             Succeeded = false;
             Errors = errors;

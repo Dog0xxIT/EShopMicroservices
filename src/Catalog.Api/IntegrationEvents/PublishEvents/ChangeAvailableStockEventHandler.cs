@@ -1,6 +1,6 @@
-﻿namespace Catalog.Api.IntegrationEvents.Publish;
+﻿namespace Catalog.Api.IntegrationEvents.PublishEvents;
 
-public class ChangeAvailableStockEventHandler
+public class ChangeAvailableStockEventHandler : IEventHandler
 {
 
 }

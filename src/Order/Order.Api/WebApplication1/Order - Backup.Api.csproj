@@ -11,12 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IntegrationEvents\PublishEvents\" />
-    <Folder Include="IntegrationEvents\SubscriptionEvents\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\EventBus\EventBus.csproj" />
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>

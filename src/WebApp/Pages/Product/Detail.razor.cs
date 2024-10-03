@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
-using WebApp.Models.Common;
 using WebApp.Models.ResponseModels;
+using WebApp.Models.ViewModels;
 
 namespace WebApp.Pages.Product;
 

@@ -1,5 +1,6 @@
 using System.Text;
 using Basket.Api.Configurations;
+using Basket.Api.Services.BasketService;
 using Basket.Api.Services.CatalogService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -16,6 +17,7 @@ builder.Services
     });
 
 builder.Services.AddTransient<ICatalogService, CatalogService>();
+builder.Services.AddTransient<IBasketService, BasketService>();
 
 builder.Services.AddControllers();
 

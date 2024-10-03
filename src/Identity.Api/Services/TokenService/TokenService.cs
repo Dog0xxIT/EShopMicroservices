@@ -42,32 +42,4 @@ public class TokenService : ITokenService
     {
         return Convert.ToBase64String(Guid.NewGuid().ToByteArray());
     }
-
-    public JwtSecurityToken DecodeToken(string accessToken)
-    {
-        var handler = new JwtSecurityTokenHandler();
-        var jwtSecurityToken = handler.ReadJwtToken(accessToken);
-        return jwtSecurityToken;
-    }
-
-    public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
-    {
-        var tokenValidationParameters = new TokenValidationParameters
-        {
-            ValidIssuer = _jwtConfig.Issuer,
-            ValidAudience = _jwtConfig.Audience,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtConfig.SecretKey)),
-        };
-
-        var principal = new JwtSecurityTokenHandler()
-            .ValidateToken(token, tokenValidationParameters, out var securityToken);
-
-        var jwtSecurityToken = securityToken as JwtSecurityToken;
-        var isValidToken = jwtSecurityToken is null || !jwtSecurityToken.Header.Alg.Equals(_jwtConfig.Algorithm, StringComparison.InvariantCultureIgnoreCase);
-        if (!isValidToken)
-        {
-            throw new SecurityTokenException("Invalid token");
-        }
-        return principal;
-    }
 }

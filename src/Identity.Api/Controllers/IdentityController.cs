@@ -2,7 +2,6 @@
 using Identity.Api.Models.ResponseModels;
 using Identity.Api.Services.TokenService;
 using Microsoft.AspNetCore.Mvc;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Identity.Api.Controllers
 {
@@ -16,7 +15,12 @@ namespace Identity.Api.Controllers
         private readonly JwtConfig _jwtConfig;
         private readonly ITokenService _tokenService;
 
-        public IdentityController(UserManager<User> userManager, IEmailSender<User> emailSender, ILogger<IdentityController> logger, IOptions<JwtConfig> jwtOptions, ITokenService tokenService)
+        public IdentityController(
+            UserManager<User> userManager,
+            IEmailSender<User> emailSender,
+            ILogger<IdentityController> logger,
+            IOptions<JwtConfig> jwtOptions,
+            ITokenService tokenService)
         {
             _userManager = userManager;
             _emailSender = emailSender;
@@ -35,7 +39,6 @@ namespace Identity.Api.Controllers
             }
 
             var identityResult = await _userManager.ConfirmEmailAsync(user, req.Code);
-
             if (!identityResult.Succeeded)
             {
                 var errors = identityResult.Errors.Select(i => i.Description);
@@ -66,21 +69,22 @@ namespace Identity.Api.Controllers
         public async Task<IActionResult> Logout()
         {
             var email = this.User.FindFirstValue(ClaimTypes.Email);
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _userManager.FindByEmailAsync(email!);
             if (user is null)
             {
-                return Unauthorized();
+                return Problem(statusCode: StatusCodes.Status401Unauthorized);
             }
+
             user.RefreshToken = null;
             user.RefreshTokenExpiryTime = null;
             var identityResult = await _userManager.UpdateAsync(user);
             if (!identityResult.Succeeded)
             {
-                var errors = identityResult.Errors.Select(i => i.Description);
-                return Problem(errors.First());
+                return Problem();
             }
             this.HttpContext.Response.Cookies.Delete("access-token");
             this.HttpContext.Response.Cookies.Delete("refresh-token");
+
             return Ok(ResponseObject.Succeeded);
         }
 
@@ -89,22 +93,19 @@ namespace Identity.Api.Controllers
         {
             var user = new User
             {
-                UserName = req.Email,
                 Email = req.Email,
             };
 
             var identityResult = await _userManager.CreateAsync(user, req.Password);
             if (!identityResult.Succeeded)
             {
-                var errors = identityResult.Errors.Select(e => e.Description);
-                return Problem(errors.First());
+                return Problem();
             }
 
             identityResult = await _userManager.AddToRoleAsync(user, RolesConstant.Customer);
             if (!identityResult.Succeeded)
             {
-                var errors = identityResult.Errors.Select(e => e.Description);
-                return Problem(errors.First());
+                return Problem();
             }
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -118,7 +119,7 @@ namespace Identity.Api.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(SignInRequest req)
+        public async Task<IActionResult> Login(LoginRequest req)
         {
             var user = await _userManager.FindByEmailAsync(req.Email);
             if (user is null)
@@ -148,7 +149,7 @@ namespace Identity.Api.Controllers
             var identityResult = await _userManager.UpdateAsync(user); // Save refresh token in Db
             if (!identityResult.Succeeded)
             {
-                return Problem("Server Error");
+                return Problem();
             }
             SetTokenInCookie(accessToken, refreshToken);
             return Ok(ResponseObject.Succeeded);
@@ -187,7 +188,7 @@ namespace Identity.Api.Controllers
             var identityResult = await _userManager.UpdateAsync(user); // Save refresh token in Db
             if (!identityResult.Succeeded)
             {
-                return Problem("Server Error");
+                return Problem();
             }
             SetTokenInCookie(newAccessToken, newRefreshToken);
             return Ok(ResponseObject.Succeeded);
@@ -251,17 +252,26 @@ namespace Identity.Api.Controllers
             return Ok(ResponseObject.Succeeded);
         }
 
-        //[HttpPost]
-        //public IActionResult Manage2Fa(Manage2FaRequest req)
-        //{
-        //    return Ok();
-        //}
+        [Authorize]
+        [HttpPost("changePassword")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordRequest req)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.Sid);
+            var user = await _userManager.FindByIdAsync(userId!);
+            if (user is null)
+            {
+                return Problem(statusCode: StatusCodes.Status401Unauthorized);
+            }
 
-        //[HttpPost]
-        //public IActionResult ManageInfo(ManageInfoRequest req)
-        //{
-        //    return Ok();
-        //}
+            var identityResult = await _userManager.ChangePasswordAsync(user, req.OldPassword, req.NewPassword);
+            if (!identityResult.Succeeded)
+            {
+                var errors = identityResult.Errors.Select(e => e.Description);
+                return Problem(errors.First());
+            }
+
+            return Ok(ResponseObject.Succeeded);
+        }
 
         private void SetTokenInCookie(string accessToken, string refreshToken)
         {

@@ -1,7 +1,4 @@
-﻿using Catalog.Api.Infrastructure;
-using Catalog.Api.Service.CloudinaryService;
-
-namespace Catalog.Api.Controllers
+﻿namespace Catalog.Api.Controllers
 {
     [ApiController]
     [Route("/api/v1/resources")]

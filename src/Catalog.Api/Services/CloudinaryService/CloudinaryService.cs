@@ -1,8 +1,9 @@
-﻿using CloudinaryDotNet;
+﻿using Catalog.Api.Service;
+using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using dotenv.net;
 
-namespace Catalog.Api.Service.CloudinaryService
+namespace Catalog.Api.Services.CloudinaryService
 {
     public class CloudinaryService : ICloudinaryService
     {

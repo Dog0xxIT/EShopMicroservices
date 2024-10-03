@@ -40,15 +40,18 @@ public partial class Home
 
     protected override async Task OnParametersSetAsync()
     {
-        _getListProductRequest = new()
+        if (_searchText != _getListProductRequest.Keyword)
         {
-            Keyword = _searchText,
-            Page = 1,
-            Limit = 36,
-        };
-        _visibleLoader = true;
-        _productPaginationResponse = await _catalogService.GetListProducts(_getListProductRequest);
-        _visibleLoader = false;
+            _getListProductRequest = new()
+            {
+                Keyword = _searchText,
+                Page = 1,
+                Limit = 36,
+            };
+            _visibleLoader = true;
+            _productPaginationResponse = await _catalogService.GetListProducts(_getListProductRequest);
+            _visibleLoader = false;
+        }
     }
 
     private async Task OnClickCategory(PanelBarItemClickEventArgs args)

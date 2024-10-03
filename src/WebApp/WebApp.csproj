@@ -7,9 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Enums\**" />
     <Compile Remove="Services\OrderService\**" />
+    <Content Remove="Models\Enums\**" />
     <Content Remove="Services\OrderService\**" />
+    <EmbeddedResource Remove="Models\Enums\**" />
     <EmbeddedResource Remove="Services\OrderService\**" />
+    <None Remove="Models\Enums\**" />
     <None Remove="Services\OrderService\**" />
   </ItemGroup>
 
@@ -25,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Enums\" />
+    <Folder Include="Models\RequestModels\Order\" />
     <Folder Include="Models\ResponseModels\Order\" />
   </ItemGroup>
 

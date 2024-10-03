@@ -2,25 +2,31 @@
 {
     public class ServiceResult
     {
+        public int StatusCode { get; private set; }
         public bool Succeeded { get; private set; }
-        public IEnumerable<string> Errors { get; private set; }
+        public string Message { get; private set; }
 
-        protected ServiceResult(bool success)
+        private ServiceResult(int statusCode, bool success)
         {
+            StatusCode = statusCode;
             Succeeded = success;
-            Errors = Enumerable.Empty<string>();
+            Message = "";
         }
 
-        public ServiceResult(IEnumerable<string> errors)
+        private ServiceResult(int statusCode, string message)
         {
+            StatusCode = statusCode;
             Succeeded = false;
-            Errors = errors;
+            Message = message;
         }
 
-        public static ServiceResult Success => new(true);
+        public static ServiceResult Success(
+            int statusCode = StatusCodes.Status200OK)
+            => new(statusCode, true);
 
-        public static ServiceResult Failed(params string[] errors) => new(errors);
-
-        public static ServiceResult Failed(IEnumerable<string> errors) => new(errors);
+        public static ServiceResult Failed(
+            string message, 
+            int statusCode = StatusCodes.Status500InternalServerError)
+            => new(statusCode, message);
     }
 }

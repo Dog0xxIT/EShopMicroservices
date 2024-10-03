@@ -1,4 +1,4 @@
-﻿namespace WebApp.Models.Common
+﻿namespace WebApp.Models.ViewModels
 {
     public class BreadcrumbItem
     {

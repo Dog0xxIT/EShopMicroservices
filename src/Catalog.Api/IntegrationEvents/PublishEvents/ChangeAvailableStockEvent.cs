@@ -1,4 +1,4 @@
-﻿namespace Catalog.Api.IntegrationEvents.Publish;
+﻿namespace Catalog.Api.IntegrationEvents.PublishEvents;
 
 public class ChangeAvailableStockEvent : IntegrationEvent
 {

@@ -16,7 +16,7 @@ public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IA
     /// <summary>
     /// Authentication state.
     /// </summary>
-    private bool _authenticated = false;
+    private bool _authenticated;
 
     /// <summary>
     /// Default principal for anonymous (not authenticated) users.

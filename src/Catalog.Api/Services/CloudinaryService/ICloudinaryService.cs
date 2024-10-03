@@ -1,4 +1,6 @@
-﻿namespace Catalog.Api.Service.CloudinaryService
+﻿using Catalog.Api.Services;
+
+namespace Catalog.Api.Service.CloudinaryService
 {
     public interface ICloudinaryService
     {
