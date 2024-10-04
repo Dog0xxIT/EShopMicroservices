@@ -1,6 +1,7 @@
 ﻿using Identity.Api.Models.RequestModels;
 using Identity.Api.Models.ResponseModels;
 using Identity.Api.Services.TokenService;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Identity.Api.Controllers
@@ -48,7 +49,7 @@ namespace Identity.Api.Controllers
             return Ok(ResponseObject.Succeeded);
         }
 
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("manageInfo")]
         public IActionResult ManageInfo()
         {
@@ -64,7 +65,7 @@ namespace Identity.Api.Controllers
             });
         }
 
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
@@ -252,7 +253,7 @@ namespace Identity.Api.Controllers
             return Ok(ResponseObject.Succeeded);
         }
 
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost("changePassword")]
         public async Task<IActionResult> ChangePassword(ChangePasswordRequest req)
         {

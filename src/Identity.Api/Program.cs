@@ -1,9 +1,15 @@
+using System.Security.AccessControl;
 using System.Text;
 using Identity.Api.Data;
 using Identity.Api.Services.EmailService;
 using Identity.Api.Services.TokenService;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.HttpLogging;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,30 +35,40 @@ builder.Services
         options.Lockout.AllowedForNewUsers = true;
     })
     .AddRoles<IdentityRole>() // Add Role Manage Service
+    .AddSignInManager()
     .AddEntityFrameworkStores<IdentityContext>()
     .AddDefaultTokenProviders();
 
 builder.Services
-    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddAuthentication()
+    .AddCookie(IdentityConstants.ExternalScheme)
     .AddJwtBearer(options =>
-    {
-        var jwtConfig = new JwtConfig();
-        builder.Configuration.GetSection(JwtConfig.SectionName).Bind(jwtConfig);
+        {
+            var jwtConfig = new JwtConfig();
+            builder.Configuration.GetSection(JwtConfig.SectionName).Bind(jwtConfig);
 
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidIssuer = jwtConfig.Issuer,
-            ValidAudience = jwtConfig.Audience,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.SecretKey)),
-        };
-        options.Events = new JwtBearerEvents
-        {
-            OnMessageReceived = context =>
+            options.TokenValidationParameters = new TokenValidationParameters
             {
-                context.Token = context.Request.Cookies["access-token"]; // Get token from cookie
-                return Task.CompletedTask;
-            },
-        };
+                ValidIssuer = jwtConfig.Issuer,
+                ValidAudience = jwtConfig.Audience,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.SecretKey)),
+            };
+            options.Events = new JwtBearerEvents
+            {
+                OnMessageReceived = context =>
+                {
+                    context.Token = context.Request.Cookies["access-token"]; // Get token from cookie
+                    return Task.CompletedTask;
+                },
+            };
+        })
+    .AddGoogle(options =>
+    {
+        var ggOAuthConfig = builder.Configuration.GetSection("GoogleOAuth");
+
+        options.ClientId = ggOAuthConfig["client_id"]!;
+        options.ClientSecret = ggOAuthConfig["client_secret"]!;
+        options.SignInScheme = IdentityConstants.ExternalScheme;
     });
 
 builder.Services.AddCors(options =>
