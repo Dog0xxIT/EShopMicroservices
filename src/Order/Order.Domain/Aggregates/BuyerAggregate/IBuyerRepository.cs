@@ -1,6 +1,7 @@
-﻿namespace EShop.Domain.Aggregates.BuyerAggregate;
+﻿using Ordering.Domain.Common;
 
-public interface IBuyerRepository
+namespace Ordering.Domain.Aggregates.BuyerAggregate;
+
+public interface IBuyerRepository : IGenericRepository<Buyer>
 {
-    
 }

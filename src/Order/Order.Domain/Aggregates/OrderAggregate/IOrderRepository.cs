@@ -1,6 +1,7 @@
-﻿namespace EShop.Domain.Aggregates.OrderAggregate;
+﻿using Ordering.Domain.Common;
 
-public interface IOrderRepository
+namespace Ordering.Domain.Aggregates.OrderAggregate;
+
+public interface IOrderRepository : IGenericRepository<Order>
 {
-    
 }

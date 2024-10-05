@@ -1,4 +1,7 @@
-﻿namespace EShop.Domain.Common
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Ordering.Domain.Common
 {
     public abstract class ValueObject
     {

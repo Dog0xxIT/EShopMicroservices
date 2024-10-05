@@ -1,4 +1,8 @@
-﻿namespace EShop.Domain.Aggregates.OrderAggregate
+﻿using System;
+using System.Collections.Generic;
+using Ordering.Domain.Common;
+
+namespace Ordering.Domain.Aggregates.OrderAggregate
 {
     public class Address : ValueObject
     {
@@ -12,11 +16,11 @@
 
         public Address(string street, string city, string state, string country, string zipcode)
         {
-            Street = street;
-            City = city;
-            State = state;
-            Country = country;
-            ZipCode = zipcode;
+            Street = string.IsNullOrWhiteSpace(street) ? throw new ArgumentNullException(nameof(street)) : street;
+            City = string.IsNullOrWhiteSpace(city) ? throw new ArgumentNullException(nameof(city)) : city;
+            State = string.IsNullOrWhiteSpace(state) ? throw new ArgumentNullException(nameof(state)) : state;
+            Country = string.IsNullOrWhiteSpace(country) ? throw new ArgumentNullException(nameof(country)) : country;
+            ZipCode = string.IsNullOrWhiteSpace(zipcode) ? throw new ArgumentNullException(nameof(zipcode)) : zipcode;
         }
 
         protected override IEnumerable<object> GetEqualityComponents()

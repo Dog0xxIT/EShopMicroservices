@@ -1,22 +1,29 @@
-﻿namespace EShop.Domain.Aggregates.OrderAggregate
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Ordering.Domain.Aggregates.BuyerAggregate;
+using Ordering.Domain.Common;
+using Ordering.Domain.Enums;
+using Ordering.Domain.Events;
+using Ordering.Domain.Exceptions;
+
+namespace Ordering.Domain.Aggregates.OrderAggregate
 {
-    public class Order : IAggregateRoot
+    public class Order : BaseEntity, IAggregateRoot
     {
-        public int OrderId { get; private set; }
+        public string BuyerId { get; private set; }
+
+        public string PaymentId { get; private set; }
 
         public DateTime OrderDate { get; private set; }
-
-        public Buyer Buyer { get; }
-
-        public int BuyerId { get; private set; }
-
-        public int PaymentId { get; private set; }
-
-        public Address Address { get; private set; }
 
         public OrderStatus OrderStatus { get; private set; }
 
         public string Description { get; private set; }
+
+        public Buyer Buyer { get; }
+
+        public Address Address { get; private set; }
 
         // DDD Patterns comment
         // Using a private collection field, better for DDD Aggregate's encapsulation
@@ -24,18 +31,19 @@
         // but only through the method OrderAggregateRoot.AddOrderItem() which includes behavior.
         private readonly List<OrderItem> _orderItems;
 
-        public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
+        public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
+
+        private Order() { } 
 
         public Order(
-            int orderId, DateTime orderDate, int buyerId,
-            int paymentId, Address address, OrderStatus orderStatus,
-            List<OrderItem> orderItems)
+            string id, DateTime orderDate, string buyerId,
+            string paymentId, Address address, OrderStatus orderStatus,
+            List<OrderItem> orderItems) : base(id)
         {
             _orderItems = orderItems ?? throw new ArgumentNullException(nameof(orderItems));
-            OrderId = orderId;
             OrderDate = orderDate;
-            BuyerId = buyerId;
-            PaymentId = paymentId;
+            BuyerId = string.IsNullOrWhiteSpace(buyerId) ? throw new ArgumentNullException(nameof(buyerId)) : buyerId;
+            PaymentId = string.IsNullOrWhiteSpace(paymentId) ? throw new ArgumentNullException(nameof(paymentId)) : paymentId;
             Address = address ?? throw new ArgumentNullException(nameof(address));
             OrderStatus = orderStatus;
         }
@@ -59,24 +67,17 @@
             else
             {
                 //add validated new order item
-                var orderItem = new OrderItem(
-                    0, productId, productName, pictureUrl,
+                var orderItem = new OrderItem(Guid.NewGuid().ToString(), productId, productName, pictureUrl,
                     unitPrice, discount, units);
                 _orderItems.Add(orderItem);
             }
-        }
-
-        public void SetPaymentMethodVerified(int buyerId, int paymentId)
-        {
-            BuyerId = buyerId;
-            PaymentId = paymentId;
         }
 
         public void SetAwaitingValidationStatus()
         {
             if (OrderStatus == OrderStatus.Submitted)
             {
-                //AddDomainEvent(new OrderStatusChangedToAwaitingValidationDomainEvent(Id, _orderItems));
+                this._domainEvents.Add(new OrderStatusChangedToAwaitingValidationEvent(Id, _orderItems));
                 OrderStatus = OrderStatus.AwaitingValidation;
             }
         }
@@ -85,7 +86,7 @@
         {
             if (OrderStatus == OrderStatus.AwaitingValidation)
             {
-                //AddDomainEvent(new OrderStatusChangedToStockConfirmedDomainEvent(Id));
+                this._domainEvents.Add(new OrderStatusChangedToStockConfirmedEvent(Id));
 
                 OrderStatus = OrderStatus.StockConfirmed;
                 Description = "All the items were confirmed with available stock.";
@@ -96,8 +97,7 @@
         {
             if (OrderStatus == OrderStatus.StockConfirmed)
             {
-                //AddDomainEvent(new OrderStatusChangedToPaidDomainEvent(Id, OrderItems));
-
+                this._domainEvents.Add(new OrderStatusChangedToPaidEvent(Id, OrderItems));
                 OrderStatus = OrderStatus.Paid;
                 Description = "The payment was performed at a simulated \"American Bank checking bank account ending on XX35071\"";
             }
@@ -112,7 +112,7 @@
 
             OrderStatus = OrderStatus.Shipped;
             Description = "The order was shipped.";
-            //AddDomainEvent(new OrderShippedDomainEvent(this));
+            this._domainEvents.Add(new OrderShippedEvent(this));
         }
 
         public void SetCancelledStatus()
@@ -125,7 +125,7 @@
 
             OrderStatus = OrderStatus.Cancelled;
             Description = $"The order was cancelled.";
-            //AddDomainEvent(new OrderCancelledDomainEvent(this));
+            this._domainEvents.Add(new OrderCancelledEvent(this));
         }
 
         public void SetCancelledStatusWhenStockIsRejected(IEnumerable<int> orderStockRejectedItems)
@@ -146,11 +146,11 @@
         private void AddOrderStartedDomainEvent(string userId, string userName, int cardTypeId, string cardNumber,
                 string cardSecurityNumber, string cardHolderName, DateTime cardExpiration)
         {
-            //var orderStartedDomainEvent = new OrderStartedDomainEvent(this, userId, userName, cardTypeId,
-            //                                                            cardNumber, cardSecurityNumber,
-            //                                                            cardHolderName, cardExpiration);
+            var orderStartedDomainEvent = new OrderStartedEvent(this, userId, userName, cardTypeId,
+                                                                   cardNumber, cardSecurityNumber,
+                                                                      cardHolderName, cardExpiration);
 
-            //this.AddDomainEvent(orderStartedDomainEvent);
+            this._domainEvents.Add(orderStartedDomainEvent);
         }
 
         private void StatusChangeException(OrderStatus orderStatusToChange)

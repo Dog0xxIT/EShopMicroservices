@@ -1,4 +1,4 @@
-﻿namespace EShop.Domain.Common;
+﻿namespace Ordering.Domain.Common;
 
 public interface IAggregateRoot
 {

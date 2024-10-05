@@ -1,9 +1,11 @@
-﻿namespace EShop.Domain.Aggregates.OrderAggregate
-{
-    public class OrderItem
-    {
-        public int Id { get; private set; }
+﻿using System;
+using Ordering.Domain.Common;
+using Ordering.Domain.Exceptions;
 
+namespace Ordering.Domain.Aggregates.OrderAggregate
+{
+    public class OrderItem : BaseEntity
+    {
         public int ProductId { get; private set; }
 
         public string ProductName { get; private set; }
@@ -18,17 +20,18 @@
 
         public double TotalPrice { get; private set; }
 
+        private OrderItem() { }
+
         public OrderItem(
-            int id, int productId, string productName, string pictureUrl,
-            double unitPrice, double discount, int units)
+            string id, int productId, string productName, string pictureUrl,
+            double unitPrice, double discount, int units) : base(id)
         {
-            ProductName = productName ?? throw new ArgumentNullException(nameof(productName));
-            PictureUrl = pictureUrl ?? throw new ArgumentNullException(nameof(pictureUrl));
+            ProductName = string.IsNullOrWhiteSpace(productName) ? throw new ArgumentNullException(nameof(productName)) : productName;
+            PictureUrl = string.IsNullOrWhiteSpace(pictureUrl) ? throw new ArgumentNullException(nameof(pictureUrl)) : pictureUrl;
             UnitPrice = unitPrice;
             Discount = discount;
             Units = units;
             ProductId = productId;
-            Id = id;
             TotalPrice = UnitPrice * Units;
         }
 
