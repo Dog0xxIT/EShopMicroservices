@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Ordering.Api.Commands;
 using Ordering.Api.Models;
-using Ordering.Api.Models.RequestModels;
 using Ordering.Api.Queries;
 
 namespace Ordering.Api.Controllers
@@ -44,13 +44,13 @@ namespace Ordering.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateRequest req)
+        public async Task<IActionResult> Create(CreateOrderDraftCommand req)
         {
             return Ok(ResponseObject.Succeeded);
         }
 
         [HttpPost("draft")]
-        public async Task<IActionResult> CreateDraft(CreateDraftRequest req)
+        public async Task<IActionResult> CreateDraft(CreateOrderDraftCommand req)
         {
             //var orderDraft = new Order(req.BuyerId);
             return Ok(ResponseObject.Succeeded);
