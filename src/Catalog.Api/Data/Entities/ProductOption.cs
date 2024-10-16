@@ -10,7 +10,6 @@
 
         public OptionType OptionType { get; set; }
 
-        [DeleteBehavior(DeleteBehavior.NoAction)]
         public ProductVariant ProductVariant { get; set; }
     }
 }
